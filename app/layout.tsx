@@ -17,7 +17,7 @@ const libreBaskerville = Libre_Baskerville({
 export const metadata: Metadata = {
   title: 'Texas Exoneree Support Network',
   description:
-    'Connecting exonerees with verified legal aid, re-entry nonprofits, and community resources. Rebuilding starts here.',
+    'Connecting exonerees with verified re-entry nonprofits, advocacy organizations, and community resources. Rebuilding starts here.',
 }
 
 export const viewport: Viewport = {

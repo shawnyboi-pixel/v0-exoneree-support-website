@@ -36,31 +36,31 @@ const organizations = [
     tags: ['Legal Aid', 'Policy Reform'],
   },
   {
-    name: 'Texas Defender Service',
+    name: 'Miles of Freedom',
     description:
-      'Provides legal representation to death row inmates and advocates for a fair and just criminal legal system in Texas.',
-    url: 'https://www.texasdefender.org',
-    phone: '(713) 222-7788',
-    icon: Scale,
-    tags: ['Legal Aid', 'Death Penalty'],
-  },
-  {
-    name: 'Texas RioGrande Legal Aid',
-    description:
-      'Free civil legal services to low-income residents across Texas, including help with housing, benefits, and family law matters.',
-    url: 'https://www.trla.org',
-    phone: '(888) 988-9996',
-    icon: Users,
-    tags: ['Legal Aid', 'Benefits', 'Housing'],
-  },
-  {
-    name: 'Returning Hearts Celebration',
-    description:
-      'Reunification events for incarcerated parents and their children. Helping families heal the bonds that incarceration fractured.',
-    url: 'https://returninghearts.com',
+      'Founded by exoneree Johnnie Lindsey, Miles of Freedom provides re-entry assistance, community support, and essential services to help exonerees and returning citizens rebuild their lives.',
+    url: 'https://www.milesoffreedom.org',
     phone: null,
     icon: Heart,
-    tags: ['Family', 'Community'],
+    tags: ['Re-entry', 'Community'],
+  },
+  {
+    name: 'Organization of Exonerees',
+    description:
+      'A network of exonerees working to change the system from the inside. They bring awareness to wrongful convictions and support those still fighting for freedom.',
+    url: 'https://organizationofexonerees.com',
+    phone: null,
+    icon: Users,
+    tags: ['Advocacy', 'Peer Support'],
+  },
+  {
+    name: 'Healing Justice',
+    description:
+      'Dedicated to preventing and alleviating the harms caused by wrongful convictions through healing retreats, peer support, and direct services for exonerees and their families.',
+    url: 'https://healingjusticeproject.org',
+    phone: null,
+    icon: Heart,
+    tags: ['Mental Health', 'Healing Retreats'],
   },
 ]
 

@@ -32,8 +32,8 @@ const struggles = [
         url: 'https://innocenceproject.org',
       },
       {
-        name: 'Texas RioGrande Legal Aid',
-        url: 'https://www.trla.org',
+        name: 'Miles of Freedom',
+        url: 'https://www.milesoffreedom.org',
       },
     ],
   },

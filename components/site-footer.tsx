@@ -15,8 +15,9 @@ export function SiteFooter() {
               </span>
             </div>
             <p className="max-w-xs text-sm leading-relaxed text-primary-foreground/60">
-              Connecting Texas exonerees with the legal aid, housing assistance,
-              employment support, and community they need to rebuild.
+            Connecting Texas exonerees with housing assistance,
+            employment support, advocacy organizations, and community
+            they need to rebuild.
             </p>
           </div>
 
@@ -54,28 +55,27 @@ export function SiteFooter() {
 
           <div>
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary-foreground/80">
-              Crisis Support
+              Get Involved
             </h3>
-            <p className="mb-2 text-sm text-primary-foreground/60">
-              If you or someone you know is in crisis:
+            <p className="mb-3 text-sm leading-relaxed text-primary-foreground/60">
+              Whether you are an exoneree, a family member, or someone who
+              wants to help {"—"} there are ways to make a difference.
             </p>
             <a
-              href="tel:988"
-              className="text-lg font-bold text-primary-foreground transition-colors hover:text-primary-foreground/80"
+              href="#resources"
+              className="text-sm font-medium text-primary-foreground transition-colors hover:text-primary-foreground/80"
             >
-              988 Suicide & Crisis Lifeline
+              View Support Organizations &rarr;
             </a>
-            <p className="mt-1 text-sm text-primary-foreground/60">
-              Call or text 988 {"—"} available 24/7
-            </p>
           </div>
         </div>
 
         <div className="mt-10 border-t border-primary-foreground/10 pt-6">
           <p className="text-center text-xs text-primary-foreground/40">
-            This site is a resource hub. It is not a substitute for
-            professional legal advice. All organizations listed have been
-            independently verified.
+            This site is an informational resource hub connecting exonerees
+            with support organizations. It does not provide and should not be
+            understood as professional advice of any kind. All organizations
+            listed have been independently verified.
           </p>
         </div>
       </div>

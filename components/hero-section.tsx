@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
 export function HeroSection() {
@@ -27,19 +26,19 @@ export function HeroSection() {
           </p>
 
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-            <Link
+            <a
               href="#resources"
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
             >
               Connect with Support Organizations
               <ArrowRight className="size-4" />
-            </Link>
-            <Link
+            </a>
+            <a
               href="#struggles"
               className="inline-flex items-center justify-center rounded-lg border border-primary-foreground/20 px-6 py-3.5 text-base font-medium text-primary-foreground transition-colors hover:bg-primary-foreground/10"
             >
               Understand the Challenges
-            </Link>
+            </a>
           </div>
         </div>
 
