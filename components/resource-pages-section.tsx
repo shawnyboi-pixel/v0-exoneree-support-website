@@ -8,6 +8,8 @@ import {
   Briefcase,
   DollarSign,
   Lightbulb,
+  Heart,
+  Users,
   ArrowRight,
 } from 'lucide-react'
 
@@ -37,12 +39,28 @@ const pages = [
     stats: 'No credit history upon release',
   },
   {
-    title: 'Practical Tips for Daily Life',
+    title: 'General Resources for Daily Life',
     description:
       'Affordable stores, local food pantries, public libraries, community events, parks, churches, and everyday resources to help you settle in.',
-    href: '/tips',
+    href: '/general-resources',
     icon: Lightbulb,
     stats: 'Dallas-specific resources',
+  },
+  {
+    title: 'Healthcare & Insurance',
+    description:
+      'Access to healthcare, Medicaid, ACP, mental health services, and dental care—all affordable or free for low-income residents.',
+    href: '/healthcare',
+    icon: Heart,
+    stats: 'Medicaid & ACP available',
+  },
+  {
+    title: 'Support Organizations',
+    description:
+      'National and Texas-based organizations dedicated to exoneree support, from legal advocacy to re-entry services to healing.',
+    href: '/organizations',
+    icon: Users,
+    stats: '6 verified organizations',
   },
 ]
 
@@ -66,20 +84,20 @@ export function ResourcePagesSection() {
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {pages.map((page) => (
             <Link key={page.href} href={page.href} className="group">
               <Card className="h-full border-border/60 transition-all group-hover:border-primary/30 group-hover:shadow-md">
                 <CardContent className="flex h-full flex-col pt-6">
-                  <div className="mb-4 flex items-center gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                      <page.icon className="size-6 text-primary" />
+                  <div className="mb-4 flex items-center gap-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                      <page.icon className="size-5 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-foreground">
+                      <h3 className="text-base font-semibold text-foreground">
                         {page.title}
                       </h3>
-                      <span className="text-sm font-medium text-accent">
+                      <span className="text-xs font-medium text-accent">
                         {page.stats}
                       </span>
                     </div>

@@ -56,10 +56,16 @@ export function SiteFooter() {
                 Financial & Credit Rebuilding
               </Link>
               <Link
-                href="/tips"
+                href="/healthcare"
                 className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground"
               >
-                Practical Tips for Daily Life
+                Healthcare & Insurance
+              </Link>
+              <Link
+                href="/organizations"
+                className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground"
+              >
+                Support Organizations
               </Link>
             </nav>
           </div>
@@ -73,7 +79,7 @@ export function SiteFooter() {
               wants to help {"—"} there are ways to make a difference.
             </p>
             <Link
-              href="/tips"
+              href="/general-resources"
               className="text-sm font-medium text-primary-foreground transition-colors hover:text-primary-foreground/80"
             >
               View Helpful Resources &rarr;

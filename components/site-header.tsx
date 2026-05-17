@@ -10,7 +10,8 @@ const navLinks = [
   { label: 'Housing', href: '/housing' },
   { label: 'Employment', href: '/employment' },
   { label: 'Financial', href: '/financial' },
-  { label: 'Tips', href: '/tips' },
+  { label: 'Healthcare', href: '/healthcare' },
+  { label: 'Organizations', href: '/organizations' },
 ]
 
 export function SiteHeader() {
@@ -49,7 +50,7 @@ export function SiteHeader() {
             </Link>
           ))}
           <Link
-            href="/tips"
+            href="/general-resources"
             className="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90"
           >
             Get Help Now
@@ -87,7 +88,7 @@ export function SiteHeader() {
               </Link>
             ))}
             <Link
-              href="/tips"
+              href="/general-resources"
               className="mt-2 rounded-lg bg-accent px-4 py-2.5 text-center text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90"
               onClick={() => setMobileOpen(false)}
             >

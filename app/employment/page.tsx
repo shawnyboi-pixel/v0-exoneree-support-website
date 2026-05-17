@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { PageHeader } from '@/components/page-header'
 import { Card, CardContent } from '@/components/ui/card'
-import { ExternalLink, Phone, Briefcase, TrendingDown, UserX, DollarSign } from 'lucide-react'
+import { ExternalLink, Phone, Briefcase, TrendingDown, UserX, DollarSign, Heart } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Employment After Exoneration | Texas Exoneree Support Network',
@@ -261,6 +261,149 @@ export default function EmploymentPage() {
         </div>
       </section>
 
+      {/* Tailored Job Examples */}
+      <section className="bg-secondary py-16 md:py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <h2 className="mb-2 font-serif text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+            Job Examples by Skills & Experience
+          </h2>
+          <p className="mb-8 text-base leading-relaxed text-muted-foreground">
+            Many skills you developed can translate directly into stable employment. Here are real job types suited to different backgrounds.
+          </p>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <Card className="border-border/60 transition-all hover:shadow-sm">
+              <CardContent className="pt-6">
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                  <Briefcase className="size-5 text-primary" />
+                </div>
+                <h3 className="mb-2 text-lg font-semibold text-foreground">
+                  Mechanical Skills
+                </h3>
+                <p className="mb-4 text-sm text-muted-foreground">
+                  If you have experience with engines, tools, or maintenance:
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• Auto repair technician</li>
+                  <li>• HVAC technician</li>
+                  <li>• Maintenance worker</li>
+                  <li>• Equipment operator</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="border-border/60 transition-all hover:shadow-sm">
+              <CardContent className="pt-6">
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
+                  <Briefcase className="size-5 text-accent" />
+                </div>
+                <h3 className="mb-2 text-lg font-semibold text-foreground">
+                  Construction & Skilled Trades
+                </h3>
+                <p className="mb-4 text-sm text-muted-foreground">
+                  If you developed hands-on trades knowledge:
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• Carpenter or framing</li>
+                  <li>• Electrician apprentice</li>
+                  <li>• Plumbing</li>
+                  <li>• General labor crew lead</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="border-border/60 transition-all hover:shadow-sm">
+              <CardContent className="pt-6">
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                  <Briefcase className="size-5 text-primary" />
+                </div>
+                <h3 className="mb-2 text-lg font-semibold text-foreground">
+                  Customer Service & Retail
+                </h3>
+                <p className="mb-4 text-sm text-muted-foreground">
+                  For people skills and communication:
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• Retail store associate</li>
+                  <li>• Customer service representative</li>
+                  <li>• Food service supervisor</li>
+                  <li>• Call center representative</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="border-border/60 transition-all hover:shadow-sm">
+              <CardContent className="pt-6">
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
+                  <Heart className="size-5 text-accent" />
+                </div>
+                <h3 className="mb-2 text-lg font-semibold text-foreground">
+                  Healthcare & Caregiving
+                </h3>
+                <p className="mb-4 text-sm text-muted-foreground">
+                  If you have compassion and want to help:
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• Certified nursing assistant (CNA)</li>
+                  <li>• Home health aide</li>
+                  <li>• Patient transport</li>
+                  <li>• Phlebotomy technician</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="border-border/60 transition-all hover:shadow-sm">
+              <CardContent className="pt-6">
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                  <Briefcase className="size-5 text-primary" />
+                </div>
+                <h3 className="mb-2 text-lg font-semibold text-foreground">
+                  Clerical & Administrative
+                </h3>
+                <p className="mb-4 text-sm text-muted-foreground">
+                  If you're organized and detail-oriented:
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• Data entry specialist</li>
+                  <li>• Office assistant</li>
+                  <li>• Warehouse inventory clerk</li>
+                  <li>• Receptionist</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="border-border/60 transition-all hover:shadow-sm">
+              <CardContent className="pt-6">
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
+                  <Briefcase className="size-5 text-accent" />
+                </div>
+                <h3 className="mb-2 text-lg font-semibold text-foreground">
+                  Self-Employment & Gig Work
+                </h3>
+                <p className="mb-4 text-sm text-muted-foreground">
+                  For independent earners:
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• Delivery driver (DoorDash, Instacart)</li>
+                  <li>• Gig labor (TaskRabbit)</li>
+                  <li>• Lawn care / landscaping</li>
+                  <li>• Handyman services</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="mt-8 rounded-lg border border-border/60 bg-card p-6">
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              <strong>Pro tip:</strong> Dallas College offers affordable
+              certifications in many of these fields. Start with an industry
+              certification (like CNA or commercial driver&apos;s license) to
+              make yourself more competitive while you continue job searching.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Organization Resources */}
       <section className="bg-secondary py-16 md:py-20">
         <div className="mx-auto max-w-6xl px-6">
@@ -301,19 +444,19 @@ export default function EmploymentPage() {
                         href={org.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                        className="inline-flex items-center gap-1.5 rounded-md bg-primary/10 px-2 py-1 text-xs font-medium text-primary transition-all hover:bg-primary/20"
                       >
                         Visit Website
-                        <ExternalLink className="size-3.5" />
+                        <ExternalLink className="size-3" />
                       </a>
                     )}
                     {org.phone && (
                       <a
                         href={`tel:${org.phone}`}
-                        className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                        className="inline-flex items-center gap-1.5 rounded-md bg-accent/10 px-2 py-1 text-xs font-medium text-accent transition-all hover:bg-accent/20"
                       >
-                        <Phone className="size-3.5" />
-                        {org.phone}
+                        <Phone className="size-3" />
+                        Call
                       </a>
                     )}
                   </div>

@@ -4,7 +4,7 @@ import {
   Card,
   CardContent,
 } from '@/components/ui/card'
-import { ExternalLink, Home, DollarSign, GraduationCap, TrendingDown } from 'lucide-react'
+import { ExternalLink, Home, DollarSign, TrendingDown } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Housing in Dallas | Texas Exoneree Support Network',
@@ -32,13 +32,6 @@ const dallasStats = [
     context:
       'Nearly 1 in 6 Dallas residents lives below the federal poverty line.',
     icon: TrendingDown,
-  },
-  {
-    label: "Bachelor's Degree Rate",
-    value: '35.7%',
-    context:
-      'Percentage of Dallas adults 25+ with a bachelor&apos;s degree or higher.',
-    icon: GraduationCap,
   },
 ]
 
@@ -113,7 +106,7 @@ export default function HousingPage() {
             for what housing costs and what barriers you may encounter.
           </p>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {dallasStats.map((stat) => (
               <Card
                 key={stat.label}
@@ -240,10 +233,10 @@ export default function HousingPage() {
                     href={org.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                    className="inline-flex items-center gap-1.5 rounded-md bg-primary/10 px-2 py-1 text-xs font-medium text-primary transition-all hover:bg-primary/20"
                   >
                     Visit Website
-                    <ExternalLink className="size-3.5" />
+                    <ExternalLink className="size-3" />
                   </a>
                 </CardContent>
               </Card>
