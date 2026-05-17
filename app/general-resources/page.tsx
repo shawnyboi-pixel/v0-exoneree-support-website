@@ -43,31 +43,31 @@ const categories: TipCategory[] = [
         name: 'Aldi',
         detail:
           'Multiple Dallas locations. Known for the lowest grocery prices in the area with quality store-brand products. Bring your own bags and a quarter for the cart.',
-        url: 'https://www.aldi.com/en/shopping-at-aldi/store-locator/',
+        url: 'https://www.aldi.us/store/aldi/storefront',
       },
       {
         name: 'Save-A-Lot',
         detail:
           'Discount grocery chain with locations in South and East Dallas. Great for basics like bread, canned goods, and produce at reduced prices.',
-        url: 'https://www.savealot.com/locations',
+        url: 'https://savealot.com/',
       },
       {
         name: 'Walmart Neighborhood Market',
         detail:
           'Smaller-format Walmart stores focused on groceries. Price-match policy and Walmart+ EBT SNAP benefits can stretch your food budget further.',
-        url: 'https://www.walmart.com/store-locator/',
+        url: 'https://www.walmart.com/',
       },
       {
         name: 'Family Dollar & Dollar Tree',
         detail:
           'Good for household essentials, cleaning supplies, and basic pantry items. Multiple locations across Dallas, especially in underserved neighborhoods.',
-        url: 'https://www.familydollar.com/store-locator',
+        url: 'https://www.familydollar.com/combostores',
       },
       {
         name: 'Fiesta Mart',
         detail:
           'Affordable produce and meat with several Dallas locations. Weekly specials often include deeply discounted fruits and vegetables.',
-        url: 'https://www.fiestamart.com/stores',
+        url: 'https://www.fiestamart.com/',
       },
     ],
   },
@@ -81,19 +81,19 @@ const categories: TipCategory[] = [
         name: 'North Texas Food Bank',
         detail:
           'The largest hunger relief organization in North Texas, distributing food through a network of 500+ partner agencies. Use their website to find the nearest food pantry to your location.',
-        url: 'https://www.ntfb.org/find-food/',
+        url: 'https://ntfb.org/',
       },
       {
         name: "Brother Bill's Helping Hand",
         detail:
           'Located at 3906 Elm St, Dallas. Provides food, clothing, and household essentials. Walk-ins welcome during operating hours.',
-        url: 'https://www.brotherbills.org/',
+        url: 'https://bbhh.org/',
       },
       {
         name: 'SNAP Benefits (Lone Star Card)',
         detail:
           'The Texas equivalent of food stamps. Apply through Your Texas Benefits or by calling 2-1-1. Processing typically takes 30 days.',
-        url: 'https://www.yourtexasbenefits.com/',
+        url: 'https://www.hhs.texas.gov/services/food/snap-food-benefits',
       },
       {
         name: 'CitySquare',
@@ -113,19 +113,7 @@ const categories: TipCategory[] = [
         name: 'DART Reduced Fare Program',
         detail:
           'Dallas Area Rapid Transit offers reduced-fare passes for qualifying low-income individuals. A monthly local pass drops from $96 to $48. Apply at any DART customer service location with proof of income.',
-        url: 'https://www.dart.org/fares/reduced-fares',
-      },
-      {
-        name: 'DART GoLink',
-        detail:
-          'On-demand ride service operating in zones that buses and trains do not cover well. Request rides through the GoPass app or by calling. Same fare as regular DART service.',
-        url: 'https://www.dart.org/service/golink',
-      },
-      {
-        name: 'Dallas Bike Share (DART Bike)',
-        detail:
-          'Bicycle share stations located near DART rail stations. Useful for covering the "last mile" between transit stops and your destination.',
-        url: 'https://www.dart.org/service/dart-bike',
+        url: 'https://www.dart.org/fare/general-fares-and-overview/reduced-fares',
       },
       {
         name: 'Texas 2-1-1',
@@ -151,13 +139,13 @@ const categories: TipCategory[] = [
         name: 'J. Erik Jonsson Central Library',
         detail:
           '1515 Young St, Downtown Dallas. The flagship location with the most resources: computer labs, career center, financial literacy workshops, and community meeting spaces.',
-        url: 'https://dallaslibrary.org/locations/j-erik-jonsson-central-library',
+        url: 'https://www.dallaslibrary.org/central-library',
       },
       {
         name: 'Library Workforce Programs',
         detail:
           'Many branches host free resume workshops, computer skills classes, and one-on-one career coaching sessions. Check the Dallas Public Library events calendar for schedules.',
-        url: 'https://dallaslibrary.org/events-classes',
+        url: 'https://www.tsl.texas.gov/ldn/workforcedevelopment-jobseekerresources',
       },
     ],
   },
@@ -177,7 +165,7 @@ const categories: TipCategory[] = [
         name: 'White Rock Lake Park',
         detail:
           '1,015-acre park around a scenic lake with a 9.3-mile paved trail, fishing piers, and picnic grounds. Completely free. A peaceful place to clear your head.',
-        url: 'https://www.dallasparks.org/parks/white-rock-lake-park',
+        url: 'https://www.dallasparks.org/235/White-Rock-Lake',
       },
       {
         name: 'Klyde Warren Park',
@@ -275,7 +263,7 @@ const categories: TipCategory[] = [
         name: 'Literacy Instruction for Texas (LIFT)',
         detail:
           'Free adult education and literacy programs including GED preparation, ESL classes, and basic computer skills at multiple Dallas locations.',
-        url: 'https://www.dallasliteracy.org/',
+        url: 'https://www.idealist.org/en/nonprofit/0b542974dff643f4954ca657f3673c2d-lift-literacy-instruction-for-texas-dallas',
       },
       {
         name: 'Goodwill Job Training',
@@ -301,7 +289,7 @@ const categories: TipCategory[] = [
         name: 'Affordable Connectivity Program (ACP)',
         detail:
           'Federal program providing discounted high-speed internet for eligible low-income households. Benefits vary by provider but typically include $30-$75/month subsidies.',
-        url: 'https://www.fcc.gov/acp',
+        url: 'https://www.fcc.gov/broadbandbenefit',
       },
       {
         name: 'Dallas Public Library Wi-Fi',

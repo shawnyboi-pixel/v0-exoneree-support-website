@@ -61,39 +61,15 @@ const resources = [
     name: 'Unlocking Doors',
     description:
       'Dallas-based nonprofit at 12225 Greenville Ave., Ste 850, focused on helping individuals with criminal backgrounds find stable employment. They offer resume building, interview coaching, and direct employer connections.',
-    url: 'https://www.unlockingdoors.org',
+    url: 'https://www.unlockingdoors.org/',
     phone: null,
     tags: ['Resume Help', 'Interview Prep', 'Dallas-Based'],
-  },
-  {
-    name: 'CitySquare Workforce',
-    description:
-      'Workforce development arm of CitySquare, a Dallas nonprofit. Programs include job readiness classes, vocational training, and direct placement with fair-chance employers in the DFW area.',
-    url: 'https://www.citysquare.org',
-    phone: '(214) 748-7462',
-    tags: ['Job Training', 'Placement'],
-  },
-  {
-    name: 'Goodwill Industries of Dallas',
-    description:
-      'Beyond their retail stores, Goodwill Dallas operates career centers offering free computer classes, industry certifications in healthcare and IT, and supported employment programs.',
-    url: 'https://www.goodwilldallas.org',
-    phone: '(214) 638-2800',
-    tags: ['Certifications', 'Computer Classes'],
-  },
-  {
-    name: 'Miles of Freedom',
-    description:
-      'Founded by Dallas exoneree Johnnie Lindsey, this organization provides direct re-entry assistance including employment connections, mentoring, and peer support from people who have walked the same path.',
-    url: 'https://www.milesoffreedom.org',
-    phone: null,
-    tags: ['Exoneree-Led', 'Mentoring'],
   },
   {
     name: 'South Dallas Employment Project',
     description:
       'Community-based initiative focused on connecting South Dallas residents with local employers. Programs include skills assessments, job fairs, and post-placement follow-up support.',
-    url: null,
+    url: 'https://www.southdallasemploymentproject.org/',
     phone: null,
     tags: ['Community', 'South Dallas'],
   },

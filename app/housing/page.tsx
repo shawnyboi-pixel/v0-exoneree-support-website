@@ -46,7 +46,7 @@ const resources = [
     name: 'Dallas Housing Authority',
     description:
       'Administers the Housing Choice Voucher program and public housing in Dallas. They can connect you with subsidized housing options throughout the city.',
-    url: 'https://www.dhainfo.com',
+    url: 'https://dhantx.com/',
     tags: ['Vouchers', 'Public Housing'],
   },
   {

@@ -22,7 +22,7 @@ export default function HealthcarePage() {
       name: 'Your Texas Benefits (YTB)',
       description:
         'The official Texas portal for applying for Medicaid and CHIP. You can apply online, by mail, or in person at your local Health and Human Services office. Most applications are processed within 30 days. Eligibility is based on income, household size, and citizenship status.',
-      url: 'https://www.yourtexasbenefits.com/',
+      url: 'https://www.yourtexasbenefits.com/Learn/Home',
     },
     {
       name: '2-1-1 Texas',
@@ -44,7 +44,7 @@ export default function HealthcarePage() {
       name: 'Affordable Connectivity Program (ACP)',
       description:
         'Federal program providing up to $30/month subsidy for broadband internet for eligible low-income households. Some internet providers offer additional discounts, making service free or very cheap. Check your eligibility and apply through the FCC website.',
-      url: 'https://www.fcc.gov/acp',
+      url: 'https://www.fcc.gov/broadbandbenefit',
     },
     {
       name: 'Lifeline Program',
@@ -56,6 +56,7 @@ export default function HealthcarePage() {
       name: 'Emergency Broadband Benefit (EBB)',
       description:
         'If you enrolled in the original Emergency Broadband Benefit before May 2024, you may still be receiving that benefit. Check your provider to see if it carries over or if you can transition to ACP.',
+      url: 'https://www.fcc.gov/broadbandbenefit',
     },
   ]
 
@@ -67,16 +68,10 @@ export default function HealthcarePage() {
       url: 'https://www.healthinsurance.org/texas/',
     },
     {
-      name: 'Medicaid in Texas',
+      name: 'Medicaid & CHIP in Texas',
       description:
         'If you earn below the federal poverty line or have certain disabilities, you likely qualify for free Texas Medicaid. Texas has expanded coverage for certain groups. Check eligibility requirements at the HHSC website.',
-      url: 'https://hhs.texas.gov/services/health/medicaid',
-    },
-    {
-      name: 'CHIP (Children\'s Health Insurance Program)',
-      description:
-        'If you have children, they may qualify for CHIP even if you don\'t qualify for Medicaid. CHIP provides comprehensive coverage for children in low-income families.',
-      url: 'https://yourtexasbenefits.com',
+      url: 'https://www.hhs.texas.gov/services/health/medicaid-chip',
     },
     {
       name: 'Healthcare.gov',
@@ -98,6 +93,7 @@ export default function HealthcarePage() {
       name: 'Dallas County Community Mental Health Centers',
       description:
         'Network of publicly funded mental health clinics across Dallas County offering counseling, medication management, and crisis services. Sliding-scale fees based on income.',
+      url: 'https://www.dallascounty.org/departments/dchhs/public-health/alcohol-substance/mental-health-resources.php',
     },
     {
       name: 'NAMI Dallas (National Alliance on Mental Illness)',
@@ -137,6 +133,7 @@ export default function HealthcarePage() {
       name: 'Texas Tech School of Dentistry',
       description:
         'Dental school in Dallas (El Paso campus) where students provide affordable dental care under faculty supervision. Services are significantly reduced in cost compared to private dentists.',
+      url: 'https://ttuhscep.edu/sdm/',
     },
   ]
 
