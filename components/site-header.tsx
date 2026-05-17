@@ -11,7 +11,7 @@ const navLinks = [
   { label: 'Employment', href: '/employment' },
   { label: 'Financial', href: '/financial' },
   { label: 'Healthcare', href: '/healthcare' },
-  { label: 'General Resources', href: '/organizations' },
+  { label: 'Resources', href: '/organizations' },
 ]
 
 export function SiteHeader() {
