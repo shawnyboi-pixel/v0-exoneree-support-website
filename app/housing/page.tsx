@@ -67,7 +67,7 @@ const resources = [
     name: 'Texas Reentry Services (TDCJ)',
     description:
       'State-run reentry program offering transitional housing referrals, support coordination, and connection to community-based housing providers.',
-    url: 'https://www.tdcj.texas.gov/divisions/rpd/reentry_services.html',
+    url: 'https://www.tdcj.texas.gov/divisions/rrd/index.html',
     tags: ['State Program', 'Transitional'],
   },
   {
