@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export function SiteFooter() {
   return (
     <footer className="border-t border-border/60 bg-primary">
@@ -15,41 +17,50 @@ export function SiteFooter() {
               </span>
             </div>
             <p className="max-w-xs text-sm leading-relaxed text-primary-foreground/60">
-            Connecting Texas exonerees with housing assistance,
-            employment support, advocacy organizations, and community
-            they need to rebuild.
+              Connecting Texas exonerees with housing assistance, employment
+              support, advocacy organizations, and community they need to
+              rebuild.
             </p>
           </div>
 
           <div>
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary-foreground/80">
-              Quick Links
+              Resource Pages
             </h3>
-            <nav className="flex flex-col gap-2" aria-label="Footer navigation">
-              <a
-                href="#"
+            <nav
+              className="flex flex-col gap-2"
+              aria-label="Footer navigation"
+            >
+              <Link
+                href="/"
                 className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground"
               >
                 Home
-              </a>
-              <a
-                href="#statistics"
+              </Link>
+              <Link
+                href="/housing"
                 className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground"
               >
-                Statistics
-              </a>
-              <a
-                href="#struggles"
+                Housing in Dallas
+              </Link>
+              <Link
+                href="/employment"
                 className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground"
               >
-                Challenges
-              </a>
-              <a
-                href="#resources"
+                Employment After Exoneration
+              </Link>
+              <Link
+                href="/financial"
                 className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground"
               >
-                Resources
-              </a>
+                Financial & Credit Rebuilding
+              </Link>
+              <Link
+                href="/tips"
+                className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground"
+              >
+                Practical Tips for Daily Life
+              </Link>
             </nav>
           </div>
 
@@ -61,19 +72,19 @@ export function SiteFooter() {
               Whether you are an exoneree, a family member, or someone who
               wants to help {"—"} there are ways to make a difference.
             </p>
-            <a
-              href="#resources"
+            <Link
+              href="/tips"
               className="text-sm font-medium text-primary-foreground transition-colors hover:text-primary-foreground/80"
             >
-              View Support Organizations &rarr;
-            </a>
+              View Helpful Resources &rarr;
+            </Link>
           </div>
         </div>
 
         <div className="mt-10 border-t border-primary-foreground/10 pt-6">
           <p className="text-center text-xs text-primary-foreground/40">
-            This site is an informational resource hub connecting exonerees
-            with support organizations. It does not provide and should not be
+            This site is an informational resource hub connecting exonerees with
+            support organizations. It does not provide and should not be
             understood as professional advice of any kind. All organizations
             listed have been independently verified.
           </p>

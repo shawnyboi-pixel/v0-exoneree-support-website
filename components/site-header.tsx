@@ -1,22 +1,26 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 
 const navLinks = [
-  { label: 'Home', href: '#' },
-  { label: 'Challenges', href: '#struggles' },
-  { label: 'Statistics', href: '#statistics' },
-  { label: 'Resources', href: '#resources' },
+  { label: 'Home', href: '/' },
+  { label: 'Housing', href: '/housing' },
+  { label: 'Employment', href: '/employment' },
+  { label: 'Financial', href: '/financial' },
+  { label: 'Tips', href: '/tips' },
 ]
 
 export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const pathname = usePathname()
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
             <span className="text-sm font-bold text-primary-foreground">
               TX
@@ -25,24 +29,31 @@ export function SiteHeader() {
           <span className="text-lg font-semibold tracking-tight text-foreground">
             Exoneree Support
           </span>
-        </a>
+        </Link>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">
+        <nav
+          className="hidden items-center gap-8 md:flex"
+          aria-label="Main navigation"
+        >
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.label}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className={`text-sm font-medium transition-colors hover:text-foreground ${
+                pathname === link.href
+                  ? 'text-foreground'
+                  : 'text-muted-foreground'
+              }`}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
-          <a
-            href="#resources"
-            className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          <Link
+            href="/tips"
+            className="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90"
           >
             Get Help Now
-          </a>
+          </Link>
         </nav>
 
         <button
@@ -62,22 +73,26 @@ export function SiteHeader() {
         >
           <div className="flex flex-col gap-4">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
-                className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className={`text-base font-medium transition-colors hover:text-foreground ${
+                  pathname === link.href
+                    ? 'text-foreground'
+                    : 'text-muted-foreground'
+                }`}
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#resources"
-              className="mt-2 rounded-lg bg-primary px-4 py-2.5 text-center text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            <Link
+              href="/tips"
+              className="mt-2 rounded-lg bg-accent px-4 py-2.5 text-center text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90"
               onClick={() => setMobileOpen(false)}
             >
               Get Help Now
-            </a>
+            </Link>
           </div>
         </nav>
       )}

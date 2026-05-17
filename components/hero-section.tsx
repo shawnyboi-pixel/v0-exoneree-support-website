@@ -1,9 +1,9 @@
+import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-primary">
-      {/* Subtle texture overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(255,255,255,0.05)_0%,_transparent_60%)]" />
 
       <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-32 lg:py-40">
@@ -26,23 +26,22 @@ export function HeroSection() {
           </p>
 
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-            <a
-              href="#resources"
+            <Link
+              href="/tips"
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
             >
-              Connect with Support Organizations
+              Find Resources & Tips
               <ArrowRight className="size-4" />
-            </a>
-            <a
-              href="#struggles"
+            </Link>
+            <Link
+              href="/housing"
               className="inline-flex items-center justify-center rounded-lg border border-primary-foreground/20 px-6 py-3.5 text-base font-medium text-primary-foreground transition-colors hover:bg-primary-foreground/10"
             >
-              Understand the Challenges
-            </a>
+              Explore Housing Support
+            </Link>
           </div>
         </div>
 
-        {/* Decorative line */}
         <div className="absolute bottom-0 left-0 right-0 h-px bg-primary-foreground/10" />
       </div>
     </section>

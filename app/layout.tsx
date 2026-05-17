@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Libre_Baskerville } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { SiteHeader } from '@/components/site-header'
+import { SiteFooter } from '@/components/site-footer'
 import './globals.css'
 
 const inter = Inter({
@@ -21,7 +23,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#2a3a5c',
+  themeColor: '#1a3a8f',
   width: 'device-width',
   initialScale: 1,
 }
@@ -37,7 +39,11 @@ export default function RootLayout({
       className={`${inter.variable} ${libreBaskerville.variable} bg-background`}
     >
       <body className="font-sans antialiased">
-        {children}
+        <div className="flex min-h-screen flex-col">
+          <SiteHeader />
+          <main className="flex-1">{children}</main>
+          <SiteFooter />
+        </div>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
