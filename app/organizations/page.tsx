@@ -1,373 +1,263 @@
 import type { Metadata } from 'next'
 import { PageHeader } from '@/components/page-header'
-import { Card, CardContent } from '@/components/ui/card'
-import {
-  ExternalLink,
-  ShoppingCart,
-  UtensilsCrossed,
-  BookOpen,
-  TreePine,
-  Church,
-  Bus,
-  Heart,
-  GraduationCap,
-  Smartphone,
-  Ticket,
-} from 'lucide-react'
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import { ExternalLink, Phone, Scale, Heart, Users } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'General Resources for Daily Life | Texas Exoneree Support Network',
+  title: 'Verified Support Organizations | Texas Exoneree Support Network',
   description:
-    'Affordable stores, food pantries, libraries, parks, churches, and community events in Dallas to help exonerees with reintegration.',
+    'National and Texas-based organizations dedicated to supporting exonerees with re-entry services, housing, employment, advocacy, and healing.',
 }
 
-interface TipCategory {
-  title: string
-  icon: React.ElementType
+interface Organization {
+  name: string
   description: string
-  items: {
-    name: string
-    detail: string
-    url?: string
-  }[]
+  longDescription: string
+  services: string[]
+  url: string
+  phone?: string
+  icon: React.ElementType
+  tags: string[]
 }
 
-const categories: TipCategory[] = [
+const organizations: Organization[] = [
   {
-    title: 'Affordable Grocery Stores',
-    icon: ShoppingCart,
+    name: 'Innocence Project of Texas',
     description:
-      'Stretching every dollar matters. These stores consistently offer the lowest prices in the Dallas area.',
-    items: [
-      {
-        name: 'Aldi',
-        detail:
-          'Multiple Dallas locations. Known for the lowest grocery prices in the area with quality store-brand products. Bring your own bags and a quarter for the cart.',
-        url: 'https://www.aldi.us/store/aldi/storefront',
-      },
-      {
-        name: 'Save-A-Lot',
-        detail:
-          'Discount grocery chain with locations in South and East Dallas. Great for basics like bread, canned goods, and produce at reduced prices.',
-        url: 'https://savealot.com/',
-      },
-      {
-        name: 'Walmart Neighborhood Market',
-        detail:
-          'Smaller-format Walmart stores focused on groceries. Price-match policy and Walmart+ EBT SNAP benefits can stretch your food budget further.',
-        url: 'https://www.walmart.com/',
-      },
-      {
-        name: 'Family Dollar & Dollar Tree',
-        detail:
-          'Good for household essentials, cleaning supplies, and basic pantry items. Multiple locations across Dallas, especially in underserved neighborhoods.',
-        url: 'https://www.familydollar.com/combostores',
-      },
-      {
-        name: 'Fiesta Mart',
-        detail:
-          'Affordable produce and meat with several Dallas locations. Weekly specials often include deeply discounted fruits and vegetables.',
-        url: 'https://www.fiestamart.com/',
-      },
+      'Legal representation and advocacy for wrongfully convicted Texans.',
+    longDescription:
+      'The Innocence Project of Texas works to exonerate innocent people who have been wrongly convicted, and to reform the criminal justice system to prevent wrongful convictions. They provide legal representation through a team of lawyers and investigators who investigate cases of actual innocence, primarily in Texas. Post-exoneration, they help connect people with resources and support services.',
+    services: [
+      'Legal representation for exoneration cases',
+      'Post-release support and resource connections',
+      'Advocacy for criminal justice reform',
+      'Case investigation and DNA testing',
+      'Connection to housing and employment resources'
     ],
+    url: 'https://innocencetexas.org',
+    phone: '(512) 600-8011',
+    icon: Scale,
+    tags: ['Legal', 'Advocacy', 'Texas-Based'],
   },
   {
-    title: 'Food Assistance & Pantries',
-    icon: UtensilsCrossed,
+    name: 'After Innocence',
     description:
-      'No one should go hungry while rebuilding. These organizations provide free food with no judgment.',
-    items: [
-      {
-        name: 'North Texas Food Bank',
-        detail:
-          'The largest hunger relief organization in North Texas, distributing food through a network of 500+ partner agencies. Use their website to find the nearest food pantry to your location.',
-        url: 'https://ntfb.org/',
-      },
-      {
-        name: "Brother Bill's Helping Hand",
-        detail:
-          'Located at 3906 Elm St, Dallas. Provides food, clothing, and household essentials. Walk-ins welcome during operating hours.',
-        url: 'https://bbhh.org/',
-      },
-      {
-        name: 'SNAP Benefits (Lone Star Card)',
-        detail:
-          'The Texas equivalent of food stamps. Apply through Your Texas Benefits or by calling 2-1-1. Processing typically takes 30 days.',
-        url: 'https://www.hhs.texas.gov/services/food/snap-food-benefits',
-      },
-      {
-        name: 'CitySquare',
-        detail:
-          'Faith-based nonprofit fighting poverty in Dallas through food distribution, community health, and workforce development programs.',
-        url: 'https://www.citysquare.org/',
-      },
+      'Comprehensive re-entry services for exonerees nationwide.',
+    longDescription:
+      'After Innocence provides holistic re-entry services to exonerees across the United States, focusing on the unique trauma and challenges of rebuilding a life after wrongful conviction. They offer direct support in housing, employment, mental health, and community reintegration. Their approach recognizes that exonerees face distinct barriers compared to other returning citizens.',
+    services: [
+      'Housing assistance and placement support',
+      'Employment counseling and job placement',
+      'Mental health and trauma counseling',
+      'Financial literacy and credit rebuilding',
+      'Community reintegration programming',
+      'One-on-one mentoring and case management'
     ],
-  },
-  {
-    title: 'Coupons & Discounts',
-    icon: Ticket,
-    description:
-      'Every little bit helps. These programs and tools can reduce your everyday expenses.',
-    items: [
-      {
-        name: 'DART Reduced Fare Program',
-        detail:
-          'Dallas Area Rapid Transit offers reduced-fare passes for qualifying low-income individuals. A monthly local pass drops from $96 to $48. Apply at any DART customer service location with proof of income.',
-        url: 'https://www.dart.org/fare/general-fares-and-overview/reduced-fares',
-      },
-      {
-        name: 'Texas 2-1-1',
-        detail:
-          'Dial 2-1-1 from any phone for a free referral service that connects you with local discounts, utility assistance programs, and community resources. Available 24/7.',
-        url: 'https://www.211texas.org/',
-      },
-    ],
-  },
-  {
-    title: 'Public Libraries',
-    icon: BookOpen,
-    description:
-      'Libraries are more than books. They offer free internet, printing, job search help, and community programs.',
-    items: [
-      {
-        name: 'Dallas Public Library System',
-        detail:
-          'The Dallas Public Library has 30 branches across the city. A free library card gets you access to computers, Wi-Fi, printing, e-books, job databases, and GED study materials. No ID required for a temporary card.',
-        url: 'https://dallaslibrary.org/',
-      },
-      {
-        name: 'J. Erik Jonsson Central Library',
-        detail:
-          '1515 Young St, Downtown Dallas. The flagship location with the most resources: computer labs, career center, financial literacy workshops, and community meeting spaces.',
-        url: 'https://www.dallaslibrary.org/central-library',
-      },
-      {
-        name: 'Library Workforce Programs',
-        detail:
-          'Many branches host free resume workshops, computer skills classes, and one-on-one career coaching sessions. Check the Dallas Public Library events calendar for schedules.',
-        url: 'https://www.tsl.texas.gov/ldn/workforcedevelopment-jobseekerresources',
-      },
-    ],
-  },
-  {
-    title: 'Parks & Recreation',
-    icon: TreePine,
-    description:
-      'Getting outside and being part of a community matters. Dallas has extensive free parks and recreation programs.',
-    items: [
-      {
-        name: 'Dallas Parks & Recreation',
-        detail:
-          'Over 400 parks and 35,000 acres of open space. Many parks have free walking trails, basketball courts, exercise stations, and picnic areas. Recreation centers offer low-cost fitness programs.',
-        url: 'https://www.dallasparks.org/',
-      },
-      {
-        name: 'White Rock Lake Park',
-        detail:
-          '1,015-acre park around a scenic lake with a 9.3-mile paved trail, fishing piers, and picnic grounds. Completely free. A peaceful place to clear your head.',
-        url: 'https://www.dallasparks.org/235/White-Rock-Lake',
-      },
-      {
-        name: 'Klyde Warren Park',
-        detail:
-          'Downtown Dallas park with free fitness classes, outdoor games, food trucks, and regular community events. Check their calendar for free yoga, tai chi, and live music.',
-        url: 'https://www.klydewarrenpark.org/',
-      },
-    ],
-  },
-  {
-    title: 'Churches & Faith Communities',
-    icon: Church,
-    description:
-      'Faith-based organizations often provide wraparound support including meals, clothing, mentoring, and community connection.',
-    items: [
-      {
-        name: 'Wilshire Baptist Church',
-        detail:
-          '4316 Abrams Rd, Dallas. Active community outreach programs including a food pantry, clothing ministry, and support groups. Welcoming to all regardless of background.',
-        url: 'https://www.wilshirebc.org/',
-      },
-      {
-        name: 'Oak Cliff Bible Fellowship',
-        detail:
-          '1808 W Camp Wisdom Rd, Dallas. Led by Dr. Tony Evans, this church runs extensive community development programs including Project Turnaround for individuals re-entering society.',
-        url: 'https://www.ocbfchurch.org/',
-      },
-      {
-        name: 'Catholic Charities Dallas',
-        detail:
-          'Provides immigration assistance, financial coaching, food pantry access, and disaster relief services. You do not need to be Catholic to receive help.',
-        url: 'https://www.ccdallas.org/',
-      },
-    ],
-  },
-  {
-    title: 'Public Transit',
-    icon: Bus,
-    description:
-      'Getting around Dallas without a car is possible. Here is how the transit system works.',
-    items: [
-      {
-        name: 'DART (Dallas Area Rapid Transit)',
-        detail:
-          'Bus and light rail system covering Dallas and 12 surrounding cities. A single ride is $3, day pass is $6, and monthly local pass is $96 ($48 with reduced fare). The GoPass app lets you buy tickets on your phone.',
-        url: 'https://www.dart.org/',
-      },
-      {
-        name: 'GoPass Mobile App',
-        detail:
-          'Purchase DART tickets, passes, and GoLink rides directly from your phone. Works even without a credit card in some cases. Available on iOS and Android.',
-        url: 'https://www.dart.org/gopass',
-      },
-    ],
-  },
-  {
-    title: 'Healthcare & Wellness',
+    url: 'https://www.after-innocence.org',
     icon: Heart,
-    description:
-      'Access to healthcare is critical during reintegration. These resources can help if you do not have insurance.',
-    items: [
-      {
-        name: 'Parkland Health',
-        detail:
-          'Dallas County public hospital system providing healthcare regardless of ability to pay. Financial assistance programs available. Emergency room at 5201 Harry Hines Blvd.',
-        url: 'https://www.parklandhealth.org/',
-      },
-      {
-        name: 'Community Health Centers',
-        detail:
-          'Federally qualified health centers across Dallas offer sliding-scale fees based on income. Services include primary care, dental, and behavioral health.',
-        url: 'https://findahealthcenter.hrsa.gov/',
-      },
-      {
-        name: 'Metrocare Services',
-        detail:
-          'Largest mental health provider in North Texas. Offers counseling, psychiatric services, and crisis intervention on a sliding scale. No one is turned away for inability to pay.',
-        url: 'https://www.metrocareservices.org/',
-      },
-    ],
+    tags: ['Re-entry', 'Housing', 'Employment', 'Mental Health'],
   },
   {
-    title: 'Education & GED Programs',
-    icon: GraduationCap,
+    name: 'Innocence Project (National)',
     description:
-      'Whether you want to finish a GED or explore college, Dallas has accessible programs.',
-    items: [
-      {
-        name: 'Dallas College (Community College)',
-        detail:
-          'Seven campuses across Dallas County offering affordable degree programs, vocational training, and continuing education. Financial aid and tuition waivers available for qualifying students.',
-        url: 'https://www.dallascollege.edu/',
-      },
-      {
-        name: 'Literacy Instruction for Texas (LIFT)',
-        detail:
-          'Free adult education and literacy programs including GED preparation, ESL classes, and basic computer skills at multiple Dallas locations.',
-        url: 'https://www.idealist.org/en/nonprofit/0b542974dff643f4954ca657f3673c2d-lift-literacy-instruction-for-texas-dallas',
-      },
-      {
-        name: 'Goodwill Job Training',
-        detail:
-          'Free career training programs in healthcare, IT, and skilled trades through Goodwill Industries of Dallas. Programs include certification prep and job placement assistance.',
-        url: 'https://www.goodwilldallas.org/',
-      },
+      'The leading national organization dedicated to exonerating the wrongly convicted.',
+    longDescription:
+      'The Innocence Project, based in New York, is the largest and most well-known organization working to exonerate wrongfully convicted individuals using DNA evidence. They have helped exonerate over 400 people in the United States. Beyond exoneration, they work on policy reform to prevent wrongful convictions and connect exonerees with post-release support. They maintain a network of legal and support resources across the country.',
+    services: [
+      'Legal representation and exoneration work',
+      'DNA testing and evidence review',
+      'Post-release resource referrals',
+      'Policy advocacy at state and federal levels',
+      'Network of legal and support partners nationwide',
+      'Educational programs on criminal justice reform'
     ],
+    url: 'https://innocenceproject.org',
+    phone: '(212) 364-5340',
+    icon: Scale,
+    tags: ['Legal', 'Advocacy', 'National'],
   },
   {
-    title: 'Phone & Internet Access',
-    icon: Smartphone,
+    name: 'Miles of Freedom',
     description:
-      'A phone number and internet connection are essential for job applications, housing searches, and staying connected.',
-    items: [
-      {
-        name: 'Lifeline Program',
-        detail:
-          'Federal program providing a $9.25 monthly discount on phone or internet service for qualifying low-income individuals. Apply through your carrier or at LifelineSupport.org.',
-        url: 'https://www.lifelinesupport.org/',
-      },
-      {
-        name: 'Affordable Connectivity Program (ACP)',
-        detail:
-          'Federal program providing discounted high-speed internet for eligible low-income households. Benefits vary by provider but typically include $30-$75/month subsidies.',
-        url: 'https://www.fcc.gov/broadbandbenefit',
-      },
-      {
-        name: 'Dallas Public Library Wi-Fi',
-        detail:
-          'All 30 library branches offer free Wi-Fi and computer access during operating hours. Some branches also loan Wi-Fi hotspots for home use.',
-        url: 'https://dallaslibrary.org/',
-      },
+      'Dallas exoneree-led organization providing direct re-entry support.',
+    longDescription:
+      'Founded by exoneree Johnnie Lindsey, Miles of Freedom operates as an exoneree-led nonprofit providing direct re-entry assistance to exonerees and returning citizens in the Dallas-Fort Worth area. Because it was founded by someone who experienced wrongful conviction, the organization deeply understands the unique barriers exonerees face. They provide mentoring, employment connections, housing assistance, and community support based on lived experience.',
+    services: [
+      'Direct re-entry mentoring from exonerees',
+      'Employment connections and job placement',
+      'Housing assistance and navigation',
+      'Community events and peer support',
+      'Mental health support and counseling',
+      'Crisis assistance and emergency support'
     ],
+    url: 'https://www.milesoffreedom.org',
+    icon: Heart,
+    tags: ['Re-entry', 'Exoneree-Led', 'Dallas-Based'],
+  },
+  {
+    name: 'Organization of Exonerees',
+    description:
+      'National network of exonerees advocating for systemic change.',
+    longDescription:
+      'The Organization of Exonerees is a peer-led national organization run by and for exonerees. They work to change the system from the inside through advocacy, awareness, and support. By centering the voices of people who have actually experienced wrongful conviction, they bring credibility and lived expertise to policy discussions. They support one another while fighting for broader criminal justice reform.',
+    services: [
+      'Peer support networks and community',
+      'National advocacy and legislative work',
+      'Awareness campaigns on wrongful convictions',
+      'Member support and resources',
+      'Platform for exonerees to tell their stories',
+      'Connection to local and national initiatives'
+    ],
+    url: 'https://organizationofexonerees.com',
+    icon: Users,
+    tags: ['Advocacy', 'Peer Support', 'National'],
+  },
+  {
+    name: 'Healing Justice',
+    description:
+      'Healing-focused services for exonerees and their families.',
+    longDescription:
+      'Healing Justice is dedicated to preventing and alleviating the harms caused by wrongful conviction through healing retreats, peer support, and direct services. They recognize that wrongful conviction creates trauma not just for the exoneree, but also for their family members who suffered alongside them. Their retreat programs bring exonerees together in safe spaces to process trauma, reconnect, and begin healing. They also provide ongoing counseling and support services.',
+    services: [
+      'Healing retreats for exonerees',
+      'Family support and counseling',
+      'Trauma-informed mental health services',
+      'Peer support groups',
+      'Resource navigation assistance',
+      'Advocacy on behalf of exonerees and families'
+    ],
+    url: 'https://healingjusticeproject.org',
+    icon: Heart,
+    tags: ['Mental Health', 'Healing', 'Family Support'],
   },
 ]
 
-export default function GeneralResourcesPage() {
+export default function OrganizationsPage() {
   return (
     <>
       <PageHeader
-        label="General Resources"
-        title="Practical Tips & Resources for Daily Life in Dallas"
-        description="From affordable groceries to transit passes, libraries to community events—these resources help you rebuild step by step."
+        label="Verified Organizations"
+        title="National & Texas Organizations Supporting Exonerees"
+        description="These organizations are dedicated to helping exonerees like you rebuild your life. Every organization here has been vetted and has a genuine track record of support."
       />
 
       <section className="bg-background py-16 md:py-20">
         <div className="mx-auto max-w-6xl px-6">
           <p className="mb-12 max-w-3xl text-base leading-relaxed text-muted-foreground">
-            After years away, the everyday world can feel overwhelming. Prices
-            have changed, stores have moved, and entire systems work
-            differently. This page collects verified, Dallas-specific resources
-            to help you navigate daily life without overspending or getting
-            lost in bureaucracy.
+            After exoneration, you shouldn&apos;t have to navigate the system alone.
+            These organizations understand what you&apos;ve been through and have
+            dedicated their work to supporting people like you. Some focus on
+            legal advocacy, some on direct re-entry services, and others on
+            healing and community. Many work together, so a conversation with
+            one can connect you to others.
           </p>
 
-          <div className="flex flex-col gap-16">
-            {categories.map((cat) => (
-              <div key={cat.title} id={cat.title.toLowerCase().replace(/\s+/g, '-')}>
-                <div className="mb-6 flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                    <cat.icon className="size-5 text-primary" />
+          <div className="flex flex-col gap-8">
+            {organizations.map((org) => (
+              <Card
+                key={org.name}
+                className="border-border/60 overflow-hidden transition-all hover:shadow-md"
+              >
+                <CardHeader className="pb-4">
+                  <div className="mb-3 flex items-start gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                      <org.icon className="size-6 text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <CardTitle className="text-2xl">{org.name}</CardTitle>
+                      <CardDescription className="mt-1 text-base">
+                        {org.description}
+                      </CardDescription>
+                    </div>
                   </div>
-                  <div>
-                    <h2 className="font-serif text-2xl font-bold tracking-tight text-foreground">
-                      {cat.title}
-                    </h2>
-                    <p className="text-sm text-muted-foreground">
-                      {cat.description}
-                    </p>
-                  </div>
-                </div>
+                </CardHeader>
 
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {cat.items.map((item) => (
-                    <Card
-                      key={item.name}
-                      className="border-border/60 transition-all hover:shadow-sm"
+                <CardContent className="space-y-6">
+                  {/* Long Description */}
+                  <p className="text-base leading-relaxed text-muted-foreground">
+                    {org.longDescription}
+                  </p>
+
+                  {/* Services */}
+                  <div>
+                    <h3 className="mb-3 font-semibold text-foreground">
+                      Services & Support:
+                    </h3>
+                    <ul className="space-y-2">
+                      {org.services.map((service, idx) => (
+                        <li
+                          key={idx}
+                          className="flex gap-2 text-sm text-muted-foreground"
+                        >
+                          <span className="text-primary">•</span>
+                          {service}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {org.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Contact Links */}
+                  <div className="flex flex-col gap-3 border-t border-border/60 pt-4 sm:flex-row sm:gap-2">
+                    <a
+                      href={org.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-1.5 rounded-md bg-primary/10 px-3 py-2 text-sm font-medium text-primary transition-all hover:bg-primary/20"
                     >
-                      <CardContent className="flex h-full flex-col pt-5">
-                        <h3 className="mb-2 text-base font-semibold text-foreground">
-                          {item.name}
-                        </h3>
-                        <p className="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground">
-                          {item.detail}
-                        </p>
-                        {item.url && (
-                          <a
-                            href={item.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 rounded-md bg-primary/10 px-2 py-1 text-xs font-medium text-primary transition-all hover:bg-primary/20"
-                          >
-                            Learn More
-                            <ExternalLink className="size-3" />
-                          </a>
-                        )}
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </div>
+                      Visit Website
+                      <ExternalLink className="size-3.5" />
+                    </a>
+                    {org.phone && (
+                      <a
+                        href={`tel:${org.phone}`}
+                        className="inline-flex items-center justify-center gap-1.5 rounded-md bg-accent/10 px-3 py-2 text-sm font-medium text-accent transition-all hover:bg-accent/20"
+                      >
+                        <Phone className="size-3.5" />
+                        Call
+                      </a>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="bg-primary py-16 md:py-20">
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <h2 className="mb-4 font-serif text-2xl font-bold text-primary-foreground md:text-3xl">
+            Not Sure Where to Start?
+          </h2>
+          <p className="mb-6 text-base leading-relaxed text-primary-foreground/80">
+            Start with the organization that speaks to your immediate need. If
+            you need legal support, contact the Innocence Project. If you need
+            housing and employment help, Miles of Freedom or After Innocence
+            are great first calls. Most importantly, reach out. These people
+            exist to help you.
+          </p>
+          <a
+            href="https://www.milesoffreedom.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary-foreground px-6 py-3 font-semibold text-primary transition-all hover:bg-primary-foreground/90 hover:shadow-md"
+          >
+            Contact Miles of Freedom
+            <ExternalLink className="size-4" />
+          </a>
         </div>
       </section>
     </>

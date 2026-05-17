@@ -70,17 +70,15 @@ export function ResourcesCta() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-12 max-w-2xl">
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">
-            Support Organizations
+            Connect & Support
           </p>
           <h2 className="mb-4 font-serif text-3xl font-bold tracking-tight text-foreground md:text-4xl">
             <span className="text-balance">
-              Real Help from People Who Understand
+              Verified Organizations for General Resources
             </span>
           </h2>
           <p className="text-lg leading-relaxed text-muted-foreground">
-            These organizations have dedicated track records of supporting
-            exonerees. Every link here has been vetted. No dead ends, no
-            automated phone trees {"—"} real people doing real work.
+            This is your go-to reference for affordable groceries, transportation, libraries, and community programs across Dallas.
           </p>
         </div>
 
@@ -115,36 +113,24 @@ export function ResourcesCta() {
                     href={org.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-md bg-primary/10 px-2 py-1 text-xs font-medium text-primary transition-all hover:bg-primary/20"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-primary/80"
                   >
                     Visit Website
-                    <ExternalLink className="size-3" />
+                    <ExternalLink className="size-3.5" />
                   </a>
                   {org.phone && (
                     <a
                       href={`tel:${org.phone}`}
-                      className="inline-flex items-center gap-1.5 rounded-md bg-accent/10 px-2 py-1 text-xs font-medium text-accent transition-all hover:bg-accent/20"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                     >
-                      <Phone className="size-3" />
-                      Call
+                      <Phone className="size-3.5" />
+                      {org.phone}
                     </a>
                   )}
                 </div>
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        <div className="mt-12 text-center">
-          <a
-            href="https://www.milesoffreedom.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 font-semibold text-accent-foreground transition-all hover:bg-accent/90 hover:shadow-md"
-          >
-            Get Connected Today
-            <ExternalLink className="size-4" />
-          </a>
         </div>
       </div>
     </section>

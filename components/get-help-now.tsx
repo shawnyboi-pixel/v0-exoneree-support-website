@@ -1,37 +1,67 @@
-import { ExternalLink, ShoppingCart, UtensilsCrossed, BookOpen, TreePine, Church, Bus, Heart, GraduationCap, Smartphone } from 'lucide-react'
+import { ExternalLink, Phone, Scale, Heart, Users } from 'lucide-react'
 import {
   Card,
   CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
 } from '@/components/ui/card'
 
-interface ResourceItem {
-  name: string
-  detail: string
-  url?: string
-}
-
-const resources: ResourceItem[] = [
-  // Affordable Stores
-  { name: 'Aldi', detail: 'Lowest grocery prices in Dallas. Bring your own bags.', url: 'https://www.aldi.us/store/aldi/storefront' },
-  { name: 'Save-A-Lot', detail: 'Discount chain with South & East Dallas locations.', url: 'https://savealot.com/' },
-  { name: 'Walmart Neighborhood Market', detail: 'Groceries with price-match and EBT benefits.', url: 'https://www.walmart.com/' },
-  { name: 'Family Dollar & Dollar Tree', detail: 'Essentials and household items across Dallas.', url: 'https://www.familydollar.com/combostores' },
-  { name: 'Fiesta Mart', detail: 'Affordable produce and meat with weekly specials.', url: 'https://www.fiestamart.com/' },
-  // Food Assistance
-  { name: 'North Texas Food Bank', detail: 'Find nearest food pantry through their network.', url: 'https://ntfb.org/' },
-  { name: "Brother Bill's Helping Hand", detail: 'Free food, clothing & essentials on Elm St.', url: 'https://bbhh.org/' },
-  { name: 'SNAP Benefits', detail: 'Apply through Your Texas Benefits or 2-1-1.', url: 'https://www.hhs.texas.gov/services/food/snap-food-benefits' },
-  // Transit
-  { name: 'DART Reduced Fare', detail: 'Low-income passes at half price for Dallas transit.', url: 'https://www.dart.org/fare/general-fares-and-overview/reduced-fares' },
-  // Libraries
-  { name: 'J. Erik Jonsson Central Library', detail: 'Downtown hub with computers, career center & classes.', url: 'https://www.dallaslibrary.org/central-library' },
-  { name: 'Library Workforce Programs', detail: 'Resume workshops & job coaching at branches.', url: 'https://www.tsl.texas.gov/ldn/workforcedevelopment-jobseekerresources' },
-  // Parks
-  { name: 'White Rock Lake Park', detail: 'Free 9.3-mile trail, fishing & peaceful space.', url: 'https://www.dallasparks.org/235/White-Rock-Lake' },
-  // Education
-  { name: 'Literacy Instruction for Texas (LIFT)', detail: 'Free GED prep, ESL & computer skills.', url: 'https://www.idealist.org/en/nonprofit/0b542974dff643f4954ca657f3673c2d-lift-literacy-instruction-for-texas-dallas' },
-  // Internet
-  { name: 'Affordable Connectivity Program', detail: 'Federal subsidy for low-income broadband access.', url: 'https://www.fcc.gov/broadbandbenefit' },
+const organizations = [
+  {
+    name: 'Innocence Project of Texas',
+    description:
+      'Legal representation and advocacy for wrongfully convicted Texans. They fight for exoneration and post-release support.',
+    url: 'https://innocencetexas.org',
+    phone: '(512) 600-8011',
+    icon: Scale,
+    tags: ['Legal Aid', 'Advocacy'],
+  },
+  {
+    name: 'After Innocence',
+    description:
+      'National organization providing life re-entry services to exonerees including housing assistance, employment support, and counseling.',
+    url: 'https://www.after-innocence.org',
+    phone: null,
+    icon: Heart,
+    tags: ['Re-entry', 'Housing', 'Employment'],
+  },
+  {
+    name: 'Innocence Project (National)',
+    description:
+      'The leading national organization dedicated to exonerating wrongfully convicted individuals and reforming the criminal justice system.',
+    url: 'https://innocenceproject.org',
+    phone: '(212) 364-5340',
+    icon: Scale,
+    tags: ['Legal Aid', 'Policy Reform'],
+  },
+  {
+    name: 'Miles of Freedom',
+    description:
+      'Founded by exoneree Johnnie Lindsey, Miles of Freedom provides re-entry assistance, community support, and essential services to help exonerees and returning citizens rebuild their lives.',
+    url: 'https://www.milesoffreedom.org',
+    phone: null,
+    icon: Heart,
+    tags: ['Re-entry', 'Community'],
+  },
+  {
+    name: 'Organization of Exonerees',
+    description:
+      'A network of exonerees working to change the system from the inside. They bring awareness to wrongful convictions and support those still fighting for freedom.',
+    url: 'https://organizationofexonerees.com',
+    phone: null,
+    icon: Users,
+    tags: ['Advocacy', 'Peer Support'],
+  },
+  {
+    name: 'Healing Justice',
+    description:
+      'Dedicated to preventing and alleviating the harms caused by wrongful convictions through healing retreats, peer support, and direct services for exonerees and their families.',
+    url: 'https://healingjusticeproject.org',
+    phone: null,
+    icon: Heart,
+    tags: ['Mental Health', 'Healing Retreats'],
+  },
 ]
 
 export function GetHelpNow() {
@@ -40,35 +70,66 @@ export function GetHelpNow() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-12 max-w-2xl">
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">
-            Daily Life Resources
+            Support Organizations
           </p>
           <h2 className="mb-4 font-serif text-3xl font-bold tracking-tight text-foreground md:text-4xl">
             <span className="text-balance">
-              Practical Resources Across Dallas
+              Real Help from People Who Understand
             </span>
           </h2>
           <p className="text-lg leading-relaxed text-muted-foreground">
-            Affordable groceries, transit, libraries, and community programs to help you rebuild.
+            These organizations have dedicated track records of supporting
+            exonerees. Every link here has been vetted. No dead ends, no
+            automated phone trees {"—"} real people doing real work.
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {resources.map((item) => (
-            <Card key={item.name} className="border-border/60 transition-all hover:shadow-sm">
-              <CardContent className="pt-6">
-                <h3 className="mb-2 text-sm font-semibold text-foreground">{item.name}</h3>
-                <p className="mb-3 text-xs leading-relaxed text-muted-foreground">{item.detail}</p>
-                {item.url && (
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {organizations.map((org) => (
+            <Card
+              key={org.name}
+              className="group border-border/60 transition-all hover:border-primary/30 hover:shadow-md"
+            >
+              <CardHeader>
+                <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                  <org.icon className="size-5 text-primary" />
+                </div>
+                <CardTitle className="text-lg">{org.name}</CardTitle>
+                <CardDescription className="leading-relaxed">
+                  {org.description}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="mb-4 flex flex-wrap gap-2">
+                  {org.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-md bg-secondary px-2 py-0.5 text-xs font-medium text-secondary-foreground"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex flex-col gap-2">
                   <a
-                    href={item.url}
+                    href={org.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 rounded-md bg-primary/10 px-2 py-1 text-xs font-medium text-primary transition-all hover:bg-primary/20"
+                    className="inline-flex items-center gap-1.5 rounded-md bg-primary/10 px-2 py-1 text-xs font-medium text-primary transition-all hover:bg-primary/20"
                   >
-                    Learn More
+                    Visit Website
                     <ExternalLink className="size-3" />
                   </a>
-                )}
+                  {org.phone && (
+                    <a
+                      href={`tel:${org.phone}`}
+                      className="inline-flex items-center gap-1.5 rounded-md bg-accent/10 px-2 py-1 text-xs font-medium text-accent transition-all hover:bg-accent/20"
+                    >
+                      <Phone className="size-3" />
+                      Call
+                    </a>
+                  )}
+                </div>
               </CardContent>
             </Card>
           ))}
@@ -76,10 +137,12 @@ export function GetHelpNow() {
 
         <div className="mt-12 text-center">
           <a
-            href="/general-resources"
+            href="https://www.milesoffreedom.org"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 font-semibold text-accent-foreground transition-all hover:bg-accent/90 hover:shadow-md"
           >
-            View All Resources
+            Get Connected Today
             <ExternalLink className="size-4" />
           </a>
         </div>
