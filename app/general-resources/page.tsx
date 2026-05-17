@@ -16,9 +16,9 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'General Resources for Daily Life | Texas Exoneree Support Network',
+  title: 'Verified Support Organizations | Texas Exoneree Support Network',
   description:
-    'Affordable stores, food pantries, libraries, parks, churches, and community events in Dallas to help exonerees with reintegration.',
+    'National and Texas-based organizations dedicated to supporting exonerees with re-entry services, housing, employment, advocacy, and healing.',
 }
 
 interface TipCategory {
@@ -305,9 +305,9 @@ export default function GeneralResourcesPage() {
   return (
     <>
       <PageHeader
-        label="Practical Resources"
-        title="General Resources for Daily Life in Dallas"
-        description="Rebuilding a life means figuring out the everyday stuff: where to buy groceries, how to get around, where to find free resources. This page is built for you."
+        label="Verified Organizations"
+        title="National & Texas Organizations Supporting Exonerees"
+        description="These organizations are dedicated to helping exonerees like you rebuild your life. Every organization here has been vetted and has a genuine track record of support."
       />
 
       <section className="bg-background py-16 md:py-20">
