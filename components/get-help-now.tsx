@@ -137,7 +137,7 @@ export function GetHelpNow() {
 
         <div className="mt-12 text-center">
           <a
-            href="https://www.milesoffreedom.org"
+            href="https://www.after-innocence.org"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 font-semibold text-accent-foreground transition-all hover:bg-accent/90 hover:shadow-md"
