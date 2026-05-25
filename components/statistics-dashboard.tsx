@@ -8,7 +8,7 @@ const stats = [
   {
     label: 'Total Exonerations in Texas',
     value: '508',
-    context: 'More than any other state in the U.S.',
+    context: 'Second most exonerations in the nation.',
     icon: Scale,
     accentClass: 'text-chart-1',
     bgClass: 'bg-chart-1/10',
