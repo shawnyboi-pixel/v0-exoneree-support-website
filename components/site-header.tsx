@@ -13,7 +13,7 @@ const aboutLinks = [
 ]
 
 const navLinks = [
-  { label: 'About', href: '#', isDropdown: true },
+  { label: 'About', href: '/', isDropdown: true },
   { label: 'Support', href: '/support' },
   { label: 'Financial Literacy', href: '/financial-literacy' },
   { label: 'Organizations', href: '/organizations' },
@@ -47,13 +47,14 @@ export function SiteHeader() {
             <div key={link.label} className="relative group">
               {link.isDropdown ? (
                 <>
-                  <button
+                  <Link
+                    href={link.href}
                     className="text-sm font-medium transition-colors hover:text-foreground text-muted-foreground flex items-center gap-1"
-                    onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
+                    onClick={() => setAboutDropdownOpen(false)}
                   >
                     {link.label}
                     <ChevronDown className="size-4 transition-transform group-hover:rotate-180" />
-                  </button>
+                  </Link>
                   <div className="absolute left-0 mt-0 w-48 bg-background border border-border/60 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                     {aboutLinks.map((subLink) => (
                       <Link
