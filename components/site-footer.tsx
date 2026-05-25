@@ -6,18 +6,13 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-6 py-12">
         <div className="grid gap-8 md:grid-cols-3">
           <div>
-            <div className="mb-4 flex items-center gap-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-foreground/10">
-                <span className="text-xs font-bold text-primary-foreground">
-                  ERP
-                </span>
-              </div>
+            <div className="mb-4">
               <div>
                 <span className="text-base font-semibold text-primary-foreground">
                   Exoneree Reentry Project
                 </span>
                 <p className="text-xs font-medium text-primary-foreground/70">
-                  Youth Led
+                  Youth Led Initiative
                 </p>
               </div>
             </div>
