@@ -68,7 +68,7 @@ export function GetHelpNow() {
   return (
     <section id="get-help" className="bg-background py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-12 max-w-2xl">
+        <div className="mb-12 max-w-2xl animate-fade-in-up">
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">
             Support Organizations
           </p>
@@ -85,53 +85,58 @@ export function GetHelpNow() {
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {organizations.map((org) => (
-            <Card
+          {organizations.map((org, idx) => (
+            <div
               key={org.name}
-              className="group border-border/60 transition-all hover:border-primary/30 hover:shadow-md"
+              className="animate-fade-in-up"
+              style={{ animationDelay: `${idx * 50}ms` }}
             >
-              <CardHeader>
-                <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                  <org.icon className="size-5 text-primary" />
-                </div>
-                <CardTitle className="text-lg">{org.name}</CardTitle>
-                <CardDescription className="leading-relaxed">
-                  {org.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="mb-4 flex flex-wrap gap-2">
-                  {org.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-md bg-secondary px-2 py-0.5 text-xs font-medium text-secondary-foreground"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex flex-col gap-2">
-                  <a
-                    href={org.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-md bg-primary/10 px-2 py-1 text-xs font-medium text-primary transition-all hover:bg-primary/20"
-                  >
-                    Visit Website
-                    <ExternalLink className="size-3" />
-                  </a>
-                  {org.phone && (
+              <Card className="group h-full border-border/60 transition-gentle cursor-pointer overflow-hidden hover:shadow-lg hover:-translate-y-2">
+                <CardHeader>
+                  <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 transition-smooth group-hover:scale-110 group-hover:bg-primary/15">
+                    <org.icon className="size-5 text-primary transition-smooth group-hover:rotate-6" />
+                  </div>
+                  <CardTitle className="text-lg transition-gentle group-hover:text-primary">
+                    {org.name}
+                  </CardTitle>
+                  <CardDescription className="leading-relaxed">
+                    {org.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="mb-4 flex flex-wrap gap-2">
+                    {org.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-md bg-secondary px-2 py-0.5 text-xs font-medium text-secondary-foreground transition-smooth hover:bg-secondary/80"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex flex-col gap-2">
                     <a
-                      href={`tel:${org.phone}`}
-                      className="inline-flex items-center gap-1.5 rounded-md bg-accent/10 px-2 py-1 text-xs font-medium text-accent transition-all hover:bg-accent/20"
+                      href={org.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-md bg-primary/10 px-2 py-1 text-xs font-medium text-primary transition-smooth hover:bg-primary/20 hover:scale-105 active:scale-95"
                     >
-                      <Phone className="size-3" />
-                      Call
+                      Visit Website
+                      <ExternalLink className="size-3 transition-smooth group-hover:translate-x-0.5" />
                     </a>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
+                    {org.phone && (
+                      <a
+                        href={`tel:${org.phone}`}
+                        className="inline-flex items-center gap-1.5 rounded-md bg-accent/10 px-2 py-1 text-xs font-medium text-accent transition-smooth hover:bg-accent/20 hover:scale-105 active:scale-95"
+                      >
+                        <Phone className="size-3" />
+                        Call
+                      </a>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           ))}
         </div>
 
@@ -140,10 +145,10 @@ export function GetHelpNow() {
             href="https://www.after-innocence.org"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 font-semibold text-accent-foreground transition-all hover:bg-accent/90 hover:shadow-md"
+            className="group inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 font-semibold text-accent-foreground transition-gentle shadow-sm hover:shadow-lg hover:scale-105 active:scale-95"
           >
             Get Connected Today
-            <ExternalLink className="size-4" />
+            <ExternalLink className="size-4 transition-smooth group-hover:translate-x-0.5" />
           </a>
         </div>
       </div>

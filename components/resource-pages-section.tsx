@@ -68,7 +68,7 @@ export function ResourcePagesSection() {
   return (
     <section className="bg-secondary py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-12 max-w-2xl">
+        <div className="mb-12 max-w-2xl animate-fade-in-up">
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">
             In-Depth Resources
           </p>
@@ -85,34 +85,39 @@ export function ResourcePagesSection() {
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {pages.map((page) => (
+          {pages.map((page, idx) => (
             <Link key={page.href} href={page.href} className="group">
-              <Card className="h-full border-border/60 transition-all group-hover:border-primary/30 group-hover:shadow-md">
-                <CardContent className="flex h-full flex-col pt-6">
-                  <div className="mb-4 flex items-center gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                      <page.icon className="size-5 text-primary" />
+              <div
+                className="animate-fade-in-up"
+                style={{ animationDelay: `${idx * 50}ms` }}
+              >
+                <Card className="h-full border-border/60 transition-gentle cursor-pointer overflow-hidden hover:shadow-lg hover:-translate-y-2">
+                  <CardContent className="flex h-full flex-col pt-6">
+                    <div className="mb-4 flex items-center gap-3">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 transition-smooth group-hover:scale-110 group-hover:bg-primary/15">
+                        <page.icon className="size-5 text-primary transition-smooth group-hover:rotate-6" />
+                      </div>
+                      <div>
+                        <h3 className="text-base font-semibold text-foreground transition-gentle group-hover:text-primary">
+                          {page.title}
+                        </h3>
+                        <span className="text-xs font-medium text-accent transition-smooth group-hover:text-accent">
+                          {page.stats}
+                        </span>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-base font-semibold text-foreground">
-                        {page.title}
-                      </h3>
-                      <span className="text-xs font-medium text-accent">
-                        {page.stats}
-                      </span>
+
+                    <p className="mb-6 flex-1 text-sm leading-relaxed text-muted-foreground">
+                      {page.description}
+                    </p>
+
+                    <div className="flex items-center gap-1.5 text-sm font-medium text-primary transition-smooth group-hover:text-primary">
+                      Learn More
+                      <ArrowRight className="size-4 transition-smooth group-hover:translate-x-1" />
                     </div>
-                  </div>
-
-                  <p className="mb-6 flex-1 text-sm leading-relaxed text-muted-foreground">
-                    {page.description}
-                  </p>
-
-                  <div className="flex items-center gap-1.5 text-sm font-medium text-primary transition-colors group-hover:text-primary/80">
-                    Learn More
-                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </div>
             </Link>
           ))}
         </div>

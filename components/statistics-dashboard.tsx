@@ -46,7 +46,7 @@ export function StatisticsDashboard() {
   return (
     <section id="statistics" className="bg-background py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-12 max-w-2xl">
+        <div className="mb-12 max-w-2xl animate-fade-in-up">
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">
             The Numbers
           </p>
@@ -63,28 +63,31 @@ export function StatisticsDashboard() {
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat) => (
-            <Card
+          {stats.map((stat, idx) => (
+            <div
               key={stat.label}
-              className="border-border/60 transition-shadow hover:shadow-md"
+              className="animate-fade-in-up"
+              style={{ animationDelay: `${idx * 50}ms` }}
             >
-              <CardContent className="pt-6">
-                <div
-                  className={`mb-4 flex h-10 w-10 items-center justify-center rounded-lg ${stat.bgClass}`}
-                >
-                  <stat.icon className={`size-5 ${stat.accentClass}`} />
-                </div>
-                <p className={`mb-1 font-serif text-4xl font-bold tracking-tight ${stat.accentClass}`}>
-                  {stat.value}
-                </p>
-                <p className="mb-3 text-sm font-semibold text-foreground">
-                  {stat.label}
-                </p>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  {stat.context}
-                </p>
-              </CardContent>
-            </Card>
+              <Card className="group h-full border-border/60 transition-gentle cursor-pointer hover:shadow-lg hover:-translate-y-1">
+                <CardContent className="pt-6">
+                  <div
+                    className={`mb-4 flex h-10 w-10 items-center justify-center rounded-lg ${stat.bgClass} transition-smooth group-hover:scale-110`}
+                  >
+                    <stat.icon className={`size-5 ${stat.accentClass}`} />
+                  </div>
+                  <p className={`mb-1 font-serif text-4xl font-bold tracking-tight ${stat.accentClass} transition-gentle group-hover:scale-105 origin-left`}>
+                    {stat.value}
+                  </p>
+                  <p className="mb-3 text-sm font-semibold text-foreground">
+                    {stat.label}
+                  </p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {stat.context}
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
           ))}
         </div>
       </div>
