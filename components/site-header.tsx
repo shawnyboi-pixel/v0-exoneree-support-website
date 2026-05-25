@@ -22,7 +22,7 @@ const resourcesLinks = [
 
 const navLinks = [
   { label: 'About', href: '/', isDropdown: true },
-  { label: 'Resources', href: '#', isDropdown: true },
+  { label: 'Resources', href: '/general-resources', isDropdown: true },
   { label: 'Support', href: '/support' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -78,13 +78,14 @@ export function SiteHeader() {
                 </>
               ) : link.label === 'Resources' ? (
                 <>
-                  <button
+                  <Link
+                    href={link.href}
                     className="text-sm font-medium transition-colors hover:text-foreground text-muted-foreground flex items-center gap-1"
-                    onClick={() => setResourcesDropdownOpen(!resourcesDropdownOpen)}
+                    onClick={() => setResourcesDropdownOpen(false)}
                   >
                     {link.label}
                     <ChevronDown className="size-4 transition-transform group-hover:rotate-180" />
-                  </button>
+                  </Link>
                   <div className="absolute left-0 mt-0 w-56 bg-background border border-border/60 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                     {resourcesLinks.map((subLink) => (
                       <Link
