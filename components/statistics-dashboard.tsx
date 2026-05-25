@@ -7,7 +7,7 @@ import { TrendingDown, Clock, Briefcase, Scale } from 'lucide-react'
 const stats = [
   {
     label: 'Total Exonerations in Texas',
-    value: '430+',
+    value: '508',
     context: 'More than any other state in the U.S.',
     icon: Scale,
     accentClass: 'text-chart-1',
@@ -21,24 +21,6 @@ const stats = [
     icon: Clock,
     accentClass: 'text-accent',
     bgClass: 'bg-accent/10',
-  },
-  {
-    label: 'Employed Within First Year',
-    value: '~15%',
-    context:
-      'The vast majority of exonerees cannot find steady work in their first year of freedom. No resume. No references. No safety net.',
-    icon: Briefcase,
-    accentClass: 'text-chart-3',
-    bgClass: 'bg-chart-3/10',
-  },
-  {
-    label: 'Avg. Time to Receive Compensation',
-    value: '3+ yrs',
-    context:
-      'Even in states that offer it, compensation takes years of legal battles. Many exonerees never see a dime.',
-    icon: TrendingDown,
-    accentClass: 'text-chart-5',
-    bgClass: 'bg-chart-5/10',
   },
 ]
 
@@ -60,7 +42,7 @@ export function StatisticsDashboard() {
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
           {stats.map((stat, idx) => (
             <div
               key={stat.label}
