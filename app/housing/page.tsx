@@ -7,7 +7,7 @@ import {
 import { ExternalLink, Home, DollarSign, TrendingDown } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Housing in Dallas | Exoneree Reentry Project',
+  title: 'Housing in Dallas | The IDE Project',
   description:
     'Dallas housing costs, barriers exonerees face, and local organizations that help with housing placement and stability.',
 }

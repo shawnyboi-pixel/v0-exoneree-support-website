@@ -39,7 +39,7 @@ export function SiteHeader() {
         <Link href="/" className="flex items-center gap-3">
           <div>
             <span className="text-lg font-semibold tracking-tight text-foreground lg:text-xl">
-              Exoneree Reentry Project
+              The IDE Project
             </span>
             <p className="text-xs font-medium text-accent lg:text-sm">
               Youth Led Initiative

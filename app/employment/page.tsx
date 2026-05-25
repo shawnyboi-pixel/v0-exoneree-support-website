@@ -4,7 +4,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { ExternalLink, Phone, Briefcase, TrendingDown, UserX, DollarSign, Heart } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Employment After Exoneration | Exoneree Reentry Project',
+  title: 'Employment After Exoneration | The IDE Project',
   description:
     'The challenges exonerees face finding work and Dallas-area organizations offering employment support, job training, and placement assistance.',
 }

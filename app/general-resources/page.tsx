@@ -16,7 +16,7 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'General Resources for Daily Life | Exoneree Reentry Project',
+  title: 'General Resources for Daily Life | The IDE Project',
   description:
     'Affordable stores, food pantries, libraries, parks, churches, and community events in Dallas to help exonerees with reintegration.',
 }

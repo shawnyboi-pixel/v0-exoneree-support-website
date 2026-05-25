@@ -17,7 +17,7 @@ const libreBaskerville = Libre_Baskerville({
 })
 
 export const metadata: Metadata = {
-  title: 'Exoneree Reentry Project - Youth Led',
+  title: 'The IDE Project - Youth Led',
   description:
     'A youth-led initiative connecting exonerees with verified re-entry nonprofits, advocacy organizations, and community resources. Rebuilding starts here.',
 }

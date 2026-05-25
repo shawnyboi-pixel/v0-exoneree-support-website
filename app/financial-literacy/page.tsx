@@ -14,7 +14,7 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Financial Literacy | Exoneree Reentry Project',
+  title: 'Financial Literacy | The IDE Project',
   description:
     'How exonerees can rebuild financial identity, find fair banking, and understand compensation options in Dallas, Texas.',
 }

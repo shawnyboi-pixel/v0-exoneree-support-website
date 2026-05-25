@@ -9,7 +9,7 @@ export function SiteFooter() {
             <div className="mb-4">
               <div>
                 <span className="text-base font-semibold text-primary-foreground lg:text-lg">
-                  Exoneree Reentry Project
+                  The IDE Project
                 </span>
                 <p className="text-xs font-medium text-primary-foreground/70 lg:text-sm">
                   Youth Led Initiative
