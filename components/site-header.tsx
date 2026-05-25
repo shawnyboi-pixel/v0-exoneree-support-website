@@ -22,8 +22,9 @@ const resourcesLinks = [
 
 const navLinks = [
   { label: 'About', href: '/', isDropdown: true },
-  { label: 'Support', href: '/support' },
   { label: 'Resources', href: '#', isDropdown: true },
+  { label: 'Support', href: '/support' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 export function SiteHeader() {
