@@ -21,9 +21,7 @@ export function HeroSection() {
           </h1>
 
           <p className="mb-10 max-w-2xl text-lg leading-relaxed text-primary-foreground/85 md:text-xl">
-            The Exoneree Reentry Project, led by young changemakers, connects
-            exonerees across Texas with real organizations, real people, and real
-            support {"—"} no runaround, no red tape.
+            The Exoneree Reentry Project, led by youth changemakers, connects exonerees nationwide with support organizations.
           </p>
 
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
