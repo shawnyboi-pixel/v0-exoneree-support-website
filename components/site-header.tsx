@@ -31,7 +31,7 @@ export function SiteHeader() {
               Exoneree Reentry
             </span>
             <p className="text-xs font-medium text-accent">
-              Youth Led
+              Youth Led Initiative
             </p>
           </div>
         </Link>
