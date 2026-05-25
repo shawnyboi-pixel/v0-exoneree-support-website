@@ -21,11 +21,6 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-            <span className="text-xs font-bold text-primary-foreground">
-              ERP
-            </span>
-          </div>
           <div>
             <span className="text-lg font-semibold tracking-tight text-foreground">
               Exoneree Reentry Project
