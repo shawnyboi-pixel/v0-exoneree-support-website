@@ -79,8 +79,8 @@ export function GetHelpNow() {
           </h2>
           <p className="text-lg leading-relaxed text-muted-foreground">
             These organizations have dedicated track records of supporting
-            exonerees. Every link here has been vetted. No dead ends, no
-            automated phone trees {"—"} real people doing real work.
+            exonerees. Every link here has been vetted, with no dead ends or
+            automated phone trees, just real people doing real work.
           </p>
         </div>
 

@@ -31,7 +31,7 @@ const pages = [
     stats: '~15% employed within 1 year',
   },
   {
-    title: 'Financial & Credit Rebuilding',
+    title: 'Financial and Credit Rebuilding',
     description:
       'Building a financial identity from zero, finding banks willing to help, and understanding your compensation options.',
     href: '/financial',
@@ -47,12 +47,12 @@ const pages = [
     stats: 'Dallas-specific resources',
   },
   {
-    title: 'Healthcare & Insurance',
+    title: 'Healthcare and Insurance',
     description:
-      'Access to healthcare, Medicaid, ACP, mental health services, and dental care—all affordable or free for low-income residents.',
+      'Access to healthcare, Medicaid, ACP, mental health services, and dental care, all affordable or free for low-income residents.',
     href: '/healthcare',
     icon: Heart,
-    stats: 'Medicaid & ACP available',
+    stats: 'Medicaid and ACP available',
   },
   {
     title: 'Support Organizations',

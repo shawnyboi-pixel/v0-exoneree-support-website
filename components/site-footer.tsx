@@ -22,9 +22,7 @@ export function SiteFooter() {
               </div>
             </div>
             <p className="max-w-xs text-sm leading-relaxed text-primary-foreground/60">
-              A youth-led initiative connecting Texas exonerees with housing
-              assistance, employment support, advocacy organizations, and the
-              community support they need to rebuild.
+              A youth-led initiative connecting exonerees nationwide with support organizations, advocacy groups, and the community resources they need to rebuild their lives.
             </p>
           </div>
 
@@ -43,28 +41,16 @@ export function SiteFooter() {
                 Home
               </Link>
               <Link
-                href="/housing"
+                href="/financial-literacy"
                 className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground"
               >
-                Housing in Dallas
+                Financial Literacy
               </Link>
               <Link
-                href="/employment"
+                href="/general-resources"
                 className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground"
               >
-                Employment After Exoneration
-              </Link>
-              <Link
-                href="/financial"
-                className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground"
-              >
-                Financial & Credit Rebuilding
-              </Link>
-              <Link
-                href="/healthcare"
-                className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground"
-              >
-                Healthcare & Insurance
+                Get Help Now
               </Link>
               <Link
                 href="/organizations"
@@ -81,7 +67,7 @@ export function SiteFooter() {
             </h3>
             <p className="mb-3 text-sm leading-relaxed text-primary-foreground/60">
               Whether you are an exoneree, a family member, or someone who
-              wants to help {"—"} there are ways to make a difference.
+              wants to help, there are ways to make a difference.
             </p>
             <Link
               href="/general-resources"

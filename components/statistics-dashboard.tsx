@@ -52,14 +52,11 @@ export function StatisticsDashboard() {
           </p>
           <h2 className="mb-4 font-serif text-3xl font-bold tracking-tight text-foreground md:text-4xl">
             <span className="text-balance">
-              Texas Exoneration at a Glance
+              What the Exonerees Say
             </span>
           </h2>
           <p className="text-lg leading-relaxed text-muted-foreground">
-            Behind every statistic is a person who lost years, relationships, and
-            opportunities to a system that failed them. These numbers are not
-            abstractions {"—"} they are lived realities that our youth-led team is
-            dedicated to addressing through concrete support and resources.
+            The statistics behind the systemic struggles exonerees face represent the reality of wrongful conviction. These numbers reveal the lived experiences of individuals seeking to rebuild their lives after years of injustice.
           </p>
         </div>
 
