@@ -10,7 +10,7 @@ export function HeroSection() {
         <div className="max-w-3xl animate-fade-in-up">
           <p className="mb-4 text-sm font-medium uppercase tracking-widest text-primary-foreground/70">
             <span className="inline-block rounded-full bg-primary-foreground/20 px-3 py-1 text-xs">
-              🚀 Youth Led Initiative
+              Youth Led Initiative
             </span>
           </p>
 
@@ -31,14 +31,14 @@ export function HeroSection() {
               href="/general-resources"
               className="group inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-accent-foreground transition-gentle shadow-sm hover:shadow-md hover:scale-105 active:scale-95"
             >
-              Find Resources & Tips
+              Get Help Now
               <ArrowRight className="size-4 transition-smooth group-hover:translate-x-1" />
             </Link>
             <Link
-              href="/housing"
+              href="/organizations"
               className="group inline-flex items-center justify-center rounded-lg border border-primary-foreground/30 px-6 py-3.5 text-base font-medium text-primary-foreground transition-gentle hover:bg-primary-foreground/10 hover:scale-105 active:scale-95"
             >
-              Explore Housing Support
+              Explore Organizations
             </Link>
           </div>
         </div>

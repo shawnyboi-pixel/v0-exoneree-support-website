@@ -7,11 +7,10 @@ import { Menu, X } from 'lucide-react'
 
 const navLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Housing', href: '/housing' },
-  { label: 'Employment', href: '/employment' },
-  { label: 'Financial', href: '/financial' },
-  { label: 'Healthcare', href: '/healthcare' },
+  { label: 'Financial Literacy', href: '/financial-literacy' },
+  { label: 'Get Help Now', href: '/general-resources' },
   { label: 'Organizations', href: '/organizations' },
+  { label: 'Support', href: '/support' },
 ]
 
 export function SiteHeader() {
@@ -54,12 +53,6 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/general-resources"
-            className="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90"
-          >
-            Get Help Now
-          </Link>
         </nav>
 
         <button
@@ -92,13 +85,6 @@ export function SiteHeader() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/general-resources"
-              className="mt-2 rounded-lg bg-accent px-4 py-2.5 text-center text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90"
-              onClick={() => setMobileOpen(false)}
-            >
-              Get Help Now
-            </Link>
           </div>
         </nav>
       )}
