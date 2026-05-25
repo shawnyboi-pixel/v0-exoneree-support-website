@@ -9,17 +9,22 @@ export function SiteFooter() {
             <div className="mb-4 flex items-center gap-3">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-foreground/10">
                 <span className="text-xs font-bold text-primary-foreground">
-                  TX
+                  ERP
                 </span>
               </div>
-              <span className="text-base font-semibold text-primary-foreground">
-                Exoneree Support
-              </span>
+              <div>
+                <span className="text-base font-semibold text-primary-foreground">
+                  Exoneree Reentry
+                </span>
+                <p className="text-xs font-medium text-primary-foreground/70">
+                  Youth Led
+                </p>
+              </div>
             </div>
             <p className="max-w-xs text-sm leading-relaxed text-primary-foreground/60">
-              Connecting Texas exonerees with housing assistance, employment
-              support, advocacy organizations, and community they need to
-              rebuild.
+              A youth-led initiative connecting Texas exonerees with housing
+              assistance, employment support, advocacy organizations, and the
+              community support they need to rebuild.
             </p>
           </div>
 

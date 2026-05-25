@@ -9,7 +9,9 @@ export function HeroSection() {
       <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-32 lg:py-40">
         <div className="max-w-3xl animate-fade-in-up">
           <p className="mb-4 text-sm font-medium uppercase tracking-widest text-primary-foreground/70">
-            Texas Exoneree Support Network
+            <span className="inline-block rounded-full bg-primary-foreground/20 px-3 py-1 text-xs">
+              🚀 Youth Led Initiative
+            </span>
           </p>
 
           <h1 className="mb-6 font-serif text-4xl font-bold leading-tight tracking-tight text-primary-foreground md:text-5xl lg:text-6xl">
@@ -19,10 +21,9 @@ export function HeroSection() {
           </h1>
 
           <p className="mb-10 max-w-2xl text-lg leading-relaxed text-primary-foreground/85 md:text-xl">
-            Wrongful conviction stole years of your life. But your story
-            {"doesn't"} end there. We connect exonerees across Texas with real
-            organizations, real people, and real support {"—"} no runaround, no
-            red tape.
+            The Exoneree Reentry Project, led by young changemakers, connects
+            exonerees across Texas with real organizations, real people, and real
+            support {"—"} no runaround, no red tape.
           </p>
 
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">

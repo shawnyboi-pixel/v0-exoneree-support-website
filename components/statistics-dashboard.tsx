@@ -58,7 +58,8 @@ export function StatisticsDashboard() {
           <p className="text-lg leading-relaxed text-muted-foreground">
             Behind every statistic is a person who lost years, relationships, and
             opportunities to a system that failed them. These numbers are not
-            abstractions {"—"} they are lived realities.
+            abstractions {"—"} they are lived realities that our youth-led team is
+            dedicated to addressing through concrete support and resources.
           </p>
         </div>
 

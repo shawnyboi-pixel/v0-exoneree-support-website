@@ -23,13 +23,18 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-3">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-            <span className="text-sm font-bold text-primary-foreground">
-              TX
+            <span className="text-xs font-bold text-primary-foreground">
+              ERP
             </span>
           </div>
-          <span className="text-lg font-semibold tracking-tight text-foreground">
-            Exoneree Support
-          </span>
+          <div>
+            <span className="text-lg font-semibold tracking-tight text-foreground">
+              Exoneree Reentry
+            </span>
+            <p className="text-xs font-medium text-accent">
+              Youth Led
+            </p>
+          </div>
         </Link>
 
         <nav
