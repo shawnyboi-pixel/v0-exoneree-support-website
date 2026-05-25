@@ -12,17 +12,24 @@ const aboutLinks = [
   { label: 'Members', href: '/#members' },
 ]
 
+const resourcesLinks = [
+  { label: 'Financial Literacy', href: '/financial-literacy' },
+  { label: 'Organizations that Help', href: '/organizations' },
+  { label: 'Healthcare and Insurance', href: '/healthcare' },
+  { label: 'Information on Employment', href: '/employment' },
+  { label: 'Other Resources', href: '/general-resources' },
+]
+
 const navLinks = [
   { label: 'About', href: '/', isDropdown: true },
   { label: 'Support', href: '/support' },
-  { label: 'Financial Literacy', href: '/financial-literacy' },
-  { label: 'Organizations', href: '/organizations' },
-  { label: 'Get Help Now', href: '/general-resources' },
+  { label: 'Resources', href: '#', isDropdown: true },
 ]
 
 export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false)
+  const [resourcesDropdownOpen, setResourcesDropdownOpen] = useState(false)
   const pathname = usePathname()
 
   return (
@@ -45,7 +52,7 @@ export function SiteHeader() {
         >
           {navLinks.map((link) => (
             <div key={link.label} className="relative group">
-              {link.isDropdown ? (
+              {link.label === 'About' ? (
                 <>
                   <Link
                     href={link.href}
@@ -62,6 +69,28 @@ export function SiteHeader() {
                         href={subLink.href}
                         className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors hover:bg-secondary first:rounded-t-lg last:rounded-b-lg"
                         onClick={() => setAboutDropdownOpen(false)}
+                      >
+                        {subLink.label}
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              ) : link.label === 'Resources' ? (
+                <>
+                  <button
+                    className="text-sm font-medium transition-colors hover:text-foreground text-muted-foreground flex items-center gap-1"
+                    onClick={() => setResourcesDropdownOpen(!resourcesDropdownOpen)}
+                  >
+                    {link.label}
+                    <ChevronDown className="size-4 transition-transform group-hover:rotate-180" />
+                  </button>
+                  <div className="absolute left-0 mt-0 w-56 bg-background border border-border/60 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    {resourcesLinks.map((subLink) => (
+                      <Link
+                        key={subLink.label}
+                        href={subLink.href}
+                        className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors hover:bg-secondary first:rounded-t-lg last:rounded-b-lg"
+                        onClick={() => setResourcesDropdownOpen(false)}
                       >
                         {subLink.label}
                       </Link>
@@ -123,20 +152,36 @@ export function SiteHeader() {
                 </div>
               )}
             </div>
-            {navLinks.slice(1).map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className={`text-base font-medium transition-colors hover:text-foreground ${
-                  pathname === link.href
-                    ? 'text-foreground'
-                    : 'text-muted-foreground'
-                }`}
-                onClick={() => setMobileOpen(false)}
+            <div>
+              <button
+                className="w-full text-base font-medium transition-colors hover:text-foreground text-muted-foreground flex items-center justify-between"
+                onClick={() => setResourcesDropdownOpen(!resourcesDropdownOpen)}
               >
-                {link.label}
-              </Link>
-            ))}
+                Resources
+                <ChevronDown className={`size-4 transition-transform ${resourcesDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {resourcesDropdownOpen && (
+                <div className="mt-2 pl-4 flex flex-col gap-2 border-l border-border/60">
+                  {resourcesLinks.map((subLink) => (
+                    <Link
+                      key={subLink.label}
+                      href={subLink.href}
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      {subLink.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+            <Link
+              href="/support"
+              className="text-base font-medium transition-colors hover:text-foreground text-muted-foreground"
+              onClick={() => setMobileOpen(false)}
+            >
+              Support
+            </Link>
           </div>
         </nav>
       )}
