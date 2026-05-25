@@ -28,7 +28,7 @@ export function SiteHeader() {
           </div>
           <div>
             <span className="text-lg font-semibold tracking-tight text-foreground">
-              Exoneree Reentry
+              Exoneree Reentry Project
             </span>
             <p className="text-xs font-medium text-accent">
               Youth Led Initiative

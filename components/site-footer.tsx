@@ -14,7 +14,7 @@ export function SiteFooter() {
               </div>
               <div>
                 <span className="text-base font-semibold text-primary-foreground">
-                  Exoneree Reentry
+                  Exoneree Reentry Project
                 </span>
                 <p className="text-xs font-medium text-primary-foreground/70">
                   Youth Led
