@@ -35,20 +35,20 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
         <Link href="/" className="flex items-center gap-3">
           <div>
-            <span className="text-lg font-semibold tracking-tight text-foreground">
+            <span className="text-lg font-semibold tracking-tight text-foreground lg:text-xl">
               Exoneree Reentry Project
             </span>
-            <p className="text-xs font-medium text-accent">
+            <p className="text-xs font-medium text-accent lg:text-sm">
               Youth Led Initiative
             </p>
           </div>
         </Link>
 
         <nav
-          className="hidden items-center gap-8 md:flex"
+          className="hidden items-center gap-8 lg:gap-12 md:flex"
           aria-label="Main navigation"
         >
           {navLinks.map((link) => (

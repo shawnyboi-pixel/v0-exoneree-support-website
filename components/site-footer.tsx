@@ -3,26 +3,26 @@ import Link from 'next/link'
 export function SiteFooter() {
   return (
     <footer className="border-t border-border/60 bg-primary">
-      <div className="mx-auto max-w-6xl px-6 py-12">
-        <div className="grid gap-8 md:grid-cols-3">
+      <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-16">
+        <div className="grid gap-8 md:grid-cols-3 lg:gap-12">
           <div>
             <div className="mb-4">
               <div>
-                <span className="text-base font-semibold text-primary-foreground">
+                <span className="text-base font-semibold text-primary-foreground lg:text-lg">
                   Exoneree Reentry Project
                 </span>
-                <p className="text-xs font-medium text-primary-foreground/70">
+                <p className="text-xs font-medium text-primary-foreground/70 lg:text-sm">
                   Youth Led Initiative
                 </p>
               </div>
             </div>
-            <p className="max-w-xs text-sm leading-relaxed text-primary-foreground/60">
+            <p className="max-w-xs text-sm leading-relaxed text-primary-foreground/60 lg:text-base">
               A youth-led initiative connecting exonerees nationwide with support organizations, advocacy groups, and the community resources they need to rebuild their lives.
             </p>
           </div>
 
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary-foreground/80">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary-foreground/80 lg:text-base">
               Resource Pages
             </h3>
             <nav
@@ -31,25 +31,25 @@ export function SiteFooter() {
             >
               <Link
                 href="/"
-                className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground"
+                className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground lg:text-base"
               >
                 Home
               </Link>
               <Link
                 href="/financial-literacy"
-                className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground"
+                className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground lg:text-base"
               >
                 Financial Literacy
               </Link>
               <Link
                 href="/general-resources"
-                className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground"
+                className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground lg:text-base"
               >
                 Get Help Now
               </Link>
               <Link
                 href="/organizations"
-                className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground"
+                className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground lg:text-base"
               >
                 Support Organizations
               </Link>
