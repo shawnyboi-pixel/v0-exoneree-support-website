@@ -7,10 +7,10 @@ import { Menu, X } from 'lucide-react'
 
 const navLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Financial Literacy', href: '/financial-literacy' },
-  { label: 'Get Help Now', href: '/general-resources' },
-  { label: 'Organizations', href: '/organizations' },
   { label: 'Support', href: '/support' },
+  { label: 'Financial Literacy', href: '/financial-literacy' },
+  { label: 'Organizations', href: '/organizations' },
+  { label: 'Get Help Now', href: '/general-resources' },
 ]
 
 export function SiteHeader() {
