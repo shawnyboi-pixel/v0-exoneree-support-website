@@ -17,9 +17,9 @@ const libreBaskerville = Libre_Baskerville({
 })
 
 export const metadata: Metadata = {
-  title: 'The IDE Project - Youth Led',
+  title: 'The IDE Project - Exoneree Reentry Support & Resources',
   description:
-    'A youth-led initiative connecting exonerees with verified re-entry nonprofits, advocacy organizations, and community resources. Rebuilding starts here.',
+    'The IDE Project provides exoneree reentry support, housing resources, job training, and community advocacy. Get help after wrongful conviction with verified reentry organizations, financial literacy guides, and reentry programs nationwide.',
 }
 
 export const viewport: Viewport = {

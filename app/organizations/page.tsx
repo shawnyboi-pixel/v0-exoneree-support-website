@@ -4,9 +4,9 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { ExternalLink, Phone, Scale, Heart, Users } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Verified Support Organizations | The IDE Project',
+  title: 'Verified Reentry Support Organizations | The IDE Project',
   description:
-    'National and Texas-based organizations dedicated to supporting exonerees with re-entry services, housing, employment, advocacy, and healing.',
+    'The IDE Project connects exonerees with verified reentry support organizations, non-profits, and advocacy groups providing housing, employment, legal aid, and reentry services. Find exoneree organizations nationwide and in Texas.',
 }
 
 interface Organization {

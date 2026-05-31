@@ -14,9 +14,9 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Financial Literacy | The IDE Project',
+  title: 'Exoneree Financial Literacy & Banking Guide | The IDE Project',
   description:
-    'How exonerees can rebuild financial identity, find fair banking, and understand compensation options in Dallas, Texas.',
+    'The IDE Project provides financial literacy resources for exonerees rebuilding credit, opening bank accounts, understanding compensation, and managing finances after wrongful conviction. Expert guides on banking, credit building, and financial recovery.',
 }
 
 const financialStats = [

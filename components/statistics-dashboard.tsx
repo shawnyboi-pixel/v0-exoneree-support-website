@@ -38,7 +38,7 @@ export function StatisticsDashboard() {
             </span>
           </h2>
           <p className="text-lg leading-relaxed text-muted-foreground lg:text-xl">
-            The statistics behind the systemic struggles exonerees face represent the reality of wrongful conviction. These numbers reveal the lived experiences of individuals seeking to rebuild their lives after years of injustice.
+            The statistics behind systemic struggles exonerees face reveal the reality of wrongful conviction and the urgent need for reentry support. The IDE Project connects exonerees with resources for exoneree reentry assistance, financial recovery, and rebuilding after wrongful conviction.
           </p>
         </div>
 

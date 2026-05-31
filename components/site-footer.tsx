@@ -17,7 +17,7 @@ export function SiteFooter() {
               </div>
             </div>
             <p className="max-w-xs text-sm leading-relaxed text-primary-foreground/60 lg:text-base">
-              A youth-led initiative connecting exonerees nationwide with support organizations, advocacy groups, and the community resources they need to rebuild their lives.
+              The IDE Project is a youth-led initiative connecting exonerees nationwide with verified reentry support organizations, housing assistance, employment programs, legal resources, and community advocacy. We provide comprehensive reentry support and exoneree resources to help rebuild lives after wrongful conviction.
             </p>
           </div>
 
