@@ -1,0 +1,521 @@
+'use client'
+
+import { useState, useMemo } from 'react'
+import Link from 'next/link'
+import { Search, FileText, Video, CheckCircle, X } from 'lucide-react'
+import { Card, CardContent } from '@/components/ui/card'
+
+interface Guide {
+  id: string
+  title: string
+  description: string
+  category: string
+  type: 'video' | 'pdf' | 'checklist' | 'article'
+  duration: string
+  image?: string
+}
+
+const categories = [
+  'Financial Planning',
+  'Job Search',
+  'Housing',
+  'Legal Rights',
+  'Healthcare',
+  'Daily Life',
+  'Technology',
+  'Mental Health',
+]
+
+const resourceTypes = [
+  { id: 'video', label: 'Videos', icon: Video },
+  { id: 'pdf', label: 'PDFs', icon: FileText },
+  { id: 'checklist', label: 'Checklists', icon: CheckCircle },
+  { id: 'article', label: 'Articles', icon: FileText },
+]
+
+const guides: Guide[] = [
+  // Financial Planning (4)
+  {
+    id: '1',
+    title: 'Opening Your First Bank Account',
+    description: 'Step-by-step guide to opening a bank account with no credit history.',
+    category: 'Financial Planning',
+    type: 'video',
+    duration: '8 min',
+  },
+  {
+    id: '2',
+    title: 'Building Credit from Zero',
+    description: 'Learn how to start building credit after reentry.',
+    category: 'Financial Planning',
+    type: 'pdf',
+    duration: '12 pages',
+  },
+  {
+    id: '3',
+    title: 'Budget Checklist for New Exonerees',
+    description: 'Create your first monthly budget with this interactive checklist.',
+    category: 'Financial Planning',
+    type: 'checklist',
+    duration: '15 min',
+  },
+  {
+    id: '4',
+    title: 'Understanding Your Compensation Options',
+    description: 'Navigate state and federal compensation programs.',
+    category: 'Financial Planning',
+    type: 'article',
+    duration: '10 min read',
+  },
+
+  // Job Search (4)
+  {
+    id: '5',
+    title: 'Writing Your First Resume',
+    description: 'Resume tips specifically for job seekers with conviction history.',
+    category: 'Job Search',
+    type: 'video',
+    duration: '12 min',
+  },
+  {
+    id: '6',
+    title: 'Disclosure and Interview Guide',
+    description: 'How to disclose your history in interviews.',
+    category: 'Job Search',
+    type: 'pdf',
+    duration: '8 pages',
+  },
+  {
+    id: '7',
+    title: 'Job Interview Prep Checklist',
+    description: 'Complete checklist for interview day readiness.',
+    category: 'Job Search',
+    type: 'checklist',
+    duration: '20 min',
+  },
+  {
+    id: '8',
+    title: 'Finding Supportive Employers',
+    description: 'Directory and guide to second chance employers.',
+    category: 'Job Search',
+    type: 'article',
+    duration: '15 min read',
+  },
+
+  // Housing (4)
+  {
+    id: '9',
+    title: 'Finding Affordable Housing in Dallas',
+    description: 'Navigate the Dallas housing market on a budget.',
+    category: 'Housing',
+    type: 'video',
+    duration: '10 min',
+  },
+  {
+    id: '10',
+    title: 'Landlord and Tenant Rights',
+    description: 'Know your rights as a tenant in Texas.',
+    category: 'Housing',
+    type: 'pdf',
+    duration: '14 pages',
+  },
+  {
+    id: '11',
+    title: 'Apartment Application Checklist',
+    description: 'Prepare all documents needed for housing applications.',
+    category: 'Housing',
+    type: 'checklist',
+    duration: '25 min',
+  },
+  {
+    id: '12',
+    title: 'Avoiding Housing Scams',
+    description: 'Red flags and how to protect yourself.',
+    category: 'Housing',
+    type: 'article',
+    duration: '8 min read',
+  },
+
+  // Legal Rights (3)
+  {
+    id: '13',
+    title: 'Your Rights After Exoneration',
+    description: 'Legal rights and what you&apos;re entitled to.',
+    category: 'Legal Rights',
+    type: 'video',
+    duration: '15 min',
+  },
+  {
+    id: '14',
+    title: 'Expungement and Record Sealing',
+    description: 'Getting your record cleared in Texas.',
+    category: 'Legal Rights',
+    type: 'pdf',
+    duration: '11 pages',
+  },
+  {
+    id: '15',
+    title: 'Legal Documents Checklist',
+    description: 'Important documents to gather and organize.',
+    category: 'Legal Rights',
+    type: 'checklist',
+    duration: '20 min',
+  },
+
+  // Healthcare (3)
+  {
+    id: '16',
+    title: 'Applying for Medicaid',
+    description: 'Step-by-step Medicaid application guide.',
+    category: 'Healthcare',
+    type: 'video',
+    duration: '9 min',
+  },
+  {
+    id: '17',
+    title: 'Mental Health Resources',
+    description: 'Finding therapy and counseling services.',
+    category: 'Healthcare',
+    type: 'pdf',
+    duration: '10 pages',
+  },
+  {
+    id: '18',
+    title: 'Health Insurance Checklist',
+    description: 'Compare and choose health insurance plans.',
+    category: 'Healthcare',
+    type: 'checklist',
+    duration: '30 min',
+  },
+
+  // Daily Life (3)
+  {
+    id: '19',
+    title: 'Getting Your Driver&apos;s License',
+    description: 'Texas DL renewal and how to get started.',
+    category: 'Daily Life',
+    type: 'video',
+    duration: '7 min',
+  },
+  {
+    id: '20',
+    title: 'Opening Utility Accounts',
+    description: 'Getting electricity, water, and internet set up.',
+    category: 'Daily Life',
+    type: 'pdf',
+    duration: '6 pages',
+  },
+  {
+    id: '21',
+    title: 'First Week Essentials Checklist',
+    description: 'Everything you need to do in your first week.',
+    category: 'Daily Life',
+    type: 'checklist',
+    duration: '45 min',
+  },
+
+  // Technology (2)
+  {
+    id: '22',
+    title: 'Setting Up Email and Social Media',
+    description: 'Creating accounts safely and securely.',
+    category: 'Technology',
+    type: 'video',
+    duration: '6 min',
+  },
+  {
+    id: '23',
+    title: 'Staying Safe Online',
+    description: 'Privacy and security best practices.',
+    category: 'Technology',
+    type: 'article',
+    duration: '12 min read',
+  },
+
+  // Mental Health (2)
+  {
+    id: '24',
+    title: 'Processing Trauma and Reentry',
+    description: 'Guided resources for emotional wellness.',
+    category: 'Mental Health',
+    type: 'video',
+    duration: '20 min',
+  },
+  {
+    id: '25',
+    title: 'Coping Strategies for Reentry',
+    description: 'Practical tools for managing stress and anxiety.',
+    category: 'Mental Health',
+    type: 'pdf',
+    duration: '9 pages',
+  },
+
+  // Additional guides to reach 30
+  {
+    id: '26',
+    title: 'Understanding Tax Returns',
+    description: 'Filing taxes for the first time.',
+    category: 'Financial Planning',
+    type: 'video',
+    duration: '11 min',
+  },
+  {
+    id: '27',
+    title: 'Networking for Job Success',
+    description: 'Build professional relationships.',
+    category: 'Job Search',
+    type: 'article',
+    duration: '9 min read',
+  },
+  {
+    id: '28',
+    title: 'Roommate Agreement Template',
+    description: 'Written agreement for living with roommates.',
+    category: 'Housing',
+    type: 'pdf',
+    duration: '4 pages',
+  },
+  {
+    id: '29',
+    title: 'Family Reconnection Guide',
+    description: 'Rebuilding relationships after reentry.',
+    category: 'Mental Health',
+    type: 'video',
+    duration: '18 min',
+  },
+  {
+    id: '30',
+    title: 'Transportation Options in Dallas',
+    description: 'DART, rideshare, and other options.',
+    category: 'Daily Life',
+    type: 'article',
+    duration: '7 min read',
+  },
+]
+
+function ResourceTypeIcon({ type }: { type: string }) {
+  switch (type) {
+    case 'video':
+      return <Video className="size-4" />
+    case 'pdf':
+      return <FileText className="size-4" />
+    case 'checklist':
+      return <CheckCircle className="size-4" />
+    default:
+      return <FileText className="size-4" />
+  }
+}
+
+function getTypeLabel(type: string) {
+  return type.charAt(0).toUpperCase() + type.slice(1)
+}
+
+export function GuidesHub() {
+  const [searchTerm, setSearchTerm] = useState('')
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([])
+
+  const filteredGuides = useMemo(() => {
+    return guides.filter((guide) => {
+      const matchesSearch =
+        guide.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        guide.description.toLowerCase().includes(searchTerm.toLowerCase())
+
+      const matchesCategory =
+        selectedCategories.length === 0 ||
+        selectedCategories.includes(guide.category)
+
+      const matchesType =
+        selectedTypes.length === 0 || selectedTypes.includes(guide.type)
+
+      return matchesSearch && matchesCategory && matchesType
+    })
+  }, [searchTerm, selectedCategories, selectedTypes])
+
+  const toggleCategory = (category: string) => {
+    setSelectedCategories((prev) =>
+      prev.includes(category)
+        ? prev.filter((c) => c !== category)
+        : [...prev, category]
+    )
+  }
+
+  const toggleType = (type: string) => {
+    setSelectedTypes((prev) =>
+      prev.includes(type)
+        ? prev.filter((t) => t !== type)
+        : [...prev, type]
+    )
+  }
+
+  const clearFilters = () => {
+    setSearchTerm('')
+    setSelectedCategories([])
+    setSelectedTypes([])
+  }
+
+  const hasActiveFilters =
+    searchTerm || selectedCategories.length > 0 || selectedTypes.length > 0
+
+  return (
+    <section className="bg-background py-20 md:py-28 lg:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        {/* Header */}
+        <div className="mb-12 max-w-3xl lg:max-w-4xl animate-fade-in-up">
+          <h1 className="mb-4 font-serif text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl">
+            <span className="text-balance">Guides & Tutorials</span>
+          </h1>
+          <p className="text-lg leading-relaxed text-muted-foreground lg:text-xl">
+            Comprehensive guides, videos, and checklists to help you navigate reentry. Learn at your own pace with resources covering financial planning, employment, housing, and more.
+          </p>
+        </div>
+
+        {/* Search Bar */}
+        <div className="mb-8 animate-fade-in-up">
+          <div className="relative">
+            <Search className="absolute left-4 top-1/2 size-5 -translate-y-1/2 text-muted-foreground" />
+            <input
+              type="text"
+              placeholder="Search guides..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full rounded-lg border border-border/60 bg-background py-3 pl-12 pr-4 text-foreground placeholder-muted-foreground transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 lg:py-4 lg:text-lg"
+            />
+          </div>
+        </div>
+
+        {/* Filters */}
+        <div className="mb-8 space-y-6 animate-fade-in-up">
+          {/* Category Filters */}
+          <div>
+            <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-foreground lg:text-base">
+              Categories
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => toggleCategory(category)}
+                  className={`rounded-full px-4 py-2 text-sm font-medium transition-all lg:text-base ${
+                    selectedCategories.includes(category)
+                      ? 'bg-accent text-accent-foreground shadow-md'
+                      : 'border border-border/60 text-muted-foreground hover:border-accent/40 hover:bg-secondary/50'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Type Filters */}
+          <div>
+            <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-foreground lg:text-base">
+              Resource Type
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {resourceTypes.map(({ id, label, icon: Icon }) => (
+                <button
+                  key={id}
+                  onClick={() => toggleType(id)}
+                  className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all lg:text-base ${
+                    selectedTypes.includes(id)
+                      ? 'bg-accent text-accent-foreground shadow-md'
+                      : 'border border-border/60 text-muted-foreground hover:border-accent/40 hover:bg-secondary/50'
+                  }`}
+                >
+                  <Icon className="size-4" />
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Clear Filters */}
+          {hasActiveFilters && (
+            <div>
+              <button
+                onClick={clearFilters}
+                className="flex items-center gap-2 text-sm font-medium text-accent hover:text-accent/80 transition-colors"
+              >
+                <X className="size-4" />
+                Clear all filters
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* Results Count */}
+        <div className="mb-6 text-sm text-muted-foreground lg:text-base">
+          Showing {filteredGuides.length} of {guides.length} guides
+        </div>
+
+        {/* Guide Cards Grid */}
+        {filteredGuides.length > 0 ? (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+            {filteredGuides.map((guide, idx) => (
+              <div
+                key={guide.id}
+                className="animate-fade-in-up"
+                style={{ animationDelay: `${idx * 30}ms` }}
+              >
+                <Card className="group h-full border-border/60 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                  <CardContent className="flex h-full flex-col pt-6 lg:pt-8">
+                    {/* Type Badge */}
+                    <div className="mb-4 flex items-center gap-2">
+                      <div className="flex size-8 items-center justify-center rounded-lg bg-accent/10 lg:size-9">
+                        <ResourceTypeIcon type={guide.type} />
+                      </div>
+                      <span className="inline-block rounded-full bg-accent/10 px-2.5 py-1 text-xs font-semibold text-accent lg:text-sm">
+                        {getTypeLabel(guide.type)}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="mb-2 font-serif text-lg font-bold tracking-tight text-foreground group-hover:text-accent transition-colors lg:text-xl">
+                      {guide.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="mb-4 flex-grow text-sm leading-relaxed text-muted-foreground lg:text-base">
+                      {guide.description}
+                    </p>
+
+                    {/* Footer */}
+                    <div className="flex items-center justify-between pt-4 border-t border-border/30">
+                      <div className="flex flex-col gap-1">
+                        <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider lg:text-sm">
+                          {guide.category}
+                        </span>
+                        <span className="text-xs text-muted-foreground/60 lg:text-sm">
+                          {guide.duration}
+                        </span>
+                      </div>
+                      <div className="text-xs font-semibold text-accent group-hover:translate-x-1 transition-transform">
+                        →
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <Card className="border-border/60">
+            <CardContent className="py-12 text-center lg:py-16">
+              <p className="text-lg text-muted-foreground lg:text-xl">
+                No guides found matching your filters.
+              </p>
+              <button
+                onClick={clearFilters}
+                className="mt-4 text-accent font-semibold hover:text-accent/80 transition-colors"
+              >
+                Try clearing filters
+              </button>
+            </CardContent>
+          </Card>
+        )}
+      </div>
+    </section>
+  )
+}

@@ -13,6 +13,7 @@ const aboutLinks = [
 ]
 
 const resourcesLinks = [
+  { label: 'Guides & Tutorials', href: '/guides' },
   { label: 'Financial Literacy', href: '/financial-literacy' },
   { label: 'Organizations that Help', href: '/organizations' },
   { label: 'Healthcare and Insurance', href: '/healthcare' },
