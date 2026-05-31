@@ -10,7 +10,7 @@ interface Guide {
   title: string
   description: string
   category: string
-  type: 'video' | 'pdf' | 'checklist' | 'article'
+  types: ('video' | 'pdf' | 'checklist' | 'article')[]
   duration: string
   image?: string
 }
@@ -40,31 +40,31 @@ const guides: Guide[] = [
     title: 'Opening Your First Bank Account',
     description: 'Step-by-step guide to opening a bank account with no credit history.',
     category: 'Financial Planning',
-    type: 'video',
-    duration: '8 min',
+    types: ['video', 'pdf'],
+    duration: '8 min video / 6 page guide',
   },
   {
     id: '2',
     title: 'Building Credit from Zero',
     description: 'Learn how to start building credit after reentry.',
     category: 'Financial Planning',
-    type: 'pdf',
-    duration: '12 pages',
+    types: ['video', 'pdf'],
+    duration: '10 min video / 8 page guide',
   },
   {
     id: '3',
     title: 'Budget Checklist for New Exonerees',
     description: 'Create your first monthly budget with this interactive checklist.',
     category: 'Financial Planning',
-    type: 'checklist',
-    duration: '15 min',
+    types: ['video', 'pdf'],
+    duration: '12 min video / 5 page guide',
   },
   {
     id: '4',
     title: 'Understanding Your Compensation Options',
     description: 'Navigate state and federal compensation programs.',
     category: 'Financial Planning',
-    type: 'article',
+    types: ['article'],
     duration: '10 min read',
   },
 
@@ -74,7 +74,7 @@ const guides: Guide[] = [
     title: 'Writing Your First Resume',
     description: 'Resume tips specifically for job seekers with conviction history.',
     category: 'Job Search',
-    type: 'video',
+    types: ['video'],
     duration: '12 min',
   },
   {
@@ -82,7 +82,7 @@ const guides: Guide[] = [
     title: 'Disclosure and Interview Guide',
     description: 'How to disclose your history in interviews.',
     category: 'Job Search',
-    type: 'pdf',
+    types: ['pdf'],
     duration: '8 pages',
   },
   {
@@ -90,7 +90,7 @@ const guides: Guide[] = [
     title: 'Job Interview Prep Checklist',
     description: 'Complete checklist for interview day readiness.',
     category: 'Job Search',
-    type: 'checklist',
+    types: ['checklist'],
     duration: '20 min',
   },
   {
@@ -98,7 +98,7 @@ const guides: Guide[] = [
     title: 'Finding Supportive Employers',
     description: 'Directory and guide to second chance employers.',
     category: 'Job Search',
-    type: 'article',
+    types: ['article'],
     duration: '15 min read',
   },
 
@@ -108,7 +108,7 @@ const guides: Guide[] = [
     title: 'Finding Affordable Housing in Dallas',
     description: 'Navigate the Dallas housing market on a budget.',
     category: 'Housing',
-    type: 'video',
+    types: ['video'],
     duration: '10 min',
   },
   {
@@ -116,7 +116,7 @@ const guides: Guide[] = [
     title: 'Landlord and Tenant Rights',
     description: 'Know your rights as a tenant in Texas.',
     category: 'Housing',
-    type: 'pdf',
+    types: ['pdf'],
     duration: '14 pages',
   },
   {
@@ -124,7 +124,7 @@ const guides: Guide[] = [
     title: 'Apartment Application Checklist',
     description: 'Prepare all documents needed for housing applications.',
     category: 'Housing',
-    type: 'checklist',
+    types: ['checklist'],
     duration: '25 min',
   },
   {
@@ -132,7 +132,7 @@ const guides: Guide[] = [
     title: 'Avoiding Housing Scams',
     description: 'Red flags and how to protect yourself.',
     category: 'Housing',
-    type: 'article',
+    types: ['article'],
     duration: '8 min read',
   },
 
@@ -140,9 +140,9 @@ const guides: Guide[] = [
   {
     id: '13',
     title: 'Your Rights After Exoneration',
-    description: 'Legal rights and what you&apos;re entitled to.',
+    description: 'Legal rights and what you are entitled to.',
     category: 'Legal Rights',
-    type: 'video',
+    types: ['video'],
     duration: '15 min',
   },
   {
@@ -150,7 +150,7 @@ const guides: Guide[] = [
     title: 'Expungement and Record Sealing',
     description: 'Getting your record cleared in Texas.',
     category: 'Legal Rights',
-    type: 'pdf',
+    types: ['pdf'],
     duration: '11 pages',
   },
   {
@@ -158,7 +158,7 @@ const guides: Guide[] = [
     title: 'Legal Documents Checklist',
     description: 'Important documents to gather and organize.',
     category: 'Legal Rights',
-    type: 'checklist',
+    types: ['checklist'],
     duration: '20 min',
   },
 
@@ -168,7 +168,7 @@ const guides: Guide[] = [
     title: 'Applying for Medicaid',
     description: 'Step-by-step Medicaid application guide.',
     category: 'Healthcare',
-    type: 'video',
+    types: ['video'],
     duration: '9 min',
   },
   {
@@ -176,7 +176,7 @@ const guides: Guide[] = [
     title: 'Mental Health Resources',
     description: 'Finding therapy and counseling services.',
     category: 'Healthcare',
-    type: 'pdf',
+    types: ['pdf'],
     duration: '10 pages',
   },
   {
@@ -184,17 +184,17 @@ const guides: Guide[] = [
     title: 'Health Insurance Checklist',
     description: 'Compare and choose health insurance plans.',
     category: 'Healthcare',
-    type: 'checklist',
+    types: ['checklist'],
     duration: '30 min',
   },
 
   // Daily Life (3)
   {
     id: '19',
-    title: 'Getting Your Driver&apos;s License',
+    title: 'Getting Your Driver License',
     description: 'Texas DL renewal and how to get started.',
     category: 'Daily Life',
-    type: 'video',
+    types: ['video'],
     duration: '7 min',
   },
   {
@@ -202,7 +202,7 @@ const guides: Guide[] = [
     title: 'Opening Utility Accounts',
     description: 'Getting electricity, water, and internet set up.',
     category: 'Daily Life',
-    type: 'pdf',
+    types: ['pdf'],
     duration: '6 pages',
   },
   {
@@ -210,7 +210,7 @@ const guides: Guide[] = [
     title: 'First Week Essentials Checklist',
     description: 'Everything you need to do in your first week.',
     category: 'Daily Life',
-    type: 'checklist',
+    types: ['checklist'],
     duration: '45 min',
   },
 
@@ -220,7 +220,7 @@ const guides: Guide[] = [
     title: 'Setting Up Email and Social Media',
     description: 'Creating accounts safely and securely.',
     category: 'Technology',
-    type: 'video',
+    types: ['video'],
     duration: '6 min',
   },
   {
@@ -228,7 +228,7 @@ const guides: Guide[] = [
     title: 'Staying Safe Online',
     description: 'Privacy and security best practices.',
     category: 'Technology',
-    type: 'article',
+    types: ['article'],
     duration: '12 min read',
   },
 
@@ -238,7 +238,7 @@ const guides: Guide[] = [
     title: 'Processing Trauma and Reentry',
     description: 'Guided resources for emotional wellness.',
     category: 'Mental Health',
-    type: 'video',
+    types: ['video'],
     duration: '20 min',
   },
   {
@@ -246,7 +246,7 @@ const guides: Guide[] = [
     title: 'Coping Strategies for Reentry',
     description: 'Practical tools for managing stress and anxiety.',
     category: 'Mental Health',
-    type: 'pdf',
+    types: ['pdf'],
     duration: '9 pages',
   },
 
@@ -256,7 +256,7 @@ const guides: Guide[] = [
     title: 'Understanding Tax Returns',
     description: 'Filing taxes for the first time.',
     category: 'Financial Planning',
-    type: 'video',
+    types: ['video'],
     duration: '11 min',
   },
   {
@@ -264,7 +264,7 @@ const guides: Guide[] = [
     title: 'Networking for Job Success',
     description: 'Build professional relationships.',
     category: 'Job Search',
-    type: 'article',
+    types: ['article'],
     duration: '9 min read',
   },
   {
@@ -272,7 +272,7 @@ const guides: Guide[] = [
     title: 'Roommate Agreement Template',
     description: 'Written agreement for living with roommates.',
     category: 'Housing',
-    type: 'pdf',
+    types: ['pdf'],
     duration: '4 pages',
   },
   {
@@ -280,7 +280,7 @@ const guides: Guide[] = [
     title: 'Family Reconnection Guide',
     description: 'Rebuilding relationships after reentry.',
     category: 'Mental Health',
-    type: 'video',
+    types: ['video'],
     duration: '18 min',
   },
   {
@@ -288,7 +288,7 @@ const guides: Guide[] = [
     title: 'Transportation Options in Dallas',
     description: 'DART, rideshare, and other options.',
     category: 'Daily Life',
-    type: 'article',
+    types: ['article'],
     duration: '7 min read',
   },
 ]
@@ -326,7 +326,8 @@ export function GuidesHub() {
         selectedCategories.includes(guide.category)
 
       const matchesType =
-        selectedTypes.length === 0 || selectedTypes.includes(guide.type)
+        selectedTypes.length === 0 ||
+        selectedTypes.some((type) => guide.types.includes(type as any))
 
       return matchesSearch && matchesCategory && matchesType
     })
@@ -461,14 +462,18 @@ export function GuidesHub() {
               >
                 <Card className="group h-full border-border/60 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
                   <CardContent className="flex h-full flex-col pt-6 lg:pt-8">
-                    {/* Type Badge */}
-                    <div className="mb-4 flex items-center gap-2">
-                      <div className="flex size-8 items-center justify-center rounded-lg bg-accent/10 lg:size-9">
-                        <ResourceTypeIcon type={guide.type} />
-                      </div>
-                      <span className="inline-block rounded-full bg-accent/10 px-2.5 py-1 text-xs font-semibold text-accent lg:text-sm">
-                        {getTypeLabel(guide.type)}
-                      </span>
+                    {/* Type Badges */}
+                    <div className="mb-4 flex flex-wrap gap-2">
+                      {guide.types.map((type) => (
+                        <div key={type} className="flex items-center gap-2">
+                          <div className="flex size-7 items-center justify-center rounded-lg bg-accent/10 lg:size-8">
+                            <ResourceTypeIcon type={type} />
+                          </div>
+                          <span className="inline-block rounded-full bg-accent/10 px-2 py-1 text-xs font-semibold text-accent lg:text-sm">
+                            {getTypeLabel(type)}
+                          </span>
+                        </div>
+                      ))}
                     </div>
 
                     {/* Title */}

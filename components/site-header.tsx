@@ -12,18 +12,9 @@ const aboutLinks = [
   { label: 'Members', href: '/#members' },
 ]
 
-const resourcesLinks = [
-  { label: 'Guides & Tutorials', href: '/guides' },
-  { label: 'Financial Literacy', href: '/financial-literacy' },
-  { label: 'Organizations that Help', href: '/organizations' },
-  { label: 'Healthcare and Insurance', href: '/healthcare' },
-  { label: 'Information on Employment', href: '/employment' },
-  { label: 'Other Resources', href: '/general-resources' },
-]
-
 const navLinks = [
   { label: 'About', href: '/', isDropdown: true },
-  { label: 'Resources', href: '/general-resources', isDropdown: true },
+  { label: 'Guides & Tutorials', href: '/guides' },
   { label: 'Support', href: '/support' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -31,7 +22,6 @@ const navLinks = [
 export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false)
-  const [resourcesDropdownOpen, setResourcesDropdownOpen] = useState(false)
   const pathname = usePathname()
 
   return (
@@ -71,29 +61,6 @@ export function SiteHeader() {
                         href={subLink.href}
                         className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors hover:bg-secondary first:rounded-t-lg last:rounded-b-lg"
                         onClick={() => setAboutDropdownOpen(false)}
-                      >
-                        {subLink.label}
-                      </Link>
-                    ))}
-                  </div>
-                </>
-              ) : link.label === 'Resources' ? (
-                <>
-                  <Link
-                    href={link.href}
-                    className="text-sm font-medium transition-colors hover:text-foreground text-muted-foreground flex items-center gap-1"
-                    onClick={() => setResourcesDropdownOpen(false)}
-                  >
-                    {link.label}
-                    <ChevronDown className="size-4 transition-transform group-hover:rotate-180" />
-                  </Link>
-                  <div className="absolute left-0 mt-0 w-56 bg-background border border-border/60 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                    {resourcesLinks.map((subLink) => (
-                      <Link
-                        key={subLink.label}
-                        href={subLink.href}
-                        className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors hover:bg-secondary first:rounded-t-lg last:rounded-b-lg"
-                        onClick={() => setResourcesDropdownOpen(false)}
                       >
                         {subLink.label}
                       </Link>
@@ -155,35 +122,26 @@ export function SiteHeader() {
                 </div>
               )}
             </div>
-            <div>
-              <button
-                className="w-full text-base font-medium transition-colors hover:text-foreground text-muted-foreground flex items-center justify-between"
-                onClick={() => setResourcesDropdownOpen(!resourcesDropdownOpen)}
-              >
-                Resources
-                <ChevronDown className={`size-4 transition-transform ${resourcesDropdownOpen ? 'rotate-180' : ''}`} />
-              </button>
-              {resourcesDropdownOpen && (
-                <div className="mt-2 pl-4 flex flex-col gap-2 border-l border-border/60">
-                  {resourcesLinks.map((subLink) => (
-                    <Link
-                      key={subLink.label}
-                      href={subLink.href}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      {subLink.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+            <Link
+              href="/guides"
+              className="text-base font-medium transition-colors hover:text-foreground text-muted-foreground"
+              onClick={() => setMobileOpen(false)}
+            >
+              Guides & Tutorials
+            </Link>
             <Link
               href="/support"
               className="text-base font-medium transition-colors hover:text-foreground text-muted-foreground"
               onClick={() => setMobileOpen(false)}
             >
               Support
+            </Link>
+            <Link
+              href="/contact"
+              className="text-base font-medium transition-colors hover:text-foreground text-muted-foreground"
+              onClick={() => setMobileOpen(false)}
+            >
+              Contact
             </Link>
           </div>
         </nav>
