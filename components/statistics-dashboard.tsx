@@ -38,7 +38,7 @@ export function StatisticsDashboard() {
             </span>
           </h2>
           <p className="text-lg leading-relaxed text-muted-foreground lg:text-xl">
-            The statistics behind systemic struggles exonerees face reveal the reality of wrongful conviction and the urgent need for reentry support. Ide Project connects exonerees with resources for exoneree reentry assistance, financial recovery, and rebuilding after wrongful conviction.
+            The statistics behind systemic struggles exonerees face reveal the reality of wrongful conviction and the urgent need for reentry support. The Ide Project connects exonerees with resources for exoneree reentry assistance, financial recovery, and rebuilding after wrongful conviction.
           </p>
         </div>
 

@@ -367,7 +367,7 @@ export function GuidesHub() {
             <span className="text-balance">Guides & Tutorials</span>
           </h1>
           <p className="text-lg leading-relaxed text-muted-foreground lg:text-xl">
-            Ide Project provides comprehensive reentry guides, tutorial videos, and checklists to help exonerees navigate reentry successfully. Learn at your own pace with resources covering financial literacy, employment support, housing assistance, legal rights, and more. Get expert guidance on exoneree reentry support from our curated collection of guides.
+            The Ide Project provides comprehensive reentry guides, tutorial videos, and checklists to help exonerees navigate reentry successfully. Learn at your own pace with resources covering financial literacy, employment support, housing assistance, legal rights, and more. Get expert guidance on exoneree reentry support from our curated collection of guides.
           </p>
         </div>
 

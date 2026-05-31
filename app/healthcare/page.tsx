@@ -4,9 +4,9 @@ import { Card, CardContent } from '@/components/ui/card'
 import { ExternalLink, Heart, Shield, DollarSign, Phone, AlertCircle } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Exoneree Healthcare & Insurance Resources | Ide Project',
+  title: 'Exoneree Healthcare & Insurance Resources | The Ide Project',
   description:
-    'Ide Project provides healthcare resources for exonerees including Medicaid access, insurance options, mental health services, and medical support. Get guidance on exoneree healthcare, Medicaid enrollment, and insurance coverage.',
+    'The Ide Project provides healthcare resources for exonerees including Medicaid access, insurance options, mental health services, and medical support. Get guidance on exoneree healthcare, Medicaid enrollment, and insurance coverage.',
 }
 
 interface Resource {

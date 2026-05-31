@@ -4,9 +4,9 @@ import { Card, CardContent } from '@/components/ui/card'
 import { ExternalLink, Phone, Briefcase, TrendingDown, UserX, DollarSign, Heart } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Exoneree Employment Support & Job Training | Ide Project',
+  title: 'Exoneree Employment Support & Job Training | The Ide Project',
   description:
-    'Ide Project provides employment support for exonerees, including job training, resume assistance, and connections to second chance employers. Find exoneree jobs and career resources to rebuild after wrongful conviction.',
+    'The Ide Project provides employment support for exonerees, including job training, resume assistance, and connections to second chance employers. Find exoneree jobs and career resources to rebuild after wrongful conviction.',
 }
 
 const employmentStats = [

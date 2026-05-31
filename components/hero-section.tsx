@@ -21,7 +21,7 @@ export function HeroSection() {
           </h1>
 
           <p className="mb-10 max-w-2xl text-lg leading-relaxed text-primary-foreground/85 md:text-xl lg:text-2xl">
-            Ide Project, led by youth changemakers, connects exonerees nationwide with verified reentry support organizations, housing resources, job training programs, and community advocacy. Get help after wrongful conviction with expert guidance on reentry support, exoneree resources, and building your new life.
+            The Ide Project, led by youth changemakers, connects exonerees nationwide with verified reentry support organizations, housing resources, job training programs, and community advocacy. Get help after wrongful conviction with expert guidance on reentry support, exoneree resources, and building your new life.
           </p>
 
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
