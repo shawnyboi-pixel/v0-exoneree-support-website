@@ -16,12 +16,12 @@ export function HeroSection() {
 
           <h1 className="mb-6 font-serif text-4xl font-bold leading-tight tracking-tight text-primary-foreground md:text-5xl lg:text-6xl xl:text-7xl">
             <span className="text-balance">
-              The Ide Project
+              Ide Project
             </span>
           </h1>
 
           <p className="mb-10 max-w-2xl text-lg leading-relaxed text-primary-foreground/85 md:text-xl lg:text-2xl">
-            The IDE Project, led by youth changemakers, connects exonerees nationwide with verified reentry support organizations, housing resources, job training programs, and community advocacy. Get help after wrongful conviction with expert guidance on reentry support, exoneree resources, and building your new life.
+            Ide Project, led by youth changemakers, connects exonerees nationwide with verified reentry support organizations, housing resources, job training programs, and community advocacy. Get help after wrongful conviction with expert guidance on reentry support, exoneree resources, and building your new life.
           </p>
 
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">

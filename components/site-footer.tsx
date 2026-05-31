@@ -9,7 +9,7 @@ export function SiteFooter() {
             <div className="mb-4">
               <div>
                 <span className="text-base font-semibold text-primary-foreground lg:text-lg">
-                  The IDE Project
+                  Ide Project
                 </span>
                 <p className="text-xs font-medium text-primary-foreground/70 lg:text-sm">
                   Youth Led Initiative
@@ -17,7 +17,7 @@ export function SiteFooter() {
               </div>
             </div>
             <p className="max-w-xs text-sm leading-relaxed text-primary-foreground/60 lg:text-base">
-              The IDE Project is a youth-led initiative connecting exonerees nationwide with verified reentry support organizations, housing assistance, employment programs, legal resources, and community advocacy. We provide comprehensive reentry support and exoneree resources to help rebuild lives after wrongful conviction.
+              Ide Project is a youth-led initiative connecting exonerees nationwide with verified reentry support organizations, housing assistance, employment programs, legal resources, and community advocacy. We provide comprehensive reentry support and exoneree resources to help rebuild lives after wrongful conviction.
             </p>
           </div>
 

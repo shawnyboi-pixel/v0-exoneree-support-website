@@ -7,9 +7,9 @@ import {
 import { ExternalLink, Home, DollarSign, TrendingDown } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Exoneree Housing Resources & Rental Support | The IDE Project',
+  title: 'Exoneree Housing Resources & Rental Support | Ide Project',
   description:
-    'The IDE Project provides housing assistance for exonerees including affordable housing options, landlord information, rental support, and housing organizations. Get help finding housing after exoneration.',
+    'Ide Project provides housing assistance for exonerees including affordable housing options, landlord information, rental support, and housing organizations. Get help finding housing after exoneration.',
 }
 
 const dallasStats = [

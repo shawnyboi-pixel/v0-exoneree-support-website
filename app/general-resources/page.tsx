@@ -16,9 +16,9 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Daily Life Resources for Exonerees | The IDE Project',
+  title: 'Daily Life Resources for Exonerees | Ide Project',
   description:
-    'The IDE Project connects exonerees with daily life resources including food assistance, affordable stores, transportation, libraries, community events, and recreation. Find local resources in Dallas for exoneree reintegration and community support.',
+    'Ide Project connects exonerees with daily life resources including food assistance, affordable stores, transportation, libraries, community events, and recreation. Find local resources in Dallas for exoneree reintegration and community support.',
 }
 
 interface TipCategory {
