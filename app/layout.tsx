@@ -20,6 +20,10 @@ export const metadata: Metadata = {
   title: 'The Ide Project | Helping Exonerees Every Step of the Way Through',
   description:
     'The Ide Project is a platform dedicated to supporting post-release exonerees.',
+  icons: {
+    icon: '/favicon.png',
+    apple: '/favicon.png',
+  },
 }
 
 export const viewport: Viewport = {
