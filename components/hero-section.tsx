@@ -16,7 +16,7 @@ export function HeroSection() {
 
           <h1 className="mb-6 font-serif text-4xl font-bold leading-tight tracking-tight text-primary-foreground md:text-5xl lg:text-6xl xl:text-7xl">
             <span className="text-balance">
-              We make reentry possible.
+              The Ide Project
             </span>
           </h1>
 
