@@ -26,7 +26,7 @@ export function HeroSection() {
 
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
             <Link
-              href="/general-resources"
+              href="/guides"
               className="group inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-accent-foreground transition-gentle shadow-sm hover:shadow-md hover:scale-105 active:scale-95 lg:px-8 lg:py-4 lg:text-lg"
             >
               Get Help Now
