@@ -13,6 +13,7 @@ interface Guide {
   types: ('video' | 'pdf' | 'checklist' | 'article')[]
   duration: string
   image?: string
+  questionsAsked: number
 }
 
 const categories = [
@@ -42,6 +43,7 @@ const guides: Guide[] = [
     category: 'Financial Planning',
     types: ['video', 'pdf'],
     duration: '8 min video / 6 page guide',
+    questionsAsked: 0,
   },
   {
     id: '2',
@@ -50,6 +52,7 @@ const guides: Guide[] = [
     category: 'Financial Planning',
     types: ['video', 'pdf'],
     duration: '10 min video / 8 page guide',
+    questionsAsked: 0,
   },
   {
     id: '3',
@@ -58,6 +61,7 @@ const guides: Guide[] = [
     category: 'Financial Planning',
     types: ['video', 'pdf'],
     duration: '12 min video / 5 page guide',
+    questionsAsked: 0,
   },
   {
     id: '4',
@@ -66,6 +70,7 @@ const guides: Guide[] = [
     category: 'Financial Planning',
     types: ['article'],
     duration: '10 min read',
+    questionsAsked: 0,
   },
 
   // Job Search (4)
@@ -76,6 +81,7 @@ const guides: Guide[] = [
     category: 'Job Search',
     types: ['video'],
     duration: '12 min',
+    questionsAsked: 0,
   },
   {
     id: '6',
@@ -84,6 +90,7 @@ const guides: Guide[] = [
     category: 'Job Search',
     types: ['pdf'],
     duration: '8 pages',
+    questionsAsked: 0,
   },
   {
     id: '7',
@@ -92,6 +99,7 @@ const guides: Guide[] = [
     category: 'Job Search',
     types: ['checklist'],
     duration: '20 min',
+    questionsAsked: 0,
   },
   {
     id: '8',
@@ -100,6 +108,7 @@ const guides: Guide[] = [
     category: 'Job Search',
     types: ['article'],
     duration: '15 min read',
+    questionsAsked: 0,
   },
 
   // Housing (4)
@@ -110,6 +119,7 @@ const guides: Guide[] = [
     category: 'Housing',
     types: ['video'],
     duration: '10 min',
+    questionsAsked: 0,
   },
   {
     id: '10',
@@ -118,6 +128,7 @@ const guides: Guide[] = [
     category: 'Housing',
     types: ['pdf'],
     duration: '14 pages',
+    questionsAsked: 0,
   },
   {
     id: '11',
@@ -126,6 +137,7 @@ const guides: Guide[] = [
     category: 'Housing',
     types: ['checklist'],
     duration: '25 min',
+    questionsAsked: 0,
   },
   {
     id: '12',
@@ -134,6 +146,7 @@ const guides: Guide[] = [
     category: 'Housing',
     types: ['article'],
     duration: '8 min read',
+    questionsAsked: 0,
   },
 
   // Legal Rights (3)
@@ -144,6 +157,7 @@ const guides: Guide[] = [
     category: 'Legal Rights',
     types: ['video'],
     duration: '15 min',
+    questionsAsked: 0,
   },
   {
     id: '14',
@@ -152,6 +166,7 @@ const guides: Guide[] = [
     category: 'Legal Rights',
     types: ['pdf'],
     duration: '11 pages',
+    questionsAsked: 0,
   },
   {
     id: '15',
@@ -160,6 +175,7 @@ const guides: Guide[] = [
     category: 'Legal Rights',
     types: ['checklist'],
     duration: '20 min',
+    questionsAsked: 0,
   },
 
   // Healthcare (3)
@@ -170,6 +186,7 @@ const guides: Guide[] = [
     category: 'Healthcare',
     types: ['video'],
     duration: '9 min',
+    questionsAsked: 0,
   },
   {
     id: '17',
@@ -178,6 +195,7 @@ const guides: Guide[] = [
     category: 'Healthcare',
     types: ['pdf'],
     duration: '10 pages',
+    questionsAsked: 0,
   },
   {
     id: '18',
@@ -186,6 +204,7 @@ const guides: Guide[] = [
     category: 'Healthcare',
     types: ['checklist'],
     duration: '30 min',
+    questionsAsked: 0,
   },
 
   // Daily Life (3)
@@ -196,6 +215,7 @@ const guides: Guide[] = [
     category: 'Daily Life',
     types: ['video'],
     duration: '7 min',
+    questionsAsked: 0,
   },
   {
     id: '20',
@@ -204,6 +224,7 @@ const guides: Guide[] = [
     category: 'Daily Life',
     types: ['pdf'],
     duration: '6 pages',
+    questionsAsked: 0,
   },
   {
     id: '21',
@@ -212,6 +233,7 @@ const guides: Guide[] = [
     category: 'Daily Life',
     types: ['checklist'],
     duration: '45 min',
+    questionsAsked: 0,
   },
 
   // Technology (2)
@@ -222,6 +244,7 @@ const guides: Guide[] = [
     category: 'Technology',
     types: ['video'],
     duration: '6 min',
+    questionsAsked: 0,
   },
   {
     id: '23',
@@ -230,6 +253,7 @@ const guides: Guide[] = [
     category: 'Technology',
     types: ['article'],
     duration: '12 min read',
+    questionsAsked: 0,
   },
 
   // Mental Health (2)
@@ -240,6 +264,7 @@ const guides: Guide[] = [
     category: 'Mental Health',
     types: ['video'],
     duration: '20 min',
+    questionsAsked: 0,
   },
   {
     id: '25',
@@ -248,6 +273,7 @@ const guides: Guide[] = [
     category: 'Mental Health',
     types: ['pdf'],
     duration: '9 pages',
+    questionsAsked: 0,
   },
 
   // Additional guides to reach 30
@@ -258,6 +284,7 @@ const guides: Guide[] = [
     category: 'Financial Planning',
     types: ['video'],
     duration: '11 min',
+    questionsAsked: 0,
   },
   {
     id: '27',
@@ -266,6 +293,7 @@ const guides: Guide[] = [
     category: 'Job Search',
     types: ['article'],
     duration: '9 min read',
+    questionsAsked: 0,
   },
   {
     id: '28',
@@ -274,6 +302,7 @@ const guides: Guide[] = [
     category: 'Housing',
     types: ['pdf'],
     duration: '4 pages',
+    questionsAsked: 0,
   },
   {
     id: '29',
@@ -282,6 +311,7 @@ const guides: Guide[] = [
     category: 'Mental Health',
     types: ['video'],
     duration: '18 min',
+    questionsAsked: 0,
   },
   {
     id: '30',
@@ -290,6 +320,7 @@ const guides: Guide[] = [
     category: 'Daily Life',
     types: ['article'],
     duration: '7 min read',
+    questionsAsked: 0,
   },
 ]
 
@@ -499,6 +530,28 @@ export function GuidesHub() {
                       <div className="text-xs font-semibold text-accent group-hover:translate-x-1 transition-transform">
                         →
                       </div>
+                    </div>
+
+                    {/* Reddit-Style Q&A Section */}
+                    <div className="mt-4 pt-4 border-t border-border/20">
+                      <button className="w-full group/qa flex items-start gap-3 rounded-lg p-3 hover:bg-secondary/50 transition-colors">
+                        <div className="flex-shrink-0 mt-1">
+                          <div className="flex flex-col items-center gap-1 text-muted-foreground/60">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                            </svg>
+                            <span className="text-xs font-semibold text-accent">{guide.questionsAsked}</span>
+                          </div>
+                        </div>
+                        <div className="flex-grow text-left min-w-0">
+                          <p className="text-xs font-medium text-foreground group-hover/qa:text-accent transition-colors truncate">
+                            Ask a question
+                          </p>
+                          <p className="text-xs text-muted-foreground/60 truncate">
+                            Get answers from the community
+                          </p>
+                        </div>
+                      </button>
                     </div>
                   </CardContent>
                 </Card>
