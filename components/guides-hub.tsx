@@ -14,6 +14,7 @@ interface Guide {
   duration: string
   image?: string
   questionsAsked: number
+  slug?: string
 }
 
 const categories = [
@@ -44,6 +45,7 @@ const guides: Guide[] = [
     types: ['video', 'pdf'],
     duration: '8 min video / 6 page guide',
     questionsAsked: 0,
+    slug: 'opening-bank-account',
   },
   {
     id: '2',
@@ -491,8 +493,12 @@ export function GuidesHub() {
                 className="animate-fade-in-up"
                 style={{ animationDelay: `${idx * 30}ms` }}
               >
-                <Card className="group h-full border-border/60 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
-                  <CardContent className="flex h-full flex-col pt-6 lg:pt-8">
+                <Link
+                  href={guide.slug ? `/guides/${guide.slug}` : '#'}
+                  onClick={(e) => !guide.slug && e.preventDefault()}
+                >
+                  <Card className="group h-full border-border/60 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                    <CardContent className="flex h-full flex-col pt-6 lg:pt-8">
                     {/* Type Badges */}
                     <div className="mb-4 flex flex-wrap gap-2">
                       {guide.types.map((type) => (
@@ -555,6 +561,7 @@ export function GuidesHub() {
                     </div>
                   </CardContent>
                 </Card>
+                </Link>
               </div>
             ))}
           </div>
