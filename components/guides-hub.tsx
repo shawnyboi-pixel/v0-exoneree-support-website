@@ -4,7 +4,6 @@ import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { Search, FileText, Video, CheckCircle, X, MessageCircle } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
-import { CardQASection } from './card-qa-section'
 
 interface Guide {
   id: string
@@ -538,21 +537,6 @@ export function GuidesHub() {
                     <p className="mb-4 flex-grow text-sm leading-relaxed text-muted-foreground lg:text-base">
                       {guide.description}
                     </p>
-
-                    {/* Q&A Section */}
-                    <CardQASection
-                      cardId={guide.id}
-                      cardTitle={guide.title}
-                      sampleQuestions={[
-                        {
-                          id: '1',
-                          author: 'Community Member',
-                          question: guide.question || 'How does this guide apply to my situation?',
-                          replies: 0,
-                          timestamp: '1 week ago',
-                        },
-                      ]}
-                    />
 
                     {/* Footer */}
                     <div className="flex items-center justify-between pt-4 border-t border-border/30">
