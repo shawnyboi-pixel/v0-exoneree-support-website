@@ -329,7 +329,7 @@ const guides: Guide[] = [
     category: 'Daily Life',
     types: ['article'],
     duration: '7 min read',
-    question: 'What's the cheapest way to get around Dallas?',
+    question: "What's the cheapest way to get around Dallas?",
   },
 ]
 
