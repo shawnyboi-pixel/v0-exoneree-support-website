@@ -1,3 +1,7 @@
+'use client'
+
+import Image from 'next/image'
+
 export function AboutSection() {
   return (
     <>
@@ -29,12 +33,14 @@ export function AboutSection() {
             {/* Shawn Chen - Founder */}
             <div className="group animate-fade-in-up rounded-lg border border-border/40 bg-background p-6 transition-all duration-300 hover:border-accent/50 hover:shadow-lg">
               {/* Image Placeholder */}
-              <div className="mb-6 aspect-square w-full overflow-hidden rounded-lg bg-muted flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-muted-foreground text-sm font-medium">
-                    Image placeholder - 400x400px
-                  </div>
-                </div>
+              <div className="mb-6 aspect-square w-full overflow-hidden rounded-lg bg-muted">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/4DEBE52B-B88F-4E52-AF59-C0E66F43DA52_1_201_a-b1Q0tDzHulBr9mrpDOokWcdW8CeCsc.jpeg"
+                  alt="Shawn Chen"
+                  width={400}
+                  height={400}
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               {/* Member Info */}
