@@ -1,8 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Mail, Linkedin, Instagram, MessageCircle } from 'lucide-react'
-import { Card, CardContent } from '@/components/ui/card'
+import { Linkedin, Instagram, MessageCircle } from 'lucide-react'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -20,7 +19,6 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
     console.log('[v0] Form submitted:', formData)
     setSubmitted(true)
     setTimeout(() => {
@@ -31,155 +29,129 @@ export default function ContactPage() {
 
   return (
     <section className="bg-background py-20 md:py-28 lg:py-32">
-      <div className="mx-auto max-w-4xl px-6 lg:px-8">
-        <div className="mb-12 animate-fade-in-up">
+      <div className="mx-auto max-w-2xl px-6 lg:px-8">
+        <div className="mb-16 animate-fade-in-up">
           <h1 className="font-serif text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl mb-4">
             <span className="text-balance">Get in Touch</span>
           </h1>
-          <p className="text-lg text-foreground/70">We&apos;d love to hear from you. Reach out to us with questions, feedback, or collaboration opportunities.</p>
+          <p className="text-lg text-foreground/70">We&apos;d love to hear from you. Reach out with questions, feedback, or collaboration opportunities.</p>
         </div>
 
-        <div className="grid gap-12 md:grid-cols-3 mb-12">
-          {/* Email Cards */}
-          <Card className="border-border/60">
-            <CardContent className="pt-8">
-              <div className="flex items-start gap-4">
-                <div className="flex size-12 items-center justify-center rounded-lg bg-accent/10">
-                  <Mail className="size-6 text-accent" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-foreground mb-2">Primary Email</h3>
-                  <a href="mailto:shawnxachen11@gmail.com" className="text-accent hover:text-accent/80 transition-colors break-all">
-                    shawnxachen11@gmail.com
-                  </a>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+        {/* Email Contact Info */}
+        <div className="mb-16">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-foreground/60 mb-6">Email</h2>
+          <div className="space-y-4 text-lg">
+            <a href="mailto:shawnxachen11@gmail.com" className="inline-block text-accent hover:text-accent/80 transition-colors">
+              shawnxachen11@gmail.com
+            </a>
+            <br />
+            <a href="mailto:shawn@youthforinnocence.org" className="inline-block text-accent hover:text-accent/80 transition-colors">
+              shawn@youthforinnocence.org
+            </a>
+          </div>
+        </div>
 
-          <Card className="border-border/60">
-            <CardContent className="pt-8">
-              <div className="flex items-start gap-4">
-                <div className="flex size-12 items-center justify-center rounded-lg bg-accent/10">
-                  <Mail className="size-6 text-accent" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-foreground mb-2">Organization Email</h3>
-                  <a href="mailto:shawn@youthforinnocence.org" className="text-accent hover:text-accent/80 transition-colors break-all">
-                    shawn@youthforinnocence.org
-                  </a>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Social Media */}
-          <Card className="border-border/60">
-            <CardContent className="pt-8">
-              <h3 className="font-semibold text-foreground mb-4">Connect With Us</h3>
-              <div className="flex gap-4">
-                <button className="flex size-12 items-center justify-center rounded-full bg-accent/10 text-accent hover:bg-accent/20 transition-colors">
-                  <Linkedin className="size-6" />
-                </button>
-                <button className="flex size-12 items-center justify-center rounded-full bg-accent/10 text-accent hover:bg-accent/20 transition-colors">
-                  <Instagram className="size-6" />
-                </button>
-                <button className="flex size-12 items-center justify-center rounded-full bg-accent/10 text-accent hover:bg-accent/20 transition-colors">
-                  <MessageCircle className="size-6" />
-                </button>
-              </div>
-            </CardContent>
-          </Card>
+        {/* Social Connect */}
+        <div className="mb-16">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-foreground/60 mb-6">Connect</h2>
+          <div className="flex gap-4">
+            <button className="flex size-12 items-center justify-center rounded-full border-2 border-accent/40 text-accent hover:border-accent hover:bg-accent/5 transition-all">
+              <Linkedin className="size-5" />
+            </button>
+            <button className="flex size-12 items-center justify-center rounded-full border-2 border-accent/40 text-accent hover:border-accent hover:bg-accent/5 transition-all">
+              <Instagram className="size-5" />
+            </button>
+            <button className="flex size-12 items-center justify-center rounded-full border-2 border-accent/40 text-accent hover:border-accent hover:bg-accent/5 transition-all">
+              <MessageCircle className="size-5" />
+            </button>
+          </div>
         </div>
 
         {/* Contact Form */}
-        <Card className="border-border/60">
-          <CardContent className="pt-8 md:pt-10">
-            <h2 className="text-2xl font-bold text-foreground mb-8">Send us a Message</h2>
+        <div className="border-t border-border/30 pt-16">
+          <h2 className="text-2xl font-bold text-foreground mb-8">Send a Message</h2>
 
-            {submitted ? (
-              <div className="rounded-lg bg-green-50/80 border border-green-200/60 p-6 text-center">
-                <p className="text-lg font-semibold text-green-900 mb-2">Thank you for reaching out!</p>
-                <p className="text-green-800">We&apos;ll get back to you as soon as possible.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid gap-6 md:grid-cols-2">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-semibold text-foreground mb-2">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-semibold text-foreground mb-2">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-                </div>
-
+          {submitted ? (
+            <div className="rounded-lg bg-accent/5 border border-accent/20 p-6 text-center">
+              <p className="text-lg font-semibold text-accent mb-2">Thank you!</p>
+              <p className="text-foreground/70">We&apos;ll get back to you as soon as possible.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid gap-6 md:grid-cols-2">
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-semibold text-foreground mb-2">
-                    Subject
+                  <label htmlFor="name" className="block text-sm font-semibold text-foreground mb-2">
+                    Name
                   </label>
                   <input
                     type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
+                    id="name"
+                    name="name"
+                    value={formData.name}
                     onChange={handleChange}
                     required
                     className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent"
-                    placeholder="What is this about?"
+                    placeholder="Your name"
                   />
                 </div>
-
                 <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-foreground mb-2">
-                    Message
+                  <label htmlFor="email" className="block text-sm font-semibold text-foreground mb-2">
+                    Email
                   </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
                     onChange={handleChange}
                     required
-                    rows={6}
-                    className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent resize-none"
-                    placeholder="Your message here..."
+                    className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent"
+                    placeholder="your@email.com"
                   />
                 </div>
+              </div>
 
-                <button
-                  type="submit"
-                  className="w-full rounded-lg bg-accent px-6 py-3 font-semibold text-background hover:bg-accent/90 transition-colors"
-                >
-                  Send Message
-                </button>
-              </form>
-            )}
-          </CardContent>
-        </Card>
+              <div>
+                <label htmlFor="subject" className="block text-sm font-semibold text-foreground mb-2">
+                  Subject
+                </label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                  className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent"
+                  placeholder="What is this about?"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-semibold text-foreground mb-2">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={6}
+                  className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent resize-none"
+                  placeholder="Your message here..."
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full rounded-lg bg-accent px-6 py-3 font-semibold text-background hover:bg-accent/90 transition-colors"
+              >
+                Send Message
+              </button>
+            </form>
+          )}
+        </div>
       </div>
     </section>
   )
-}
