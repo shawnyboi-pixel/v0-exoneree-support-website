@@ -204,7 +204,7 @@ export default function BankAccountGuidePage() {
                 </div>
                 <a
                   href="/guides/opening-bank-account-guide.pdf"
-                  download
+                  download="Opening-Your-First-Bank-Account.pdf"
                   className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-primary-foreground rounded-lg hover:bg-accent/90 transition-colors font-medium text-sm"
                 >
                   <Download className="w-4 h-4" />
