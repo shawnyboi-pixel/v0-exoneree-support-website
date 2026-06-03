@@ -49,7 +49,7 @@ export function AboutSection() {
                 </div>
 
                 <p className="text-sm leading-relaxed text-foreground/80">
-                  From Dallas, Texas. Attends Stanford OHS. Volunteered in wrongful conviction advocacy for 2 years and founded The Ide Project to connect exonerees with essential reentry resources and support.
+                  Based in Dallas, Texas. A passionate advocate for wrongful conviction justice with 2 years of direct volunteer experience. Shawn founded The Ide Project to provide exonerees with the resources and support they need to rebuild their lives successfully.
                 </p>
               </div>
             </div>
