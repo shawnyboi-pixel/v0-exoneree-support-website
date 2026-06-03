@@ -18,29 +18,7 @@ interface GuideQASectionProps {
 }
 
 export function GuideQASection({ guideTitle, guideId }: GuideQASectionProps) {
-  const [questions, setQuestions] = useState<Question[]>([
-    {
-      id: '1',
-      author: 'Marcus T.',
-      question: 'Do banks ask about your criminal history?',
-      replies: 5,
-      timestamp: '2 days ago',
-    },
-    {
-      id: '2',
-      author: 'Jessica M.',
-      question: 'What if I have bad credit or no credit history?',
-      replies: 8,
-      timestamp: '1 week ago',
-    },
-    {
-      id: '3',
-      author: 'DeAndre L.',
-      question: 'Are there banks that specifically work with exonerees?',
-      replies: 3,
-      timestamp: '3 days ago',
-    },
-  ])
+  const [questions, setQuestions] = useState<Question[]>([])
   const [newQuestion, setNewQuestion] = useState('')
   const [showForm, setShowForm] = useState(false)
   const [expandedId, setExpandedId] = useState<string | null>(null)
@@ -117,51 +95,59 @@ export function GuideQASection({ guideTitle, guideId }: GuideQASectionProps) {
 
       {/* Questions List */}
       <div className="space-y-4">
-        {questions.map((q) => (
-          <Card key={q.id} className="border-border/60 hover:shadow-md transition-shadow cursor-pointer">
-            <CardContent className="pt-6">
-              <button
-                onClick={() => setExpandedId(expandedId === q.id ? null : q.id)}
-                className="w-full text-left"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-grow">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="font-semibold text-foreground">{q.author}</span>
-                      <span className="text-xs text-foreground/50">• {q.timestamp}</span>
+        {questions.length === 0 ? (
+          <div className="text-center py-12">
+            <MessageCircle className="w-12 h-12 text-foreground/30 mx-auto mb-4" />
+            <p className="text-lg text-foreground/60 font-medium">No questions yet</p>
+            <p className="text-sm text-foreground/50">Be the first to ask a question about this guide!</p>
+          </div>
+        ) : (
+          questions.map((q) => (
+            <Card key={q.id} className="border-border/60 hover:shadow-md transition-shadow cursor-pointer">
+              <CardContent className="pt-6">
+                <button
+                  onClick={() => setExpandedId(expandedId === q.id ? null : q.id)}
+                  className="w-full text-left"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-grow">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="font-semibold text-foreground">{q.author}</span>
+                        <span className="text-xs text-foreground/50">• {q.timestamp}</span>
+                      </div>
+                      <p className="text-lg font-medium text-foreground mb-3">{q.question}</p>
+                      <div className="flex items-center gap-4 text-sm text-foreground/60">
+                        <span className="inline-flex items-center gap-1">
+                          <MessageCircle className="w-4 h-4" />
+                          {q.replies} {q.replies === 1 ? 'reply' : 'replies'}
+                        </span>
+                      </div>
                     </div>
-                    <p className="text-lg font-medium text-foreground mb-3">{q.question}</p>
-                    <div className="flex items-center gap-4 text-sm text-foreground/60">
-                      <span className="inline-flex items-center gap-1">
-                        <MessageCircle className="w-4 h-4" />
-                        {q.replies} {q.replies === 1 ? 'reply' : 'replies'}
-                      </span>
-                    </div>
+                    <ChevronDown
+                      className={`w-5 h-5 text-foreground/50 transition-transform ${
+                        expandedId === q.id ? 'rotate-180' : ''
+                      }`}
+                    />
                   </div>
-                  <ChevronDown
-                    className={`w-5 h-5 text-foreground/50 transition-transform ${
-                      expandedId === q.id ? 'rotate-180' : ''
-                    }`}
-                  />
-                </div>
-              </button>
+                </button>
 
-              {/* Expanded View */}
-              {expandedId === q.id && (
-                <div className="mt-6 pt-6 border-t border-border/30">
-                  <div className="bg-secondary/50 rounded-lg p-4 mb-4">
-                    <p className="text-sm text-foreground/70">
-                      This Q&A feature is coming soon! You&apos;ll be able to see replies and join the discussion here.
-                    </p>
+                {/* Expanded View */}
+                {expandedId === q.id && (
+                  <div className="mt-6 pt-6 border-t border-border/30">
+                    <div className="bg-secondary/50 rounded-lg p-4 mb-4">
+                      <p className="text-sm text-foreground/70">
+                        This Q&A feature is coming soon! You&apos;ll be able to see replies and join the discussion here.
+                      </p>
+                    </div>
+                    <button className="text-accent hover:text-accent/80 font-medium text-sm">
+                      View all {q.replies} replies →
+                    </button>
                   </div>
-                  <button className="text-accent hover:text-accent/80 font-medium text-sm">
-                    View all {q.replies} replies →
-                  </button>
-                </div>
-              )}
-            </CardContent>
-          </Card>
-        ))}
+                )}
+              </CardContent>
+            </Card>
+          ))
+        )}
       </div>
 
       {/* Help Text */}
