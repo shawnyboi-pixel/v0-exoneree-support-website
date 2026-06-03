@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { ArrowLeft, Download } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
+import { GuideQASection } from '@/components/guide-qa-section'
 
 export default function BankAccountGuidePage() {
   return (
@@ -231,6 +232,12 @@ export default function BankAccountGuidePage() {
           </Link>
           <span className="text-sm text-muted-foreground">By Shawn Chen | Updated June 1st, 2026</span>
         </div>
+
+        {/* Q&A Section */}
+        <GuideQASection
+          guideTitle="Opening Your First Bank Account"
+          guideId="opening-bank-account"
+        />
       </article>
     </main>
   )

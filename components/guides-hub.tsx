@@ -538,18 +538,6 @@ export function GuidesHub() {
                       {guide.description}
                     </p>
 
-                    {/* Q&A Section */}
-                    {guide.question && (
-                      <div className="mb-4 rounded-lg bg-secondary/50 p-3 border border-border/30">
-                        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2 lg:text-xs">
-                          Q&A
-                        </p>
-                        <p className="text-sm leading-relaxed text-foreground lg:text-sm">
-                          {guide.question}
-                        </p>
-                      </div>
-                    )}
-
                     {/* Footer */}
                     <div className="flex items-center justify-between pt-4 border-t border-border/30">
                       <div className="flex flex-col gap-1">
