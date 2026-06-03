@@ -9,12 +9,11 @@ const aboutLinks = [
   { label: 'Home', href: '/' },
   { label: 'What the Exonerees Say', href: '/#statistics' },
   { label: 'What we do', href: '/#what-we-do' },
-  { label: 'Members', href: '/#members' },
 ]
 
 const navLinks = [
   { label: 'About', href: '/', isDropdown: true },
-  { label: 'Our Team', href: '/#members' },
+  { label: 'Our Team', href: '/our-team' },
   { label: 'Guides & Tutorials', href: '/guides' },
   { label: 'Support', href: '/support' },
   { label: 'Contact', href: '/contact' },
