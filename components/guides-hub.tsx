@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
-import { Search, FileText, Video, CheckCircle, X } from 'lucide-react'
+import { Search, FileText, Video, CheckCircle, X, MessageCircle } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 
 interface Guide {
@@ -14,6 +14,8 @@ interface Guide {
   duration: string
   image?: string
   slug?: string
+  hasQA?: boolean
+  question?: string
 }
 
 const categories = [
@@ -44,6 +46,8 @@ const guides: Guide[] = [
     types: ['video', 'pdf'],
     duration: '8 min video / 6 page guide',
     slug: 'opening-bank-account',
+    hasQA: true,
+    question: 'Do banks reject applications because of my criminal history?',
   },
   {
     id: '2',
@@ -52,6 +56,8 @@ const guides: Guide[] = [
     category: 'Financial Planning',
     types: ['video', 'pdf'],
     duration: '10 min video / 8 page guide',
+    hasQA: true,
+    question: 'How long does it take to build a decent credit score?',
   },
   {
     id: '3',
@@ -60,6 +66,7 @@ const guides: Guide[] = [
     category: 'Financial Planning',
     types: ['video', 'pdf'],
     duration: '12 min video / 5 page guide',
+    question: 'What percentage of my income should I save each month?',
   },
   {
     id: '4',
@@ -68,6 +75,7 @@ const guides: Guide[] = [
     category: 'Financial Planning',
     types: ['article'],
     duration: '10 min read',
+    question: 'Am I eligible for state compensation if I was wrongfully convicted?',
   },
 
   // Job Search (4)
@@ -78,6 +86,8 @@ const guides: Guide[] = [
     category: 'Job Search',
     types: ['video'],
     duration: '12 min',
+    hasQA: true,
+    question: 'Should I mention my exoneration on my resume?',
   },
   {
     id: '6',
@@ -86,6 +96,7 @@ const guides: Guide[] = [
     category: 'Job Search',
     types: ['pdf'],
     duration: '8 pages',
+    question: 'What do I say when asked about my background in an interview?',
   },
   {
     id: '7',
@@ -94,6 +105,7 @@ const guides: Guide[] = [
     category: 'Job Search',
     types: ['checklist'],
     duration: '20 min',
+    question: 'How do I build confidence before my first interview?',
   },
   {
     id: '8',
@@ -102,6 +114,7 @@ const guides: Guide[] = [
     category: 'Job Search',
     types: ['article'],
     duration: '15 min read',
+    question: 'Which companies are known for hiring people with conviction histories?',
   },
 
   // Housing (4)
@@ -112,6 +125,7 @@ const guides: Guide[] = [
     category: 'Housing',
     types: ['video'],
     duration: '10 min',
+    question: 'Can a landlord refuse to rent to me because of my conviction?',
   },
   {
     id: '10',
@@ -120,6 +134,8 @@ const guides: Guide[] = [
     category: 'Housing',
     types: ['pdf'],
     duration: '14 pages',
+    hasQA: true,
+    question: 'What are my legal protections as a tenant in Texas?',
   },
   {
     id: '11',
@@ -128,6 +144,7 @@ const guides: Guide[] = [
     category: 'Housing',
     types: ['checklist'],
     duration: '25 min',
+    question: 'What documents do I need to apply for an apartment?',
   },
   {
     id: '12',
@@ -136,6 +153,7 @@ const guides: Guide[] = [
     category: 'Housing',
     types: ['article'],
     duration: '8 min read',
+    question: 'How do I know if a housing listing is a scam?',
   },
 
   // Legal Rights (3)
@@ -146,6 +164,8 @@ const guides: Guide[] = [
     category: 'Legal Rights',
     types: ['video'],
     duration: '15 min',
+    hasQA: true,
+    question: 'What government benefits am I eligible for as an exoneree?',
   },
   {
     id: '14',
@@ -154,6 +174,7 @@ const guides: Guide[] = [
     category: 'Legal Rights',
     types: ['pdf'],
     duration: '11 pages',
+    question: 'Can I get my record expunged after exoneration?',
   },
   {
     id: '15',
@@ -162,6 +183,7 @@ const guides: Guide[] = [
     category: 'Legal Rights',
     types: ['checklist'],
     duration: '20 min',
+    question: 'Which legal documents should I keep safe after exoneration?',
   },
 
   // Healthcare (3)
@@ -172,6 +194,8 @@ const guides: Guide[] = [
     category: 'Healthcare',
     types: ['video'],
     duration: '9 min',
+    hasQA: true,
+    question: 'What documents do I need to apply for Medicaid in Texas?',
   },
   {
     id: '17',
@@ -180,6 +204,7 @@ const guides: Guide[] = [
     category: 'Healthcare',
     types: ['pdf'],
     duration: '10 pages',
+    question: 'Are mental health services free for exonerees?',
   },
   {
     id: '18',
@@ -188,6 +213,7 @@ const guides: Guide[] = [
     category: 'Healthcare',
     types: ['checklist'],
     duration: '30 min',
+    question: 'What type of health insurance is best for someone starting out?',
   },
 
   // Daily Life (3)
@@ -198,6 +224,7 @@ const guides: Guide[] = [
     category: 'Daily Life',
     types: ['video'],
     duration: '7 min',
+    question: 'Do I need to disclose my conviction history to get a driver license?',
   },
   {
     id: '20',
@@ -206,6 +233,7 @@ const guides: Guide[] = [
     category: 'Daily Life',
     types: ['pdf'],
     duration: '6 pages',
+    question: 'Can utility companies deny service based on my record?',
   },
   {
     id: '21',
@@ -214,6 +242,7 @@ const guides: Guide[] = [
     category: 'Daily Life',
     types: ['checklist'],
     duration: '45 min',
+    question: 'What are the most important things to do in the first week back?',
   },
 
   // Technology (2)
@@ -224,6 +253,7 @@ const guides: Guide[] = [
     category: 'Technology',
     types: ['video'],
     duration: '6 min',
+    question: 'How do I protect my privacy when using social media?',
   },
   {
     id: '23',
@@ -232,6 +262,7 @@ const guides: Guide[] = [
     category: 'Technology',
     types: ['article'],
     duration: '12 min read',
+    question: 'What should I avoid sharing on the internet?',
   },
 
   // Mental Health (2)
@@ -242,6 +273,7 @@ const guides: Guide[] = [
     category: 'Mental Health',
     types: ['video'],
     duration: '20 min',
+    question: 'How do I cope with the emotional challenges of reentry?',
   },
   {
     id: '25',
@@ -250,6 +282,7 @@ const guides: Guide[] = [
     category: 'Mental Health',
     types: ['pdf'],
     duration: '9 pages',
+    question: 'What are effective coping strategies for anxiety?',
   },
 
   // Additional guides to reach 30
@@ -260,6 +293,7 @@ const guides: Guide[] = [
     category: 'Financial Planning',
     types: ['video'],
     duration: '11 min',
+    question: 'Do I have to file taxes if I just started working?',
   },
   {
     id: '27',
@@ -268,6 +302,7 @@ const guides: Guide[] = [
     category: 'Job Search',
     types: ['article'],
     duration: '9 min read',
+    question: 'How do I network professionally without disclosing my background?',
   },
   {
     id: '28',
@@ -276,6 +311,7 @@ const guides: Guide[] = [
     category: 'Housing',
     types: ['pdf'],
     duration: '4 pages',
+    question: 'How do I set boundaries with a new roommate?',
   },
   {
     id: '29',
@@ -284,6 +320,7 @@ const guides: Guide[] = [
     category: 'Mental Health',
     types: ['video'],
     duration: '18 min',
+    question: 'How do I reconnect with family after being away?',
   },
   {
     id: '30',
@@ -292,6 +329,7 @@ const guides: Guide[] = [
     category: 'Daily Life',
     types: ['article'],
     duration: '7 min read',
+    question: "What's the cheapest way to get around Dallas?",
   },
 ]
 
@@ -468,18 +506,26 @@ export function GuidesHub() {
                 >
                   <Card className="group h-full border-border/60 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
                     <CardContent className="flex h-full flex-col pt-6 lg:pt-8">
-                    {/* Type Badges */}
-                    <div className="mb-4 flex flex-wrap gap-2">
-                      {guide.types.map((type) => (
-                        <div key={type} className="flex items-center gap-2">
-                          <div className="flex size-7 items-center justify-center rounded-lg bg-accent/10 lg:size-8">
-                            <ResourceTypeIcon type={type} />
+                    {/* Type Badges and QA Badge */}
+                    <div className="mb-4 flex flex-wrap gap-2 items-start">
+                      <div className="flex flex-wrap gap-2 flex-1">
+                        {guide.types.map((type) => (
+                          <div key={type} className="flex items-center gap-2">
+                            <div className="flex size-7 items-center justify-center rounded-lg bg-accent/10 lg:size-8">
+                              <ResourceTypeIcon type={type} />
+                            </div>
+                            <span className="inline-block rounded-full bg-accent/10 px-2 py-1 text-xs font-semibold text-accent lg:text-sm">
+                              {getTypeLabel(type)}
+                            </span>
                           </div>
-                          <span className="inline-block rounded-full bg-accent/10 px-2 py-1 text-xs font-semibold text-accent lg:text-sm">
-                            {getTypeLabel(type)}
-                          </span>
+                        ))}
+                      </div>
+                      {guide.hasQA && (
+                        <div className="flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-700 lg:text-sm">
+                          <MessageCircle className="size-3 lg:size-4" />
+                          <span>QA</span>
                         </div>
-                      ))}
+                      )}
                     </div>
 
                     {/* Title */}
@@ -491,6 +537,18 @@ export function GuidesHub() {
                     <p className="mb-4 flex-grow text-sm leading-relaxed text-muted-foreground lg:text-base">
                       {guide.description}
                     </p>
+
+                    {/* Q&A Section */}
+                    {guide.question && (
+                      <div className="mb-4 rounded-lg bg-secondary/50 p-3 border border-border/30">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2 lg:text-xs">
+                          Q&A
+                        </p>
+                        <p className="text-sm leading-relaxed text-foreground lg:text-sm">
+                          {guide.question}
+                        </p>
+                      </div>
+                    )}
 
                     {/* Footer */}
                     <div className="flex items-center justify-between pt-4 border-t border-border/30">
