@@ -15,7 +15,6 @@ const aboutLinks = [
 const navLinks = [
   { label: 'About', href: '/', isDropdown: true },
   { label: 'Guides & Tutorials', href: '/guides' },
-  { label: 'Ask a Question', href: '/qa' },
   { label: 'Support', href: '/support' },
   { label: 'Contact', href: '/contact' },
 ]
