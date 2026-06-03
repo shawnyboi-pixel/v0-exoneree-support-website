@@ -23,7 +23,37 @@ export function AboutSection() {
               </span>
             </h2>
           </div>
-          {/* Members section content to be added */}
+
+          {/* Members Grid */}
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {/* Shawn Chen - Founder */}
+            <div className="group animate-fade-in-up rounded-lg border border-border/40 bg-background p-6 transition-all duration-300 hover:border-accent/50 hover:shadow-lg">
+              {/* Image Placeholder */}
+              <div className="mb-6 aspect-square w-full overflow-hidden rounded-lg bg-muted flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-muted-foreground text-sm font-medium">
+                    Image placeholder - 400x400px
+                  </div>
+                </div>
+              </div>
+
+              {/* Member Info */}
+              <div className="space-y-3">
+                <div>
+                  <h3 className="text-lg font-bold text-foreground">
+                    Shawn Chen
+                  </h3>
+                  <p className="text-sm font-semibold text-accent">
+                    Founder
+                  </p>
+                </div>
+
+                <p className="text-sm leading-relaxed text-foreground/80">
+                  From Dallas, Texas. Attends Stanford OHS. Volunteered in wrongful conviction advocacy for 2 years and founded The Ide Project to connect exonerees with essential reentry resources and support.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </>
