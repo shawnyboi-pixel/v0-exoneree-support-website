@@ -35,7 +35,7 @@ export function AboutSection() {
               {/* Image Placeholder */}
               <div className="mb-6 aspect-square w-full overflow-hidden rounded-lg bg-muted">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/4DEBE52B-B88F-4E52-AF59-C0E66F43DA52_1_201_a-b1Q0tDzHulBr9mrpDOokWcdW8CeCsc.jpeg"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/4DEBE52B-B88F-4E52-AF59-C0E66F43DA52_1_201_a-Cpmtg1MXY9l3Qoi7lWmGFIa4MiPqeg.jpeg"
                   alt="Shawn Chen"
                   width={400}
                   height={400}
