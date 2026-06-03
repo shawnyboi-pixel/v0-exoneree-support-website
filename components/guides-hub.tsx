@@ -539,16 +539,19 @@ export function GuidesHub() {
                     </p>
 
                     {/* Q&A Section */}
-                    {guide.question && (
-                      <div className="mb-4 rounded-lg bg-secondary/50 p-3 border border-border/30">
-                        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2 lg:text-xs">
-                          Q&A
-                        </p>
-                        <p className="text-sm leading-relaxed text-foreground lg:text-sm">
-                          {guide.question}
-                        </p>
-                      </div>
-                    )}
+                    <CardQASection
+                      cardId={guide.id}
+                      cardTitle={guide.title}
+                      sampleQuestions={[
+                        {
+                          id: '1',
+                          author: 'Community Member',
+                          question: guide.question || 'How does this guide apply to my situation?',
+                          replies: 0,
+                          timestamp: '1 week ago',
+                        },
+                      ]}
+                    />
 
                     {/* Footer */}
                     <div className="flex items-center justify-between pt-4 border-t border-border/30">
