@@ -1,3 +1,7 @@
+'use client'
+
+import Image from 'next/image'
+
 export function AboutSection() {
   return (
     <>
@@ -23,7 +27,39 @@ export function AboutSection() {
               </span>
             </h2>
           </div>
-          {/* Members section content to be added */}
+
+          {/* Members Grid */}
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {/* Shawn Chen - Founder */}
+            <div className="group animate-fade-in-up rounded-lg border border-border/40 bg-background p-6 transition-all duration-300 hover:border-accent/50 hover:shadow-lg">
+              {/* Image Placeholder */}
+              <div className="mb-6 aspect-square w-full overflow-hidden rounded-lg bg-muted">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/4DEBE52B-B88F-4E52-AF59-C0E66F43DA52_1_201_a-Cpmtg1MXY9l3Qoi7lWmGFIa4MiPqeg.jpeg"
+                  alt="Shawn Chen"
+                  width={400}
+                  height={400}
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+
+              {/* Member Info */}
+              <div className="space-y-3">
+                <div>
+                  <h3 className="text-lg font-bold text-foreground">
+                    Shawn Chen
+                  </h3>
+                  <p className="text-sm font-semibold text-accent">
+                    Founder
+                  </p>
+                </div>
+
+                <p className="text-sm leading-relaxed text-foreground/80">
+                  Based in Dallas, Texas. A passionate advocate for wrongful conviction justice with 2 years of direct volunteer experience. Shawn founded The Ide Project to provide exonerees with the resources and support they need to rebuild their lives successfully.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </>
