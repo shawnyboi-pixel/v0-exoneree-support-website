@@ -1,24 +1,10 @@
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
-import { ArrowLeft, Download, MessageCircle, X } from 'lucide-react'
+import { ArrowLeft, Download } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 
 export default function BankAccountGuidePage() {
-  const [showQAForm, setShowQAForm] = useState(false)
-  const [questions, setQuestions] = useState<Array<{name: string; email: string; question: string; timestamp: string}>>([])
-  const [formData, setFormData] = useState({name: '', email: '', question: ''})
-
-  const handleSubmitQuestion = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (formData.name && formData.email && formData.question) {
-      setQuestions([...questions, {...formData, timestamp: new Date().toLocaleDateString()}])
-      setFormData({name: '', email: '', question: ''})
-      setShowQAForm(false)
-    }
-  }
-
   return (
     <main className="min-h-screen bg-background">
       {/* Header */}
@@ -228,134 +214,14 @@ export default function BankAccountGuidePage() {
           </Card>
         </section>
 
-        {/* Q&A Section */}
+        {/* Our Team Section */}
         <section className="mt-12">
           <div className="mb-6">
-            <h3 className="text-2xl font-bold text-foreground mb-2 flex items-center gap-2">
-              <MessageCircle className="w-6 h-6 text-accent" />
-              Questions from the Community
+            <h3 className="text-2xl font-bold text-foreground flex items-center gap-2">
+              Our Team
             </h3>
-            <p className="text-foreground/70">Have a question? Ask below and help others in the community.</p>
+            <p className="text-foreground/70 mt-2">This guide was created by passionate advocates dedicated to supporting exonerees.</p>
           </div>
-
-          <button
-            onClick={() => setShowQAForm(true)}
-            className="w-full mb-6 group flex items-start gap-3 rounded-lg p-4 hover:bg-secondary/50 transition-colors text-left border-2 border-accent/30 hover:border-accent/60"
-          >
-            <div className="flex-shrink-0 mt-1">
-              <div className="flex flex-col items-center gap-1 text-muted-foreground/60">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                </svg>
-                <span className="text-xs font-semibold text-accent">{questions.length}</span>
-              </div>
-            </div>
-            <div className="flex-grow min-w-0">
-              <p className="text-sm font-medium text-foreground group-hover:text-accent transition-colors">
-                Ask a question
-              </p>
-              <p className="text-xs text-muted-foreground/60">
-                Click to add your question
-              </p>
-            </div>
-          </button>
-
-          {/* Q&A Form Modal */}
-          {showQAForm && (
-            <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-              <Card className="w-full max-w-lg border-border/60">
-                <CardContent className="pt-6">
-                  <div className="flex items-center justify-between mb-6">
-                    <h4 className="text-lg font-bold text-foreground">Ask a Question</h4>
-                    <button
-                      onClick={() => setShowQAForm(false)}
-                      className="p-1 hover:bg-secondary rounded-lg transition-colors"
-                    >
-                      <X className="w-5 h-5 text-foreground/60" />
-                    </button>
-                  </div>
-
-                  <form onSubmit={handleSubmitQuestion} className="space-y-4">
-                    <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">Your Name</label>
-                      <input
-                        type="text"
-                        value={formData.name}
-                        onChange={(e) => setFormData({...formData, name: e.target.value})}
-                        className="w-full px-3 py-2 rounded-lg border border-border/60 bg-secondary/50 text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-accent"
-                        placeholder="Your name"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">Email</label>
-                      <input
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => setFormData({...formData, email: e.target.value})}
-                        className="w-full px-3 py-2 rounded-lg border border-border/60 bg-secondary/50 text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-accent"
-                        placeholder="your@email.com"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">Your Question</label>
-                      <textarea
-                        value={formData.question}
-                        onChange={(e) => setFormData({...formData, question: e.target.value})}
-                        className="w-full px-3 py-2 rounded-lg border border-border/60 bg-secondary/50 text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-accent resize-none"
-                        placeholder="What's your question?"
-                        rows={4}
-                        required
-                      />
-                    </div>
-
-                    <div className="flex gap-3">
-                      <button
-                        type="submit"
-                        className="flex-1 px-4 py-2 bg-accent text-primary-foreground rounded-lg hover:bg-accent/90 transition-colors font-medium"
-                      >
-                        Submit Question
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setShowQAForm(false)}
-                        className="flex-1 px-4 py-2 border border-border/60 text-foreground rounded-lg hover:bg-secondary/50 transition-colors font-medium"
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                  </form>
-                </CardContent>
-              </Card>
-            </div>
-          )}
-
-          {/* Display Questions */}
-          {questions.length > 0 && (
-            <div className="space-y-4 mt-6">
-              {questions.map((q, idx) => (
-                <Card key={idx} className="border-border/60">
-                  <CardContent className="pt-6">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
-                        <span className="text-sm font-semibold text-accent">{q.name[0].toUpperCase()}</span>
-                      </div>
-                      <div className="flex-grow">
-                        <div className="flex items-baseline justify-between mb-2">
-                          <h4 className="font-semibold text-foreground">{q.name}</h4>
-                          <span className="text-xs text-muted-foreground/60">{q.timestamp}</span>
-                        </div>
-                        <p className="text-foreground/80">{q.question}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          )}
         </section>
 
         {/* Footer Navigation */}
