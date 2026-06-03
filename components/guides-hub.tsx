@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { Search, FileText, Video, CheckCircle, X, MessageCircle } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
+import { CardQASection } from './card-qa-section'
 
 interface Guide {
   id: string
