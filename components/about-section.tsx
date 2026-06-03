@@ -1,62 +1,59 @@
 'use client'
 
-import Image from 'next/image'
-
 export function AboutSection() {
   return (
     <>
-      <section id="what-we-do" className="bg-background py-20 md:py-28 lg:py-32">
+      <section id="about" className="bg-secondary py-20 md:py-28 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mb-12 max-w-3xl lg:max-w-4xl animate-fade-in-up">
             <h2 className="font-serif text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl">
               <span className="text-balance">
-                What we do
+                About The Ide Project
               </span>
             </h2>
-          </div>
-          {/* What we do section content to be added */}
-        </div>
-      </section>
-
-      <section id="members" className="bg-secondary py-20 md:py-28 lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mb-12 max-w-3xl lg:max-w-4xl animate-fade-in-up">
-            <h2 className="font-serif text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl">
-              <span className="text-balance">
-                Members
-              </span>
-            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-foreground/80">
+              The Ide Project is a youth-led initiative dedicated to supporting exonerees through their reentry journey by providing essential resources, guidance, and community support.
+            </p>
           </div>
 
-          {/* Members Grid */}
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {/* Shawn Chen - Founder */}
-            <div className="group animate-fade-in-up rounded-lg border border-border/40 bg-background p-6 transition-all duration-300 hover:border-accent/50 hover:shadow-lg">
-              {/* Image Placeholder */}
-              <div className="mb-6 aspect-square w-full overflow-hidden rounded-lg bg-muted">
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/4DEBE52B-B88F-4E52-AF59-C0E66F43DA52_1_201_a-Cpmtg1MXY9l3Qoi7lWmGFIa4MiPqeg.jpeg"
-                  alt="Shawn Chen"
-                  width={400}
-                  height={400}
-                  className="w-full h-full object-cover object-center"
-                />
+          <div className="grid gap-12 md:grid-cols-2">
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-xl font-bold text-foreground mb-3">Our Mission</h3>
+                <p className="text-foreground/80 leading-relaxed">
+                  To empower individuals who have been exonerated from wrongful convictions by connecting them with comprehensive reentry support, practical resources, and a compassionate community dedicated to their successful integration back into society.
+                </p>
               </div>
 
-              {/* Member Info */}
-              <div className="space-y-3">
-                <div>
-                  <h3 className="text-lg font-bold text-foreground">
-                    Shawn Chen
-                  </h3>
-                  <p className="text-sm font-semibold text-accent">
-                    Founder
-                  </p>
-                </div>
-
-                <p className="text-sm leading-relaxed text-foreground/80">
-                  Based in Dallas, Texas. A passionate advocate for wrongful conviction justice with 2 years of direct volunteer experience. Shawn founded The Ide Project to provide exonerees with the resources and support they need to rebuild their lives successfully.
+              <div>
+                <h3 className="text-xl font-bold text-foreground mb-3">Our Vision</h3>
+                <p className="text-foreground/80 leading-relaxed">
+                  A world where exonerees have equal access to the resources and support they need to rebuild their lives, restore their dignity, and thrive in their communities.
                 </p>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-xl font-bold text-foreground mb-3">What We Do</h3>
+                <ul className="space-y-2 text-foreground/80">
+                  <li className="flex gap-3">
+                    <span className="text-accent font-bold">•</span>
+                    <span>Provide comprehensive guides on financial planning, housing, employment, and legal rights</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-accent font-bold">•</span>
+                    <span>Connect exonerees with community resources and support networks</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-accent font-bold">•</span>
+                    <span>Advocate for policy changes that support wrongful conviction victims</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-accent font-bold">•</span>
+                    <span>Foster community awareness and education about wrongful convictions</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
