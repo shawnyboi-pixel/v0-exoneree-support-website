@@ -59,6 +59,34 @@ export function AboutSection() {
                 </p>
               </div>
             </div>
+
+            {/* Vajra Vanukuri - Co-founder and Web Designer */}
+            <div className="group animate-fade-in-up rounded-lg border border-border/40 bg-background p-6 transition-all duration-300 hover:border-accent/50 hover:shadow-lg">
+              {/* Image Placeholder */}
+              <div className="mb-6 aspect-square w-full overflow-hidden rounded-lg bg-muted flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-muted-foreground text-sm font-medium">
+                    Image placeholder
+                  </div>
+                </div>
+              </div>
+
+              {/* Member Info */}
+              <div className="space-y-3">
+                <div>
+                  <h3 className="text-lg font-bold text-foreground">
+                    Vajra Vanukuri
+                  </h3>
+                  <p className="text-sm font-semibold text-accent">
+                    Co-founder and Web Designer
+                  </p>
+                </div>
+
+                <p className="text-sm leading-relaxed text-foreground/80">
+                  Based in San Francisco, California. Passionate about leveraging technology to support wrongful conviction advocacy and exoneree reentry. Vajra brings technical expertise in Java, Python, HTML, and multiple other programming languages to build The Ide Project's digital platform for impact.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
