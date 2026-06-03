@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
-import { Search, FileText, Video, CheckCircle, X } from 'lucide-react'
+import { Search, FileText, Video, CheckCircle, X, MessageCircle } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 
 interface Guide {
@@ -14,6 +14,7 @@ interface Guide {
   duration: string
   image?: string
   slug?: string
+  hasQA?: boolean
 }
 
 const categories = [
@@ -44,6 +45,7 @@ const guides: Guide[] = [
     types: ['video', 'pdf'],
     duration: '8 min video / 6 page guide',
     slug: 'opening-bank-account',
+    hasQA: true,
   },
   {
     id: '2',
@@ -52,6 +54,7 @@ const guides: Guide[] = [
     category: 'Financial Planning',
     types: ['video', 'pdf'],
     duration: '10 min video / 8 page guide',
+    hasQA: true,
   },
   {
     id: '3',
@@ -78,6 +81,7 @@ const guides: Guide[] = [
     category: 'Job Search',
     types: ['video'],
     duration: '12 min',
+    hasQA: true,
   },
   {
     id: '6',
@@ -120,6 +124,7 @@ const guides: Guide[] = [
     category: 'Housing',
     types: ['pdf'],
     duration: '14 pages',
+    hasQA: true,
   },
   {
     id: '11',
@@ -146,6 +151,7 @@ const guides: Guide[] = [
     category: 'Legal Rights',
     types: ['video'],
     duration: '15 min',
+    hasQA: true,
   },
   {
     id: '14',
@@ -172,6 +178,7 @@ const guides: Guide[] = [
     category: 'Healthcare',
     types: ['video'],
     duration: '9 min',
+    hasQA: true,
   },
   {
     id: '17',
@@ -468,18 +475,26 @@ export function GuidesHub() {
                 >
                   <Card className="group h-full border-border/60 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
                     <CardContent className="flex h-full flex-col pt-6 lg:pt-8">
-                    {/* Type Badges */}
-                    <div className="mb-4 flex flex-wrap gap-2">
-                      {guide.types.map((type) => (
-                        <div key={type} className="flex items-center gap-2">
-                          <div className="flex size-7 items-center justify-center rounded-lg bg-accent/10 lg:size-8">
-                            <ResourceTypeIcon type={type} />
+                    {/* Type Badges and QA Badge */}
+                    <div className="mb-4 flex flex-wrap gap-2 items-start">
+                      <div className="flex flex-wrap gap-2 flex-1">
+                        {guide.types.map((type) => (
+                          <div key={type} className="flex items-center gap-2">
+                            <div className="flex size-7 items-center justify-center rounded-lg bg-accent/10 lg:size-8">
+                              <ResourceTypeIcon type={type} />
+                            </div>
+                            <span className="inline-block rounded-full bg-accent/10 px-2 py-1 text-xs font-semibold text-accent lg:text-sm">
+                              {getTypeLabel(type)}
+                            </span>
                           </div>
-                          <span className="inline-block rounded-full bg-accent/10 px-2 py-1 text-xs font-semibold text-accent lg:text-sm">
-                            {getTypeLabel(type)}
-                          </span>
+                        ))}
+                      </div>
+                      {guide.hasQA && (
+                        <div className="flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-700 lg:text-sm">
+                          <MessageCircle className="size-3 lg:size-4" />
+                          <span>QA</span>
                         </div>
-                      ))}
+                      )}
                     </div>
 
                     {/* Title */}
