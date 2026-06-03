@@ -39,7 +39,7 @@ export function AboutSection() {
                   alt="Shawn Chen"
                   width={400}
                   height={400}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center scale-75"
                 />
               </div>
 
