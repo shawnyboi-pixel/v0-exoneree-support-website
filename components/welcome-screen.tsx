@@ -1,7 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { HelpCircle, Users, Globe } from 'lucide-react'
+import { useUserPreference } from '@/hooks/use-user-preference'
 
 interface WelcomeScreenProps {
   onDismiss: () => void
@@ -9,6 +11,33 @@ interface WelcomeScreenProps {
 
 export function WelcomeScreen({ onDismiss }: WelcomeScreenProps) {
   const [selectedOption, setSelectedOption] = useState<string | null>(null)
+  const [isRedirecting, setIsRedirecting] = useState(false)
+  const router = useRouter()
+  const { setPreference } = useUserPreference()
+
+  const handleContinue = () => {
+    if (!selectedOption) return
+
+    setIsRedirecting(true)
+    
+    // Set preference in cookies
+    if (selectedOption === 'help') {
+      setPreference('need-help')
+      setTimeout(() => {
+        onDismiss()
+      }, 100)
+    } else if (selectedOption === 'help-others') {
+      setPreference('help-others')
+      setTimeout(() => {
+        router.push('/help-others')
+      }, 100)
+    } else if (selectedOption === 'explore') {
+      setPreference('explore')
+      setTimeout(() => {
+        router.push('/explore')
+      }, 100)
+    }
+  }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/90 backdrop-blur-md animate-fade-in">
@@ -108,15 +137,15 @@ export function WelcomeScreen({ onDismiss }: WelcomeScreenProps) {
           {/* Close Button */}
           <div className="text-center">
             <button
-              onClick={onDismiss}
-              disabled={!selectedOption}
+              onClick={handleContinue}
+              disabled={!selectedOption || isRedirecting}
               className={`px-8 py-3 rounded-lg font-medium transition-all duration-300 active:scale-95 cursor-pointer ${
                 selectedOption
                   ? 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg'
                   : 'bg-primary/50 text-primary-foreground/70 cursor-not-allowed'
               }`}
             >
-              Continue
+              {isRedirecting ? 'Loading...' : 'Continue'}
             </button>
           </div>
         </div>
