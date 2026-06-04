@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { HelpCircle, Users, Globe } from 'lucide-react'
-import { useUserPreference } from '@/hooks/use-user-preference'
+import { setCookie } from '@/hooks/use-user-preference'
 
 interface WelcomeScreenProps {
   onDismiss: () => void
@@ -13,29 +13,22 @@ export function WelcomeScreen({ onDismiss }: WelcomeScreenProps) {
   const [selectedOption, setSelectedOption] = useState<string | null>(null)
   const [isRedirecting, setIsRedirecting] = useState(false)
   const router = useRouter()
-  const { setPreference } = useUserPreference()
 
   const handleContinue = () => {
     if (!selectedOption) return
 
     setIsRedirecting(true)
     
-    // Set preference in cookies
+    // Set preference in cookies BEFORE routing
     if (selectedOption === 'help') {
-      setPreference('need-help')
-      setTimeout(() => {
-        onDismiss()
-      }, 100)
+      setCookie('ide_user_preference', 'need-help')
+      onDismiss()
     } else if (selectedOption === 'help-others') {
-      setPreference('help-others')
-      setTimeout(() => {
-        router.push('/help-others')
-      }, 100)
+      setCookie('ide_user_preference', 'help-others')
+      router.push('/help-others')
     } else if (selectedOption === 'explore') {
-      setPreference('explore')
-      setTimeout(() => {
-        router.push('/explore')
-      }, 100)
+      setCookie('ide_user_preference', 'explore')
+      router.push('/explore')
     }
   }
 

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { WelcomeScreen } from './welcome-screen'
-import { useUserPreference } from '@/hooks/use-user-preference'
+import { getPreference } from '@/hooks/use-user-preference'
 
 interface RootLayoutClientProps {
   children: React.ReactNode
@@ -11,18 +11,18 @@ interface RootLayoutClientProps {
 export function RootLayoutClient({ children }: RootLayoutClientProps) {
   const [showWelcome, setShowWelcome] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
-  const { preference, isLoaded: prefsLoaded } = useUserPreference()
 
   useEffect(() => {
-    if (!prefsLoaded) return
-
-    // Show welcome screen only if user has no preference set
+    // Check if user has a preference set
+    const preference = getPreference()
+    
+    // Only show welcome if NO preference is set
     if (!preference) {
       setShowWelcome(true)
     }
-
+    
     setIsLoaded(true)
-  }, [preference, prefsLoaded])
+  }, [])
 
   const handleDismissWelcome = () => {
     setShowWelcome(false)

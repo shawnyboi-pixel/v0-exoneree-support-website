@@ -4,11 +4,6 @@ import { useEffect, useState } from 'react'
 
 export type UserPreference = 'need-help' | 'help-others' | 'explore' | null
 
-interface UserData {
-  userId: string
-  preference: UserPreference
-}
-
 const COOKIE_NAME_ID = 'ide_user_id'
 const COOKIE_NAME_PREF = 'ide_user_preference'
 const COOKIE_MAX_AGE = 365 * 24 * 60 * 60 // 1 year in seconds
@@ -23,7 +18,7 @@ function generateUserId(): string {
 /**
  * Set a cookie (client-side)
  */
-function setCookie(name: string, value: string, maxAge: number = COOKIE_MAX_AGE): void {
+export function setCookie(name: string, value: string, maxAge: number = COOKIE_MAX_AGE): void {
   if (typeof document === 'undefined') return
   document.cookie = `${name}=${value}; max-age=${maxAge}; path=/; SameSite=Lax`
 }
@@ -31,7 +26,7 @@ function setCookie(name: string, value: string, maxAge: number = COOKIE_MAX_AGE)
 /**
  * Get a cookie value
  */
-function getCookie(name: string): string | null {
+export function getCookie(name: string): string | null {
   if (typeof document === 'undefined') return null
   const nameEQ = name + '='
   const cookies = document.cookie.split(';')
@@ -47,15 +42,15 @@ function getCookie(name: string): string | null {
 /**
  * Delete a cookie
  */
-function deleteCookie(name: string): void {
+export function deleteCookie(name: string): void {
   if (typeof document === 'undefined') return
   document.cookie = `${name}=; max-age=0; path=/`
 }
 
 /**
- * Initialize or get user ID
+ * Initialize or get user ID - call this synchronously
  */
-function getOrCreateUserId(): string {
+export function getOrCreateUserId(): string {
   let userId = getCookie(COOKIE_NAME_ID)
   if (!userId) {
     userId = generateUserId()
@@ -65,30 +60,38 @@ function getOrCreateUserId(): string {
 }
 
 /**
+ * Get the current preference from cookie
+ */
+export function getPreference(): UserPreference {
+  const pref = getCookie(COOKIE_NAME_PREF)
+  return (pref as UserPreference) || null
+}
+
+/**
  * Hook to manage user preference
  */
 export function useUserPreference() {
-  const [userData, setUserData] = useState<UserData>({
-    userId: '',
-    preference: null,
-  })
+  const [preference, setPreferenceState] = useState<UserPreference>(null)
+  const [userId, setUserIdState] = useState<string>('')
   const [isLoaded, setIsLoaded] = useState(false)
 
-  // Load from cookies on mount
   useEffect(() => {
-    const userId = getOrCreateUserId()
-    const preference = (getCookie(COOKIE_NAME_PREF) as UserPreference) || null
-    setUserData({ userId, preference })
+    // Run once on mount to read cookies
+    const id = getOrCreateUserId()
+    const pref = getPreference()
+    
+    setUserIdState(id)
+    setPreferenceState(pref)
     setIsLoaded(true)
   }, [])
 
-  const setPreference = (preference: UserPreference) => {
-    if (preference) {
-      setCookie(COOKIE_NAME_PREF, preference)
+  const setPreference = (pref: UserPreference) => {
+    if (pref) {
+      setCookie(COOKIE_NAME_PREF, pref)
     } else {
       deleteCookie(COOKIE_NAME_PREF)
     }
-    setUserData((prev) => ({ ...prev, preference }))
+    setPreferenceState(pref)
   }
 
   const resetAll = () => {
@@ -96,11 +99,13 @@ export function useUserPreference() {
     deleteCookie(COOKIE_NAME_PREF)
     const newUserId = generateUserId()
     setCookie(COOKIE_NAME_ID, newUserId)
-    setUserData({ userId: newUserId, preference: null })
+    setUserIdState(newUserId)
+    setPreferenceState(null)
   }
 
   return {
-    ...userData,
+    userId,
+    preference,
     setPreference,
     resetAll,
     isLoaded,
