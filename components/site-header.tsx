@@ -38,27 +38,26 @@ export function SiteHeader() {
         </Link>
 
         <nav
-          className="hidden items-center gap-8 lg:gap-12 md:flex"
+          className="hidden items-center gap-2 md:flex"
           aria-label="Main navigation"
         >
           {navLinks.map((link) => (
             <div key={link.label} className="relative group">
               {link.label === 'About' ? (
                 <>
-                  <Link
-                    href={link.href}
-                    className="text-sm font-medium transition-colors hover:text-foreground text-muted-foreground flex items-center gap-1"
-                    onClick={() => setAboutDropdownOpen(false)}
+                  <button
+                    className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-foreground/75 hover:text-foreground hover:bg-secondary/60"
+                    onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
                   >
                     {link.label}
-                    <ChevronDown className="size-4 transition-transform group-hover:rotate-180" />
-                  </Link>
-                  <div className="absolute left-0 mt-0 w-48 bg-background border border-border/60 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <ChevronDown className="inline-block size-4 ml-1 transition-transform group-hover:rotate-180" />
+                  </button>
+                  <div className="absolute left-0 mt-1 w-56 bg-background border border-border/80 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-1">
                     {aboutLinks.map((subLink) => (
                       <Link
                         key={subLink.label}
                         href={subLink.href}
-                        className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors hover:bg-secondary first:rounded-t-lg last:rounded-b-lg"
+                        className="block px-4 py-2.5 text-sm text-foreground/75 hover:text-foreground hover:bg-secondary/40 transition-all first:rounded-t-md last:rounded-b-md"
                         onClick={() => setAboutDropdownOpen(false)}
                       >
                         {subLink.label}
@@ -69,10 +68,10 @@ export function SiteHeader() {
               ) : (
                 <Link
                   href={link.href}
-                  className={`text-sm font-medium transition-colors hover:text-foreground ${
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     pathname === link.href
-                      ? 'text-foreground'
-                      : 'text-muted-foreground'
+                      ? 'bg-secondary/70 text-foreground'
+                      : 'text-foreground/75 hover:text-foreground hover:bg-secondary/50'
                   }`}
                 >
                   {link.label}
