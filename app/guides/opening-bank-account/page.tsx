@@ -8,8 +8,8 @@ import { GuideQASection } from '@/components/guide-qa-section'
 export default function BankAccountGuidePage() {
   const handleDownloadPDF = () => {
     const link = document.createElement('a')
-    link.href = '/guides/Opening-Bank-Account-Guide.pdf'
-    link.download = 'Opening-Your-First-Bank-Account.pdf'
+    link.href = '/guides/opening-bank-account.jpg'
+    link.download = 'Opening-Your-First-Bank-Account.jpg'
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
