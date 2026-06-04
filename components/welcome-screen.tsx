@@ -29,7 +29,7 @@ export function WelcomeScreen({ onDismiss }: WelcomeScreenProps) {
             {/* Option 1 */}
             <button
               onClick={() => setSelectedOption('help')}
-              className={`group relative p-6 rounded-xl border-2 transition-all duration-300 active:scale-95 ${
+              className={`group relative p-6 rounded-xl border-2 transition-all duration-300 active:scale-95 cursor-pointer ${
                 selectedOption === 'help'
                   ? 'border-primary bg-primary/10 shadow-md'
                   : 'border-border/60 hover:border-primary/60 hover:bg-primary/5'
@@ -55,7 +55,7 @@ export function WelcomeScreen({ onDismiss }: WelcomeScreenProps) {
             {/* Option 2 */}
             <button
               onClick={() => setSelectedOption('help-others')}
-              className={`group relative p-6 rounded-xl border-2 transition-all duration-300 active:scale-95 ${
+              className={`group relative p-6 rounded-xl border-2 transition-all duration-300 active:scale-95 cursor-pointer ${
                 selectedOption === 'help-others'
                   ? 'border-accent bg-accent/10 shadow-md'
                   : 'border-border/60 hover:border-accent/60 hover:bg-accent/5'
@@ -81,7 +81,7 @@ export function WelcomeScreen({ onDismiss }: WelcomeScreenProps) {
             {/* Option 3 */}
             <button
               onClick={() => setSelectedOption('explore')}
-              className={`group relative p-6 rounded-xl border-2 transition-all duration-300 active:scale-95 ${
+              className={`group relative p-6 rounded-xl border-2 transition-all duration-300 active:scale-95 cursor-pointer ${
                 selectedOption === 'explore'
                   ? 'border-primary bg-primary/10 shadow-md'
                   : 'border-border/60 hover:border-primary/40 hover:bg-primary/5'
@@ -110,7 +110,7 @@ export function WelcomeScreen({ onDismiss }: WelcomeScreenProps) {
             <button
               onClick={onDismiss}
               disabled={!selectedOption}
-              className={`px-8 py-3 rounded-lg font-medium transition-all duration-300 active:scale-95 ${
+              className={`px-8 py-3 rounded-lg font-medium transition-all duration-300 active:scale-95 cursor-pointer ${
                 selectedOption
                   ? 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg'
                   : 'bg-primary/50 text-primary-foreground/70 cursor-not-allowed'
