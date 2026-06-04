@@ -15,7 +15,6 @@ const navLinks = [
   { label: 'About', href: '/', isDropdown: true },
   { label: 'Our Team', href: '/our-team' },
   { label: 'Guides & Tutorials', href: '/guides' },
-  { label: 'Support', href: '/support' },
   { label: 'Contact', href: '/contact' },
 ]
 
@@ -128,13 +127,6 @@ export function SiteHeader() {
               onClick={() => setMobileOpen(false)}
             >
               Guides & Tutorials
-            </Link>
-            <Link
-              href="/support"
-              className="text-base font-medium transition-colors hover:text-foreground text-muted-foreground"
-              onClick={() => setMobileOpen(false)}
-            >
-              Support
             </Link>
             <Link
               href="/contact"
