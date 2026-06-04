@@ -3,6 +3,7 @@ import { Inter, Libre_Baskerville } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
+import { RootLayoutClient } from '@/components/root-layout-client'
 import './globals.css'
 
 const inter = Inter({
@@ -43,11 +44,13 @@ export default function RootLayout({
       className={`${inter.variable} ${libreBaskerville.variable} bg-background`}
     >
       <body className="font-sans antialiased">
-        <div className="flex min-h-screen flex-col">
-          <SiteHeader />
-          <main className="flex-1">{children}</main>
-          <SiteFooter />
-        </div>
+        <RootLayoutClient>
+          <div className="flex min-h-screen flex-col">
+            <SiteHeader />
+            <main className="flex-1">{children}</main>
+            <SiteFooter />
+          </div>
+        </RootLayoutClient>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
