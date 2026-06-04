@@ -6,6 +6,14 @@ import { Card, CardContent } from '@/components/ui/card'
 import { GuideQASection } from '@/components/guide-qa-section'
 
 export default function BankAccountGuidePage() {
+  const handleDownloadPDF = () => {
+    const link = document.createElement('a')
+    link.href = '/guides/opening-bank-account-guide.pdf'
+    link.download = 'Opening-Your-First-Bank-Account.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
   return (
     <main className="min-h-screen bg-background">
       {/* Header */}
@@ -202,14 +210,13 @@ export default function BankAccountGuidePage() {
                   <h4 className="font-semibold text-foreground">Opening A Bank Account: Quick and Easy Guide</h4>
                   <p className="text-sm text-foreground/70">Complete visual guide with examples</p>
                 </div>
-                <a
-                  href="/guides/opening-bank-account-guide.pdf"
-                  download="Opening-Your-First-Bank-Account.pdf"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-primary-foreground rounded-lg hover:bg-accent/90 transition-colors font-medium text-sm"
+                <button
+                  onClick={handleDownloadPDF}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-primary-foreground rounded-lg hover:bg-accent/90 transition-colors font-medium text-sm cursor-pointer"
                 >
                   <Download className="w-4 h-4" />
                   Download
-                </a>
+                </button>
               </div>
             </CardContent>
           </Card>
