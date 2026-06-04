@@ -1,7 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { HelpCircle, Users, Globe } from 'lucide-react'
+import { setCookie } from '@/hooks/use-user-preference'
 
 interface WelcomeScreenProps {
   onDismiss: () => void
@@ -9,6 +11,26 @@ interface WelcomeScreenProps {
 
 export function WelcomeScreen({ onDismiss }: WelcomeScreenProps) {
   const [selectedOption, setSelectedOption] = useState<string | null>(null)
+  const [isRedirecting, setIsRedirecting] = useState(false)
+  const router = useRouter()
+
+  const handleContinue = () => {
+    if (!selectedOption) return
+
+    setIsRedirecting(true)
+    
+    // Set preference in cookies BEFORE routing
+    if (selectedOption === 'help') {
+      setCookie('ide_user_preference', 'need-help')
+      onDismiss()
+    } else if (selectedOption === 'help-others') {
+      setCookie('ide_user_preference', 'help-others')
+      router.push('/help-others')
+    } else if (selectedOption === 'explore') {
+      setCookie('ide_user_preference', 'explore')
+      router.push('/explore')
+    }
+  }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/90 backdrop-blur-md animate-fade-in">
@@ -108,15 +130,15 @@ export function WelcomeScreen({ onDismiss }: WelcomeScreenProps) {
           {/* Close Button */}
           <div className="text-center">
             <button
-              onClick={onDismiss}
-              disabled={!selectedOption}
+              onClick={handleContinue}
+              disabled={!selectedOption || isRedirecting}
               className={`px-8 py-3 rounded-lg font-medium transition-all duration-300 active:scale-95 cursor-pointer ${
                 selectedOption
                   ? 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg'
                   : 'bg-primary/50 text-primary-foreground/70 cursor-not-allowed'
               }`}
             >
-              Continue
+              {isRedirecting ? 'Loading...' : 'Continue'}
             </button>
           </div>
         </div>

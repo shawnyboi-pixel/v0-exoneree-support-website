@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { WelcomeScreen } from './welcome-screen'
+import { getPreference } from '@/hooks/use-user-preference'
 
 interface RootLayoutClientProps {
   children: React.ReactNode
@@ -12,11 +13,11 @@ export function RootLayoutClient({ children }: RootLayoutClientProps) {
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
-    // Check if user has seen welcome screen before
-    const hasSeenWelcome = localStorage.getItem('hasSeenWelcome')
+    // Check if user has a preference set
+    const preference = getPreference()
     
-    // Show welcome screen only on first visit
-    if (!hasSeenWelcome) {
+    // Only show welcome if NO preference is set
+    if (!preference) {
       setShowWelcome(true)
     }
     
@@ -25,8 +26,6 @@ export function RootLayoutClient({ children }: RootLayoutClientProps) {
 
   const handleDismissWelcome = () => {
     setShowWelcome(false)
-    // Mark that user has seen welcome screen
-    localStorage.setItem('hasSeenWelcome', 'true')
   }
 
   if (!isLoaded) {

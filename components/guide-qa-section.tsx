@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { MessageCircle, Send, ChevronDown } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 
@@ -22,12 +22,35 @@ export function GuideQASection({ guideTitle, guideId }: GuideQASectionProps) {
   const [newQuestion, setNewQuestion] = useState('')
   const [showForm, setShowForm] = useState(false)
   const [expandedId, setExpandedId] = useState<string | null>(null)
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  // Load questions from localStorage on mount
+  useEffect(() => {
+    const storageKey = `qa-${guideId}`
+    const savedQuestions = localStorage.getItem(storageKey)
+    if (savedQuestions) {
+      try {
+        setQuestions(JSON.parse(savedQuestions))
+      } catch (err) {
+        console.error('[v0] Failed to load questions:', err)
+      }
+    }
+    setIsLoaded(true)
+  }, [guideId])
+
+  // Save questions to localStorage whenever they change
+  useEffect(() => {
+    if (isLoaded) {
+      const storageKey = `qa-${guideId}`
+      localStorage.setItem(storageKey, JSON.stringify(questions))
+    }
+  }, [questions, guideId, isLoaded])
 
   const handleAskQuestion = () => {
     if (newQuestion.trim()) {
       const question: Question = {
-        id: String(questions.length + 1),
-        author: 'Anonymous',
+        id: String(Date.now()),
+        author: 'Community Member',
         question: newQuestion,
         replies: 0,
         timestamp: 'just now',

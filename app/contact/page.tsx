@@ -11,20 +11,43 @@ export default function ContactPage() {
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('[v0] Form submitted:', formData)
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to send message')
+      }
+
+      setSubmitted(true)
       setFormData({ name: '', email: '', subject: '', message: '' })
-    }, 3000)
+      setTimeout(() => {
+        setSubmitted(false)
+      }, 5000)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An error occurred')
+      console.error('[v0] Contact form error:', err)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -79,6 +102,11 @@ export default function ContactPage() {
                 <div className="rounded-lg bg-accent/5 border border-accent/20 p-6 text-center">
                   <p className="text-lg font-semibold text-accent mb-2">Thank you!</p>
                   <p className="text-foreground/70">We&apos;ll get back to you as soon as possible.</p>
+                </div>
+              ) : error ? (
+                <div className="rounded-lg bg-destructive/5 border border-destructive/20 p-6 text-center">
+                  <p className="text-lg font-semibold text-destructive mb-2">Error</p>
+                  <p className="text-foreground/70">{error}</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -149,9 +177,10 @@ export default function ContactPage() {
 
                   <button
                     type="submit"
-                    className="rounded-lg bg-accent px-6 py-3 font-semibold text-background hover:bg-accent/90 transition-colors"
+                    disabled={isLoading}
+                    className="rounded-lg bg-accent px-6 py-3 font-semibold text-background hover:bg-accent/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Send Message
+                    {isLoading ? 'Sending...' : 'Send Message'}
                   </button>
                 </form>
               )}
