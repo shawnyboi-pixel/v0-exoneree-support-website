@@ -80,13 +80,13 @@ export default function ContactPage() {
             <div>
               <h2 className="text-sm font-semibold uppercase tracking-wider text-foreground/60 mb-6">Connect</h2>
               <div className="flex gap-4">
-                <button className="flex size-12 items-center justify-center rounded-full border-2 border-accent/40 text-accent hover:border-accent hover:bg-accent/5 transition-all">
+                <button className="flex size-12 items-center justify-center rounded-full border-2 border-accent/40 text-accent hover:border-accent hover:bg-accent/5 transition-all duration-300 hover:scale-110 active:scale-95">
                   <Linkedin className="size-5" />
                 </button>
-                <button className="flex size-12 items-center justify-center rounded-full border-2 border-accent/40 text-accent hover:border-accent hover:bg-accent/5 transition-all">
+                <button className="flex size-12 items-center justify-center rounded-full border-2 border-accent/40 text-accent hover:border-accent hover:bg-accent/5 transition-all duration-300 hover:scale-110 active:scale-95">
                   <Instagram className="size-5" />
                 </button>
-                <button className="flex size-12 items-center justify-center rounded-full border-2 border-accent/40 text-accent hover:border-accent hover:bg-accent/5 transition-all">
+                <button className="flex size-12 items-center justify-center rounded-full border-2 border-accent/40 text-accent hover:border-accent hover:bg-accent/5 transition-all duration-300 hover:scale-110 active:scale-95">
                   <MessageCircle className="size-5" />
                 </button>
               </div>
@@ -178,9 +178,16 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="rounded-lg bg-accent px-6 py-3 font-semibold text-background hover:bg-accent/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 font-semibold text-background hover:bg-accent/90 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed hover:shadow-lg"
                   >
-                    {isLoading ? 'Sending...' : 'Send Message'}
+                    {isLoading ? (
+                      <>
+                        <div className="size-4 animate-spin rounded-full border-2 border-background border-t-transparent" />
+                        <span>Sending...</span>
+                      </>
+                    ) : (
+                      'Send Message'
+                    )}
                   </button>
                 </form>
               )}

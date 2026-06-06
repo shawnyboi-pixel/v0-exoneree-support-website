@@ -1,7 +1,22 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
+import { HeroSearch } from './hero-search'
+import { LoadingButton } from './loading-button'
 
 export function HeroSection() {
+  const [loading, setLoading] = useState<string | null>(null)
+
+  const handleClick = (href: string) => (e: React.MouseEvent) => {
+    e.preventDefault()
+    setLoading(href)
+    setTimeout(() => {
+      window.location.href = href
+    }, 300)
+  }
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary to-primary/90">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(255,255,255,0.12)_0%,_transparent_50%)] pointer-events-none" />
@@ -26,19 +41,42 @@ export function HeroSection() {
           </p>
 
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center animate-scale-up">
-            <Link
-              href="/guides"
-              className="group inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-accent-foreground transition-gentle shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 lg:px-8 lg:py-4 lg:text-lg"
+            <button
+              onClick={handleClick('/guides')}
+              className="group inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-accent-foreground transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 lg:px-8 lg:py-4 lg:text-lg disabled:cursor-not-allowed disabled:opacity-90"
+              disabled={loading === '/guides'}
             >
-              Get Help Now
-              <ArrowRight className="size-4 transition-smooth group-hover:translate-x-1 lg:size-5" />
-            </Link>
-            <Link
-              href="/organizations"
-              className="group inline-flex items-center justify-center rounded-lg border-2 border-primary-foreground/40 px-6 py-3.5 text-base font-medium text-primary-foreground transition-gentle hover:bg-primary-foreground/10 hover:border-primary-foreground/60 hover:scale-105 active:scale-95 lg:px-8 lg:py-4 lg:text-lg"
+              {loading === '/guides' ? (
+                <>
+                  <div className="size-4 animate-spin rounded-full border-2 border-accent-foreground border-t-transparent lg:size-5" />
+                  <span>Loading...</span>
+                </>
+              ) : (
+                <>
+                  I Need Help
+                  <ArrowRight className="size-4 transition-all duration-300 group-hover:translate-x-1 lg:size-5" />
+                </>
+              )}
+            </button>
+            <button
+              onClick={handleClick('/help-others')}
+              className="group inline-flex items-center justify-center rounded-lg border-2 border-primary-foreground/40 px-6 py-3.5 text-base font-medium text-primary-foreground transition-all duration-300 hover:bg-primary-foreground/10 hover:border-primary-foreground/60 hover:scale-105 active:scale-95 lg:px-8 lg:py-4 lg:text-lg disabled:cursor-not-allowed disabled:opacity-90"
+              disabled={loading === '/help-others'}
             >
-              Explore Organizations
-            </Link>
+              {loading === '/help-others' ? (
+                <>
+                  <div className="size-4 animate-spin rounded-full border-2 border-primary-foreground border-t-transparent mr-2 lg:size-5" />
+                  <span>Loading...</span>
+                </>
+              ) : (
+                'I Want to Help'
+              )}
+            </button>
+          </div>
+
+          {/* Search Bar */}
+          <div className="mt-10">
+            <HeroSearch />
           </div>
         </div>
 

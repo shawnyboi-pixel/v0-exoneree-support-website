@@ -6,6 +6,7 @@ import {
   CardTitle,
   CardDescription,
 } from '@/components/ui/card'
+import { useState } from 'react'
 
 const organizations = [
   {
@@ -65,6 +66,19 @@ const organizations = [
 ]
 
 export function ResourcesCta() {
+  const [loadingUrl, setLoadingUrl] = useState<string | null>(null)
+  const [loadingPhone, setLoadingPhone] = useState<string | null>(null)
+
+  const handleLinkClick = (url: string) => {
+    setLoadingUrl(url)
+    setTimeout(() => setLoadingUrl(null), 800)
+  }
+
+  const handlePhoneClick = (phone: string) => {
+    setLoadingPhone(phone)
+    setTimeout(() => setLoadingPhone(null), 800)
+  }
+
   return (
     <section id="resources" className="bg-background py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6">
@@ -113,18 +127,38 @@ export function ResourcesCta() {
                     href={org.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                    onClick={() => handleLinkClick(org.url)}
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-all duration-300 hover:text-primary/80 hover:scale-105 active:scale-95"
                   >
-                    Visit Website
-                    <ExternalLink className="size-3.5" />
+                    {loadingUrl === org.url ? (
+                      <>
+                        <div className="size-3.5 animate-spin rounded-full border border-primary border-t-transparent" />
+                        <span>Loading...</span>
+                      </>
+                    ) : (
+                      <>
+                        Visit Website
+                        <ExternalLink className="size-3.5" />
+                      </>
+                    )}
                   </a>
                   {org.phone && (
                     <a
                       href={`tel:${org.phone}`}
-                      className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                      onClick={() => handlePhoneClick(org.phone!)}
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-all duration-300 hover:text-foreground hover:scale-105 active:scale-95"
                     >
-                      <Phone className="size-3.5" />
-                      {org.phone}
+                      {loadingPhone === org.phone ? (
+                        <>
+                          <div className="size-3.5 animate-spin rounded-full border border-muted-foreground border-t-transparent" />
+                          <span>Calling...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Phone className="size-3.5" />
+                          {org.phone}
+                        </>
+                      )}
                     </a>
                   )}
                 </div>

@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/next'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { RootLayoutClient } from '@/components/root-layout-client'
+import { FooterWrapper } from '@/components/footer-wrapper'
 import './globals.css'
 
 const inter = Inter({
@@ -48,7 +49,7 @@ export default function RootLayout({
           <div className="flex min-h-screen flex-col">
             <SiteHeader />
             <main className="flex-1">{children}</main>
-            <SiteFooter />
+            <FooterWrapper />
           </div>
         </RootLayoutClient>
         {process.env.NODE_ENV === 'production' && <Analytics />}

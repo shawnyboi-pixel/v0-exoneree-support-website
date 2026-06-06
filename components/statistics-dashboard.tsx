@@ -6,9 +6,9 @@ import { TrendingDown, Clock, Briefcase, Scale } from 'lucide-react'
 
 const stats = [
   {
-    label: 'Total Exonerations in Texas',
-    value: '508',
-    context: 'Second most exonerations in the nation.',
+    label: 'Total Exonerations in the Nation',
+    value: '4,296',
+    context: 'Documented exonerations in the United States according to the National Registry of Exonerations.',
     icon: Scale,
     accentClass: 'text-chart-1',
     bgClass: 'bg-chart-1/10',
