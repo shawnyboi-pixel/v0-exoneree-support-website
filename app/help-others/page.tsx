@@ -65,18 +65,6 @@ export default function HelpOthersPage() {
 
   return (
     <section className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-slate-700 to-slate-900 text-white py-12 md:py-16">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4">
-            Make an Impact
-          </h1>
-          <p className="text-lg text-slate-200 max-w-2xl">
-            Choose your area of expertise and find meaningful ways to contribute.
-          </p>
-        </div>
-      </div>
-
       {/* Sidebar + Content Layout */}
       <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-24">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
