@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronDown, Briefcase, DollarSign, Users, Heart } from 'lucide-react'
+import { Briefcase, DollarSign, Users, Heart } from 'lucide-react'
 
 const categories = [
   {
@@ -59,11 +59,9 @@ const categories = [
 ]
 
 export default function HelpOthersPage() {
-  const [expandedId, setExpandedId] = useState<string | null>('lawyers')
-
-  const toggleExpand = (id: string) => {
-    setExpandedId(expandedId === id ? null : id)
-  }
+  const [selectedId, setSelectedId] = useState<string>('lawyers')
+  const selectedCategory = categories.find(c => c.id === selectedId)
+  const Icon = selectedCategory ? selectedCategory.icon : Briefcase
 
   return (
     <section className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
@@ -79,81 +77,80 @@ export default function HelpOthersPage() {
         </div>
       </div>
 
-      {/* Sidebar Navigation with Expandable Content */}
+      {/* Sidebar + Content Layout */}
       <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-24">
-        <div className="grid gap-8 lg:grid-cols-1">
-          {categories.map((category) => {
-            const Icon = category.icon
-            const isExpanded = expandedId === category.id
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
+          {/* Sidebar Navigation */}
+          <div className="lg:col-span-1">
+            <div className="flex flex-col gap-2 sticky top-24">
+              {categories.map((category) => {
+                const CategoryIcon = category.icon
+                const isSelected = selectedId === category.id
 
-            return (
-              <div
-                key={category.id}
-                className="rounded-lg bg-white border border-slate-200 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md"
-              >
-                {/* Expandable Header */}
-                <button
-                  onClick={() => toggleExpand(category.id)}
-                  className="w-full flex items-center justify-between gap-4 p-6 hover:bg-slate-50 transition-colors cursor-pointer"
-                >
-                  <div className="flex items-center gap-4 text-left flex-1">
-                    <div className="flex size-12 items-center justify-center rounded-lg bg-slate-100 flex-shrink-0">
-                      <Icon className="size-6 text-slate-700" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-slate-900">
-                        {category.title}
-                      </h3>
-                      {!isExpanded && (
-                        <p className="text-sm text-slate-600 mt-1 line-clamp-1">
-                          {category.description}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                  <ChevronDown
-                    className={`size-6 text-slate-700 flex-shrink-0 transition-transform duration-300 ${
-                      isExpanded ? 'rotate-180' : ''
+                return (
+                  <button
+                    key={category.id}
+                    onClick={() => setSelectedId(category.id)}
+                    className={`flex items-center gap-3 rounded-lg px-4 py-3 text-left transition-all duration-300 cursor-pointer ${
+                      isSelected
+                        ? 'bg-slate-700 text-white shadow-md'
+                        : 'bg-white text-slate-900 border border-slate-200 hover:border-slate-300 hover:bg-slate-50'
                     }`}
-                  />
-                </button>
+                  >
+                    <CategoryIcon className="size-5 flex-shrink-0" />
+                    <span className="font-medium text-sm">{category.title}</span>
+                  </button>
+                )
+              })}
+            </div>
+          </div>
 
-                {/* Expandable Content */}
-                <div
-                  className={`overflow-hidden transition-all duration-300 ${
-                    isExpanded ? 'max-h-96' : 'max-h-0'
-                  }`}
-                >
-                  <div className="border-t border-slate-200 px-6 py-6 bg-slate-50">
-                    <p className="text-slate-700 mb-6 leading-relaxed">
-                      {category.description}
-                    </p>
-
-                    <div className="space-y-3">
-                      <h4 className="text-sm font-semibold text-slate-900 uppercase tracking-wide">
-                        What you can do:
-                      </h4>
-                      <ul className="grid gap-2 sm:grid-cols-2">
-                        {category.details.map((detail, idx) => (
-                          <li
-                            key={idx}
-                            className="flex items-start gap-3 text-slate-700"
-                          >
-                            <div className="mt-1.5 size-1.5 rounded-full bg-slate-400 flex-shrink-0" />
-                            <span className="text-sm">{detail}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <button className="mt-6 inline-flex items-center justify-center rounded-lg bg-slate-700 px-6 py-2.5 text-sm font-medium text-white hover:bg-slate-800 transition-colors">
-                      Get Started
-                    </button>
+          {/* Main Content */}
+          <div className="lg:col-span-3">
+            {selectedCategory && (
+              <div className="animate-fade-in rounded-lg bg-white border border-slate-200 shadow-sm p-8 md:p-10">
+                {/* Content Header */}
+                <div className="flex items-start gap-4 mb-8">
+                  <div className="flex size-14 items-center justify-center rounded-lg bg-slate-100 flex-shrink-0">
+                    <Icon className="size-7 text-slate-700" />
+                  </div>
+                  <div>
+                    <h2 className="text-3xl font-bold text-slate-900">
+                      {selectedCategory.title}
+                    </h2>
                   </div>
                 </div>
+
+                {/* Description */}
+                <p className="text-lg text-slate-700 mb-8 leading-relaxed">
+                  {selectedCategory.description}
+                </p>
+
+                {/* Details Grid */}
+                <div className="mb-10">
+                  <h3 className="text-sm font-semibold text-slate-900 uppercase tracking-wide mb-4">
+                    What you can do:
+                  </h3>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {selectedCategory.details.map((detail, idx) => (
+                      <div
+                        key={idx}
+                        className="flex items-start gap-3 rounded-lg bg-slate-50 p-4 border border-slate-200"
+                      >
+                        <div className="mt-1.5 size-2 rounded-full bg-slate-400 flex-shrink-0" />
+                        <span className="text-slate-700">{detail}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* CTA Button */}
+                <button className="inline-flex items-center justify-center rounded-lg bg-slate-700 px-8 py-3 font-medium text-white hover:bg-slate-800 transition-colors">
+                  Get Started
+                </button>
               </div>
-            )
-          })}
+            )}
+          </div>
         </div>
       </div>
     </section>
