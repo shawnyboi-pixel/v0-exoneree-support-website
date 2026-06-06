@@ -124,10 +124,27 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
+  html {
+    scroll-behavior: smooth;
   }
-}
+  /* Link and button transitions */
+  a, button {
+    @apply transition-all duration-300;
+  }
+
+  /* Smoother focus states */
+  button:focus-visible, a:focus-visible {
+    @apply ring-2 ring-ring ring-offset-2;
+  }
+
+  /* Form element transitions */
+  input, textarea, select {
+    @apply transition-all duration-300;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    @apply ring-2 ring-ring ring-offset-2;
+  }
 
 @layer utilities {
   .transition-gentle {

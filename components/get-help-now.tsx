@@ -6,6 +6,7 @@ import {
   CardTitle,
   CardDescription,
 } from '@/components/ui/card'
+import { useState } from 'react'
 
 const organizations = [
   {
@@ -65,6 +66,23 @@ const organizations = [
 ]
 
 export function GetHelpNow() {
+  const [loadingUrl, setLoadingUrl] = useState<string | null>(null)
+  const [loadingPhone, setLoadingPhone] = useState<string | null>(null)
+
+  const handleLinkClick = (url: string) => {
+    setLoadingUrl(url)
+    setTimeout(() => {
+      setLoadingUrl(null)
+    }, 800)
+  }
+
+  const handlePhoneClick = (phone: string) => {
+    setLoadingPhone(phone)
+    setTimeout(() => {
+      setLoadingPhone(null)
+    }, 800)
+  }
+
   return (
     <section id="get-help" className="bg-background py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6">
@@ -119,18 +137,39 @@ export function GetHelpNow() {
                       href={org.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-md bg-primary/10 px-2 py-1 text-xs font-medium text-primary transition-smooth hover:bg-primary/20 hover:scale-105 active:scale-95"
+                      onClick={() => handleLinkClick(org.url)}
+                      disabled={loadingUrl === org.url}
+                      className="inline-flex items-center gap-1.5 rounded-md bg-primary/10 px-2 py-1 text-xs font-medium text-primary transition-smooth hover:bg-primary/20 hover:scale-105 active:scale-95 disabled:opacity-90 disabled:cursor-not-allowed"
                     >
-                      Visit Website
-                      <ExternalLink className="size-3 transition-smooth group-hover:translate-x-0.5" />
+                      {loadingUrl === org.url ? (
+                        <>
+                          <div className="size-3 animate-spin rounded-full border border-primary border-t-transparent" />
+                          Loading...
+                        </>
+                      ) : (
+                        <>
+                          Visit Website
+                          <ExternalLink className="size-3 transition-smooth group-hover:translate-x-0.5" />
+                        </>
+                      )}
                     </a>
                     {org.phone && (
                       <a
                         href={`tel:${org.phone}`}
-                        className="inline-flex items-center gap-1.5 rounded-md bg-accent/10 px-2 py-1 text-xs font-medium text-accent transition-smooth hover:bg-accent/20 hover:scale-105 active:scale-95"
+                        onClick={() => handlePhoneClick(org.phone!)}
+                        className="inline-flex items-center gap-1.5 rounded-md bg-accent/10 px-2 py-1 text-xs font-medium text-accent transition-smooth hover:bg-accent/20 hover:scale-105 active:scale-95 disabled:opacity-90 disabled:cursor-not-allowed"
                       >
-                        <Phone className="size-3" />
-                        Call
+                        {loadingPhone === org.phone ? (
+                          <>
+                            <div className="size-3 animate-spin rounded-full border border-accent border-t-transparent" />
+                            Calling...
+                          </>
+                        ) : (
+                          <>
+                            <Phone className="size-3" />
+                            Call
+                          </>
+                        )}
                       </a>
                     )}
                   </div>
@@ -141,15 +180,23 @@ export function GetHelpNow() {
         </div>
 
         <div className="mt-12 text-center">
-          <a
-            href="https://www.after-innocence.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 font-semibold text-accent-foreground transition-gentle shadow-sm hover:shadow-lg hover:scale-105 active:scale-95"
+          <button
+            onClick={() => handleLinkClick('connect')}
+            className="group inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 font-semibold text-accent-foreground transition-all duration-300 shadow-sm hover:shadow-lg hover:scale-105 active:scale-95 disabled:opacity-90 disabled:cursor-not-allowed"
+            disabled={loadingUrl === 'connect'}
           >
-            Get Connected Today
-            <ExternalLink className="size-4 transition-smooth group-hover:translate-x-0.5" />
-          </a>
+            {loadingUrl === 'connect' ? (
+              <>
+                <div className="size-4 animate-spin rounded-full border-2 border-accent-foreground border-t-transparent" />
+                <span>Connecting...</span>
+              </>
+            ) : (
+              <>
+                Get Connected Today
+                <ExternalLink className="size-4 transition-smooth group-hover:translate-x-0.5" />
+              </>
+            )}
+          </button>
         </div>
       </div>
     </section>

@@ -61,8 +61,16 @@ const categories = [
 
 export default function HelpOthersPage() {
   const [selectedId, setSelectedId] = useState<string>('lawyers')
+  const [loading, setLoading] = useState(false)
   const selectedCategory = categories.find(c => c.id === selectedId)
   const Icon = selectedCategory ? selectedCategory.icon : Briefcase
+
+  const handleGetStarted = () => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 1500)
+  }
 
   return (
     <section className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
@@ -134,8 +142,19 @@ export default function HelpOthersPage() {
                 </div>
 
                 {/* CTA Button */}
-                <button className="inline-flex items-center justify-center rounded-lg bg-slate-700 px-8 py-3 font-medium text-white hover:bg-slate-800 transition-colors">
-                  Get Started
+                <button
+                  onClick={handleGetStarted}
+                  disabled={loading}
+                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-slate-700 px-8 py-3 font-medium text-white hover:bg-slate-800 transition-all duration-300 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-90"
+                >
+                  {loading ? (
+                    <>
+                      <div className="size-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                      <span>Loading...</span>
+                    </>
+                  ) : (
+                    'Get Started'
+                  )}
                 </button>
               </div>
             )}
