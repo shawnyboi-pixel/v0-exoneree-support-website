@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X, ChevronDown } from 'lucide-react'
+import { Menu, X, ChevronDown, ArrowLeft } from 'lucide-react'
 
 const aboutLinks = [
   { label: 'Home', href: '/' },
@@ -22,6 +22,58 @@ export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false)
   const pathname = usePathname()
+  const isHelpOthersPage = pathname === '/help-others'
+
+  if (isHelpOthersPage) {
+    return (
+      <header className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+          {/* Back Button */}
+          <Link href="/" className="flex items-center gap-2 text-foreground/75 hover:text-foreground transition-colors">
+            <ArrowLeft className="size-5" />
+            <span className="text-sm font-medium">Go Back</span>
+          </Link>
+
+          {/* Logo/Title on the Right */}
+          <Link href="/" className="flex items-center gap-3">
+            <div className="text-right">
+              <span className="text-lg font-semibold tracking-tight text-foreground lg:text-xl">
+                The Ide Project
+              </span>
+              <p className="text-xs font-medium text-accent lg:text-sm">
+                Youth Led Initiative
+              </p>
+            </div>
+          </Link>
+
+          <button
+            className="flex items-center justify-center rounded-md p-2 text-muted-foreground transition-colors hover:text-foreground md:hidden"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-expanded={mobileOpen}
+            aria-label="Toggle navigation menu"
+          >
+            {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+          </button>
+        </div>
+
+        {mobileOpen && (
+          <nav
+            className="border-t border-border/60 bg-background px-6 pb-6 pt-4 md:hidden"
+            aria-label="Mobile navigation"
+          >
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-foreground/75 hover:text-foreground transition-colors mb-4"
+              onClick={() => setMobileOpen(false)}
+            >
+              <ArrowLeft className="size-5" />
+              <span className="text-base font-medium">Go Back</span>
+            </Link>
+          </nav>
+        )}
+      </header>
+    )
+  }
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur-sm">
