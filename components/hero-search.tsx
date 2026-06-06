@@ -44,7 +44,7 @@ export function HeroSearch() {
         <div className="absolute inset-0 bg-gradient-to-r from-accent to-accent/80 opacity-5" />
         
         {/* Input Container */}
-        <div className="relative bg-white/95 backdrop-blur-lg border-2 border-accent/40 rounded-2xl p-1">
+        <div className="relative bg-white/85 backdrop-blur-lg border-2 border-accent/40 rounded-2xl p-1">
           <div className="flex items-center gap-4 px-6 py-4 lg:px-8 lg:py-5">
             <Search className="size-6 text-accent flex-shrink-0" />
             <input
@@ -64,7 +64,7 @@ export function HeroSearch() {
 
       {/* Search Results Dropdown */}
       {isOpen && (searchTerm.trim() || filteredGuides.length > 0) && (
-        <div className="absolute top-full left-0 right-0 mt-4 rounded-xl bg-white border-2 border-accent/20 shadow-2xl z-50 overflow-hidden">
+        <div className="absolute top-full left-0 right-0 mt-4 rounded-xl bg-white/90 border-2 border-accent/20 shadow-2xl z-50 overflow-hidden">
           {filteredGuides.length > 0 ? (
             <>
               <div className="max-h-80 overflow-y-auto">
