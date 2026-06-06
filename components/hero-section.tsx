@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight, Loader2 } from 'lucide-react'
+import { HeroSearch } from './hero-search'
 
 export function HeroSection() {
   const [loading, setLoading] = useState<string | null>(null)
@@ -70,6 +71,11 @@ export function HeroSection() {
                 'I Want to Help'
               )}
             </Link>
+          </div>
+
+          {/* Search Bar */}
+          <div className="mt-10">
+            <HeroSearch />
           </div>
         </div>
 
