@@ -31,11 +31,10 @@ export default function OurTeamPage() {
           </div>
         </div>
 
-        {/* Members Section */}
+        {/* Founders Section */}
         <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-2">Members</h2>
-            <p className="text-foreground/60">Founders and core team</p>
+            <h2 className="text-3xl font-bold text-foreground mb-2">Founders</h2>
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
