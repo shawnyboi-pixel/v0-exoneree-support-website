@@ -26,10 +26,10 @@ export function SiteHeader() {
 
   if (isHelpOthersPage) {
     return (
-      <header className="sticky top-0 z-50 border-b border-slate-600 bg-slate-700">
+      <header className="sticky top-0 z-50 border-b border-slate-500 bg-slate-600">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
           {/* Back Button */}
-          <Link href="/" className="flex items-center gap-2 text-slate-200 hover:text-white transition-colors">
+          <Link href="/" className="flex items-center gap-2 text-slate-100 hover:text-white transition-colors">
             <ArrowLeft className="size-5" />
             <span className="text-sm font-medium">Go Back</span>
           </Link>
@@ -40,14 +40,14 @@ export function SiteHeader() {
               <span className="text-lg font-semibold tracking-tight text-white lg:text-xl">
                 The Ide Project
               </span>
-              <p className="text-xs font-medium text-slate-300 lg:text-sm">
+              <p className="text-xs font-medium text-slate-200 lg:text-sm">
                 Youth Led Initiative
               </p>
             </div>
           </Link>
 
           <button
-            className="flex items-center justify-center rounded-md p-2 text-slate-300 transition-colors hover:text-white md:hidden"
+            className="flex items-center justify-center rounded-md p-2 text-slate-200 transition-colors hover:text-white md:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-expanded={mobileOpen}
             aria-label="Toggle navigation menu"
@@ -58,12 +58,12 @@ export function SiteHeader() {
 
         {mobileOpen && (
           <nav
-            className="border-t border-slate-600 bg-slate-700 px-6 pb-6 pt-4 md:hidden"
+            className="border-t border-slate-500 bg-slate-600 px-6 pb-6 pt-4 md:hidden"
             aria-label="Mobile navigation"
           >
             <Link
               href="/"
-              className="flex items-center gap-2 text-slate-200 hover:text-white transition-colors mb-4"
+              className="flex items-center gap-2 text-slate-100 hover:text-white transition-colors mb-4"
               onClick={() => setMobileOpen(false)}
             >
               <ArrowLeft className="size-5" />
