@@ -144,27 +144,27 @@ export default function HelpOthersPage() {
       </div>
 
       {/* Cold-tone Footer for Help Others Page */}
-      <footer className="border-t border-slate-200 bg-slate-100">
+      <footer className="border-t border-slate-300 bg-slate-700">
         <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-16">
           <div className="grid gap-8 md:grid-cols-3 lg:gap-12">
             <div>
               <div className="mb-4">
                 <div>
-                  <span className="text-base font-semibold text-slate-900 lg:text-lg">
+                  <span className="text-base font-semibold text-white lg:text-lg">
                     The Ide Project
                   </span>
-                  <p className="text-xs font-medium text-slate-600 lg:text-sm">
+                  <p className="text-xs font-medium text-slate-300 lg:text-sm">
                     Youth Led Initiative
                   </p>
                 </div>
               </div>
-              <p className="max-w-xs text-sm leading-relaxed text-slate-700 lg:text-base">
+              <p className="max-w-xs text-sm leading-relaxed text-slate-200 lg:text-base">
                 The Ide Project is a youth-led initiative connecting exonerees nationwide with verified reentry support organizations and community advocacy.
               </p>
             </div>
 
             <div>
-              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-slate-900 lg:text-base">
+              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white lg:text-base">
                 Resource Pages
               </h3>
               <nav
@@ -173,19 +173,19 @@ export default function HelpOthersPage() {
               >
                 <Link
                   href="/"
-                  className="text-sm text-slate-700 transition-colors hover:text-slate-900 lg:text-base"
+                  className="text-sm text-slate-300 transition-colors hover:text-white lg:text-base"
                 >
                   Home
                 </Link>
                 <Link
                   href="/guides"
-                  className="text-sm text-slate-700 transition-colors hover:text-slate-900 lg:text-base"
+                  className="text-sm text-slate-300 transition-colors hover:text-white lg:text-base"
                 >
                   Resources
                 </Link>
                 <Link
                   href="/help-others"
-                  className="text-sm text-slate-700 transition-colors hover:text-slate-900 lg:text-base"
+                  className="text-sm text-slate-300 transition-colors hover:text-white lg:text-base"
                 >
                   Get Involved
                 </Link>
@@ -193,23 +193,23 @@ export default function HelpOthersPage() {
             </div>
 
             <div>
-              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-slate-900">
+              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
                 Support Our Mission
               </h3>
-              <p className="mb-3 text-sm leading-relaxed text-slate-700">
+              <p className="mb-3 text-sm leading-relaxed text-slate-200">
                 Help us connect exonerees with the resources they need to rebuild their lives after wrongful conviction.
               </p>
-              <button className="text-sm font-medium text-slate-900 transition-colors hover:text-slate-700">
+              <button className="text-sm font-medium text-slate-300 transition-colors hover:text-white">
                 Learn More &rarr;
               </button>
             </div>
           </div>
 
-          <div className="mt-10 border-t border-slate-300 pt-6">
-            <p className="mb-3 text-center text-xs font-semibold uppercase tracking-wide text-slate-600">
+          <div className="mt-10 border-t border-slate-600 pt-6">
+            <p className="mb-3 text-center text-xs font-semibold uppercase tracking-wide text-slate-300">
               Disclaimer
             </p>
-            <p className="text-center text-xs text-slate-600">
+            <p className="text-center text-xs text-slate-300">
               This resource hub connects exonerees with support organizations. It does not provide and should not be understood as professional advice of any kind.
             </p>
           </div>
