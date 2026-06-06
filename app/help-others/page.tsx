@@ -91,9 +91,9 @@ export default function HelpOthersPage() {
                   <button
                     key={category.id}
                     onClick={() => setSelectedId(category.id)}
-                    className={`flex items-center gap-3 rounded-lg px-4 py-3 text-left transition-all duration-300 cursor-pointer ${
+                    className={`flex items-center gap-3 rounded-lg px-4 py-3 text-left transition-all duration-300 cursor-pointer relative ${
                       isSelected
-                        ? 'bg-slate-700 text-white shadow-md'
+                        ? 'bg-slate-700 text-white shadow-md border-r-4 border-r-blue-500'
                         : 'bg-white text-slate-900 border border-slate-200 hover:border-slate-300 hover:bg-slate-50'
                     }`}
                   >
@@ -108,7 +108,7 @@ export default function HelpOthersPage() {
           {/* Main Content */}
           <div className="lg:col-span-3">
             {selectedCategory && (
-              <div className="animate-fade-in rounded-lg bg-white border border-slate-200 shadow-sm p-8 md:p-10">
+              <div className="animate-fade-in rounded-lg bg-white border border-slate-200 shadow-sm p-8 md:p-10 relative border-l-4 border-l-blue-500">
                 {/* Content Header */}
                 <div className="flex items-start gap-4 mb-8">
                   <div className="flex size-14 items-center justify-center rounded-lg bg-slate-100 flex-shrink-0">
