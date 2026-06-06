@@ -37,57 +37,67 @@ export function HeroSearch() {
   }, [searchTerm])
 
   return (
-    <div className="relative w-full max-w-2xl animate-fade-in-up">
-      <div className="relative">
-        <Search className="absolute left-4 top-1/2 size-5 -translate-y-1/2 text-primary-foreground/60" />
-        <input
-          type="text"
-          placeholder="Search guides, resources, topics..."
-          value={searchTerm}
-          onChange={(e) => {
-            setSearchTerm(e.target.value)
-            setIsOpen(true)
-          }}
-          onFocus={() => setIsOpen(true)}
-          className="w-full rounded-lg border border-primary-foreground/30 bg-primary-foreground/10 px-4 py-3.5 pl-12 text-primary-foreground placeholder-primary-foreground/50 transition-all duration-300 backdrop-blur-sm focus:border-primary-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary-foreground/20 lg:py-4 lg:text-lg"
-        />
+    <div className="relative w-full max-w-4xl animate-fade-in-up mt-12">
+      {/* Search Bar Container with Shadow and Gradient */}
+      <div className="relative rounded-2xl shadow-2xl overflow-hidden">
+        {/* Gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-accent to-accent/80 opacity-5" />
+        
+        {/* Input Container */}
+        <div className="relative bg-white/95 backdrop-blur-lg border-2 border-accent/40 rounded-2xl p-1">
+          <div className="flex items-center gap-4 px-6 py-4 lg:px-8 lg:py-5">
+            <Search className="size-6 text-accent flex-shrink-0" />
+            <input
+              type="text"
+              placeholder="Search guides, resources, topics..."
+              value={searchTerm}
+              onChange={(e) => {
+                setSearchTerm(e.target.value)
+                setIsOpen(true)
+              }}
+              onFocus={() => setIsOpen(true)}
+              className="w-full text-lg lg:text-xl font-medium text-slate-900 placeholder-slate-500 bg-transparent outline-none"
+            />
+          </div>
+        </div>
       </div>
 
       {/* Search Results Dropdown */}
       {isOpen && (searchTerm.trim() || filteredGuides.length > 0) && (
-        <div className="absolute top-full left-0 right-0 mt-2 rounded-lg bg-background border border-border/60 shadow-xl z-50 overflow-hidden">
+        <div className="absolute top-full left-0 right-0 mt-4 rounded-xl bg-white border-2 border-accent/20 shadow-2xl z-50 overflow-hidden">
           {filteredGuides.length > 0 ? (
             <>
-              <div className="max-h-96 overflow-y-auto">
-                {filteredGuides.map((guide) => (
+              <div className="max-h-80 overflow-y-auto">
+                {filteredGuides.map((guide, idx) => (
                   <Link
                     key={guide.id}
                     href="/guides"
                     onClick={() => setIsOpen(false)}
-                    className="block border-b border-border/30 px-4 py-3 hover:bg-secondary/50 transition-colors last:border-b-0"
+                    className={`block px-6 py-4 hover:bg-accent/5 transition-colors ${idx !== filteredGuides.length - 1 ? 'border-b border-accent/10' : ''}`}
                   >
-                    <p className="font-medium text-foreground text-sm">{guide.title}</p>
-                    <p className="text-xs text-muted-foreground mt-1">{guide.category}</p>
+                    <p className="font-semibold text-slate-900">{guide.title}</p>
+                    <p className="text-sm text-accent font-medium mt-1">{guide.category}</p>
+                    <p className="text-sm text-slate-600 mt-2">{guide.description}</p>
                   </Link>
                 ))}
               </div>
-              <div className="px-4 py-3 bg-secondary/30 border-t border-border/30">
+              <div className="px-6 py-4 bg-accent/5 border-t-2 border-accent/10">
                 <Link
                   href="/guides"
                   onClick={() => setIsOpen(false)}
-                  className="text-xs font-medium text-accent hover:underline"
+                  className="text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
                 >
                   View all guides →
                 </Link>
               </div>
             </>
           ) : searchTerm.trim() ? (
-            <div className="px-4 py-6 text-center">
-              <p className="text-sm text-muted-foreground">No guides found for "{searchTerm}"</p>
+            <div className="px-6 py-8 text-center">
+              <p className="text-slate-600 font-medium">No guides found for "{searchTerm}"</p>
               <Link
                 href="/guides"
                 onClick={() => setIsOpen(false)}
-                className="text-xs font-medium text-accent hover:underline mt-2 inline-block"
+                className="text-sm font-semibold text-accent hover:text-accent/80 transition-colors mt-3 inline-block"
               >
                 Browse all guides →
               </Link>
