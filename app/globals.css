@@ -127,6 +127,9 @@
   html {
     scroll-behavior: smooth;
   }
+  body {
+    @apply bg-background text-foreground;
+  }
   /* Link and button transitions */
   a, button {
     @apply transition-all duration-300;
@@ -145,6 +148,7 @@
   input:focus, textarea:focus, select:focus {
     @apply ring-2 ring-ring ring-offset-2;
   }
+}
 
 @layer utilities {
   .transition-gentle {
