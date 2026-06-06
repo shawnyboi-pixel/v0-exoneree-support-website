@@ -30,14 +30,14 @@ export function HeroSection() {
               href="/guides"
               className="group inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-accent-foreground transition-gentle shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 lg:px-8 lg:py-4 lg:text-lg"
             >
-              Get Help Now
+              I Need Help
               <ArrowRight className="size-4 transition-smooth group-hover:translate-x-1 lg:size-5" />
             </Link>
             <Link
-              href="/organizations"
+              href="/help-others"
               className="group inline-flex items-center justify-center rounded-lg border-2 border-primary-foreground/40 px-6 py-3.5 text-base font-medium text-primary-foreground transition-gentle hover:bg-primary-foreground/10 hover:border-primary-foreground/60 hover:scale-105 active:scale-95 lg:px-8 lg:py-4 lg:text-lg"
             >
-              Explore Organizations
+              I Want to Help
             </Link>
           </div>
         </div>
