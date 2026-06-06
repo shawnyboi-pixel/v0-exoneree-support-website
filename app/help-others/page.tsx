@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { Briefcase, DollarSign, Users, Heart } from 'lucide-react'
 
 const categories = [
@@ -141,6 +142,79 @@ export default function HelpOthersPage() {
           </div>
         </div>
       </div>
+
+      {/* Cold-tone Footer for Help Others Page */}
+      <footer className="border-t border-slate-200 bg-slate-100">
+        <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-16">
+          <div className="grid gap-8 md:grid-cols-3 lg:gap-12">
+            <div>
+              <div className="mb-4">
+                <div>
+                  <span className="text-base font-semibold text-slate-900 lg:text-lg">
+                    The Ide Project
+                  </span>
+                  <p className="text-xs font-medium text-slate-600 lg:text-sm">
+                    Youth Led Initiative
+                  </p>
+                </div>
+              </div>
+              <p className="max-w-xs text-sm leading-relaxed text-slate-700 lg:text-base">
+                The Ide Project is a youth-led initiative connecting exonerees nationwide with verified reentry support organizations and community advocacy.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-slate-900 lg:text-base">
+                Resource Pages
+              </h3>
+              <nav
+                className="flex flex-col gap-2"
+                aria-label="Footer navigation"
+              >
+                <Link
+                  href="/"
+                  className="text-sm text-slate-700 transition-colors hover:text-slate-900 lg:text-base"
+                >
+                  Home
+                </Link>
+                <Link
+                  href="/guides"
+                  className="text-sm text-slate-700 transition-colors hover:text-slate-900 lg:text-base"
+                >
+                  Resources
+                </Link>
+                <Link
+                  href="/help-others"
+                  className="text-sm text-slate-700 transition-colors hover:text-slate-900 lg:text-base"
+                >
+                  Get Involved
+                </Link>
+              </nav>
+            </div>
+
+            <div>
+              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-slate-900">
+                Support Our Mission
+              </h3>
+              <p className="mb-3 text-sm leading-relaxed text-slate-700">
+                Help us connect exonerees with the resources they need to rebuild their lives after wrongful conviction.
+              </p>
+              <button className="text-sm font-medium text-slate-900 transition-colors hover:text-slate-700">
+                Learn More &rarr;
+              </button>
+            </div>
+          </div>
+
+          <div className="mt-10 border-t border-slate-300 pt-6">
+            <p className="mb-3 text-center text-xs font-semibold uppercase tracking-wide text-slate-600">
+              Disclaimer
+            </p>
+            <p className="text-center text-xs text-slate-600">
+              This resource hub connects exonerees with support organizations. It does not provide and should not be understood as professional advice of any kind.
+            </p>
+          </div>
+        </div>
+      </footer>
     </section>
   )
 }
