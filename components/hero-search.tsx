@@ -160,16 +160,12 @@ export function HeroSearch() {
   const updateDropdownPosition = useCallback(() => {
     if (containerRef.current) {
       const rect = containerRef.current.getBoundingClientRect()
-      const dropdownHeight = 380
-      const spaceBelow = window.innerHeight - rect.bottom
-      const spaceAbove = rect.top
-      const showAbove = spaceBelow < dropdownHeight && spaceAbove > dropdownHeight
 
       setDropdownPos({
-        top: showAbove ? rect.top - dropdownHeight - 8 : rect.bottom + 8,
+        top: rect.bottom + 8,
         left: rect.left,
         width: rect.width,
-        above: showAbove,
+        above: false,
       })
     }
   }, [])
