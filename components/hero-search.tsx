@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useRef, useEffect, useCallback } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { Search } from 'lucide-react'
 
 interface Guide {
@@ -109,6 +110,7 @@ function scoreGuide(query: string, guide: Guide): number {
 }
 
 export function HeroSearch() {
+  const router = useRouter()
   const [searchTerm, setSearchTerm] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const [dropdownPos, setDropdownPos] = useState({ top: 0, left: 0, width: 0, above: false })
@@ -129,6 +131,20 @@ export function HeroSearch() {
       .slice(0, 5)
       .map(item => item.guide)
   }, [searchTerm])
+
+  const handleSearch = useCallback((query: string) => {
+    if (query.trim()) {
+      router.push(`/guides?q=${encodeURIComponent(query)}`)
+      setIsOpen(false)
+      setSearchTerm('')
+    }
+  }, [router])
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSearch(searchTerm)
+    }
+  }
 
   const updateDropdownPosition = useCallback(() => {
     if (containerRef.current) {
@@ -180,6 +196,7 @@ export function HeroSearch() {
                 setIsOpen(true)
               }}
               onFocus={() => setIsOpen(true)}
+              onKeyDown={handleKeyDown}
               className="w-full text-lg lg:text-xl font-medium text-slate-900 placeholder-slate-500 bg-transparent outline-none"
             />
           </div>
@@ -200,38 +217,35 @@ export function HeroSearch() {
             <>
               <div className="max-h-80 overflow-y-auto">
                 {filteredGuides.map((guide, idx) => (
-                  <Link
+                  <button
                     key={guide.id}
-                    href="/guides"
-                    onClick={() => setIsOpen(false)}
-                    className={`block px-6 py-4 hover:bg-accent/5 transition-colors ${idx !== filteredGuides.length - 1 ? 'border-b border-accent/10' : ''}`}
+                    onClick={() => handleSearch(searchTerm)}
+                    className={`w-full text-left px-6 py-4 hover:bg-accent/5 transition-colors ${idx !== filteredGuides.length - 1 ? 'border-b border-accent/10' : ''}`}
                   >
                     <p className="font-semibold text-slate-900">{guide.title}</p>
                     <p className="text-sm text-accent font-medium mt-1">{guide.category}</p>
                     <p className="text-sm text-slate-600 mt-2">{guide.description}</p>
-                  </Link>
+                  </button>
                 ))}
               </div>
               <div className="px-6 py-4 bg-accent/5 border-t-2 border-accent/10">
-                <Link
-                  href="/guides"
-                  onClick={() => setIsOpen(false)}
+                <button
+                  onClick={() => handleSearch(searchTerm)}
                   className="text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
                 >
-                  View all guides →
-                </Link>
+                  View all results →
+                </button>
               </div>
             </>
           ) : searchTerm.trim() ? (
             <div className="px-6 py-8 text-center">
               <p className="text-slate-600 font-medium">No guides found for "{searchTerm}"</p>
-              <Link
-                href="/guides"
-                onClick={() => setIsOpen(false)}
+              <button
+                onClick={() => handleSearch(searchTerm)}
                 className="text-sm font-semibold text-accent hover:text-accent/80 transition-colors mt-3 inline-block"
               >
-                Browse all guides →
-              </Link>
+                See all guides →
+              </button>
             </div>
           ) : null}
         </div>

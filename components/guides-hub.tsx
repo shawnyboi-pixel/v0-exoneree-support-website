@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import Link from 'next/link'
 import { Search, FileText, Video, CheckCircle, X, MessageCircle } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
@@ -379,8 +379,8 @@ function getTypeLabel(type: string) {
   return type.charAt(0).toUpperCase() + type.slice(1)
 }
 
-export function GuidesHub() {
-  const [searchTerm, setSearchTerm] = useState('')
+export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
+  const [searchTerm, setSearchTerm] = useState(initialSearch)
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [selectedTypes, setSelectedTypes] = useState<string[]>([])
 
