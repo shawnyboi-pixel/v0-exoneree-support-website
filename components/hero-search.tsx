@@ -27,13 +27,8 @@ const guides: Guide[] = [
 export function HeroSearch() {
   const [searchTerm, setSearchTerm] = useState('')
   const [isOpen, setIsOpen] = useState(false)
-  const [dropdownStyle, setDropdownStyle] = useState<{ top?: string; bottom?: string; left: string; width: string }>({
-    left: '0',
-    width: '100%',
-    top: '0',
-  })
+  const [dropdownAbove, setDropdownAbove] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
-  const dropdownRef = useRef<HTMLDivElement>(null)
 
   const filteredGuides = useMemo(() => {
     if (!searchTerm.trim()) return []
@@ -46,44 +41,20 @@ export function HeroSearch() {
   useEffect(() => {
     if (isOpen && containerRef.current) {
       const rect = containerRef.current.getBoundingClientRect()
-      const dropdownHeight = 380 // Approximate height of dropdown
+      const dropdownHeight = 380
       const spaceBelow = window.innerHeight - rect.bottom
       const spaceAbove = rect.top
 
-      const left = rect.left
-      const width = rect.width
-
-      if (spaceBelow > dropdownHeight) {
-        // Dropdown fits below
-        setDropdownStyle({
-          top: `${rect.bottom}px`,
-          left: `${left}px`,
-          width: `${width}px`,
-        })
-      } else if (spaceAbove > dropdownHeight) {
-        // Dropdown fits above
-        setDropdownStyle({
-          bottom: `${window.innerHeight - rect.top}px`,
-          left: `${left}px`,
-          width: `${width}px`,
-        })
-      } else {
-        // Not enough space, show below anyway
-        setDropdownStyle({
-          top: `${rect.bottom}px`,
-          left: `${left}px`,
-          width: `${width}px`,
-        })
-      }
+      setDropdownAbove(spaceBelow < dropdownHeight && spaceAbove > dropdownHeight)
     }
   }, [isOpen, filteredGuides])
 
   return (
     <div ref={containerRef} className="relative w-full max-w-4xl animate-fade-in-up mt-12">
       {/* Search Bar Container with Shadow and Gradient */}
-      <div className="relative rounded-2xl shadow-2xl overflow-hidden">
+      <div className="relative rounded-2xl shadow-2xl overflow-visible">
         {/* Gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-accent to-accent/80 opacity-5" />
+        <div className="absolute inset-0 bg-gradient-to-r from-accent to-accent/80 opacity-5 rounded-2xl" />
         
         {/* Input Container */}
         <div className="relative bg-white/85 backdrop-blur-lg border-2 border-accent/40 rounded-2xl p-1">
@@ -107,9 +78,9 @@ export function HeroSearch() {
       {/* Search Results Dropdown */}
       {isOpen && (searchTerm.trim() || filteredGuides.length > 0) && (
         <div
-          ref={dropdownRef}
-          className="fixed rounded-xl bg-white/95 backdrop-blur-md border-2 border-accent/20 shadow-2xl z-50 overflow-hidden"
-          style={dropdownStyle}
+          className={`absolute left-0 right-0 rounded-xl bg-white/95 backdrop-blur-md border-2 border-accent/20 shadow-2xl z-50 overflow-hidden ${
+            dropdownAbove ? 'bottom-full mb-2' : 'top-full mt-2'
+          }`}
         >
           {filteredGuides.length > 0 ? (
             <>
