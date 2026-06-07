@@ -139,6 +139,10 @@ export function HeroSearch() {
       router.push(`/guides?q=${encodeURIComponent(query)}`)
       setIsOpen(false)
       setSearchTerm('')
+      // Reset loading state after a short delay in case navigation fails
+      setTimeout(() => {
+        setIsLoading(false)
+      }, 3000)
     }
   }, [router])
 
@@ -147,6 +151,11 @@ export function HeroSearch() {
       handleSearch(searchTerm)
     }
   }
+
+  useEffect(() => {
+    // Reset loading state when component mounts (in case user navigates back)
+    setIsLoading(false)
+  }, [])
 
   const updateDropdownPosition = useCallback(() => {
     if (containerRef.current) {
