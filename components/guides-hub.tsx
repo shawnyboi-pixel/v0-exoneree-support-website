@@ -529,7 +529,7 @@ export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
         </div>
 
         {/* Search Bar */}
-        <div className="mb-8 animate-fade-in-up">
+        <div className="mb-8 animate-fade-in-up sticky top-0 md:static bg-background py-4 md:py-0 -mx-6 md:mx-0 px-6 md:px-0 z-40 md:z-auto">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 size-5 -translate-y-1/2 text-muted-foreground" />
             <input
@@ -537,7 +537,13 @@ export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
               placeholder="Search guides..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full rounded-lg border border-border/60 bg-background py-3 pl-12 pr-4 text-foreground placeholder-muted-foreground transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 lg:py-4 lg:text-lg"
+              onFocus={(e) => {
+                // Scroll input into view on mobile
+                setTimeout(() => {
+                  e.target.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                }, 100)
+              }}
+              className="w-full rounded-lg border border-border/60 bg-background py-3 md:py-4 pl-12 pr-4 text-base md:text-lg text-foreground placeholder-muted-foreground transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
             />
           </div>
         </div>
@@ -546,7 +552,7 @@ export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
         <div className="mb-8 space-y-6 animate-fade-in-up">
           {/* Category Filters */}
           <div>
-            <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-foreground lg:text-base">
+            <h3 className="mb-3 text-xs md:text-sm font-semibold uppercase tracking-wider text-foreground">
               Categories
             </h3>
             <div className="flex flex-wrap gap-2">
@@ -554,7 +560,7 @@ export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
                 <button
                   key={category}
                   onClick={() => toggleCategory(category)}
-                  className={`rounded-full px-4 py-2 text-sm font-medium transition-all lg:text-base ${
+                  className={`rounded-full px-4 md:px-5 py-2.5 md:py-3 text-sm md:text-base font-medium transition-all active:scale-95 ${
                     selectedCategories.includes(category)
                       ? 'bg-accent text-accent-foreground shadow-md'
                       : 'border border-border/60 text-muted-foreground hover:border-accent/40 hover:bg-secondary/50'
@@ -568,7 +574,7 @@ export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
 
           {/* Type Filters */}
           <div>
-            <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-foreground lg:text-base">
+            <h3 className="mb-3 text-xs md:text-sm font-semibold uppercase tracking-wider text-foreground">
               Resource Type
             </h3>
             <div className="flex flex-wrap gap-2">
@@ -576,13 +582,13 @@ export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
                 <button
                   key={id}
                   onClick={() => toggleType(id)}
-                  className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all lg:text-base ${
+                  className={`flex items-center gap-2 rounded-full px-4 md:px-5 py-2.5 md:py-3 text-sm md:text-base font-medium transition-all active:scale-95 ${
                     selectedTypes.includes(id)
                       ? 'bg-accent text-accent-foreground shadow-md'
                       : 'border border-border/60 text-muted-foreground hover:border-accent/40 hover:bg-secondary/50'
                   }`}
                 >
-                  <Icon className="size-4" />
+                  <Icon className="size-4 md:size-5" />
                   {label}
                 </button>
               ))}
@@ -594,9 +600,9 @@ export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
             <div>
               <button
                 onClick={clearFilters}
-                className="flex items-center gap-2 text-sm font-medium text-accent hover:text-accent/80 transition-colors"
+                className="flex items-center gap-2 text-sm md:text-base font-medium text-accent hover:text-accent/80 transition-colors py-2"
               >
-                <X className="size-4" />
+                <X className="size-4 md:size-5" />
                 Clear all filters
               </button>
             </div>

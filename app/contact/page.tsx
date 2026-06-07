@@ -67,10 +67,10 @@ export default function ContactPage() {
             <div className="mb-12">
               <h2 className="text-sm font-semibold uppercase tracking-wider text-foreground/60 mb-6">Email</h2>
               <div className="space-y-4">
-                <a href="mailto:shawnxachen11@gmail.com" className="block text-accent hover:text-accent/80 transition-colors">
+                <a href="mailto:shawnxachen11@gmail.com" className="block text-accent hover:text-accent/80 transition-colors py-2">
                   shawnxachen11@gmail.com
                 </a>
-                <a href="mailto:shawn@youthforinnocence.org" className="block text-accent hover:text-accent/80 transition-colors">
+                <a href="mailto:shawn@youthforinnocence.org" className="block text-accent hover:text-accent/80 transition-colors py-2">
                   shawn@youthforinnocence.org
                 </a>
               </div>
@@ -80,14 +80,14 @@ export default function ContactPage() {
             <div>
               <h2 className="text-sm font-semibold uppercase tracking-wider text-foreground/60 mb-6">Connect</h2>
               <div className="flex gap-4">
-                <button className="flex size-12 items-center justify-center rounded-full border-2 border-accent/40 text-accent hover:border-accent hover:bg-accent/5 transition-all duration-300 hover:scale-110 active:scale-95">
-                  <Linkedin className="size-5" />
+                <button className="flex size-12 md:size-14 items-center justify-center rounded-full border-2 border-accent/40 text-accent hover:border-accent hover:bg-accent/5 transition-all duration-300 hover:scale-110 active:scale-95">
+                  <Linkedin className="size-6 md:size-7" />
                 </button>
-                <button className="flex size-12 items-center justify-center rounded-full border-2 border-accent/40 text-accent hover:border-accent hover:bg-accent/5 transition-all duration-300 hover:scale-110 active:scale-95">
-                  <Instagram className="size-5" />
+                <button className="flex size-12 md:size-14 items-center justify-center rounded-full border-2 border-accent/40 text-accent hover:border-accent hover:bg-accent/5 transition-all duration-300 hover:scale-110 active:scale-95">
+                  <Instagram className="size-6 md:size-7" />
                 </button>
-                <button className="flex size-12 items-center justify-center rounded-full border-2 border-accent/40 text-accent hover:border-accent hover:bg-accent/5 transition-all duration-300 hover:scale-110 active:scale-95">
-                  <MessageCircle className="size-5" />
+                <button className="flex size-12 md:size-14 items-center justify-center rounded-full border-2 border-accent/40 text-accent hover:border-accent hover:bg-accent/5 transition-all duration-300 hover:scale-110 active:scale-95">
+                  <MessageCircle className="size-6 md:size-7" />
                 </button>
               </div>
             </div>
@@ -95,7 +95,7 @@ export default function ContactPage() {
 
           {/* Right Column - Form */}
           <div className="lg:col-span-2">
-            <div className="border-l border-border/30 pl-12">
+            <div className="border-l-0 md:border-l border-border/30 md:pl-12">
               <h2 className="text-2xl font-bold text-foreground mb-8">Send a Message</h2>
 
               {submitted ? (
@@ -112,7 +112,7 @@ export default function ContactPage() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid gap-6 md:grid-cols-2">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-semibold text-foreground mb-2">
+                      <label htmlFor="name" className="block text-sm font-semibold text-foreground mb-3">
                         Name
                       </label>
                       <input
@@ -121,13 +121,18 @@ export default function ContactPage() {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
+                        onFocus={(e) => {
+                          setTimeout(() => {
+                            e.target.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                          }, 100)
+                        }}
                         required
-                        className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent"
+                        className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 md:py-4 text-base md:text-lg text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all"
                         placeholder="Your name"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-semibold text-foreground mb-2">
+                      <label htmlFor="email" className="block text-sm font-semibold text-foreground mb-3">
                         Email
                       </label>
                       <input
@@ -136,15 +141,20 @@ export default function ContactPage() {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
+                        onFocus={(e) => {
+                          setTimeout(() => {
+                            e.target.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                          }, 100)
+                        }}
                         required
-                        className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent"
+                        className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 md:py-4 text-base md:text-lg text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all"
                         placeholder="your@email.com"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-semibold text-foreground mb-2">
+                    <label htmlFor="subject" className="block text-sm font-semibold text-foreground mb-3">
                       Subject
                     </label>
                     <input
@@ -153,14 +163,19 @@ export default function ContactPage() {
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
+                      onFocus={(e) => {
+                        setTimeout(() => {
+                          e.target.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                        }, 100)
+                      }}
                       required
-                      className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent"
+                      className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 md:py-4 text-base md:text-lg text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all"
                       placeholder="What is this about?"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-semibold text-foreground mb-2">
+                    <label htmlFor="message" className="block text-sm font-semibold text-foreground mb-3">
                       Message
                     </label>
                     <textarea
@@ -168,9 +183,14 @@ export default function ContactPage() {
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
+                      onFocus={(e) => {
+                        setTimeout(() => {
+                          e.target.scrollIntoView({ behavior: 'smooth', block: 'end' })
+                        }, 100)
+                      }}
                       required
                       rows={8}
-                      className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent resize-none"
+                      className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 md:py-4 text-base md:text-lg text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent resize-none transition-all"
                       placeholder="Your message here..."
                     />
                   </div>
@@ -178,7 +198,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 font-semibold text-background hover:bg-accent/90 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed hover:shadow-lg"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 md:px-8 py-3 md:py-4 font-semibold text-base md:text-lg text-background hover:bg-accent/90 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed hover:shadow-lg active:scale-95"
                   >
                     {isLoading ? (
                       <>

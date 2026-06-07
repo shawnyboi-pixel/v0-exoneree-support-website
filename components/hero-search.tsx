@@ -192,7 +192,7 @@ export function HeroSearch() {
         
         {/* Input Container */}
         <div className="relative bg-white/85 backdrop-blur-lg border-2 border-accent/40 rounded-2xl p-1">
-          <div className="flex items-center gap-4 px-6 py-4 lg:px-8 lg:py-5">
+          <div className="flex items-center gap-2 md:gap-4 px-4 md:px-6 py-3 md:py-4 lg:px-8 lg:py-5">
             {isLoading ? (
               <div className="size-6 flex-shrink-0 flex items-center justify-center">
                 <div className="animate-spin">
@@ -213,10 +213,16 @@ export function HeroSearch() {
                 setSearchTerm(e.target.value)
                 setIsOpen(true)
               }}
-              onFocus={() => setIsOpen(true)}
+              onFocus={() => {
+                setIsOpen(true)
+                // Scroll input into view on mobile when focused
+                setTimeout(() => {
+                  containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                }, 100)
+              }}
               onKeyDown={handleKeyDown}
               disabled={isLoading}
-              className="w-full text-lg lg:text-xl font-medium text-slate-900 placeholder-slate-500 bg-transparent outline-none disabled:opacity-70 select-text"
+              className="w-full text-base md:text-lg lg:text-xl font-medium text-slate-900 placeholder-slate-500 bg-transparent outline-none disabled:opacity-70 select-text"
             />
           </div>
         </div>
@@ -230,38 +236,39 @@ export function HeroSearch() {
             top: `${dropdownPos.top}px`,
             left: `${dropdownPos.left}px`,
             width: `${dropdownPos.width}px`,
+            maxHeight: 'calc(100vh - 200px)',
           }}
         >
           {filteredGuides.length > 0 ? (
             <>
-              <div className="max-h-80 overflow-y-auto">
+              <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 280px)' }}>
                 {filteredGuides.map((guide, idx) => (
                   <button
                     key={guide.id}
                     onClick={() => handleSearch(searchTerm)}
-                    className={`w-full text-left px-6 py-4 hover:bg-accent/5 transition-colors ${idx !== filteredGuides.length - 1 ? 'border-b border-accent/10' : ''}`}
+                    className={`w-full text-left px-4 md:px-6 py-3 md:py-4 hover:bg-accent/5 transition-colors active:bg-accent/10 ${idx !== filteredGuides.length - 1 ? 'border-b border-accent/10' : ''}`}
                   >
-                    <p className="font-semibold text-slate-900">{guide.title}</p>
-                    <p className="text-sm text-accent font-medium mt-1">{guide.category}</p>
-                    <p className="text-sm text-slate-600 mt-2">{guide.description}</p>
+                    <p className="font-semibold text-sm md:text-base text-slate-900">{guide.title}</p>
+                    <p className="text-xs md:text-sm text-accent font-medium mt-1">{guide.category}</p>
+                    <p className="text-xs md:text-sm text-slate-600 mt-2">{guide.description}</p>
                   </button>
                 ))}
               </div>
-              <div className="px-6 py-4 bg-accent/5 border-t-2 border-accent/10">
+              <div className="px-4 md:px-6 py-3 md:py-4 bg-accent/5 border-t-2 border-accent/10">
                 <button
                   onClick={() => handleSearch(searchTerm)}
-                  className="text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
+                  className="text-xs md:text-sm font-semibold text-accent hover:text-accent/80 active:text-accent/70 transition-colors"
                 >
                   View all results →
                 </button>
               </div>
             </>
           ) : searchTerm.trim() ? (
-            <div className="px-6 py-8 text-center">
-              <p className="text-slate-600 font-medium">No guides found for "{searchTerm}"</p>
+            <div className="px-4 md:px-6 py-6 md:py-8 text-center">
+              <p className="text-sm md:text-base text-slate-600 font-medium">No guides found for "{searchTerm}"</p>
               <button
                 onClick={() => handleSearch(searchTerm)}
-                className="text-sm font-semibold text-accent hover:text-accent/80 transition-colors mt-3 inline-block"
+                className="text-xs md:text-sm font-semibold text-accent hover:text-accent/80 active:text-accent/70 transition-colors mt-3 inline-block"
               >
                 See all guides →
               </button>
