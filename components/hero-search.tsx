@@ -24,6 +24,90 @@ const guides: Guide[] = [
   { id: '10', title: 'Healthcare Access Guide', description: 'Accessing healthcare services after reentry.', category: 'Healthcare' },
 ]
 
+// Fuzzy match similarity score (0-1)
+function calculateSimilarity(str1: string, str2: string): number {
+  const s1 = str1.toLowerCase()
+  const s2 = str2.toLowerCase()
+  
+  // Exact match
+  if (s1 === s2) return 1
+  
+  // One contains the other
+  if (s1.includes(s2) || s2.includes(s1)) return 0.9
+  
+  // Levenshtein-like distance for fuzzy matching
+  const longer = s1.length > s2.length ? s1 : s2
+  const shorter = s1.length > s2.length ? s2 : s1
+  
+  if (longer.length === 0) return 1
+  
+  const editDistance = getEditDistance(shorter, longer)
+  return 1 - editDistance / longer.length
+}
+
+// Calculate edit distance (Levenshtein distance)
+function getEditDistance(s1: string, s2: string): number {
+  const costs = []
+  for (let i = 0; i <= s1.length; i++) {
+    let lastValue = i
+    for (let j = 0; j <= s2.length; j++) {
+      if (i === 0) {
+        costs[j] = j
+      } else if (j > 0) {
+        let newValue = costs[j - 1]
+        if (s1.charAt(i - 1) !== s2.charAt(j - 1)) {
+          newValue = Math.min(Math.min(newValue, lastValue), costs[j]) + 1
+        }
+        costs[j - 1] = lastValue
+        lastValue = newValue
+      }
+    }
+    if (i > 0) costs[s2.length] = lastValue
+  }
+  return costs[s2.length]
+}
+
+// Score a guide based on search query
+function scoreGuide(query: string, guide: Guide): number {
+  const queryWords = query.toLowerCase().split(/\s+/).filter(w => w.length > 0)
+  if (queryWords.length === 0) return 0
+  
+  let score = 0
+  const titleWords = guide.title.toLowerCase().split(/\s+/)
+  const descWords = guide.description.toLowerCase().split(/\s+/)
+  const allText = `${guide.title} ${guide.description}`.toLowerCase()
+  
+  // Match against each query word
+  for (const queryWord of queryWords) {
+    // Exact word match in title (highest score)
+    if (titleWords.some(w => w === queryWord)) {
+      score += 50
+    }
+    // Partial word match in title
+    else if (titleWords.some(w => w.includes(queryWord) || queryWord.includes(w))) {
+      score += 30
+    }
+    // Fuzzy match in title
+    else if (titleWords.some(w => calculateSimilarity(w, queryWord) > 0.7)) {
+      score += 20
+    }
+    // Exact word match in description
+    else if (descWords.some(w => w === queryWord)) {
+      score += 15
+    }
+    // Partial word match in description
+    else if (descWords.some(w => w.includes(queryWord) || queryWord.includes(w))) {
+      score += 10
+    }
+    // Fuzzy match in description
+    else if (descWords.some(w => calculateSimilarity(w, queryWord) > 0.7)) {
+      score += 5
+    }
+  }
+  
+  return score
+}
+
 export function HeroSearch() {
   const [searchTerm, setSearchTerm] = useState('')
   const [isOpen, setIsOpen] = useState(false)
@@ -32,10 +116,18 @@ export function HeroSearch() {
 
   const filteredGuides = useMemo(() => {
     if (!searchTerm.trim()) return []
-    return guides.filter((guide) =>
-      guide.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      guide.description.toLowerCase().includes(searchTerm.toLowerCase())
-    ).slice(0, 5)
+    
+    // Score all guides and filter by score
+    const scored = guides.map(guide => ({
+      guide,
+      score: scoreGuide(searchTerm, guide)
+    }))
+    
+    return scored
+      .filter(item => item.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 5)
+      .map(item => item.guide)
   }, [searchTerm])
 
   const updateDropdownPosition = useCallback(() => {
