@@ -98,7 +98,7 @@ export function SiteHeader() {
               {link.label === 'About' ? (
                 <>
                   <button
-                    className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-foreground/75 hover:text-foreground hover:bg-secondary/60"
+                    className="px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 text-foreground/75 hover:text-foreground hover:bg-secondary/60"
                     onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
                   >
                     {link.label}
@@ -109,7 +109,7 @@ export function SiteHeader() {
                       <Link
                         key={subLink.label}
                         href={subLink.href}
-                        className="block px-4 py-2.5 text-sm text-foreground/75 hover:text-foreground hover:bg-secondary/40 transition-all first:rounded-t-md last:rounded-b-md"
+                        className="block px-4 py-3 text-sm text-foreground/75 hover:text-foreground hover:bg-secondary/40 transition-all first:rounded-t-md last:rounded-b-md"
                         onClick={() => setAboutDropdownOpen(false)}
                       >
                         {subLink.label}
@@ -120,7 +120,7 @@ export function SiteHeader() {
               ) : (
                 <Link
                   href={link.href}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
                     pathname === link.href
                       ? 'bg-secondary/70 text-foreground'
                       : 'text-foreground/75 hover:text-foreground hover:bg-secondary/50'
@@ -151,7 +151,7 @@ export function SiteHeader() {
           <div className="flex flex-col gap-4">
             <div>
               <button
-                className="w-full text-base font-medium transition-colors hover:text-foreground text-muted-foreground flex items-center justify-between"
+                className="w-full text-base font-medium transition-colors hover:text-foreground text-muted-foreground flex items-center justify-between py-3 px-2"
                 onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
               >
                 About
@@ -163,7 +163,7 @@ export function SiteHeader() {
                     <Link
                       key={subLink.label}
                       href={subLink.href}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2 px-2"
                       onClick={() => setMobileOpen(false)}
                     >
                       {subLink.label}
@@ -174,14 +174,14 @@ export function SiteHeader() {
             </div>
             <Link
               href="/guides"
-              className="text-base font-medium transition-colors hover:text-foreground text-muted-foreground"
+              className="text-base font-medium transition-colors hover:text-foreground text-muted-foreground py-3 px-2 block"
               onClick={() => setMobileOpen(false)}
             >
               Guides & Tutorials
             </Link>
             <Link
               href="/contact"
-              className="text-base font-medium transition-colors hover:text-foreground text-muted-foreground"
+              className="text-base font-medium transition-colors hover:text-foreground text-muted-foreground py-3 px-2 block"
               onClick={() => setMobileOpen(false)}
             >
               Contact
