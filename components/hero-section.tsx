@@ -54,7 +54,7 @@ export function HeroSection() {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center animate-scale-up">
             <button
               onClick={handleClick('/guides')}
-              className="group inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-accent-foreground transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 hover:cursor-grab active:scale-95 active:cursor-grabbing lg:px-8 lg:py-4 lg:text-lg disabled:cursor-not-allowed disabled:opacity-90"
+              className="group inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-accent-foreground transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 hover:cursor-move active:scale-95 active:cursor-move lg:px-8 lg:py-4 lg:text-lg disabled:cursor-not-allowed disabled:opacity-90"
               disabled={loading === '/guides'}
             >
               {loading === '/guides' ? (
@@ -71,7 +71,7 @@ export function HeroSection() {
             </button>
             <button
               onClick={handleClick('/help-others')}
-              className="group inline-flex items-center justify-center rounded-lg border-2 border-primary-foreground/40 px-6 py-3.5 text-base font-medium text-primary-foreground transition-all duration-300 hover:bg-primary-foreground/10 hover:border-primary-foreground/60 hover:scale-105 hover:cursor-grab active:scale-95 active:cursor-grabbing lg:px-8 lg:py-4 lg:text-lg disabled:cursor-not-allowed disabled:opacity-90"
+              className="group inline-flex items-center justify-center rounded-lg border-2 border-primary-foreground/40 px-6 py-3.5 text-base font-medium text-primary-foreground transition-all duration-300 hover:bg-primary-foreground/10 hover:border-primary-foreground/60 hover:scale-105 hover:cursor-move active:scale-95 active:cursor-move lg:px-8 lg:py-4 lg:text-lg disabled:cursor-not-allowed disabled:opacity-90"
               disabled={loading === '/help-others'}
             >
               {loading === '/help-others' ? (
