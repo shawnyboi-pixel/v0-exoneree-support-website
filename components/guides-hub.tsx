@@ -362,6 +362,73 @@ const guides: Guide[] = [
   },
 ]
 
+// Fuzzy match similarity score (0-1)
+function calculateSimilarity(str1: string, str2: string): number {
+  const s1 = str1.toLowerCase()
+  const s2 = str2.toLowerCase()
+  
+  if (s1 === s2) return 1
+  if (s1.includes(s2) || s2.includes(s1)) return 0.9
+  
+  const longer = s1.length > s2.length ? s1 : s2
+  const shorter = s1.length > s2.length ? s2 : s1
+  
+  if (longer.length === 0) return 1
+  
+  const editDistance = getEditDistance(shorter, longer)
+  return 1 - editDistance / longer.length
+}
+
+// Calculate edit distance (Levenshtein distance)
+function getEditDistance(s1: string, s2: string): number {
+  const costs = []
+  for (let i = 0; i <= s1.length; i++) {
+    let lastValue = i
+    for (let j = 0; j <= s2.length; j++) {
+      if (i === 0) {
+        costs[j] = j
+      } else if (j > 0) {
+        let newValue = costs[j - 1]
+        if (s1.charAt(i - 1) !== s2.charAt(j - 1)) {
+          newValue = Math.min(Math.min(newValue, lastValue), costs[j]) + 1
+        }
+        costs[j - 1] = lastValue
+        lastValue = newValue
+      }
+    }
+    if (i > 0) costs[s2.length] = lastValue
+  }
+  return costs[s2.length]
+}
+
+// Score a guide based on search query (fuzzy matching)
+function scoreGuide(query: string, guide: Guide): number {
+  const queryWords = query.toLowerCase().split(/\s+/).filter(w => w.length > 0)
+  if (queryWords.length === 0) return 100 // No search term, include all guides
+  
+  let score = 0
+  const titleWords = guide.title.toLowerCase().split(/\s+/)
+  const descWords = guide.description.toLowerCase().split(/\s+/)
+  
+  for (const queryWord of queryWords) {
+    if (titleWords.some(w => w === queryWord)) {
+      score += 50
+    } else if (titleWords.some(w => w.includes(queryWord) || queryWord.includes(w))) {
+      score += 30
+    } else if (titleWords.some(w => calculateSimilarity(w, queryWord) > 0.7)) {
+      score += 20
+    } else if (descWords.some(w => w === queryWord)) {
+      score += 15
+    } else if (descWords.some(w => w.includes(queryWord) || queryWord.includes(w))) {
+      score += 10
+    } else if (descWords.some(w => calculateSimilarity(w, queryWord) > 0.7)) {
+      score += 5
+    }
+  }
+  
+  return score
+}
+
 function ResourceTypeIcon({ type }: { type: string }) {
   switch (type) {
     case 'video':
@@ -385,21 +452,27 @@ export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
   const [selectedTypes, setSelectedTypes] = useState<string[]>([])
 
   const filteredGuides = useMemo(() => {
-    return guides.filter((guide) => {
-      const matchesSearch =
-        guide.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        guide.description.toLowerCase().includes(searchTerm.toLowerCase())
-
-      const matchesCategory =
-        selectedCategories.length === 0 ||
-        selectedCategories.includes(guide.category)
-
-      const matchesType =
-        selectedTypes.length === 0 ||
-        selectedTypes.some((type) => guide.types.includes(type as any))
-
-      return matchesSearch && matchesCategory && matchesType
-    })
+    // Score all guides
+    const scored = guides.map(guide => ({
+      guide,
+      score: scoreGuide(searchTerm, guide)
+    }))
+    
+    // Filter and sort by score
+    return scored
+      .filter(item => {
+        const matchesSearch = searchTerm.trim() === '' || item.score > 0
+        const matchesCategory =
+          selectedCategories.length === 0 ||
+          selectedCategories.includes(item.guide.category)
+        const matchesType =
+          selectedTypes.length === 0 ||
+          selectedTypes.some((type) => item.guide.types.includes(type as any))
+        
+        return matchesSearch && matchesCategory && matchesType
+      })
+      .sort((a, b) => b.score - a.score)
+      .map(item => item.guide)
   }, [searchTerm, selectedCategories, selectedTypes])
 
   const toggleCategory = (category: string) => {
