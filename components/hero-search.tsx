@@ -113,6 +113,7 @@ export function HeroSearch() {
   const router = useRouter()
   const [searchTerm, setSearchTerm] = useState('')
   const [isOpen, setIsOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [dropdownPos, setDropdownPos] = useState({ top: 0, left: 0, width: 0, above: false })
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -134,6 +135,7 @@ export function HeroSearch() {
 
   const handleSearch = useCallback((query: string) => {
     if (query.trim()) {
+      setIsLoading(true)
       router.push(`/guides?q=${encodeURIComponent(query)}`)
       setIsOpen(false)
       setSearchTerm('')
@@ -186,7 +188,18 @@ export function HeroSearch() {
         {/* Input Container */}
         <div className="relative bg-white/85 backdrop-blur-lg border-2 border-accent/40 rounded-2xl p-1">
           <div className="flex items-center gap-4 px-6 py-4 lg:px-8 lg:py-5">
-            <Search className="size-6 text-accent flex-shrink-0" />
+            {isLoading ? (
+              <div className="size-6 flex-shrink-0 flex items-center justify-center">
+                <div className="animate-spin">
+                  <svg className="size-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeOpacity="0.1" />
+                    <path d="M12 2a10 10 0 0110 10" strokeLinecap="round" />
+                  </svg>
+                </div>
+              </div>
+            ) : (
+              <Search className="size-6 text-accent flex-shrink-0" />
+            )}
             <input
               type="text"
               placeholder="Search guides, resources, topics..."
@@ -197,14 +210,15 @@ export function HeroSearch() {
               }}
               onFocus={() => setIsOpen(true)}
               onKeyDown={handleKeyDown}
-              className="w-full text-lg lg:text-xl font-medium text-slate-900 placeholder-slate-500 bg-transparent outline-none"
+              disabled={isLoading}
+              className="w-full text-lg lg:text-xl font-medium text-slate-900 placeholder-slate-500 bg-transparent outline-none disabled:opacity-70"
             />
           </div>
         </div>
       </div>
 
       {/* Search Results Dropdown - Fixed Position */}
-      {isOpen && (searchTerm.trim() || filteredGuides.length > 0) && (
+      {isOpen && !isLoading && (searchTerm.trim() || filteredGuides.length > 0) && (
         <div
           className="fixed rounded-xl bg-white/95 backdrop-blur-md border-2 border-accent/20 shadow-2xl z-50 overflow-hidden"
           style={{
@@ -251,7 +265,7 @@ export function HeroSearch() {
         </div>
       )}
 
-      {isOpen && (
+      {isOpen && !isLoading && (
         <div
           className="fixed inset-0 z-40"
           onClick={() => setIsOpen(false)}
