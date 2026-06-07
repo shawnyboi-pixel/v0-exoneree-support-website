@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { Search } from 'lucide-react'
 
@@ -27,6 +27,13 @@ const guides: Guide[] = [
 export function HeroSearch() {
   const [searchTerm, setSearchTerm] = useState('')
   const [isOpen, setIsOpen] = useState(false)
+  const [dropdownStyle, setDropdownStyle] = useState<{ top?: string; bottom?: string; left: string; width: string }>({
+    left: '0',
+    width: '100%',
+    top: '0',
+  })
+  const containerRef = useRef<HTMLDivElement>(null)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   const filteredGuides = useMemo(() => {
     if (!searchTerm.trim()) return []
@@ -36,8 +43,43 @@ export function HeroSearch() {
     ).slice(0, 5)
   }, [searchTerm])
 
+  useEffect(() => {
+    if (isOpen && containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect()
+      const dropdownHeight = 380 // Approximate height of dropdown
+      const spaceBelow = window.innerHeight - rect.bottom
+      const spaceAbove = rect.top
+
+      const left = rect.left
+      const width = rect.width
+
+      if (spaceBelow > dropdownHeight) {
+        // Dropdown fits below
+        setDropdownStyle({
+          top: `${rect.bottom}px`,
+          left: `${left}px`,
+          width: `${width}px`,
+        })
+      } else if (spaceAbove > dropdownHeight) {
+        // Dropdown fits above
+        setDropdownStyle({
+          bottom: `${window.innerHeight - rect.top}px`,
+          left: `${left}px`,
+          width: `${width}px`,
+        })
+      } else {
+        // Not enough space, show below anyway
+        setDropdownStyle({
+          top: `${rect.bottom}px`,
+          left: `${left}px`,
+          width: `${width}px`,
+        })
+      }
+    }
+  }, [isOpen, filteredGuides])
+
   return (
-    <div className="relative w-full max-w-4xl animate-fade-in-up mt-12">
+    <div ref={containerRef} className="relative w-full max-w-4xl animate-fade-in-up mt-12">
       {/* Search Bar Container with Shadow and Gradient */}
       <div className="relative rounded-2xl shadow-2xl overflow-hidden">
         {/* Gradient background */}
@@ -64,7 +106,11 @@ export function HeroSearch() {
 
       {/* Search Results Dropdown */}
       {isOpen && (searchTerm.trim() || filteredGuides.length > 0) && (
-        <div className="absolute top-full left-0 right-0 mt-4 rounded-xl bg-white/90 border-2 border-accent/20 shadow-2xl z-50 overflow-hidden">
+        <div
+          ref={dropdownRef}
+          className="fixed rounded-xl bg-white/95 backdrop-blur-md border-2 border-accent/20 shadow-2xl z-50 overflow-hidden"
+          style={dropdownStyle}
+        >
           {filteredGuides.length > 0 ? (
             <>
               <div className="max-h-80 overflow-y-auto">
