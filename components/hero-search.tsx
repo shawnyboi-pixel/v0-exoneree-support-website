@@ -220,7 +220,7 @@ export function HeroSearch() {
               onFocus={() => setIsOpen(true)}
               onKeyDown={handleKeyDown}
               disabled={isLoading}
-              className="w-full text-lg lg:text-xl font-medium text-slate-900 placeholder-slate-500 bg-transparent outline-none disabled:opacity-70"
+              className="w-full text-lg lg:text-xl font-medium text-slate-900 placeholder-slate-500 bg-transparent outline-none disabled:opacity-70 select-text"
             />
           </div>
         </div>
