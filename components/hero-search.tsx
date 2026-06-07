@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef, useEffect, useCallback } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { Search } from 'lucide-react'
 
 interface Guide {
@@ -24,29 +25,190 @@ const guides: Guide[] = [
   { id: '10', title: 'Healthcare Access Guide', description: 'Accessing healthcare services after reentry.', category: 'Healthcare' },
 ]
 
+// Fuzzy match similarity score (0-1)
+function calculateSimilarity(str1: string, str2: string): number {
+  const s1 = str1.toLowerCase()
+  const s2 = str2.toLowerCase()
+  
+  // Exact match
+  if (s1 === s2) return 1
+  
+  // One contains the other
+  if (s1.includes(s2) || s2.includes(s1)) return 0.9
+  
+  // Levenshtein-like distance for fuzzy matching
+  const longer = s1.length > s2.length ? s1 : s2
+  const shorter = s1.length > s2.length ? s2 : s1
+  
+  if (longer.length === 0) return 1
+  
+  const editDistance = getEditDistance(shorter, longer)
+  return 1 - editDistance / longer.length
+}
+
+// Calculate edit distance (Levenshtein distance)
+function getEditDistance(s1: string, s2: string): number {
+  const costs = []
+  for (let i = 0; i <= s1.length; i++) {
+    let lastValue = i
+    for (let j = 0; j <= s2.length; j++) {
+      if (i === 0) {
+        costs[j] = j
+      } else if (j > 0) {
+        let newValue = costs[j - 1]
+        if (s1.charAt(i - 1) !== s2.charAt(j - 1)) {
+          newValue = Math.min(Math.min(newValue, lastValue), costs[j]) + 1
+        }
+        costs[j - 1] = lastValue
+        lastValue = newValue
+      }
+    }
+    if (i > 0) costs[s2.length] = lastValue
+  }
+  return costs[s2.length]
+}
+
+// Score a guide based on search query
+function scoreGuide(query: string, guide: Guide): number {
+  const queryWords = query.toLowerCase().split(/\s+/).filter(w => w.length > 0)
+  if (queryWords.length === 0) return 0
+  
+  let score = 0
+  const titleWords = guide.title.toLowerCase().split(/\s+/)
+  const descWords = guide.description.toLowerCase().split(/\s+/)
+  const allText = `${guide.title} ${guide.description}`.toLowerCase()
+  
+  // Match against each query word
+  for (const queryWord of queryWords) {
+    // Exact word match in title (highest score)
+    if (titleWords.some(w => w === queryWord)) {
+      score += 50
+    }
+    // Partial word match in title
+    else if (titleWords.some(w => w.includes(queryWord) || queryWord.includes(w))) {
+      score += 30
+    }
+    // Fuzzy match in title
+    else if (titleWords.some(w => calculateSimilarity(w, queryWord) > 0.7)) {
+      score += 20
+    }
+    // Exact word match in description
+    else if (descWords.some(w => w === queryWord)) {
+      score += 15
+    }
+    // Partial word match in description
+    else if (descWords.some(w => w.includes(queryWord) || queryWord.includes(w))) {
+      score += 10
+    }
+    // Fuzzy match in description
+    else if (descWords.some(w => calculateSimilarity(w, queryWord) > 0.7)) {
+      score += 5
+    }
+  }
+  
+  return score
+}
+
 export function HeroSearch() {
+  const router = useRouter()
   const [searchTerm, setSearchTerm] = useState('')
   const [isOpen, setIsOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [dropdownPos, setDropdownPos] = useState({ top: 0, left: 0, width: 0, above: false })
+  const containerRef = useRef<HTMLDivElement>(null)
 
   const filteredGuides = useMemo(() => {
     if (!searchTerm.trim()) return []
-    return guides.filter((guide) =>
-      guide.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      guide.description.toLowerCase().includes(searchTerm.toLowerCase())
-    ).slice(0, 5)
+    
+    // Score all guides and filter by score
+    const scored = guides.map(guide => ({
+      guide,
+      score: scoreGuide(searchTerm, guide)
+    }))
+    
+    return scored
+      .filter(item => item.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 5)
+      .map(item => item.guide)
   }, [searchTerm])
 
+  const handleSearch = useCallback((query: string) => {
+    if (query.trim()) {
+      setIsLoading(true)
+      router.push(`/guides?q=${encodeURIComponent(query)}`)
+      setIsOpen(false)
+      setSearchTerm('')
+      // Reset loading state after a short delay in case navigation fails
+      setTimeout(() => {
+        setIsLoading(false)
+      }, 3000)
+    }
+  }, [router])
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSearch(searchTerm)
+    }
+  }
+
+  useEffect(() => {
+    // Reset loading state when component mounts (in case user navigates back)
+    setIsLoading(false)
+  }, [])
+
+  const updateDropdownPosition = useCallback(() => {
+    if (containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect()
+      const dropdownHeight = 380
+      const spaceBelow = window.innerHeight - rect.bottom
+      const spaceAbove = rect.top
+      const showAbove = spaceBelow < dropdownHeight && spaceAbove > dropdownHeight
+
+      setDropdownPos({
+        top: showAbove ? rect.top - dropdownHeight - 8 : rect.bottom + 8,
+        left: rect.left,
+        width: rect.width,
+        above: showAbove,
+      })
+    }
+  }, [])
+
+  useEffect(() => {
+    if (isOpen) {
+      updateDropdownPosition()
+      window.addEventListener('scroll', updateDropdownPosition)
+      window.addEventListener('resize', updateDropdownPosition)
+
+      return () => {
+        window.removeEventListener('scroll', updateDropdownPosition)
+        window.removeEventListener('resize', updateDropdownPosition)
+      }
+    }
+  }, [isOpen, updateDropdownPosition])
+
   return (
-    <div className="relative w-full max-w-4xl animate-fade-in-up mt-12">
+    <div ref={containerRef} className="relative w-full max-w-4xl animate-fade-in-up mt-12">
       {/* Search Bar Container with Shadow and Gradient */}
-      <div className="relative rounded-2xl shadow-2xl overflow-hidden">
+      <div className="relative rounded-2xl shadow-2xl overflow-visible">
         {/* Gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-accent to-accent/80 opacity-5" />
+        <div className="absolute inset-0 bg-gradient-to-r from-accent to-accent/80 opacity-5 rounded-2xl" />
         
         {/* Input Container */}
         <div className="relative bg-white/85 backdrop-blur-lg border-2 border-accent/40 rounded-2xl p-1">
           <div className="flex items-center gap-4 px-6 py-4 lg:px-8 lg:py-5">
-            <Search className="size-6 text-accent flex-shrink-0" />
+            {isLoading ? (
+              <div className="size-6 flex-shrink-0 flex items-center justify-center">
+                <div className="animate-spin">
+                  <svg className="size-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeOpacity="0.1" />
+                    <path d="M12 2a10 10 0 0110 10" strokeLinecap="round" />
+                  </svg>
+                </div>
+              </div>
+            ) : (
+              <Search className="size-6 text-accent flex-shrink-0" />
+            )}
             <input
               type="text"
               placeholder="Search guides, resources, topics..."
@@ -56,57 +218,63 @@ export function HeroSearch() {
                 setIsOpen(true)
               }}
               onFocus={() => setIsOpen(true)}
-              className="w-full text-lg lg:text-xl font-medium text-slate-900 placeholder-slate-500 bg-transparent outline-none"
+              onKeyDown={handleKeyDown}
+              disabled={isLoading}
+              className="w-full text-lg lg:text-xl font-medium text-slate-900 placeholder-slate-500 bg-transparent outline-none disabled:opacity-70 select-text"
             />
           </div>
         </div>
       </div>
 
-      {/* Search Results Dropdown */}
-      {isOpen && (searchTerm.trim() || filteredGuides.length > 0) && (
-        <div className="absolute top-full left-0 right-0 mt-4 rounded-xl bg-white/90 border-2 border-accent/20 shadow-2xl z-50 overflow-hidden">
+      {/* Search Results Dropdown - Fixed Position */}
+      {isOpen && !isLoading && (searchTerm.trim() || filteredGuides.length > 0) && (
+        <div
+          className="fixed rounded-xl bg-white/95 backdrop-blur-md border-2 border-accent/20 shadow-2xl z-50 overflow-hidden"
+          style={{
+            top: `${dropdownPos.top}px`,
+            left: `${dropdownPos.left}px`,
+            width: `${dropdownPos.width}px`,
+          }}
+        >
           {filteredGuides.length > 0 ? (
             <>
               <div className="max-h-80 overflow-y-auto">
                 {filteredGuides.map((guide, idx) => (
-                  <Link
+                  <button
                     key={guide.id}
-                    href="/guides"
-                    onClick={() => setIsOpen(false)}
-                    className={`block px-6 py-4 hover:bg-accent/5 transition-colors ${idx !== filteredGuides.length - 1 ? 'border-b border-accent/10' : ''}`}
+                    onClick={() => handleSearch(searchTerm)}
+                    className={`w-full text-left px-6 py-4 hover:bg-accent/5 transition-colors ${idx !== filteredGuides.length - 1 ? 'border-b border-accent/10' : ''}`}
                   >
                     <p className="font-semibold text-slate-900">{guide.title}</p>
                     <p className="text-sm text-accent font-medium mt-1">{guide.category}</p>
                     <p className="text-sm text-slate-600 mt-2">{guide.description}</p>
-                  </Link>
+                  </button>
                 ))}
               </div>
               <div className="px-6 py-4 bg-accent/5 border-t-2 border-accent/10">
-                <Link
-                  href="/guides"
-                  onClick={() => setIsOpen(false)}
+                <button
+                  onClick={() => handleSearch(searchTerm)}
                   className="text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
                 >
-                  View all guides →
-                </Link>
+                  View all results →
+                </button>
               </div>
             </>
           ) : searchTerm.trim() ? (
             <div className="px-6 py-8 text-center">
               <p className="text-slate-600 font-medium">No guides found for "{searchTerm}"</p>
-              <Link
-                href="/guides"
-                onClick={() => setIsOpen(false)}
+              <button
+                onClick={() => handleSearch(searchTerm)}
                 className="text-sm font-semibold text-accent hover:text-accent/80 transition-colors mt-3 inline-block"
               >
-                Browse all guides →
-              </Link>
+                See all guides →
+              </button>
             </div>
           ) : null}
         </div>
       )}
 
-      {isOpen && (
+      {isOpen && !isLoading && (
         <div
           className="fixed inset-0 z-40"
           onClick={() => setIsOpen(false)}
