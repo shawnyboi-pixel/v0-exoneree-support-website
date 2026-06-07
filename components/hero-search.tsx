@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo, useRef, useEffect } from 'react'
+import { useState, useMemo, useRef, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { Search } from 'lucide-react'
 
@@ -27,7 +27,7 @@ const guides: Guide[] = [
 export function HeroSearch() {
   const [searchTerm, setSearchTerm] = useState('')
   const [isOpen, setIsOpen] = useState(false)
-  const [dropdownAbove, setDropdownAbove] = useState(false)
+  const [dropdownPos, setDropdownPos] = useState({ top: 0, left: 0, width: 0, above: false })
   const containerRef = useRef<HTMLDivElement>(null)
 
   const filteredGuides = useMemo(() => {
@@ -38,16 +38,35 @@ export function HeroSearch() {
     ).slice(0, 5)
   }, [searchTerm])
 
-  useEffect(() => {
-    if (isOpen && containerRef.current) {
+  const updateDropdownPosition = useCallback(() => {
+    if (containerRef.current) {
       const rect = containerRef.current.getBoundingClientRect()
       const dropdownHeight = 380
       const spaceBelow = window.innerHeight - rect.bottom
       const spaceAbove = rect.top
+      const showAbove = spaceBelow < dropdownHeight && spaceAbove > dropdownHeight
 
-      setDropdownAbove(spaceBelow < dropdownHeight && spaceAbove > dropdownHeight)
+      setDropdownPos({
+        top: showAbove ? rect.top - dropdownHeight - 8 : rect.bottom + 8,
+        left: rect.left,
+        width: rect.width,
+        above: showAbove,
+      })
     }
-  }, [isOpen, filteredGuides])
+  }, [])
+
+  useEffect(() => {
+    if (isOpen) {
+      updateDropdownPosition()
+      window.addEventListener('scroll', updateDropdownPosition)
+      window.addEventListener('resize', updateDropdownPosition)
+
+      return () => {
+        window.removeEventListener('scroll', updateDropdownPosition)
+        window.removeEventListener('resize', updateDropdownPosition)
+      }
+    }
+  }, [isOpen, updateDropdownPosition])
 
   return (
     <div ref={containerRef} className="relative w-full max-w-4xl animate-fade-in-up mt-12">
@@ -75,12 +94,15 @@ export function HeroSearch() {
         </div>
       </div>
 
-      {/* Search Results Dropdown */}
+      {/* Search Results Dropdown - Fixed Position */}
       {isOpen && (searchTerm.trim() || filteredGuides.length > 0) && (
         <div
-          className={`absolute left-0 right-0 rounded-xl bg-white/95 backdrop-blur-md border-2 border-accent/20 shadow-2xl z-50 overflow-hidden ${
-            dropdownAbove ? 'bottom-full mb-2' : 'top-full mt-2'
-          }`}
+          className="fixed rounded-xl bg-white/95 backdrop-blur-md border-2 border-accent/20 shadow-2xl z-50 overflow-hidden"
+          style={{
+            top: `${dropdownPos.top}px`,
+            left: `${dropdownPos.left}px`,
+            width: `${dropdownPos.width}px`,
+          }}
         >
           {filteredGuides.length > 0 ? (
             <>
