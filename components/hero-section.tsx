@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { HeroSearch } from './hero-search'
@@ -9,11 +9,22 @@ import { LoadingButton } from './loading-button'
 export function HeroSection() {
   const [loading, setLoading] = useState<string | null>(null)
 
+  // Reset loading state when component mounts (user navigates back)
+  useEffect(() => {
+    setLoading(null)
+  }, [])
+
   const handleClick = (href: string) => (e: React.MouseEvent) => {
     e.preventDefault()
     setLoading(href)
+    // Safety timeout to reset loading state in case navigation fails
+    const timeoutId = setTimeout(() => {
+      setLoading(null)
+    }, 5000)
+    
     setTimeout(() => {
       window.location.href = href
+      clearTimeout(timeoutId)
     }, 300)
   }
 
