@@ -450,6 +450,12 @@ export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
   const [searchTerm, setSearchTerm] = useState(initialSearch)
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [selectedTypes, setSelectedTypes] = useState<string[]>([])
+  const [loadingGuideId, setLoadingGuideId] = useState<string | null>(null)
+
+  // Reset loading state when component mounts (user navigates back)
+  useEffect(() => {
+    setLoadingGuideId(null)
+  }, [])
 
   const filteredGuides = useMemo(() => {
     // Score all guides
@@ -489,6 +495,15 @@ export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
         ? prev.filter((t) => t !== type)
         : [...prev, type]
     )
+  }
+
+  const handleGuideClick = (guideId: string, href: string) => (e: React.MouseEvent) => {
+    e.preventDefault()
+    setLoadingGuideId(guideId)
+    // Small delay to show the loading state smoothly
+    setTimeout(() => {
+      window.location.href = href
+    }, 300)
   }
 
   const clearFilters = () => {
@@ -603,9 +618,23 @@ export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
                 style={{ animationDelay: `${idx * 30}ms` }}
               >
                 {guide.slug ? (
-                  <Link href={`/guides/${guide.slug}`} className="block h-full">
-                    <Card className="group h-full border-border/60 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                  <a 
+                    href={`/guides/${guide.slug}`} 
+                    onClick={handleGuideClick(guide.id, `/guides/${guide.slug}`)}
+                    className="block h-full"
+                  >
+                    <Card className={`group h-full border-border/60 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer relative ${loadingGuideId === guide.id ? 'opacity-80' : ''}`}>
                       <CardContent className="flex h-full flex-col pt-6 lg:pt-8">
+                        {loadingGuideId === guide.id && (
+                          <div className="absolute inset-0 flex items-center justify-center bg-white/50 backdrop-blur-sm rounded-lg z-10">
+                            <div className="animate-spin">
+                              <svg className="size-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeOpacity="0.1" />
+                                <path d="M12 2a10 10 0 0110 10" strokeLinecap="round" />
+                              </svg>
+                            </div>
+                          </div>
+                        )}
                     {/* Type Badges and QA Badge */}
                     <div className="mb-4 flex flex-wrap gap-2 items-start">
                       <div className="flex flex-wrap gap-2 flex-1">
@@ -654,10 +683,21 @@ export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
                     </div>
                   </CardContent>
                 </Card>
-                  </Link>
+                  </a>
                 ) : (
-                  <Card className="group h-full border-border/60 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                  <div className="block h-full cursor-default">
+                    <Card className={`group h-full border-border/60 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 relative ${loadingGuideId === guide.id ? 'opacity-80' : ''}`}>
                     <CardContent className="flex h-full flex-col pt-6 lg:pt-8">
+                      {loadingGuideId === guide.id && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-white/50 backdrop-blur-sm rounded-lg z-10">
+                          <div className="animate-spin">
+                            <svg className="size-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeOpacity="0.1" />
+                              <path d="M12 2a10 10 0 0110 10" strokeLinecap="round" />
+                            </svg>
+                          </div>
+                        </div>
+                      )}
                     {/* Type Badges and QA Badge */}
                     <div className="mb-4 flex flex-wrap gap-2 items-start">
                       <div className="flex flex-wrap gap-2 flex-1">
@@ -706,6 +746,7 @@ export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
                     </div>
                   </CardContent>
                 </Card>
+                  </div>
                 )}
               </div>
             ))}

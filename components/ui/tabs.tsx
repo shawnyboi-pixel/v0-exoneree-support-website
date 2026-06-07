@@ -7,12 +7,21 @@ import { cn } from '@/lib/utils'
 
 function Tabs({
   className,
+  onValueChange,
   ...props
 }: React.ComponentProps<typeof TabsPrimitive.Root>) {
+  const handleValueChange = (value: string) => {
+    // Auto-scroll to top when tab changes
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    // Call the original onValueChange if provided
+    onValueChange?.(value)
+  }
+
   return (
     <TabsPrimitive.Root
       data-slot="tabs"
       className={cn('flex flex-col gap-2', className)}
+      onValueChange={handleValueChange}
       {...props}
     />
   )
