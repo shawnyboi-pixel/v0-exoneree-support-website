@@ -74,14 +74,8 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-10 border-t border-primary-foreground/10 pt-6">
-          <p className="mb-3 text-center text-xs font-semibold uppercase tracking-wide text-primary-foreground/50">
-            Disclaimer
-          </p>
-          <p className="text-center text-xs text-primary-foreground/40">
-            This is a landing page and informational resource hub connecting exonerees with
-            support organizations. It does not provide and should not be
-            understood as professional advice of any kind. All organizations
-            listed have been independently verified.
+          <p className="text-center text-sm text-primary-foreground/60">
+            &copy; 2026 The Ide Project. All rights reserved.
           </p>
         </div>
       </div>
