@@ -33,10 +33,17 @@ export function GuideQASection({ guideTitle, guideId }: GuideQASectionProps) {
   const [isLoading, setIsLoading] = useState(false)
   const [isPostingAnswer, setIsPostingAnswer] = useState<Record<string, boolean>>({})
   const [newAnswers, setNewAnswers] = useState<Record<string, string>>({})
-  const supabase = createClient()
+  const [supabase, setSupabase] = useState<any>(null)
+
+  // Initialize Supabase client on client side only
+  useEffect(() => {
+    setSupabase(createClient())
+  }, [])
 
   // Load questions from Supabase
   const loadQuestions = useCallback(async () => {
+    if (!supabase) return
+
     try {
       setIsLoading(true)
       const { data: questionsData, error: questionsError } = await supabase
@@ -81,6 +88,8 @@ export function GuideQASection({ guideTitle, guideId }: GuideQASectionProps) {
 
   // Load questions on mount and setup real-time subscription
   useEffect(() => {
+    if (!supabase) return
+
     loadQuestions()
 
     // Subscribe to real-time updates
@@ -108,7 +117,7 @@ export function GuideQASection({ guideTitle, guideId }: GuideQASectionProps) {
   }, [guideId, loadQuestions, supabase])
 
   const handleAskQuestion = async () => {
-    if (!newQuestion.trim()) return
+    if (!newQuestion.trim() || !supabase) return
 
     try {
       setIsLoading(true)
@@ -133,7 +142,7 @@ export function GuideQASection({ guideTitle, guideId }: GuideQASectionProps) {
 
   const handlePostAnswer = async (questionId: string) => {
     const answerText = newAnswers[questionId]
-    if (!answerText?.trim()) return
+    if (!answerText?.trim() || !supabase) return
 
     try {
       setIsPostingAnswer((prev) => ({ ...prev, [questionId]: true }))
