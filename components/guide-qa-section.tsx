@@ -1,15 +1,23 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { MessageCircle, Send, ChevronDown } from 'lucide-react'
+import { useState, useEffect, useCallback } from 'react'
+import { MessageCircle, Send, ChevronDown, Loader2 } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
+import { createClient } from '@/lib/supabase/client'
 
 interface Question {
   id: string
   author: string
   question: string
-  replies: number
   timestamp: string
+  answers?: Answer[]
+}
+
+interface Answer {
+  id: string
+  author: string
+  answer: string
+  created_at: string
 }
 
 interface GuideQASectionProps {
@@ -22,42 +30,136 @@ export function GuideQASection({ guideTitle, guideId }: GuideQASectionProps) {
   const [newQuestion, setNewQuestion] = useState('')
   const [showForm, setShowForm] = useState(false)
   const [expandedId, setExpandedId] = useState<string | null>(null)
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [isPostingAnswer, setIsPostingAnswer] = useState<Record<string, boolean>>({})
+  const [newAnswers, setNewAnswers] = useState<Record<string, string>>({})
+  const [supabase, setSupabase] = useState<any>(null)
 
-  // Load questions from localStorage on mount
+  // Initialize Supabase client on client side only
   useEffect(() => {
-    const storageKey = `qa-${guideId}`
-    const savedQuestions = localStorage.getItem(storageKey)
-    if (savedQuestions) {
-      try {
-        setQuestions(JSON.parse(savedQuestions))
-      } catch (err) {
-        console.error('[v0] Failed to load questions:', err)
+    setSupabase(createClient())
+  }, [])
+
+  // Load questions from Supabase
+  const loadQuestions = useCallback(async () => {
+    if (!supabase) return
+
+    try {
+      setIsLoading(true)
+      const { data: questionsData, error: questionsError } = await supabase
+        .from('questions')
+        .select('*')
+        .eq('guide_id', guideId)
+        .order('created_at', { ascending: false })
+
+      if (questionsError) throw questionsError
+
+      if (questionsData) {
+        const questionsWithAnswers = await Promise.all(
+          questionsData.map(async (q) => {
+            const { data: answersData } = await supabase
+              .from('answers')
+              .select('*')
+              .eq('question_id', q.id)
+              .order('created_at', { ascending: true })
+
+            return {
+              id: q.id,
+              author: q.author,
+              question: q.question,
+              timestamp: new Date(q.created_at).toLocaleString(),
+              answers: (answersData || []).map((a) => ({
+                id: a.id,
+                author: a.author,
+                answer: a.answer,
+                created_at: new Date(a.created_at).toLocaleString(),
+              })),
+            }
+          })
+        )
+        setQuestions(questionsWithAnswers)
       }
+    } catch (error) {
+      console.error('[v0] Error loading questions:', error)
+    } finally {
+      setIsLoading(false)
     }
-    setIsLoaded(true)
-  }, [guideId])
+  }, [guideId, supabase])
 
-  // Save questions to localStorage whenever they change
+  // Load questions on mount and setup real-time subscription
   useEffect(() => {
-    if (isLoaded) {
-      const storageKey = `qa-${guideId}`
-      localStorage.setItem(storageKey, JSON.stringify(questions))
-    }
-  }, [questions, guideId, isLoaded])
+    if (!supabase) return
 
-  const handleAskQuestion = () => {
-    if (newQuestion.trim()) {
-      const question: Question = {
-        id: String(Date.now()),
+    loadQuestions()
+
+    // Subscribe to real-time updates
+    const channel = supabase
+      .channel(`qa-${guideId}`)
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'questions', filter: `guide_id=eq.${guideId}` },
+        () => {
+          loadQuestions()
+        }
+      )
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'answers' },
+        () => {
+          loadQuestions()
+        }
+      )
+      .subscribe()
+
+    return () => {
+      channel.unsubscribe()
+    }
+  }, [guideId, loadQuestions, supabase])
+
+  const handleAskQuestion = async () => {
+    if (!newQuestion.trim() || !supabase) return
+
+    try {
+      setIsLoading(true)
+      const { error } = await supabase.from('questions').insert({
+        guide_id: guideId,
+        guide_title: guideTitle,
+        question: newQuestion.trim(),
         author: 'Community Member',
-        question: newQuestion,
-        replies: 0,
-        timestamp: 'just now',
-      }
-      setQuestions([question, ...questions])
+      })
+
+      if (error) throw error
+
       setNewQuestion('')
       setShowForm(false)
+      await loadQuestions()
+    } catch (error) {
+      console.error('[v0] Error posting question:', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handlePostAnswer = async (questionId: string) => {
+    const answerText = newAnswers[questionId]
+    if (!answerText?.trim() || !supabase) return
+
+    try {
+      setIsPostingAnswer((prev) => ({ ...prev, [questionId]: true }))
+      const { error } = await supabase.from('answers').insert({
+        question_id: questionId,
+        answer: answerText.trim(),
+        author: 'Community Member',
+      })
+
+      if (error) throw error
+
+      setNewAnswers((prev) => ({ ...prev, [questionId]: '' }))
+      await loadQuestions()
+    } catch (error) {
+      console.error('[v0] Error posting answer:', error)
+    } finally {
+      setIsPostingAnswer((prev) => ({ ...prev, [questionId]: false }))
     }
   }
 
@@ -88,25 +190,39 @@ export function GuideQASection({ guideTitle, guideId }: GuideQASectionProps) {
               <textarea
                 value={newQuestion}
                 onChange={(e) => setNewQuestion(e.target.value)}
+                onFocus={(e) => {
+                  setTimeout(() => {
+                    e.target.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                  }, 100)
+                }}
                 placeholder="What would you like to know about this guide?"
-                className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground placeholder:text-foreground/50 focus:outline-none focus:ring-2 focus:ring-accent/50 resize-none"
+                className="w-full px-4 py-3 md:py-4 rounded-lg bg-background border border-border text-base md:text-lg text-foreground placeholder:text-foreground/50 focus:outline-none focus:ring-2 focus:ring-accent/50 resize-none"
                 rows={4}
               />
               <div className="flex gap-3">
                 <button
                   onClick={handleAskQuestion}
-                  disabled={!newQuestion.trim()}
-                  className="inline-flex items-center gap-2 px-6 py-2 bg-accent text-primary-foreground rounded-lg hover:bg-accent/90 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={!newQuestion.trim() || isLoading}
+                  className="inline-flex items-center gap-2 px-6 md:px-8 py-2 md:py-3 bg-accent text-primary-foreground rounded-lg hover:bg-accent/90 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <Send className="w-4 h-4" />
-                  Post Question
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Posting...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      Post Question
+                    </>
+                  )}
                 </button>
                 <button
                   onClick={() => {
                     setShowForm(false)
                     setNewQuestion('')
                   }}
-                  className="px-6 py-2 bg-secondary text-foreground rounded-lg hover:bg-secondary/80 transition-colors"
+                  className="px-6 md:px-8 py-2 md:py-3 bg-secondary text-foreground rounded-lg hover:bg-secondary/80 transition-colors"
                 >
                   Cancel
                 </button>
@@ -126,7 +242,7 @@ export function GuideQASection({ guideTitle, guideId }: GuideQASectionProps) {
           </div>
         ) : (
           questions.map((q) => (
-            <Card key={q.id} className="border-border/60 hover:shadow-md transition-shadow cursor-pointer">
+            <Card key={q.id} className="border-border/60 hover:shadow-md transition-shadow">
               <CardContent className="pt-6">
                 <button
                   onClick={() => setExpandedId(expandedId === q.id ? null : q.id)}
@@ -142,29 +258,70 @@ export function GuideQASection({ guideTitle, guideId }: GuideQASectionProps) {
                       <div className="flex items-center gap-4 text-sm text-foreground/60">
                         <span className="inline-flex items-center gap-1">
                           <MessageCircle className="w-4 h-4" />
-                          {q.replies} {q.replies === 1 ? 'reply' : 'replies'}
+                          {q.answers?.length || 0} {(q.answers?.length || 0) === 1 ? 'reply' : 'replies'}
                         </span>
                       </div>
                     </div>
                     <ChevronDown
-                      className={`w-5 h-5 text-foreground/50 transition-transform ${
+                      className={`w-5 h-5 text-foreground/50 transition-transform flex-shrink-0 ${
                         expandedId === q.id ? 'rotate-180' : ''
                       }`}
                     />
                   </div>
                 </button>
 
-                {/* Expanded View */}
+                {/* Expanded View - Answers */}
                 {expandedId === q.id && (
-                  <div className="mt-6 pt-6 border-t border-border/30">
-                    <div className="bg-secondary/50 rounded-lg p-4 mb-4">
-                      <p className="text-sm text-foreground/70">
-                        This Q&A feature is coming soon! You&apos;ll be able to see replies and join the discussion here.
-                      </p>
+                  <div className="mt-6 pt-6 border-t border-border/30 space-y-4">
+                    {/* Display Answers */}
+                    {q.answers && q.answers.length > 0 ? (
+                      <div className="space-y-4 mb-6">
+                        <h4 className="font-semibold text-foreground">Answers</h4>
+                        {q.answers.map((answer) => (
+                          <div key={answer.id} className="bg-secondary/50 rounded-lg p-4">
+                            <div className="flex items-center gap-2 mb-2">
+                              <span className="font-medium text-sm text-foreground">{answer.author}</span>
+                              <span className="text-xs text-foreground/50">{answer.created_at}</span>
+                            </div>
+                            <p className="text-foreground text-sm leading-relaxed">{answer.answer}</p>
+                          </div>
+                        ))}
+                      </div>
+                    ) : null}
+
+                    {/* Answer Form */}
+                    <div className="space-y-3 pt-4 border-t border-border/30">
+                      <h4 className="font-semibold text-foreground text-sm">Post an Answer</h4>
+                      <textarea
+                        value={newAnswers[q.id] || ''}
+                        onChange={(e) => setNewAnswers((prev) => ({ ...prev, [q.id]: e.target.value }))}
+                        onFocus={(e) => {
+                          setTimeout(() => {
+                            e.target.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                          }, 100)
+                        }}
+                        placeholder="Share your knowledge and help the community..."
+                        className="w-full px-4 py-3 rounded-lg bg-background border border-border text-sm md:text-base text-foreground placeholder:text-foreground/50 focus:outline-none focus:ring-2 focus:ring-accent/50 resize-none"
+                        rows={3}
+                      />
+                      <button
+                        onClick={() => handlePostAnswer(q.id)}
+                        disabled={!newAnswers[q.id]?.trim() || isPostingAnswer[q.id]}
+                        className="inline-flex items-center gap-2 px-4 md:px-6 py-2 md:py-2.5 bg-accent text-primary-foreground rounded-lg hover:bg-accent/90 transition-colors font-medium text-sm md:text-base disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        {isPostingAnswer[q.id] ? (
+                          <>
+                            <Loader2 className="w-4 h-4 animate-spin" />
+                            Posting...
+                          </>
+                        ) : (
+                          <>
+                            <Send className="w-4 h-4" />
+                            Post Answer
+                          </>
+                        )}
+                      </button>
                     </div>
-                    <button className="text-accent hover:text-accent/80 font-medium text-sm">
-                      View all {q.replies} replies →
-                    </button>
                   </div>
                 )}
               </CardContent>
