@@ -45,7 +45,6 @@ export function GuideQASection({ guideTitle, guideId }: GuideQASectionProps) {
     if (!supabase) return
 
     try {
-      setIsLoading(true)
       const { data: questionsData, error: questionsError } = await supabase
         .from('questions')
         .select('*')
@@ -81,8 +80,6 @@ export function GuideQASection({ guideTitle, guideId }: GuideQASectionProps) {
       }
     } catch (error) {
       console.error('[v0] Error loading questions:', error)
-    } finally {
-      setIsLoading(false)
     }
   }, [guideId, supabase])
 
@@ -90,31 +87,40 @@ export function GuideQASection({ guideTitle, guideId }: GuideQASectionProps) {
   useEffect(() => {
     if (!supabase) return
 
+    // Initial load
     loadQuestions()
 
-    // Subscribe to real-time updates
-    const channel = supabase
-      .channel(`qa-${guideId}`)
+    // Subscribe to real-time updates for this guide's questions
+    const questionsChannel = supabase
+      .channel(`questions-${guideId}`)
       .on(
         'postgres_changes',
         { event: '*', schema: 'public', table: 'questions', filter: `guide_id=eq.${guideId}` },
-        () => {
+        (payload) => {
+          console.log('[v0] Question update:', payload.eventType)
           loadQuestions()
         }
       )
+      .subscribe()
+
+    // Subscribe to answers table for any updates (answers could belong to this guide's questions)
+    const answersChannel = supabase
+      .channel(`answers-${guideId}`)
       .on(
         'postgres_changes',
         { event: '*', schema: 'public', table: 'answers' },
-        () => {
+        (payload) => {
+          console.log('[v0] Answer update:', payload.eventType)
           loadQuestions()
         }
       )
       .subscribe()
 
     return () => {
-      channel.unsubscribe()
+      questionsChannel.unsubscribe()
+      answersChannel.unsubscribe()
     }
-  }, [guideId, loadQuestions, supabase])
+  }, [supabase, guideId, loadQuestions])
 
   const handleAskQuestion = async () => {
     if (!newQuestion.trim() || !supabase) return
@@ -130,8 +136,11 @@ export function GuideQASection({ guideTitle, guideId }: GuideQASectionProps) {
 
       if (error) throw error
 
+      // Clear form immediately
       setNewQuestion('')
       setShowForm(false)
+      
+      // Refresh questions to show the new one
       await loadQuestions()
     } catch (error) {
       console.error('[v0] Error posting question:', error)
@@ -154,7 +163,10 @@ export function GuideQASection({ guideTitle, guideId }: GuideQASectionProps) {
 
       if (error) throw error
 
+      // Clear answer immediately
       setNewAnswers((prev) => ({ ...prev, [questionId]: '' }))
+      
+      // Refresh questions to show the new answer
       await loadQuestions()
     } catch (error) {
       console.error('[v0] Error posting answer:', error)
