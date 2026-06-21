@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { HeroSearch } from './hero-search'
+import { HeroGuidesCarousel } from './hero-guides-carousel'
 import { LoadingButton } from './loading-button'
 
 export function HeroSection() {
@@ -33,8 +34,8 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(104,65,30,0.03)_0%,_transparent_50%)] pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(104,65,30,0.02)_0%,_transparent_50%)] pointer-events-none" />
 
-      <div className="relative mx-auto max-w-7xl px-6 py-24 md:py-32 lg:px-8 lg:py-40 xl:py-48">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start lg:items-center">
+      <div className="relative mx-auto max-w-7xl px-6 py-20 md:py-24 lg:px-8 lg:py-28 xl:py-32">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
           {/* Left Column - Content */}
           <div className="lg:col-span-1 animate-fade-in-up">
             <p className="mb-3 text-xs font-medium uppercase tracking-widest text-foreground/70 lg:text-sm">
@@ -88,9 +89,12 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column - Search Bar */}
-          <div className="lg:col-span-2 animate-fade-in-up lg:sticky lg:top-20">
-            <HeroSearch />
+          {/* Right Column - Search Bar and Guides Carousel */}
+          <div className="lg:col-span-2 animate-fade-in-up flex flex-col gap-4">
+            <div className="lg:sticky lg:top-6">
+              <HeroSearch />
+            </div>
+            <HeroGuidesCarousel />
           </div>
         </div>
 
