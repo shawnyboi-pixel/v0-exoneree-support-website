@@ -13,7 +13,7 @@ const aboutLinks = [
 
 const navLinks = [
   { label: 'About', href: '/', isDropdown: true },
-  { label: 'Guides & Tutorials', href: '/guides' },
+  { label: 'Guides', href: '/guides' },
   { label: 'Contact', href: '/contact' },
 ]
 
@@ -176,7 +176,7 @@ export function SiteHeader() {
               className="text-base font-medium transition-colors hover:text-foreground text-muted-foreground py-3 px-2 block"
               onClick={() => setMobileOpen(false)}
             >
-              Guides & Tutorials
+              Guides
             </Link>
             <Link
               href="/contact"
