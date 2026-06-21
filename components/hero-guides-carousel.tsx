@@ -28,30 +28,13 @@ const guides: Guide[] = [
 
 export function HeroGuidesCarousel() {
   const router = useRouter()
-  const carouselRef = useRef<HTMLDivElement>(null)
 
-  // Create an infinite loop by duplicating guides twice
-  const infiniteGuides = [...guides, ...guides]
+  // Create an infinite loop by duplicating guides multiple times for seamless scrolling
+  const infiniteGuides = [...guides, ...guides, ...guides]
 
   const handleCardClick = (path: string) => {
     router.push(path)
   }
-
-  useEffect(() => {
-    const carousel = carouselRef.current
-    if (!carousel) return
-
-    const handleScroll = () => {
-      // Check if we've scrolled to near the end (60% of the way)
-      if (carousel.scrollTop > (carousel.scrollHeight - carousel.clientHeight) * 0.6) {
-        // Seamlessly reset to top
-        carousel.scrollTop = 0
-      }
-    }
-
-    carousel.addEventListener('scroll', handleScroll)
-    return () => carousel.removeEventListener('scroll', handleScroll)
-  }, [])
 
   return (
     <div className="w-full">
@@ -61,12 +44,12 @@ export function HeroGuidesCarousel() {
             transform: translateY(0);
           }
           100% {
-            transform: translateY(calc(-${guides.length} * 200px));
+            transform: translateY(calc(-${guides.length * 2} * 200px));
           }
         }
         
         .guides-carousel {
-          animation: scroll-guides 60s linear infinite;
+          animation: scroll-guides 90s linear infinite;
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           gap: 1rem;
@@ -79,21 +62,14 @@ export function HeroGuidesCarousel() {
         }
       `}</style>
       
-      <div 
-        ref={carouselRef}
-        className="relative max-h-96 overflow-y-hidden rounded-2xl border-2 border-accent/20 bg-white/50 backdrop-blur-sm p-4 pointer-events-none"
-      >
-        {/* Gradient overlays for fade effect */}
-        <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none" />
-
+      <div className="relative max-h-96 overflow-hidden rounded-2xl border-2 border-accent/20 bg-white/50 backdrop-blur-sm p-4">
         {/* Carousel content */}
         <div className="guides-carousel">
           {infiniteGuides.map((guide, idx) => (
             <div
               key={`${guide.id}-${idx}`}
               onClick={() => handleCardClick(guide.path)}
-              className="flex-shrink-0 p-4 cursor-pointer transition-all duration-300 hover:bg-accent/10 border border-accent/15 rounded-lg bg-white hover:shadow-md pointer-events-auto"
+              className="flex-shrink-0 p-4 cursor-pointer transition-all duration-300 hover:bg-accent/10 border border-accent/15 rounded-lg bg-white hover:shadow-md"
             >
               <div className="flex flex-col h-full">
                 <div>
