@@ -184,30 +184,30 @@ export function HeroSearch() {
   }, [isOpen, updateDropdownPosition])
 
   return (
-    <div ref={containerRef} className="relative w-full max-w-4xl animate-fade-in-up mt-12">
+    <div ref={containerRef} className="relative w-full animate-fade-in-up">
       {/* Search Bar Container with Shadow and Gradient */}
-      <div className="relative rounded-2xl shadow-2xl overflow-visible">
+      <div className="relative rounded-3xl shadow-2xl overflow-visible">
         {/* Gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-accent to-accent/80 opacity-5 rounded-2xl" />
+        <div className="absolute inset-0 bg-gradient-to-r from-accent to-accent/80 opacity-10 rounded-3xl" />
         
         {/* Input Container */}
-        <div className="relative bg-white/85 backdrop-blur-lg border-2 border-accent/40 rounded-2xl p-1">
-          <div className="flex items-center gap-2 md:gap-4 px-4 md:px-6 py-3 md:py-4 lg:px-8 lg:py-5">
+        <div className="relative bg-white/90 backdrop-blur-xl border-2 border-accent/50 rounded-3xl p-1 hover:border-accent/70 transition-colors">
+          <div className="flex items-center gap-3 md:gap-4 px-6 md:px-8 py-4 md:py-6 lg:px-10 lg:py-7">
             {isLoading ? (
-              <div className="size-6 flex-shrink-0 flex items-center justify-center">
+              <div className="size-7 flex-shrink-0 flex items-center justify-center">
                 <div className="animate-spin">
-                  <svg className="size-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <svg className="size-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <circle cx="12" cy="12" r="10" stroke="currentColor" strokeOpacity="0.1" />
                     <path d="M12 2a10 10 0 0110 10" strokeLinecap="round" />
                   </svg>
                 </div>
               </div>
             ) : (
-              <Search className="size-6 text-accent flex-shrink-0" />
+              <Search className="size-7 text-accent flex-shrink-0" />
             )}
             <input
               type="text"
-              placeholder="Search guides, resources, topics..."
+              placeholder="Search guides & resources..."
               value={searchTerm}
               onChange={(e) => {
                 setSearchTerm(e.target.value)
@@ -222,7 +222,7 @@ export function HeroSearch() {
               }}
               onKeyDown={handleKeyDown}
               disabled={isLoading}
-              className="w-full text-base md:text-lg lg:text-xl font-medium text-slate-900 placeholder-slate-500 bg-transparent outline-none disabled:opacity-70 select-text"
+              className="w-full text-lg md:text-xl lg:text-2xl font-medium text-slate-900 placeholder-slate-400 bg-transparent outline-none disabled:opacity-70 select-text"
             />
           </div>
         </div>
