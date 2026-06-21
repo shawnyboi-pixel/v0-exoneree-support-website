@@ -87,7 +87,7 @@ export function QALanding() {
   return (
     <div className="bg-background">
       {/* Header Section */}
-      <section className="border-b border-border/60 bg-gradient-to-b from-primary/5 to-transparent px-4 py-16 lg:py-24">
+      <section className="border-b border-border/60 bg-background px-4 py-16 lg:py-24">
         <div className="mx-auto max-w-4xl">
           <div className="mb-6 flex items-center gap-3">
             <div className="flex size-12 items-center justify-center rounded-lg bg-accent/10 lg:size-14">
@@ -210,7 +210,7 @@ export function QALanding() {
 
           {/* Stats Section */}
           <div className="space-y-6">
-            <Card className="border-border/60 bg-gradient-to-br from-primary/5 to-transparent">
+            <Card className="border-border/60 bg-card">
               <CardContent className="pt-8">
                 <div className="space-y-8">
                   <div>

@@ -420,11 +420,11 @@ export default function HealthcarePage() {
       {/* Preventive Care Info */}
       <section className="bg-primary py-16 md:py-20">
         <div className="mx-auto max-w-3xl px-6 text-center">
-          <Heart className="mx-auto mb-4 size-8 text-primary-foreground" />
-          <h2 className="mb-4 font-serif text-2xl font-bold text-primary-foreground md:text-3xl">
+          <Heart className="mx-auto mb-4 size-8 text-accent-foreground" />
+          <h2 className="mb-4 font-serif text-2xl font-bold text-accent-foreground md:text-3xl">
             Your Health Matters
           </h2>
-          <p className="mb-6 text-base leading-relaxed text-primary-foreground/80">
+          <p className="mb-6 text-base leading-relaxed text-accent-foreground/80">
             You survived the impossible. Taking care of your physical and mental
             health is not a luxury—it is essential to your healing and rebuilding.
             Whether it is getting a physical exam, mental health counseling, dental
@@ -435,7 +435,7 @@ export default function HealthcarePage() {
             href="https://www.metrocareservices.org/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-primary-foreground px-6 py-3 font-semibold text-primary transition-all hover:bg-primary-foreground/90 hover:shadow-md"
+            className="inline-flex items-center gap-2 rounded-lg bg-background px-6 py-3 font-semibold text-primary transition-all hover:bg-background/90 hover:shadow-md"
           >
             Contact Metrocare Services
             <ExternalLink className="size-4" />
