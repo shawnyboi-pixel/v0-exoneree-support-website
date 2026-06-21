@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Linkedin, Instagram, MessageCircle } from 'lucide-react'
+import Image from 'next/image'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -214,6 +215,97 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Team Section */}
+      <div className="mx-auto max-w-6xl px-6 lg:px-12 py-20 md:py-28 lg:py-32 border-t border-border/30">
+        {/* Founders Section */}
+        <section className="mb-20">
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-foreground mb-2">Our Team - Founders</h2>
+            <p className="text-foreground/60">Meet the passionate advocates building The Ide Project</p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {/* Shawn Chen - Founder */}
+            <div className="group rounded-lg border border-border/40 bg-background p-6 transition-all duration-300 hover:border-accent/50 hover:shadow-lg">
+              <div className="mb-6 aspect-square w-full overflow-hidden rounded-lg bg-muted">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/4DEBE52B-B88F-4E52-AF59-C0E66F43DA52_1_201_a-Cpmtg1MXY9l3Qoi7lWmGFIa4MiPqeg.jpeg"
+                  alt="Shawn Chen"
+                  width={400}
+                  height={400}
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+
+              <div className="space-y-3">
+                <div>
+                  <h3 className="text-lg font-bold text-foreground">Shawn Chen</h3>
+                  <p className="text-sm font-semibold text-accent">Founder</p>
+                </div>
+
+                <p className="text-sm leading-relaxed text-foreground/80">
+                  Based in Dallas, Texas. A passionate advocate for wrongful conviction justice with 2 years of direct volunteer experience. Shawn founded The Ide Project to provide exonerees with the resources and support they need to rebuild their lives successfully.
+                </p>
+              </div>
+            </div>
+
+            {/* Vajra Vanukuri - Co-founder and Web Designer */}
+            <div className="group rounded-lg border border-border/40 bg-background p-6 transition-all duration-300 hover:border-accent/50 hover:shadow-lg">
+              <div className="mb-6 aspect-square w-full overflow-hidden rounded-lg bg-muted flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-muted-foreground text-sm font-medium">
+                    Image placeholder
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <div>
+                  <h3 className="text-lg font-bold text-foreground">Vajra Vanukuri</h3>
+                  <p className="text-sm font-semibold text-accent">Co-founder and Web Designer</p>
+                </div>
+
+                <p className="text-sm leading-relaxed text-foreground/80">
+                  Based in San Francisco, California. Passionate about leveraging technology to support wrongful conviction advocacy and exoneree reentry. Vajra brings technical expertise in Java, Python, HTML, and multiple other programming languages to build The Ide Project&apos;s digital platform for impact.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Board of Directors Section */}
+        <section className="border-t border-border/30 pt-20">
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-foreground mb-2">Board of Directors</h2>
+            <p className="text-foreground/60">Guiding our mission and impact</p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {/* Board member placeholder */}
+            <div className="group rounded-lg border border-border/40 bg-background p-6 transition-all duration-300 hover:border-accent/50 hover:shadow-lg">
+              <div className="mb-6 aspect-square w-full overflow-hidden rounded-lg bg-muted flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-muted-foreground text-sm font-medium">
+                    Image placeholder
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <div>
+                  <h3 className="text-lg font-bold text-foreground">Board Member Name</h3>
+                  <p className="text-sm font-semibold text-accent">Board Position</p>
+                </div>
+
+                <p className="text-sm leading-relaxed text-foreground/80">
+                  Coming soon. Board member information and bio will be added here.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </section>
   )
