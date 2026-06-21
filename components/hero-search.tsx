@@ -192,18 +192,18 @@ export function HeroSearch() {
         
         {/* Input Container */}
         <div className="relative bg-white/90 backdrop-blur-xl border-2 border-accent/50 rounded-2xl p-1 hover:border-accent/70 transition-colors">
-          <div className="flex items-center gap-2 md:gap-3 px-4 md:px-5 py-2.5 md:py-3">
+          <div className="flex items-center gap-2 md:gap-3 px-4 md:px-5 py-3 md:py-3 min-h-[48px] md:min-h-auto">
             {isLoading ? (
-              <div className="size-5 flex-shrink-0 flex items-center justify-center">
+              <div className="size-6 md:size-5 flex-shrink-0 flex items-center justify-center">
                 <div className="animate-spin">
-                  <svg className="size-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <svg className="size-6 md:size-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <circle cx="12" cy="12" r="10" stroke="currentColor" strokeOpacity="0.1" />
                     <path d="M12 2a10 10 0 0110 10" strokeLinecap="round" />
                   </svg>
                 </div>
               </div>
             ) : (
-              <Search className="size-5 text-accent flex-shrink-0" />
+              <Search className="size-6 md:size-5 text-accent flex-shrink-0" />
             )}
             <input
               type="text"
@@ -222,7 +222,7 @@ export function HeroSearch() {
               }}
               onKeyDown={handleKeyDown}
               disabled={isLoading}
-              className="w-full text-base md:text-lg font-medium text-slate-900 placeholder-slate-400 bg-transparent outline-none disabled:opacity-70 select-text"
+              className="w-full text-lg md:text-lg font-medium text-slate-900 placeholder-slate-500 bg-transparent outline-none disabled:opacity-70 select-text focus:ring-2 focus:ring-accent/30 px-2 py-1"
             />
           </div>
         </div>
@@ -246,7 +246,7 @@ export function HeroSearch() {
                   <button
                     key={guide.id}
                     onClick={() => handleSearch(searchTerm)}
-                    className={`w-full text-left px-4 md:px-6 py-3 md:py-4 hover:bg-accent/5 transition-colors active:bg-accent/10 ${idx !== filteredGuides.length - 1 ? 'border-b border-accent/10' : ''}`}
+                    className={`w-full text-left px-4 md:px-6 py-4 md:py-4 hover:bg-accent/5 transition-colors active:bg-accent/10 min-h-[48px] flex flex-col justify-center ${idx !== filteredGuides.length - 1 ? 'border-b border-accent/10' : ''}`}
                   >
                     <p className="font-semibold text-sm md:text-base text-slate-900">{guide.title}</p>
                     <p className="text-xs md:text-sm text-accent font-medium mt-1">{guide.category}</p>

@@ -57,7 +57,7 @@ export function HeroSection() {
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center animate-scale-up">
               <button
                 onClick={handleClick('/guides')}
-                className="group inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-accent-foreground transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 hover:cursor-pointer active:scale-95 md:px-5 md:py-3 md:text-base disabled:cursor-not-allowed disabled:opacity-90"
+                className="group inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-4 py-3 text-sm font-semibold text-accent-foreground transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 hover:cursor-pointer active:scale-95 md:px-5 md:py-3 md:text-base disabled:cursor-not-allowed disabled:opacity-90 min-h-[48px]"
                 disabled={loading === '/guides'}
               >
                 {loading === '/guides' ? (
@@ -74,7 +74,7 @@ export function HeroSection() {
               </button>
               <button
                 onClick={handleClick('/help-others')}
-                className="group inline-flex items-center justify-center rounded-lg border-2 border-foreground/40 px-4 py-2.5 text-sm font-medium text-foreground transition-all duration-300 hover:bg-foreground/10 hover:border-foreground/60 hover:scale-105 hover:cursor-pointer active:scale-95 md:px-5 md:py-3 md:text-base disabled:cursor-not-allowed disabled:opacity-90"
+                className="group inline-flex items-center justify-center rounded-lg border-2 border-foreground/40 px-4 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:bg-foreground/10 hover:border-foreground/60 hover:scale-105 hover:cursor-pointer active:scale-95 md:px-5 md:py-3 md:text-base disabled:cursor-not-allowed disabled:opacity-90 min-h-[48px]"
                 disabled={loading === '/help-others'}
               >
                 {loading === '/help-others' ? (
