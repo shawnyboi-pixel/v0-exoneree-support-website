@@ -29,12 +29,16 @@ const guides: Guide[] = [
 export function HeroGuidesCarousel() {
   const router = useRouter()
 
-  // Create an infinite loop by duplicating guides multiple times for seamless scrolling
-  const infiniteGuides = [...guides, ...guides, ...guides]
+  // Create an infinite loop by duplicating guides
+  const infiniteGuides = [...guides, ...guides]
 
   const handleCardClick = (path: string) => {
     router.push(path)
   }
+
+  // Calculate row height: each card is ~200px (p-4 on top/bottom = 32px, content ~168px)
+  const cardHeight = 200
+  const carouselHeight = 384 // max-h-96 = 24rem = 384px
 
   return (
     <div className="w-full">
@@ -44,15 +48,16 @@ export function HeroGuidesCarousel() {
             transform: translateY(0);
           }
           100% {
-            transform: translateY(calc(-${guides.length * 2} * 200px));
+            transform: translateY(calc(-${guides.length * cardHeight}px));
           }
         }
         
         .guides-carousel {
-          animation: scroll-guides 90s linear infinite;
+          animation: scroll-guides 60s linear infinite;
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           gap: 1rem;
+          width: 100%;
         }
 
         @media (max-width: 768px) {
@@ -62,7 +67,7 @@ export function HeroGuidesCarousel() {
         }
       `}</style>
       
-      <div className="relative max-h-96 overflow-hidden rounded-2xl border-2 border-accent/20 bg-white/50 backdrop-blur-sm p-4">
+      <div className="relative max-h-96 overflow-hidden rounded-2xl border-2 border-accent/20 bg-background p-4">
         {/* Carousel content */}
         <div className="guides-carousel">
           {infiniteGuides.map((guide, idx) => (
