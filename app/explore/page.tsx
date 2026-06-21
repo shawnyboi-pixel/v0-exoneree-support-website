@@ -45,7 +45,7 @@ export default function ExplorePage() {
             {/* Resource 1 */}
             <div className="rounded-lg bg-card border border-border p-6 hover:shadow-md transition-shadow">
               <div className="text-2xl mb-3">📚</div>
-              <h3 className="font-semibold text-foreground mb-2">Guides & Tutorials</h3>
+              <h3 className="font-semibold text-foreground mb-2">Guides</h3>
               <p className="text-foreground/70 text-sm">
                 Step-by-step guides covering financial planning, job search, housing, legal rights, and daily life skills.
               </p>

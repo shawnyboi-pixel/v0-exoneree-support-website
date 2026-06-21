@@ -42,13 +42,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${libreBaskerville.variable} bg-background`}
+      className={`${inter.variable} ${libreBaskerville.variable} bg-background h-screen w-screen overflow-x-hidden`}
     >
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased bg-background m-0 p-0 h-screen w-screen overflow-x-hidden">
         <RootLayoutClient>
-          <div className="flex min-h-screen flex-col">
+          <div className="flex min-h-screen flex-col bg-background">
             <SiteHeader />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 bg-background">{children}</main>
             <FooterWrapper />
           </div>
         </RootLayoutClient>
