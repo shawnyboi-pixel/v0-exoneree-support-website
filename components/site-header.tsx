@@ -3,23 +3,16 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X, ChevronDown, ArrowLeft } from 'lucide-react'
-
-const aboutLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'What the Exonerees Say', href: '/#statistics' },
-  { label: 'What we do', href: '/#what-we-do' },
-]
+import { Menu, X, ArrowLeft } from 'lucide-react'
 
 const navLinks = [
-  { label: 'About', href: '/', isDropdown: true },
+  { label: 'About', href: '/' },
   { label: 'Guides', href: '/guides' },
   { label: 'Contact', href: '/contact' },
 ]
 
 export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false)
   const pathname = usePathname()
   const isHelpOthersPage = pathname === '/help-others'
 
@@ -93,42 +86,17 @@ export function SiteHeader() {
           aria-label="Main navigation"
         >
           {navLinks.map((link) => (
-            <div key={link.label} className="relative group">
-              {link.label === 'About' ? (
-                <>
-                  <button
-                    className="px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 text-foreground/75 hover:text-foreground hover:bg-secondary/60"
-                    onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
-                  >
-                    {link.label}
-                    <ChevronDown className="inline-block size-4 ml-1 transition-transform group-hover:rotate-180" />
-                  </button>
-                  <div className="absolute left-0 mt-1 w-56 bg-background border border-border/80 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-1">
-                    {aboutLinks.map((subLink) => (
-                      <Link
-                        key={subLink.label}
-                        href={subLink.href}
-                        className="block px-4 py-3 text-sm text-foreground/75 hover:text-foreground hover:bg-secondary/40 transition-all first:rounded-t-md last:rounded-b-md"
-                        onClick={() => setAboutDropdownOpen(false)}
-                      >
-                        {subLink.label}
-                      </Link>
-                    ))}
-                  </div>
-                </>
-              ) : (
-                <Link
-                  href={link.href}
-                  className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
-                    pathname === link.href
-                      ? 'bg-secondary/70 text-foreground'
-                      : 'text-foreground/75 hover:text-foreground hover:bg-secondary/50'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              )}
-            </div>
+            <Link
+              key={link.label}
+              href={link.href}
+              className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
+                pathname === link.href
+                  ? 'bg-secondary/70 text-foreground'
+                  : 'text-foreground/75 hover:text-foreground hover:bg-secondary/50'
+              }`}
+            >
+              {link.label}
+            </Link>
           ))}
         </nav>
 
@@ -148,29 +116,13 @@ export function SiteHeader() {
           aria-label="Mobile navigation"
         >
           <div className="flex flex-col gap-4">
-            <div>
-              <button
-                className="w-full text-base font-medium transition-colors hover:text-foreground text-muted-foreground flex items-center justify-between py-3 px-2"
-                onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
-              >
-                About
-                <ChevronDown className={`size-4 transition-transform ${aboutDropdownOpen ? 'rotate-180' : ''}`} />
-              </button>
-              {aboutDropdownOpen && (
-                <div className="mt-2 pl-4 flex flex-col gap-2 border-l border-border/60">
-                  {aboutLinks.map((subLink) => (
-                    <Link
-                      key={subLink.label}
-                      href={subLink.href}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2 px-2"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      {subLink.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+            <Link
+              href="/"
+              className="text-base font-medium transition-colors hover:text-foreground text-muted-foreground py-3 px-2 block"
+              onClick={() => setMobileOpen(false)}
+            >
+              About
+            </Link>
             <Link
               href="/guides"
               className="text-base font-medium transition-colors hover:text-foreground text-muted-foreground py-3 px-2 block"
