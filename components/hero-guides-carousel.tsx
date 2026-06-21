@@ -1,6 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { useEffect, useRef } from 'react'
 
 interface Guide {
   id: string
@@ -27,34 +28,61 @@ const guides: Guide[] = [
 
 export function HeroGuidesCarousel() {
   const router = useRouter()
+  const carouselRef = useRef<HTMLDivElement>(null)
 
-  // Create an infinite loop by duplicating guides
-  const infiniteGuides = [...guides, ...guides, ...guides]
+  // Create an infinite loop by duplicating guides twice
+  const infiniteGuides = [...guides, ...guides]
 
   const handleCardClick = (path: string) => {
     router.push(path)
   }
 
+  useEffect(() => {
+    const carousel = carouselRef.current
+    if (!carousel) return
+
+    const handleScroll = () => {
+      // Check if we've scrolled to near the end (60% of the way)
+      if (carousel.scrollTop > (carousel.scrollHeight - carousel.clientHeight) * 0.6) {
+        // Seamlessly reset to top
+        carousel.scrollTop = 0
+      }
+    }
+
+    carousel.addEventListener('scroll', handleScroll)
+    return () => carousel.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full">
       <style>{`
         @keyframes scroll-guides {
           0% {
             transform: translateY(0);
           }
           100% {
-            transform: translateY(calc(-${guides.length} * 140px));
+            transform: translateY(calc(-${guides.length} * 200px));
           }
         }
         
         .guides-carousel {
-          animation: scroll-guides 30s linear infinite;
-          display: flex;
-          flex-direction: column;
+          animation: scroll-guides 60s linear infinite;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+          .guides-carousel {
+            grid-template-columns: 1fr;
+          }
         }
       `}</style>
       
-      <div className="relative h-96 overflow-hidden rounded-2xl border-2 border-accent/20 bg-white/50 backdrop-blur-sm pointer-events-none">
+      <div 
+        ref={carouselRef}
+        className="relative max-h-96 overflow-y-hidden rounded-2xl border-2 border-accent/20 bg-white/50 backdrop-blur-sm p-4 pointer-events-none"
+      >
         {/* Gradient overlays for fade effect */}
         <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none" />
         <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none" />
@@ -65,21 +93,21 @@ export function HeroGuidesCarousel() {
             <div
               key={`${guide.id}-${idx}`}
               onClick={() => handleCardClick(guide.path)}
-              className="flex-shrink-0 h-36 px-4 py-3 cursor-pointer transition-all duration-300 hover:bg-accent/5 border-b border-accent/10 pointer-events-auto"
+              className="flex-shrink-0 p-4 cursor-pointer transition-all duration-300 hover:bg-accent/10 border border-accent/15 rounded-lg bg-white hover:shadow-md pointer-events-auto"
             >
-              <div className="h-full flex flex-col justify-between">
+              <div className="flex flex-col h-full">
                 <div>
                   <div className="inline-block mb-2 px-2 py-1 rounded-full bg-accent/15 text-xs font-semibold text-accent">
                     {guide.category}
                   </div>
-                  <h3 className="font-semibold text-sm leading-tight text-foreground mb-1 line-clamp-2">
+                  <h3 className="font-semibold text-sm leading-tight text-foreground mb-2 line-clamp-2">
                     {guide.title}
                   </h3>
                   <p className="text-xs text-foreground/60 line-clamp-2">
                     {guide.description}
                   </p>
                 </div>
-                <div className="text-xs text-accent font-medium">Click to view →</div>
+                <div className="text-xs text-accent font-medium mt-3">Click to view →</div>
               </div>
             </div>
           ))}
