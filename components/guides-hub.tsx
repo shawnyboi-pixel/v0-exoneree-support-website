@@ -543,7 +543,7 @@ export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
                   e.target.scrollIntoView({ behavior: 'smooth', block: 'center' })
                 }, 100)
               }}
-              className="w-full rounded-lg border border-border/60 bg-background py-3 md:py-4 pl-12 pr-4 text-base md:text-lg text-foreground placeholder-muted-foreground transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+              className="w-full rounded-lg border border-border/60 bg-background py-3 md:py-4 pl-12 pr-4 text-base md:text-lg text-foreground placeholder-muted-foreground transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 min-h-[48px]"
             />
           </div>
         </div>
@@ -560,7 +560,7 @@ export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
                 <button
                   key={category}
                   onClick={() => toggleCategory(category)}
-                  className={`rounded-full px-4 md:px-5 py-2.5 md:py-3 text-sm md:text-base font-medium transition-all active:scale-95 ${
+                  className={`rounded-full px-4 md:px-5 py-3 md:py-3 text-sm md:text-base font-medium transition-all active:scale-95 min-h-[44px] flex items-center justify-center ${
                     selectedCategories.includes(category)
                       ? 'bg-accent text-accent-foreground shadow-md'
                       : 'border border-border/60 text-muted-foreground hover:border-accent/40 hover:bg-secondary/50'
@@ -582,7 +582,7 @@ export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
                 <button
                   key={id}
                   onClick={() => toggleType(id)}
-                  className={`flex items-center gap-2 rounded-full px-4 md:px-5 py-2.5 md:py-3 text-sm md:text-base font-medium transition-all active:scale-95 ${
+                  className={`flex items-center gap-2 rounded-full px-4 md:px-5 py-3 md:py-3 text-sm md:text-base font-medium transition-all active:scale-95 min-h-[44px] justify-center ${
                     selectedTypes.includes(id)
                       ? 'bg-accent text-accent-foreground shadow-md'
                       : 'border border-border/60 text-muted-foreground hover:border-accent/40 hover:bg-secondary/50'

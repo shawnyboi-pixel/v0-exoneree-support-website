@@ -128,7 +128,7 @@ export default function ContactPage() {
                           }, 100)
                         }}
                         required
-                        className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 md:py-4 text-base md:text-lg text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all"
+                        className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 md:py-4 text-base md:text-lg text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all min-h-[48px]"
                         placeholder="Your name"
                       />
                     </div>
@@ -148,7 +148,7 @@ export default function ContactPage() {
                           }, 100)
                         }}
                         required
-                        className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 md:py-4 text-base md:text-lg text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all"
+                        className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 md:py-4 text-base md:text-lg text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all min-h-[48px]"
                         placeholder="your@email.com"
                       />
                     </div>
@@ -170,7 +170,7 @@ export default function ContactPage() {
                         }, 100)
                       }}
                       required
-                      className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 md:py-4 text-base md:text-lg text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all"
+                      className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 md:py-4 text-base md:text-lg text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all min-h-[48px]"
                       placeholder="What is this about?"
                     />
                   </div>
@@ -191,7 +191,7 @@ export default function ContactPage() {
                       }}
                       required
                       rows={8}
-                      className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 md:py-4 text-base md:text-lg text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent resize-none transition-all"
+                      className="w-full rounded-lg border border-border/60 bg-background px-4 py-3 md:py-4 text-base md:text-lg text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent resize-none transition-all min-h-[120px]"
                       placeholder="Your message here..."
                     />
                   </div>
@@ -199,7 +199,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 md:px-8 py-3 md:py-4 font-semibold text-base md:text-lg text-background hover:bg-accent/90 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed hover:shadow-lg active:scale-95"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 md:px-8 py-3 md:py-4 font-semibold text-base md:text-lg text-background hover:bg-accent/90 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed hover:shadow-lg active:scale-95 min-h-[48px] w-full md:w-auto"
                   >
                     {isLoading ? (
                       <>
