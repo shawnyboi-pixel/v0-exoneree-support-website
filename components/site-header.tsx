@@ -23,7 +23,7 @@ interface SiteHeaderProps {
 }
 
 export function SiteHeader({ user }: SiteHeaderProps) {
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const [navOpen, setNavOpen] = useState(false)
   const pathname = usePathname()
   const isHelpOthersPage = pathname === '/help-others'
 
@@ -50,24 +50,24 @@ export function SiteHeader({ user }: SiteHeaderProps) {
           </Link>
 
           <button
-            className="flex items-center justify-center rounded-md p-2 text-slate-600 transition-colors hover:text-slate-900 md:hidden"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-expanded={mobileOpen}
+            className="flex items-center justify-center rounded-md p-2 text-slate-600 transition-colors hover:text-slate-900"
+            onClick={() => setNavOpen(!navOpen)}
+            aria-expanded={navOpen}
             aria-label="Toggle navigation menu"
           >
-            {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+            {navOpen ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
         </div>
 
-        {mobileOpen && (
+        {navOpen && (
           <nav
-            className="border-t border-slate-300 bg-slate-200 px-6 pb-6 pt-4 md:hidden"
+            className="border-t border-slate-300 bg-slate-200 px-6 pb-6 pt-4"
             aria-label="Mobile navigation"
           >
             <Link
               href="/"
               className="flex items-center gap-2 text-slate-700 hover:text-slate-900 transition-colors mb-4"
-              onClick={() => setMobileOpen(false)}
+              onClick={() => setNavOpen(false)}
             >
               <ArrowLeft className="size-5" />
               <span className="text-base font-medium">Go Back</span>
@@ -80,8 +80,45 @@ export function SiteHeader({ user }: SiteHeaderProps) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-        <Link href="/" className="flex items-center gap-3">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8 gap-4">
+        {/* Navigation Dropdown Button */}
+        <div className="relative">
+          <button
+            className="flex items-center justify-center rounded-md p-2.5 text-muted-foreground transition-colors hover:text-foreground hover:bg-secondary/50"
+            onClick={() => setNavOpen(!navOpen)}
+            aria-expanded={navOpen}
+            aria-label="Toggle navigation menu"
+          >
+            {navOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+          </button>
+
+          {navOpen && (
+            <nav
+              className="absolute left-0 top-full mt-1 w-48 rounded-lg border border-border/60 bg-background shadow-lg"
+              aria-label="Main navigation"
+            >
+              <div className="flex flex-col py-2">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className={`px-4 py-3 text-sm font-medium transition-all duration-200 ${
+                      pathname === link.href
+                        ? 'bg-secondary/70 text-foreground'
+                        : 'text-foreground/75 hover:text-foreground hover:bg-secondary/50'
+                    }`}
+                    onClick={() => setNavOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </nav>
+          )}
+        </div>
+
+        {/* Logo/Title - Centered */}
+        <Link href="/" className="flex items-center gap-3 flex-1">
           <div>
             <span className="text-lg font-semibold tracking-tight text-foreground lg:text-xl">
               The Ide Project
@@ -92,26 +129,8 @@ export function SiteHeader({ user }: SiteHeaderProps) {
           </div>
         </Link>
 
-        <nav
-          className="hidden items-center gap-2 md:flex"
-          aria-label="Main navigation"
-        >
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
-                pathname === link.href
-                  ? 'bg-secondary/70 text-foreground'
-                  : 'text-foreground/75 hover:text-foreground hover:bg-secondary/50'
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="hidden md:flex items-center gap-2">
+        {/* User Menu / Auth Links */}
+        <div className="flex items-center gap-2">
           {user ? (
             <UserMenu user={user} />
           ) : (
@@ -131,73 +150,7 @@ export function SiteHeader({ user }: SiteHeaderProps) {
             </>
           )}
         </div>
-
-        <button
-          className="flex items-center justify-center rounded-md p-2 text-muted-foreground transition-colors hover:text-foreground md:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-expanded={mobileOpen}
-          aria-label="Toggle navigation menu"
-        >
-          {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
-        </button>
       </div>
-
-      {mobileOpen && (
-        <nav
-          className="border-t border-border/60 bg-background px-6 pb-6 pt-4 md:hidden"
-          aria-label="Mobile navigation"
-        >
-          <div className="flex flex-col gap-4">
-            <Link
-              href="/"
-              className="text-base font-medium transition-colors hover:text-foreground text-muted-foreground py-3 px-2 block"
-              onClick={() => setMobileOpen(false)}
-            >
-              About
-            </Link>
-            <Link
-              href="/guides"
-              className="text-base font-medium transition-colors hover:text-foreground text-muted-foreground py-3 px-2 block"
-              onClick={() => setMobileOpen(false)}
-            >
-              Guides
-            </Link>
-            <Link
-              href="/news"
-              className="text-base font-medium transition-colors hover:text-foreground text-muted-foreground py-3 px-2 block"
-              onClick={() => setMobileOpen(false)}
-            >
-              News
-            </Link>
-            <Link
-              href="/contact"
-              className="text-base font-medium transition-colors hover:text-foreground text-muted-foreground py-3 px-2 block"
-              onClick={() => setMobileOpen(false)}
-            >
-              Contact
-            </Link>
-            {!user && (
-              <>
-                <div className="border-t border-border/30 my-2" />
-                <Link
-                  href="/sign-in"
-                  className="text-base font-medium transition-colors hover:text-foreground text-muted-foreground py-3 px-2 block"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  Sign In
-                </Link>
-                <Link
-                  href="/sign-up"
-                  className="text-base font-medium bg-accent text-accent-foreground hover:bg-accent/90 transition-all py-3 px-4 rounded-lg text-center"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  Sign Up
-                </Link>
-              </>
-            )}
-          </div>
-        </nav>
-      )}
     </header>
   )
 }
