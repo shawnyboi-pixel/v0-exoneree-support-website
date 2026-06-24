@@ -20,10 +20,17 @@ export function UserMenu({ user }: UserMenuProps) {
   const router = useRouter()
 
   const handleLogout = async () => {
-    await authClient.signOut()
-    setIsOpen(false)
-    router.push('/')
-    router.refresh()
+    try {
+      await authClient.signOut()
+      // Clear the session cookie
+      document.cookie = 'session=; path=/; max-age=0'
+      // Full page reload to reset all UI to unsigned-in state
+      window.location.href = '/'
+    } catch (error) {
+      console.error('[v0] Sign out error:', error)
+      // Still reload even if there's an error
+      window.location.href = '/'
+    }
   }
 
   const displayName = user.name || user.email.split('@')[0]
