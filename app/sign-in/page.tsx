@@ -7,10 +7,5 @@ export default async function SignInPage() {
   const session = await auth.api.getSession({ headers: await headers() })
   if (session?.user) redirect('/')
   
-  return (
-    <>
-      <AuthForm mode="sign-in" />
-    </>
-  )
-}
+  return <AuthForm mode="sign-in" />
 }
