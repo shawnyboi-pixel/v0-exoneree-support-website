@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X, ArrowLeft } from 'lucide-react'
+import { UserMenu } from './user-menu'
 
 const navLinks = [
   { label: 'About', href: '/' },
@@ -12,7 +13,16 @@ const navLinks = [
   { label: 'Contact', href: '/contact' },
 ]
 
-export function SiteHeader() {
+interface SiteHeaderProps {
+  user?: {
+    id: string
+    name?: string | null
+    email: string
+    image?: string | null
+  } | null
+}
+
+export function SiteHeader({ user }: SiteHeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const pathname = usePathname()
   const isHelpOthersPage = pathname === '/help-others'
@@ -101,6 +111,27 @@ export function SiteHeader() {
           ))}
         </nav>
 
+        <div className="hidden md:flex items-center gap-2">
+          {user ? (
+            <UserMenu user={user} />
+          ) : (
+            <>
+              <Link
+                href="/sign-in"
+                className="px-4 py-2.5 rounded-lg text-sm font-medium text-foreground/75 hover:text-foreground hover:bg-secondary/50 transition-all"
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/sign-up"
+                className="px-4 py-2.5 rounded-lg text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90 transition-all"
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
+        </div>
+
         <button
           className="flex items-center justify-center rounded-md p-2 text-muted-foreground transition-colors hover:text-foreground md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -132,12 +163,38 @@ export function SiteHeader() {
               Guides
             </Link>
             <Link
+              href="/news"
+              className="text-base font-medium transition-colors hover:text-foreground text-muted-foreground py-3 px-2 block"
+              onClick={() => setMobileOpen(false)}
+            >
+              News
+            </Link>
+            <Link
               href="/contact"
               className="text-base font-medium transition-colors hover:text-foreground text-muted-foreground py-3 px-2 block"
               onClick={() => setMobileOpen(false)}
             >
               Contact
             </Link>
+            {!user && (
+              <>
+                <div className="border-t border-border/30 my-2" />
+                <Link
+                  href="/sign-in"
+                  className="text-base font-medium transition-colors hover:text-foreground text-muted-foreground py-3 px-2 block"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/sign-up"
+                  className="text-base font-medium bg-accent text-accent-foreground hover:bg-accent/90 transition-all py-3 px-4 rounded-lg text-center"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Sign Up
+                </Link>
+              </>
+            )}
           </div>
         </nav>
       )}

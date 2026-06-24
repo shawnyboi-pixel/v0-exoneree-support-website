@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Libre_Baskerville } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
-import { SiteHeader } from '@/components/site-header'
+import { SiteHeaderWrapper } from '@/components/site-header-wrapper'
 import { SiteFooter } from '@/components/site-footer'
 import { RootLayoutClient } from '@/components/root-layout-client'
 import { FooterWrapper } from '@/components/footer-wrapper'
@@ -47,7 +47,7 @@ export default function RootLayout({
       <body className="font-sans antialiased bg-background m-0 p-0 h-screen w-screen overflow-x-hidden">
         <RootLayoutClient>
           <div className="flex min-h-screen flex-col bg-background">
-            <SiteHeader />
+            <SiteHeaderWrapper />
             <main className="flex-1 bg-background">{children}</main>
             <FooterWrapper />
           </div>
