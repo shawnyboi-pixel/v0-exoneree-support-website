@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X, ArrowLeft } from 'lucide-react'
@@ -24,8 +24,37 @@ interface SiteHeaderProps {
 
 export function SiteHeader({ user }: SiteHeaderProps) {
   const [navOpen, setNavOpen] = useState(false)
+  const navRef = useRef<HTMLDivElement>(null)
   const pathname = usePathname()
   const isHelpOthersPage = pathname === '/help-others'
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    if (!navOpen) return
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setNavOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [navOpen])
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setNavOpen(false)
+      }
+    }
+
+    if (navOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+      return () => document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [navOpen])
 
   if (isHelpOthersPage) {
     return (
@@ -82,7 +111,7 @@ export function SiteHeader({ user }: SiteHeaderProps) {
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8 gap-4">
         {/* Navigation Dropdown Button */}
-        <div className="relative">
+        <div className="relative" ref={navRef}>
           <button
             className="flex items-center justify-center rounded-md p-2.5 text-muted-foreground transition-colors hover:text-foreground hover:bg-secondary/50"
             onClick={() => setNavOpen(!navOpen)}

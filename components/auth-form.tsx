@@ -101,20 +101,28 @@ export function AuthForm({ mode }: { mode: 'sign-in' | 'sign-up' }) {
     setLoading(true)
 
     try {
-      const { error } = isSignUp
+      console.log('[v0] Starting auth request:', { isSignUp, email })
+      const result = isSignUp
         ? await authClient.signUp.email({ email, password, name })
         : await authClient.signIn.email({ email, password })
 
-      if (error) {
-        setError(error.message ?? 'Something went wrong. Please try again.')
+      console.log('[v0] Auth response:', result)
+
+      if (result.error) {
+        const errorMsg = result.error?.message ?? result.error ?? 'Something went wrong. Please try again.'
+        console.log('[v0] Auth error:', errorMsg)
+        setError(errorMsg)
         setLoading(false)
         return
       }
 
+      console.log('[v0] Auth successful, redirecting...')
       router.push('/')
       router.refresh()
     } catch (err) {
-      setError('An unexpected error occurred. Please try again.')
+      const errorMsg = err instanceof Error ? err.message : 'An unexpected error occurred. Please try again.'
+      console.log('[v0] Auth exception:', errorMsg, err)
+      setError(errorMsg)
       setLoading(false)
     }
   }
