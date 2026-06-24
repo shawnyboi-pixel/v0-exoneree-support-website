@@ -144,12 +144,7 @@ export default function OrganizationsPage() {
       <section className="bg-background py-16 md:py-20">
         <div className="mx-auto max-w-6xl px-6">
           <p className="mb-12 max-w-3xl text-base leading-relaxed text-muted-foreground">
-            After exoneration, you shouldn&apos;t have to navigate the system alone.
-            These organizations understand what you&apos;ve been through and have
-            dedicated their work to supporting people like you. Some focus on
-            legal advocacy, some on direct re-entry services, and others on
-            healing and community. Many work together, so a conversation with
-            one can connect you to others.
+            After exoneration, you shouldn&apos;t have to navigate the system alone. These organizations understand what you&apos;ve been through and have dedicated their work to supporting people like you. Some focus on legal advocacy, some on direct re-entry services, and others on healing and community. Many work together, so a conversation with one can connect you to others.
           </p>
 
           <div className="flex flex-col gap-8">

@@ -88,7 +88,7 @@ export default function BudgetChecklistPage() {
             <Card className="border-border/60">
               <CardContent className="pt-6">
                 <h3 className="font-semibold text-foreground mb-4">Fixed Monthly Expenses</h3>
-                <p className="text-sm text-muted-foreground mb-4">These don&apos;t change month to month (usually):</p>
+                <p className="text-sm text-muted-foreground mb-4">{`These don't change month to month (usually):`}</p>
                 <ul className="space-y-3 text-sm text-foreground/80">
                   <li className="flex items-start gap-3">
                     <input type="checkbox" className="mt-1" />
@@ -183,7 +183,7 @@ export default function BudgetChecklistPage() {
                 </div>
                 {/* Quick tip */}
                 <p className="text-xs text-muted-foreground mt-4">
-                  💡 <strong>Tip:</strong> Your remaining amount should go toward savings and emergency fund. If it&apos;s negative, you need to reduce expenses.
+                  💡 <strong>Tip:</strong> {`Your remaining amount should go toward savings and emergency fund. If it's negative, you need to reduce expenses.`}
                 </p>
               </CardContent>
             </Card>
@@ -308,7 +308,7 @@ export default function BudgetChecklistPage() {
                   </li>
                   <li className="flex items-start gap-3">
                     <input type="checkbox" className="mt-1" />
-                    <span>Contact creditor if you can&apos;t pay—many offer payment plans</span>
+                    <span>{`Contact creditor if you can't pay—many offer payment plans`}</span>
                   </li>
                 </ul>
               </CardContent>
@@ -399,7 +399,7 @@ export default function BudgetChecklistPage() {
                   <li>• Use the 50/30/20 rule: 50% needs, 30% wants, 20% savings/debt</li>
                   <li>• Keep receipts or track spending with an app (Mint, YNAB, EveryDollar)</li>
                   <li>• Use cash for variable expenses—it's harder to overspend</li>
-                  <li>• Set automatic transfers to savings so you don&apos;t forget</li>
+                  <li>{`• Set automatic transfers to savings so you don't forget`}</li>
                   <li>• Review your budget before each payday</li>
                   <li>• Join a free financial literacy class or workshop</li>
                 </ul>
@@ -412,9 +412,9 @@ export default function BudgetChecklistPage() {
                 <ul className="space-y-2 text-sm text-foreground/80">
                   <li>• Making a budget and never looking at it again</li>
                   <li>• Forgetting to include irregular expenses (car registration, gifts)</li>
-                  <li>• Cutting your budget too aggressively (you&apos;ll give up)</li>
+                  <li>{`• Cutting your budget too aggressively (you'll give up)`}</li>
                   <li>• Not distinguishing between needs and wants</li>
-                  <li>• Using credit cards when you&apos;re not ready</li>
+                  <li>{`• Using credit cards when you're not ready`}</li>
                   <li>• Ignoring small expenses—they add up!</li>
                 </ul>
               </CardContent>

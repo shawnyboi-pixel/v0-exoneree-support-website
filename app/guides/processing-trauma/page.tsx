@@ -16,7 +16,7 @@ export default function ProcessingTraumaPage() {
             Back to Guides
           </Link>
           <h1 className="mb-4 text-4xl font-bold text-foreground lg:text-5xl">Processing Trauma</h1>
-          <p className="text-lg text-muted-foreground">Understanding what you&apos;ve experienced and beginning to heal.</p>
+          <p className="text-lg text-muted-foreground">{`Understanding what you've experienced and beginning to heal.`}</p>
         </div>
       </div>
 

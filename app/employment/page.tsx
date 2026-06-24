@@ -371,10 +371,7 @@ export default function EmploymentPage() {
 
           <div className="mt-8 rounded-lg border border-border/60 bg-card p-6">
             <p className="text-sm leading-relaxed text-muted-foreground">
-              <strong>Pro tip:</strong> Dallas College offers affordable
-              certifications in many of these fields. Start with an industry
-              certification (like CNA or commercial driver&apos;s license) to
-              make yourself more competitive while you continue job searching.
+              <strong>Pro tip:</strong> {`Dallas College offers affordable certifications in many of these fields. Start with an industry certification (like CNA or commercial driver's license) to make yourself more competitive while you continue job searching.`}
             </p>
           </div>
         </div>

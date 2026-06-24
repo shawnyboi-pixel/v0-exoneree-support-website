@@ -57,7 +57,7 @@ export function WelcomeBanner() {
             </h2>
 
             <p className="text-foreground/60 mb-4">
-              {getMotivationalMessage()} You&apos;re all set to explore and learn more about supporting formerly incarcerated individuals.
+              {getMotivationalMessage()} {"You're"} all set to explore and learn more about supporting formerly incarcerated individuals.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3">
@@ -112,7 +112,7 @@ function getMotivationalMessage(): string {
     'Great to see you again!',
     'Thanks for being here.',
     'Ready to make a difference?',
-    'Let&apos;s continue helping together.',
+    "Let's continue helping together.",
   ]
   return messages[Math.floor(Math.random() * messages.length)]
 }

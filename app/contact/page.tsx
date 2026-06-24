@@ -61,7 +61,7 @@ export default function ContactPage() {
               <h1 className="font-serif text-4xl font-bold tracking-tight text-foreground md:text-5xl mb-4">
                 <span className="text-balance">Get in Touch</span>
               </h1>
-              <p className="text-base text-foreground/70 leading-relaxed">We&apos;d love to hear from you. Reach out with questions, feedback, or collaboration opportunities.</p>
+              <p className="text-base text-foreground/70 leading-relaxed">{`We'd love to hear from you. Reach out with questions, feedback, or collaboration opportunities.`}</p>
             </div>
 
             {/* Email Contact Info */}
@@ -102,7 +102,7 @@ export default function ContactPage() {
               {submitted ? (
                 <div className="rounded-lg bg-accent/5 border border-accent/20 p-6 text-center">
                   <p className="text-lg font-semibold text-accent mb-2">Thank you!</p>
-                  <p className="text-foreground/70">We&apos;ll get back to you as soon as possible.</p>
+                  <p className="text-foreground/70">{`We'll get back to you as soon as possible.`}</p>
                 </div>
               ) : error ? (
                 <div className="rounded-lg bg-destructive/5 border border-destructive/20 p-6 text-center">
