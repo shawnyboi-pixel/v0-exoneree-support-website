@@ -220,7 +220,7 @@ export default function FinancialPage() {
               predatory lenders. Without access to mainstream banks, the only
               options for many are payday lenders and title loan shops that
               charge interest rates of 36% or higher. What starts as a small
-              loan to cover first month&apos;s rent or a bus pass can quickly
+              {`loan to cover first month's rent or a bus pass can quickly`}
               spiral into thousands of dollars of debt.
             </p>
             <p className="text-base leading-relaxed text-muted-foreground">
@@ -316,8 +316,7 @@ export default function FinancialPage() {
             Financial Education & Support
           </h2>
           <p className="mb-8 text-base leading-relaxed text-muted-foreground">
-            Understanding how money works in today&apos;s world is a skill, and
-            these organizations offer free help learning it.
+            {`Understanding how money works in today's world is a skill, and these organizations offer free help learning it.`}
           </p>
 
           <div className="grid gap-6 sm:grid-cols-2">
