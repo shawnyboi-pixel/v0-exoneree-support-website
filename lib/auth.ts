@@ -1,5 +1,6 @@
 import { betterAuth } from 'better-auth'
 import { pool } from '@/lib/db'
+import { nextCookies } from 'better-auth/next-js'
 
 export const auth = betterAuth({
   database: pool,
@@ -13,8 +14,9 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
     autoSignIn: true,
+    requireEmailVerification: false,
   },
-  plugins: [],
+  plugins: [nextCookies()],
   trustedOrigins: [
     ...(process.env.V0_RUNTIME_URL ? [process.env.V0_RUNTIME_URL] : []),
     ...(process.env.VERCEL_URL ? [`https://${process.env.VERCEL_URL}`] : []),
