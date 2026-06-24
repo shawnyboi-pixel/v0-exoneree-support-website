@@ -143,7 +143,16 @@
   }
   /* Link and button transitions */
   a, button {
-    @apply transition-all duration-300;
+    @apply transition-all duration-200 ease-out;
+  }
+
+  /* Button active state animations */
+  button:active {
+    @apply scale-95 duration-100;
+  }
+
+  button:active:not(:disabled) {
+    transform: scale(0.97);
   }
 
   /* Smoother focus states */
@@ -172,6 +181,86 @@
 
   .transition-quick {
     @apply transition-all duration-[var(--duration-quick)] ease-out;
+  }
+
+  /* Premium button click animations */
+  @keyframes button-press {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.96);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes button-ripple {
+    0% {
+      box-shadow: 0 0 0 0 rgba(var(--accent-rgb, 112 204 170), 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(var(--accent-rgb, 112 204 170), 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(var(--accent-rgb, 112 204 170), 0);
+    }
+  }
+
+  @keyframes smooth-lift {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-3px);
+    }
+  }
+
+  /* Hamburger menu rotation animation */
+  @keyframes menu-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(90deg);
+    }
+  }
+
+  /* Smooth button hover lift */
+  .btn-lift {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  .btn-lift:hover:not(:disabled) {
+    @apply -translate-y-1 shadow-md;
+  }
+
+  .btn-lift:active:not(:disabled) {
+    @apply translate-y-0 shadow-sm;
+  }
+
+  /* Smooth ripple button */
+  .btn-ripple {
+    @apply relative overflow-hidden transition-all duration-200 ease-out;
+    position: relative;
+  }
+
+  .btn-ripple:hover:not(:disabled) {
+    @apply shadow-md;
+  }
+
+  .btn-ripple:active:not(:disabled) {
+    animation: button-ripple 0.6s ease-out;
+  }
+
+  /* Premium smooth press effect */
+  .btn-press {
+    @apply transition-all duration-75 ease-out;
+  }
+
+  .btn-press:active:not(:disabled) {
+    animation: button-press 0.3s ease-out;
   }
 
   @keyframes soft-pop {

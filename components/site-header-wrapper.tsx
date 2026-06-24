@@ -1,11 +1,35 @@
-import { auth } from '@/lib/auth'
-import { headers } from 'next/headers'
+import { cookies } from 'next/headers'
+import { pool } from '@/lib/db'
 import { SiteHeader } from './site-header'
-import { UserMenu } from './user-menu'
 
 export async function SiteHeaderWrapper() {
-  const session = await auth.api.getSession({ headers: await headers() })
-  const user = session?.user
+  try {
+    const cookieStore = await cookies()
+    const sessionToken = cookieStore.get('session')?.value
 
-  return <SiteHeader user={user} />
+    let user = null
+
+    if (sessionToken) {
+      const result = await pool.query(
+        `SELECT s.userId, u.id, u.email, u.name FROM "session" s
+         JOIN "user" u ON s.userId = u.id
+         WHERE s.token = $1 AND s.expiresAt > NOW()`,
+        [sessionToken]
+      )
+
+      if (result.rows.length > 0) {
+        const row = result.rows[0]
+        user = {
+          id: row.id,
+          email: row.email,
+          name: row.name,
+        }
+      }
+    }
+
+    return <SiteHeader user={user} />
+  } catch (error) {
+    console.error('[HEADER] Session error:', error)
+    return <SiteHeader user={null} />
+  }
 }

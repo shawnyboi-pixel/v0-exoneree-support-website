@@ -113,29 +113,33 @@ export function SiteHeader({ user }: SiteHeaderProps) {
         {/* Navigation Dropdown Button */}
         <div className="relative" ref={navRef}>
           <button
-            className="flex items-center justify-center rounded-md p-2.5 text-muted-foreground transition-colors hover:text-foreground hover:bg-secondary/50"
+            className="flex items-center justify-center rounded-lg p-2.5 text-muted-foreground transition-all duration-200 ease-out hover:text-foreground hover:bg-secondary/50 active:scale-95 active:duration-100 hover:-translate-y-0.5 hover:shadow-md active:shadow-sm"
             onClick={() => setNavOpen(!navOpen)}
             aria-expanded={navOpen}
             aria-label="Toggle navigation menu"
           >
-            {navOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+            <Menu className={`size-5 transition-all duration-300 ease-out ${navOpen ? 'opacity-0 -rotate-90 absolute' : 'opacity-100 rotate-0'}`} />
+            <X className={`size-5 transition-all duration-300 ease-out ${navOpen ? 'opacity-100 rotate-0' : 'opacity-0 rotate-90 absolute'}`} />
           </button>
 
           {navOpen && (
             <nav
-              className="absolute left-0 top-full mt-1 w-48 rounded-lg border border-border/60 bg-background shadow-lg"
+              className="absolute left-0 top-full mt-2 w-48 rounded-lg border border-border/60 bg-background shadow-xl backdrop-blur-sm animate-soft-pop"
               aria-label="Main navigation"
             >
               <div className="flex flex-col py-2">
-                {navLinks.map((link) => (
+                {navLinks.map((link, index) => (
                   <Link
                     key={link.label}
                     href={link.href}
-                    className={`px-4 py-3 text-sm font-medium transition-all duration-200 ${
+                    className={`px-4 py-3 text-sm font-medium transition-all duration-200 ease-out hover:-translate-x-0.5 active:scale-95 active:duration-100 ${
                       pathname === link.href
                         ? 'bg-secondary/70 text-foreground'
                         : 'text-foreground/75 hover:text-foreground hover:bg-secondary/50'
                     }`}
+                    style={{ 
+                      animation: `fade-in-up 0.3s ease-out ${index * 0.05}s both`
+                    }}
                     onClick={() => setNavOpen(false)}
                   >
                     {link.label}
@@ -166,13 +170,13 @@ export function SiteHeader({ user }: SiteHeaderProps) {
             <>
               <Link
                 href="/sign-in"
-                className="px-4 py-2.5 rounded-lg text-sm font-medium text-foreground/75 hover:text-foreground hover:bg-secondary/50 transition-all"
+                className="px-4 py-2.5 rounded-lg text-sm font-medium text-foreground/75 hover:text-foreground hover:bg-secondary/50 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-sm active:scale-95 active:duration-100 active:shadow-none"
               >
                 Sign In
               </Link>
               <Link
                 href="/sign-up"
-                className="px-4 py-2.5 rounded-lg text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90 transition-all"
+                className="px-4 py-2.5 rounded-lg text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/85 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:duration-100 active:shadow-sm"
               >
                 Sign Up
               </Link>
