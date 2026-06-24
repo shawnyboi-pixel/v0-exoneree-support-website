@@ -101,12 +101,13 @@ export function AuthForm({ mode }: { mode: 'sign-in' | 'sign-up' }) {
     setLoading(true)
 
     try {
-      const { error } = isSignUp
+      const result = isSignUp
         ? await authClient.signUp.email({ email, password, name })
         : await authClient.signIn.email({ email, password })
 
-      if (error) {
-        setError(error.message ?? 'Something went wrong. Please try again.')
+      if (result.error) {
+        const errorMsg = result.error?.message ?? result.error ?? 'Something went wrong. Please try again.'
+        setError(errorMsg)
         setLoading(false)
         return
       }
@@ -114,7 +115,8 @@ export function AuthForm({ mode }: { mode: 'sign-in' | 'sign-up' }) {
       router.push('/')
       router.refresh()
     } catch (err) {
-      setError('An unexpected error occurred. Please try again.')
+      const errorMsg = err instanceof Error ? err.message : 'An unexpected error occurred. Please try again.'
+      setError(errorMsg)
       setLoading(false)
     }
   }
