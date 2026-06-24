@@ -9,16 +9,28 @@ export const auth = betterAuth({
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
       : process.env.VERCEL_URL
         ? `https://${process.env.VERCEL_URL}`
-        : process.env.V0_RUNTIME_URL),
+        : process.env.V0_RUNTIME_URL || 'http://localhost:3000'),
   emailAndPassword: {
     enabled: true,
     autoSignIn: true,
   },
+  plugins: [],
   trustedOrigins: [
     ...(process.env.V0_RUNTIME_URL ? [process.env.V0_RUNTIME_URL] : []),
     ...(process.env.VERCEL_URL ? [`https://${process.env.VERCEL_URL}`] : []),
     ...(process.env.VERCEL_PROJECT_PRODUCTION_URL
       ? [`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`]
+      : []),
+    // Allow localhost for development
+    'http://localhost:3000',
+    'http://localhost:3001',
+    // For v0 preview environments
+    ...(process.env.NODE_ENV === 'development'
+      ? [
+          'http://localhost',
+          'http://localhost:80',
+          'http://localhost:443',
+        ]
       : []),
   ],
   session: {
