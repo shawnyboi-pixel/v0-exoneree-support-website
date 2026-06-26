@@ -8,8 +8,8 @@ export function SiteFooter() {
           <div>
             <div className="mb-4">
               <div>
-                <span className="text-xl font-bold text-foreground lg:text-2xl">
-                  Ide
+                <span className="text-lg font-bold text-foreground lg:text-xl">
+                  Ide Project
                 </span>
               </div>
             </div>

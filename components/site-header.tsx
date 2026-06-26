@@ -68,8 +68,8 @@ export function SiteHeader({ user }: SiteHeaderProps) {
 
           {/* Logo/Title on the Right */}
         <Link href="/" className="flex items-center gap-3">
-          <span className="text-2xl font-bold tracking-tight text-foreground lg:text-3xl">
-            Ide
+          <span className="text-lg font-bold tracking-tight text-foreground lg:text-2xl">
+            Ide Project
           </span>
         </Link>
 
@@ -147,8 +147,8 @@ export function SiteHeader({ user }: SiteHeaderProps) {
 
         {/* Logo/Title - Centered */}
         <Link href="/" className="flex items-center gap-3 flex-1">
-          <span className="text-2xl font-bold tracking-tight text-foreground lg:text-3xl">
-            Ide
+          <span className="text-lg font-bold tracking-tight text-foreground lg:text-2xl">
+            Ide Project
           </span>
         </Link>
 
