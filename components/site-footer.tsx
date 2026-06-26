@@ -8,12 +8,9 @@ export function SiteFooter() {
           <div>
             <div className="mb-4">
               <div>
-                <span className="text-base font-semibold text-foreground lg:text-lg">
-                  The Ide Project
+                <span className="text-xl font-bold text-foreground lg:text-2xl">
+                  Ide
                 </span>
-                <p className="text-xs font-medium text-foreground/70 lg:text-sm">
-                  Youth Led Initiative
-                </p>
               </div>
             </div>
             <p className="max-w-xs text-sm leading-relaxed text-foreground/60 lg:text-base">

@@ -67,16 +67,11 @@ export function SiteHeader({ user }: SiteHeaderProps) {
           </Link>
 
           {/* Logo/Title on the Right */}
-          <Link href="/" className="flex items-center gap-3">
-            <div className="text-right">
-              <span className="text-lg font-semibold tracking-tight text-slate-900 lg:text-xl">
-                The Ide Project
-              </span>
-              <p className="text-xs font-medium text-slate-600 lg:text-sm">
-                Youth Led Initiative
-              </p>
-            </div>
-          </Link>
+        <Link href="/" className="flex items-center gap-3">
+          <span className="text-2xl font-bold tracking-tight text-foreground lg:text-3xl">
+            Ide
+          </span>
+        </Link>
 
           <button
             className="flex items-center justify-center rounded-md p-2 text-slate-600 transition-colors hover:text-slate-900"
@@ -152,14 +147,9 @@ export function SiteHeader({ user }: SiteHeaderProps) {
 
         {/* Logo/Title - Centered */}
         <Link href="/" className="flex items-center gap-3 flex-1">
-          <div>
-            <span className="text-lg font-semibold tracking-tight text-foreground lg:text-xl">
-              The Ide Project
-            </span>
-            <p className="text-xs font-medium text-accent lg:text-sm">
-              Youth Led Initiative
-            </p>
-          </div>
+          <span className="text-2xl font-bold tracking-tight text-foreground lg:text-3xl">
+            Ide
+          </span>
         </Link>
 
         {/* User Menu / Auth Links */}
