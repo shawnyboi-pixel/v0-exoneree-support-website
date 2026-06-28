@@ -1,58 +1,49 @@
 import { pool } from '@/lib/db'
 import { cookies } from 'next/headers'
 
+const SESSION_COOKIE = 'ide_session'
+
 export async function POST(request: Request) {
   try {
     const cookieStore = await cookies()
-    const sessionToken = cookieStore.get('session')?.value
+    const sessionToken = cookieStore.get(SESSION_COOKIE)?.value
 
     if (!sessionToken) {
-      return Response.json({ error: 'Not authenticated' }, { status: 401 })
+      return Response.json({ error: 'Not authenticated.' }, { status: 401 })
     }
 
-    const { name, email } = await request.json()
+    const { name } = await request.json()
 
-    // Validate input
-    if (!name || !email) {
-      return Response.json({ error: 'Missing required fields' }, { status: 400 })
+    if (!name || name.trim().length < 2) {
+      return Response.json({ error: 'Name must be at least 2 characters.' }, { status: 400 })
     }
 
-    // Get user from session
+    // Resolve the session to a userId
     const sessionResult = await pool.query(
-      `SELECT s.userId FROM "session" s
-       WHERE s.token = $1 AND s.expiresAt > NOW()`,
+      `SELECT "userId" FROM "session" WHERE token = $1 AND "expiresAt" > NOW()`,
       [sessionToken]
     )
-
     if (sessionResult.rows.length === 0) {
-      return Response.json({ error: 'Invalid session' }, { status: 401 })
+      return Response.json({ error: 'Session expired. Please sign in again.' }, { status: 401 })
     }
-
     const userId = sessionResult.rows[0].userId
 
-    // Update user profile
+    // Update name in user table
     const updateResult = await pool.query(
-      `UPDATE "user" SET name = $1 WHERE id = $2 RETURNING id, email, name`,
-      [name, userId]
+      `UPDATE "user" SET name = $1, "updatedAt" = NOW() WHERE id = $2
+       RETURNING id, name, email, "createdAt"`,
+      [name.trim(), userId]
     )
-
     if (updateResult.rows.length === 0) {
-      return Response.json({ error: 'Failed to update profile' }, { status: 500 })
+      return Response.json({ error: 'User not found.' }, { status: 404 })
     }
 
     const user = updateResult.rows[0]
     return Response.json({
-      user: {
-        id: user.id,
-        email: user.email,
-        name: user.name,
-      },
+      user: { id: user.id, name: user.name, email: user.email, createdAt: user.createdAt },
     })
   } catch (error) {
-    console.error('[PROFILE] Update error:', error)
-    return Response.json(
-      { error: error instanceof Error ? error.message : 'Failed to update profile' },
-      { status: 500 }
-    )
+    console.error('[UPDATE-PROFILE] Error:', error)
+    return Response.json({ error: 'Something went wrong. Please try again.' }, { status: 500 })
   }
 }

@@ -1,60 +1,78 @@
 import { pool } from '@/lib/db'
 import { compare } from 'bcryptjs'
 import { randomUUID } from 'crypto'
+import { cookies } from 'next/headers'
+
+const SESSION_COOKIE = 'ide_session'
+const SESSION_MAX_AGE = 60 * 60 * 24 * 7 // 7 days in seconds
 
 export async function POST(request: Request) {
   try {
     const { email, password } = await request.json()
 
-    // Validate input
+    // --- Input validation ---
     if (!email || !password) {
-      return Response.json(
-        { error: 'Missing email or password' },
-        { status: 400 }
-      )
+      return Response.json({ error: 'Email and password are required.' }, { status: 400 })
     }
 
-    // Get user by email
+    // --- Look up user by email ---
     const userResult = await pool.query(
-      'SELECT id, email, name FROM "user" WHERE email = $1',
-      [email]
+      'SELECT id, name, email FROM "user" WHERE email = $1',
+      [email.toLowerCase().trim()]
     )
-
     if (userResult.rows.length === 0) {
-      return Response.json(
-        { error: 'Invalid email or password' },
-        { status: 401 }
-      )
+      // Generic message to prevent user enumeration
+      return Response.json({ error: 'Invalid email or password.' }, { status: 401 })
     }
-
     const user = userResult.rows[0]
 
-    // TODO: Verify password once we store hashed passwords
-    // For now, just create a session
+    // --- Fetch the stored password hash from the account table ---
+    const accountResult = await pool.query(
+      `SELECT password FROM "account" WHERE "userId" = $1 AND "providerId" = 'credential'`,
+      [user.id]
+    )
+    if (accountResult.rows.length === 0 || !accountResult.rows[0].password) {
+      return Response.json({ error: 'Invalid email or password.' }, { status: 401 })
+    }
+
+    // --- Compare password with hash ---
+    const isValid = await compare(password, accountResult.rows[0].password)
+    if (!isValid) {
+      return Response.json({ error: 'Invalid email or password.' }, { status: 401 })
+    }
+
+    // --- Invalidate any expired sessions for this user (cleanup) ---
+    await pool.query(
+      `DELETE FROM "session" WHERE "userId" = $1 AND "expiresAt" < NOW()`,
+      [user.id]
+    )
+
+    // --- Create new session ---
     const sessionToken = randomUUID()
     const sessionId = randomUUID()
-    const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // 7 days
-
+    const now = new Date()
+    const expiresAt = new Date(now.getTime() + SESSION_MAX_AGE * 1000)
     await pool.query(
-      `INSERT INTO "session" (id, token, userId, expiresAt, createdAt, updatedAt)
-       VALUES ($1, $2, $3, $4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`,
-      [sessionId, sessionToken, user.id, expiresAt]
+      `INSERT INTO "session" (id, token, "userId", "expiresAt", "createdAt", "updatedAt")
+       VALUES ($1, $2, $3, $4, $5, $5)`,
+      [sessionId, sessionToken, user.id, expiresAt, now]
     )
 
-    // Return success with user data
-    return Response.json(
-      {
-        user,
-        session: { token: sessionToken },
-      },
-      { status: 200 }
-    )
+    // --- Set HttpOnly, Secure session cookie ---
+    const cookieStore = await cookies()
+    cookieStore.set(SESSION_COOKIE, sessionToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      path: '/',
+      maxAge: SESSION_MAX_AGE,
+    })
+
+    return Response.json({
+      user: { id: user.id, name: user.name, email: user.email },
+    })
   } catch (error) {
-    console.error('[v0] Signin error:', error)
-    const message = error instanceof Error ? error.message : 'Signin failed'
-    return Response.json(
-      { error: message },
-      { status: 500 }
-    )
+    console.error('[SIGNIN] Error:', error)
+    return Response.json({ error: 'Something went wrong. Please try again.' }, { status: 500 })
   }
 }

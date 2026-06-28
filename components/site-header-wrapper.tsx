@@ -5,15 +5,15 @@ import { SiteHeader } from './site-header'
 export async function SiteHeaderWrapper() {
   try {
     const cookieStore = await cookies()
-    const sessionToken = cookieStore.get('session')?.value
+    const sessionToken = cookieStore.get('ide_session')?.value
 
     let user = null
 
     if (sessionToken) {
       const result = await pool.query(
-        `SELECT s.userId, u.id, u.email, u.name FROM "session" s
-         JOIN "user" u ON s.userId = u.id
-         WHERE s.token = $1 AND s.expiresAt > NOW()`,
+        `SELECT u.id, u.name, u.email FROM "session" s
+         JOIN "user" u ON s."userId" = u.id
+         WHERE s.token = $1 AND s."expiresAt" > NOW()`,
         [sessionToken]
       )
 

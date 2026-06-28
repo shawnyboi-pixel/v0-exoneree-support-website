@@ -8,7 +8,8 @@ import { ArrowLeft, Mail, User as UserIcon, Save, Loader2 } from 'lucide-react'
 interface User {
   id: string
   email: string
-  name?: string | null
+  name: string
+  createdAt?: string | null
 }
 
 interface ProfileFormData {
@@ -80,8 +81,9 @@ export default function AccountPage() {
 
       const updatedUser = await response.json()
       setUser(updatedUser.user)
+      setFormData((prev) => ({ ...prev, name: updatedUser.user.name }))
       setSuccessMessage('Profile updated successfully!')
-      setTimeout(() => setSuccessMessage(null), 3000)
+      setTimeout(() => setSuccessMessage(null), 4000)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to save changes')
     } finally {
