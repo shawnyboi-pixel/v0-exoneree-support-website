@@ -84,3 +84,35 @@ export const savedItems = pgTable('saved_items', {
   itemData: jsonb('itemData'),
   createdAt: timestamp('createdAt').notNull().defaultNow(),
 })
+
+// --- Messaging ---------------------------------------------------------------
+
+export const conversation = pgTable('conversation', {
+  id: text('id').primaryKey(),
+  createdAt: timestamp('createdAt').notNull().defaultNow(),
+  updatedAt: timestamp('updatedAt').notNull().defaultNow(),
+})
+
+export const conversationParticipant = pgTable('conversation_participant', {
+  id: text('id').primaryKey(),
+  conversationId: text('conversationId')
+    .notNull()
+    .references(() => conversation.id, { onDelete: 'cascade' }),
+  userId: text('userId')
+    .notNull()
+    .references(() => user.id, { onDelete: 'cascade' }),
+  lastReadAt: timestamp('lastReadAt'),
+  createdAt: timestamp('createdAt').notNull().defaultNow(),
+})
+
+export const message = pgTable('message', {
+  id: text('id').primaryKey(),
+  conversationId: text('conversationId')
+    .notNull()
+    .references(() => conversation.id, { onDelete: 'cascade' }),
+  senderId: text('senderId')
+    .notNull()
+    .references(() => user.id, { onDelete: 'cascade' }),
+  body: text('body').notNull(),
+  createdAt: timestamp('createdAt').notNull().defaultNow(),
+})
