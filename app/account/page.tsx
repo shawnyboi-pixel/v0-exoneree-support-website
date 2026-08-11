@@ -3,7 +3,9 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, Mail, User as UserIcon, Save, Loader2 } from 'lucide-react'
+import { ArrowLeft, Mail, User as UserIcon, Save, Loader2, Settings, ShieldCheck, HeartHandshake, LifeBuoy } from 'lucide-react'
+import { getUserProfile } from '@/app/actions/user'
+import type { AccountType } from '@/lib/account-types'
 
 interface User {
   id: string
@@ -16,6 +18,12 @@ interface ProfileFormData {
   email: string
 }
 
+const ACCOUNT_TYPE_LABELS: Record<AccountType, { label: string; icon: typeof ShieldCheck }> = {
+  exoneree: { label: 'Exoneree', icon: ShieldCheck },
+  volunteer: { label: 'Volunteer', icon: HeartHandshake },
+  support_advisor: { label: 'Support Advisor', icon: LifeBuoy },
+}
+
 export default function AccountPage() {
   const router = useRouter()
   const [user, setUser] = useState<User | null>(null)
@@ -24,6 +32,7 @@ export default function AccountPage() {
   const [error, setError] = useState<string | null>(null)
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
   const [formData, setFormData] = useState<ProfileFormData>({ name: '', email: '' })
+  const [accountType, setAccountType] = useState<AccountType | null>(null)
 
   useEffect(() => {
     async function fetchSession() {
@@ -45,6 +54,11 @@ export default function AccountPage() {
           name: data.user.name || '',
           email: data.user.email,
         })
+
+        const rows = await getUserProfile()
+        if (rows[0]?.accountType) {
+          setAccountType(rows[0].accountType as AccountType)
+        }
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load profile')
       } finally {
@@ -127,9 +141,29 @@ export default function AccountPage() {
             Back to Home
           </Link>
 
-          <div className="mb-6">
-            <h1 className="text-3xl font-bold text-foreground mb-2">Welcome back, {user.name || user.email.split('@')[0]}!</h1>
-            <p className="text-foreground/60">Manage your profile and account settings</p>
+          <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-3 mb-2">
+                <h1 className="text-3xl font-bold text-foreground">Welcome back, {user.name || user.email.split('@')[0]}!</h1>
+                {accountType && (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-accent/15 text-accent text-sm font-semibold rounded-full">
+                    {(() => {
+                      const Icon = ACCOUNT_TYPE_LABELS[accountType].icon
+                      return <Icon className="size-3.5" />
+                    })()}
+                    {ACCOUNT_TYPE_LABELS[accountType].label}
+                  </span>
+                )}
+              </div>
+              <p className="text-foreground/60">Manage your profile and account settings</p>
+            </div>
+            <Link
+              href="/account/settings"
+              className="inline-flex items-center gap-2 px-4 py-2 border border-border/60 rounded-lg text-sm font-medium text-foreground/75 hover:text-foreground hover:bg-secondary/50 transition-all duration-200 ease-out hover:-translate-y-0.5 active:scale-95"
+            >
+              <Settings className="size-4" />
+              Settings
+            </Link>
           </div>
         </div>
 

@@ -7,6 +7,7 @@ import { and, desc, eq } from 'drizzle-orm'
 import { headers } from 'next/headers'
 import { revalidatePath } from 'next/cache'
 import { v4 as uuidv4 } from 'uuid'
+import { ACCOUNT_TYPES, type AccountType } from '@/lib/account-types'
 
 /**
  * Resolve the current user id from the Better Auth session.
@@ -32,9 +33,15 @@ export async function getUserProfile() {
 export async function updateUserProfile(
   bio?: string,
   location?: string,
-  phone?: string
+  phone?: string,
+  accountType?: AccountType
 ) {
   const userId = await getUserId()
+
+  if (accountType && !ACCOUNT_TYPES.includes(accountType)) {
+    throw new Error('Invalid account type')
+  }
+
   const existingProfile = await db
     .select()
     .from(userProfile)
@@ -48,14 +55,22 @@ export async function updateUserProfile(
       bio,
       location,
       phone,
+      accountType: accountType ?? 'volunteer',
     })
   } else {
     await db
       .update(userProfile)
-      .set({ bio, location, phone, updatedAt: new Date() })
+      .set({
+        bio,
+        location,
+        phone,
+        ...(accountType ? { accountType } : {}),
+        updatedAt: new Date(),
+      })
       .where(eq(userProfile.userId, userId))
   }
   revalidatePath('/account')
+  revalidatePath('/account/settings')
 }
 
 // Activity tracking functions

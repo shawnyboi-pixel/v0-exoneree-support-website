@@ -61,7 +61,7 @@ export const userProfile = pgTable('user_profile', {
   bio: text('bio'),
   location: text('location'),
   phone: text('phone'),
-  accountType: text('accountType').default('user'),
+  accountType: text('accountType').default('volunteer'),
   createdAt: timestamp('createdAt').notNull().defaultNow(),
   updatedAt: timestamp('updatedAt').notNull().defaultNow(),
 })
