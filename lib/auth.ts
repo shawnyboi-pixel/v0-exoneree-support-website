@@ -32,6 +32,11 @@ export const auth = betterAuth({
           'http://localhost',
           'http://localhost:80',
           'http://localhost:443',
+          // The v0 preview iframe is served from a per-sandbox subdomain
+          // (e.g. https://sb-xxxxxxxx.vercel.run), which does not match
+          // V0_RUNTIME_URL. Trust the whole sandbox/preview domain pattern.
+          'https://*.vercel.run',
+          'https://*.v0.build',
         ]
       : []),
   ],
