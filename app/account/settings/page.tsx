@@ -15,6 +15,7 @@ import {
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Input } from '@/components/ui/input'
+import { AvatarUploader } from '@/components/avatar-uploader'
 import { getUserProfile, updateUserProfile } from '@/app/actions/user'
 import type { AccountType } from '@/lib/account-types'
 
@@ -22,6 +23,7 @@ interface User {
   id: string
   email: string
   name?: string | null
+  image?: string | null
 }
 
 const ACCOUNT_TYPE_OPTIONS: {
@@ -114,6 +116,10 @@ export default function AccountSettingsPage() {
     }
   }
 
+  const handleImageChange = (image: string | null) => {
+    setUser((prev) => (prev ? { ...prev, image } : prev))
+  }
+
   if (loading) {
     return (
       <main className="min-h-screen bg-background py-20 px-4 sm:px-6 lg:px-8">
@@ -169,6 +175,19 @@ export default function AccountSettingsPage() {
         )}
 
         <form onSubmit={handleSave} className="space-y-8">
+          {/* Profile Photo */}
+          <div className="bg-secondary/20 border border-border/60 rounded-lg p-6">
+            <h2 className="text-xl font-bold text-foreground mb-1">Profile Photo</h2>
+            <p className="text-sm text-foreground/60 mb-6">
+              Add a photo so others can recognize you on the platform.
+            </p>
+            <AvatarUploader
+              image={user.image}
+              name={user.name || user.email}
+              onChange={handleImageChange}
+            />
+          </div>
+
           {/* Account Type Selection */}
           <div className="bg-secondary/20 border border-border/60 rounded-lg p-6">
             <h2 className="text-xl font-bold text-foreground mb-1">I am a...</h2>
