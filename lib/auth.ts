@@ -1,6 +1,8 @@
 import { betterAuth } from 'better-auth'
 import { pool } from '@/lib/db'
 import { nextCookies } from 'better-auth/next-js'
+import { hashPassword, verifyPassword } from '@better-auth/utils/password'
+import bcrypt from 'bcryptjs'
 
 export const auth = betterAuth({
   database: pool,
@@ -15,6 +17,15 @@ export const auth = betterAuth({
     enabled: true,
     autoSignIn: true,
     requireEmailVerification: false,
+    password: {
+      // Keep new accounts on Better Auth's scrypt format, while accepting
+      // the bcrypt hashes created by the old signup route.
+      hash: (password) => hashPassword(password),
+      verify: async ({ hash, password }) =>
+        hash.startsWith('$2')
+          ? bcrypt.compare(password, hash)
+          : verifyPassword(hash, password),
+    },
   },
   plugins: [nextCookies()],
   trustedOrigins: [
