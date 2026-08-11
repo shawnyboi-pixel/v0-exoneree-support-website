@@ -1,12 +1,14 @@
+import { auth } from '@/lib/auth'
 import { pool } from '@/lib/db'
-import { cookies } from 'next/headers'
+import { headers } from 'next/headers'
 
 export async function POST(request: Request) {
   try {
-    const cookieStore = await cookies()
-    const sessionToken = cookieStore.get('session')?.value
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    })
 
-    if (!sessionToken) {
+    if (!session?.user) {
       return Response.json({ error: 'Not authenticated' }, { status: 401 })
     }
 
@@ -17,23 +19,11 @@ export async function POST(request: Request) {
       return Response.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
-    // Get user from session
-    const sessionResult = await pool.query(
-      `SELECT s.userId FROM "session" s
-       WHERE s.token = $1 AND s.expiresAt > NOW()`,
-      [sessionToken]
-    )
-
-    if (sessionResult.rows.length === 0) {
-      return Response.json({ error: 'Invalid session' }, { status: 401 })
-    }
-
-    const userId = sessionResult.rows[0].userId
-
-    // Update user profile
+    // Update user profile (name only — email changes should go through
+    // Better Auth's own change-email flow, not a direct write)
     const updateResult = await pool.query(
-      `UPDATE "user" SET name = $1 WHERE id = $2 RETURNING id, email, name`,
-      [name, userId]
+      `UPDATE "user" SET name = $1, "updatedAt" = NOW() WHERE id = $2 RETURNING id, email, name`,
+      [name, session.user.id]
     )
 
     if (updateResult.rows.length === 0) {
