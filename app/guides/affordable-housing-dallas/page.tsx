@@ -1,5 +1,6 @@
 import { ArrowLeft, CheckCircle2, MapPin, DollarSign, AlertCircle } from 'lucide-react'
 import Link from 'next/link'
+import { GuideQASection } from '@/components/guide-qa-section'
 
 export const metadata = {
   title: 'Finding Affordable Housing in Dallas | The Ide Project',
@@ -182,6 +183,8 @@ export default function AffordableHousingPage() {
             Back to All Guides
           </Link>
         </div>
+
+        <GuideQASection guideTitle="Finding Affordable Housing in Dallas" guideId="affordable-housing-dallas" />
       </div>
     </div>
   )

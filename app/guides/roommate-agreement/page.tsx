@@ -1,5 +1,6 @@
 import { ArrowLeft, CheckCircle2, AlertCircle } from 'lucide-react'
 import Link from 'next/link'
+import { GuideQASection } from '@/components/guide-qa-section'
 
 export const metadata = {
   title: 'Roommate Agreements | The Ide Project',
@@ -188,6 +189,8 @@ export default function RoommateAgreementPage() {
             Back to All Guides
           </Link>
         </div>
+
+        <GuideQASection guideTitle="Roommate Agreements" guideId="roommate-agreement" />
       </div>
     </div>
   )

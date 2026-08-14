@@ -116,3 +116,31 @@ export const message = pgTable('message', {
   body: text('body').notNull(),
   createdAt: timestamp('createdAt').notNull().defaultNow(),
 })
+
+// --- Guide Q&A and article comments (signed-in users only) -----------------
+
+export const guideQuestion = pgTable('guide_question', {
+  id: text('id').primaryKey(),
+  guideId: text('guideId').notNull(),
+  guideTitle: text('guideTitle').notNull(),
+  userId: text('userId').notNull(),
+  question: text('question').notNull(),
+  createdAt: timestamp('createdAt').notNull().defaultNow(),
+})
+
+export const guideAnswer = pgTable('guide_answer', {
+  id: text('id').primaryKey(),
+  questionId: text('questionId').notNull(),
+  userId: text('userId').notNull(),
+  answer: text('answer').notNull(),
+  createdAt: timestamp('createdAt').notNull().defaultNow(),
+})
+
+export const articleComment = pgTable('article_comment', {
+  id: text('id').primaryKey(),
+  articleId: text('articleId').notNull(),
+  articleTitle: text('articleTitle').notNull(),
+  userId: text('userId').notNull(),
+  comment: text('comment').notNull(),
+  createdAt: timestamp('createdAt').notNull().defaultNow(),
+})

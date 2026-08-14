@@ -1,5 +1,6 @@
 import { ArrowLeft, CheckCircle2, AlertCircle, Zap } from 'lucide-react'
 import Link from 'next/link'
+import { GuideQASection } from '@/components/guide-qa-section'
 
 export const metadata = {
   title: 'Interview Preparation Guide | The Ide Project',
@@ -223,6 +224,8 @@ export default function InterviewPrepPage() {
             Back to All Guides
           </Link>
         </div>
+
+        <GuideQASection guideTitle="Interview Preparation Guide" guideId="interview-prep" />
       </div>
     </div>
   )

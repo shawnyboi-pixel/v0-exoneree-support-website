@@ -1,5 +1,6 @@
 import { ArrowLeft, CheckCircle2, AlertCircle, Heart } from 'lucide-react'
 import Link from 'next/link'
+import { GuideQASection } from '@/components/guide-qa-section'
 
 export const metadata = {
   title: 'Family Reconnection Guide | The Ide Project',
@@ -157,6 +158,8 @@ export default function FamilyReconnectionPage() {
             Back to All Guides
           </Link>
         </div>
+
+        <GuideQASection guideTitle="Family Reconnection" guideId="family-reconnection" />
       </div>
     </div>
   )

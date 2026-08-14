@@ -1,5 +1,6 @@
 import { ArrowLeft, CheckCircle2, AlertCircle, Mail } from 'lucide-react'
 import Link from 'next/link'
+import { GuideQASection } from '@/components/guide-qa-section'
 
 export const metadata = {
   title: 'Email & Social Media Setup | The Ide Project',
@@ -169,6 +170,8 @@ export default function EmailSocialMediaPage() {
             Back to All Guides
           </Link>
         </div>
+
+        <GuideQASection guideTitle="Email & Social Media Setup" guideId="email-social-media" />
       </div>
     </div>
   )

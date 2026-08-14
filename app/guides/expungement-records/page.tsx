@@ -1,5 +1,6 @@
 import { ArrowLeft, CheckCircle2, AlertCircle } from 'lucide-react'
 import Link from 'next/link'
+import { GuideQASection } from '@/components/guide-qa-section'
 
 export const metadata = {
   title: 'How to Expunge Your Record | The Ide Project',
@@ -145,6 +146,8 @@ export default function ExpungementRecordsPage() {
             Back to All Guides
           </Link>
         </div>
+
+        <GuideQASection guideTitle="How to Expunge Your Record" guideId="expungement-records" />
       </div>
     </div>
   )

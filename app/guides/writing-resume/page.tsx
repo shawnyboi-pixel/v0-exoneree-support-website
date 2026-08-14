@@ -1,5 +1,6 @@
 import { ArrowLeft, CheckCircle2, AlertCircle, HelpCircle } from 'lucide-react'
 import Link from 'next/link'
+import { GuideQASection } from '@/components/guide-qa-section'
 
 export const metadata = {
   title: 'Writing Your First Resume | The Ide Project',
@@ -226,6 +227,8 @@ export default function WritingResumePage() {
             Back to All Guides
           </Link>
         </div>
+
+        <GuideQASection guideTitle="Writing Your First Resume" guideId="writing-resume" />
       </div>
     </div>
   )

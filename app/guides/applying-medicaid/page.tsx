@@ -1,5 +1,6 @@
 import { ArrowLeft, CheckCircle2, AlertCircle, Heart } from 'lucide-react'
 import Link from 'next/link'
+import { GuideQASection } from '@/components/guide-qa-section'
 
 export const metadata = {
   title: 'Applying for Medicaid in Texas | The Ide Project',
@@ -152,6 +153,8 @@ export default function ApplyingMedicaidPage() {
             Back to All Guides
           </Link>
         </div>
+
+        <GuideQASection guideTitle="Applying for Medicaid" guideId="applying-medicaid" />
       </div>
     </div>
   )

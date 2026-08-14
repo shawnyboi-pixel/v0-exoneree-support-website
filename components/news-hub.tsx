@@ -2,7 +2,8 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Search, Calendar, MapPin, Clock } from 'lucide-react'
+import { Search, Calendar, MapPin, Clock, MessageCircle, ChevronDown } from 'lucide-react'
+import { ArticleComments } from '@/components/article-comments'
 
 interface NewsArticle {
   id: string
@@ -126,6 +127,7 @@ export function NewsHub() {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategories, setSelectedCategories] = useState<typeof categories>([])
   const [selectedEventTypes, setSelectedEventTypes] = useState<typeof eventTypes>([])
+  const [expandedArticleId, setExpandedArticleId] = useState<string | null>(null)
 
   const toggleCategory = (category: typeof categories[number]) => {
     setSelectedCategories((prev) =>
@@ -210,31 +212,49 @@ export function NewsHub() {
           {/* News Grid */}
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {filteredArticles.length > 0 ? (
-              filteredArticles.map((article) => (
-                <article
-                  key={article.id}
-                  className="group rounded-lg border border-border/40 bg-card p-6 transition-all duration-300 hover:border-accent/50 hover:shadow-lg"
-                >
-                  <div className="mb-4 flex items-center justify-between">
-                    <span className="inline-block rounded-full bg-accent/15 px-3 py-1 text-xs font-semibold text-accent">
-                      {article.category}
-                    </span>
-                    <span className="text-xs text-muted-foreground">{article.date}</span>
-                  </div>
+              filteredArticles.map((article) => {
+                const isExpanded = expandedArticleId === article.id
+                return (
+                  <article
+                    key={article.id}
+                    className="group rounded-lg border border-border/40 bg-card p-6 transition-all duration-300 hover:border-accent/50 hover:shadow-lg"
+                  >
+                    <div className="mb-4 flex items-center justify-between">
+                      <span className="inline-block rounded-full bg-accent/15 px-3 py-1 text-xs font-semibold text-accent">
+                        {article.category}
+                      </span>
+                      <span className="text-xs text-muted-foreground">{article.date}</span>
+                    </div>
 
-                  <h3 className="mb-3 text-lg font-semibold leading-tight text-foreground line-clamp-2 group-hover:text-accent transition-colors">
-                    {article.title}
-                  </h3>
+                    <h3 className="mb-3 text-lg font-semibold leading-tight text-foreground line-clamp-2 group-hover:text-accent transition-colors">
+                      {article.title}
+                    </h3>
 
-                  <p className="mb-4 text-sm leading-relaxed text-foreground/70 line-clamp-3">
-                    {article.description}
-                  </p>
+                    <p className="mb-4 text-sm leading-relaxed text-foreground/70 line-clamp-3">
+                      {article.description}
+                    </p>
 
-                  {article.source && (
-                    <p className="text-xs font-medium text-accent">Source: {article.source}</p>
-                  )}
-                </article>
-              ))
+                    {article.source && (
+                      <p className="mb-4 text-xs font-medium text-accent">Source: {article.source}</p>
+                    )}
+
+                    <button
+                      onClick={() => setExpandedArticleId(isExpanded ? null : article.id)}
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground/60 transition-colors hover:text-accent"
+                    >
+                      <MessageCircle className="size-4" />
+                      Comments
+                      <ChevronDown className={`size-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+                    </button>
+
+                    {isExpanded && (
+                      <div className="mt-4 border-t border-border/30 pt-4">
+                        <ArticleComments articleId={article.id} articleTitle={article.title} />
+                      </div>
+                    )}
+                  </article>
+                )
+              })
             ) : (
               <div className="col-span-full py-12 text-center">
                 <p className="text-foreground/60">No news articles found matching your search.</p>
