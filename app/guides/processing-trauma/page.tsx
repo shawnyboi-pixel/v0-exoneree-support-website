@@ -1,5 +1,6 @@
 import { ArrowLeft, CheckCircle2, AlertCircle, Heart } from 'lucide-react'
 import Link from 'next/link'
+import { GuideQASection } from '@/components/guide-qa-section'
 
 export const metadata = {
   title: 'Processing Trauma After Incarceration | The Ide Project',
@@ -145,6 +146,8 @@ export default function ProcessingTraumaPage() {
             Back to All Guides
           </Link>
         </div>
+
+        <GuideQASection guideTitle="Processing Trauma" guideId="processing-trauma" />
       </div>
     </div>
   )

@@ -1,5 +1,6 @@
 import { ArrowLeft, CheckCircle2, AlertCircle } from 'lucide-react'
 import Link from 'next/link'
+import { GuideQASection } from '@/components/guide-qa-section'
 
 export const metadata = {
   title: 'First Week Essentials | The Ide Project',
@@ -166,6 +167,8 @@ export default function FirstWeekPage() {
             Back to All Guides
           </Link>
         </div>
+
+        <GuideQASection guideTitle="First Week Essentials" guideId="first-week-essentials" />
       </div>
     </div>
   )

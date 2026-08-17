@@ -16,6 +16,7 @@ export async function GET() {
         id: session.user.id,
         email: session.user.email,
         name: session.user.name,
+        image: session.user.image,
       },
     })
   } catch (error) {

@@ -1,5 +1,6 @@
 import { ArrowLeft, CheckCircle2, AlertCircle, Zap } from 'lucide-react'
 import Link from 'next/link'
+import { GuideQASection } from '@/components/guide-qa-section'
 
 export const metadata = {
   title: 'Setting Up Utilities & Accounts | The Ide Project',
@@ -148,6 +149,8 @@ export default function UtilityAccountsPage() {
             Back to All Guides
           </Link>
         </div>
+
+        <GuideQASection guideTitle="Setting Up Utilities & Accounts" guideId="utility-accounts" />
       </div>
     </div>
   )

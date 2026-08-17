@@ -1,5 +1,6 @@
 import { ArrowLeft, CheckCircle2, AlertCircle, Car } from 'lucide-react'
 import Link from 'next/link'
+import { GuideQASection } from '@/components/guide-qa-section'
 
 export const metadata = {
   title: 'Getting Your Driver License in Texas | The Ide Project',
@@ -152,6 +153,8 @@ export default function DriverLicensePage() {
             Back to All Guides
           </Link>
         </div>
+
+        <GuideQASection guideTitle="Getting Your Driver License" guideId="driver-license" />
       </div>
     </div>
   )

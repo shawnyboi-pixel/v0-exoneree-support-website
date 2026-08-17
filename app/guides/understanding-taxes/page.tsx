@@ -1,5 +1,6 @@
 import { ArrowLeft, CheckCircle2, AlertCircle, DollarSign } from 'lucide-react'
 import Link from 'next/link'
+import { GuideQASection } from '@/components/guide-qa-section'
 
 export const metadata = {
   title: 'Understanding Taxes | The Ide Project',
@@ -164,6 +165,8 @@ export default function UnderstandingTaxesPage() {
             Back to All Guides
           </Link>
         </div>
+
+        <GuideQASection guideTitle="Understanding Taxes" guideId="understanding-taxes" />
       </div>
     </div>
   )

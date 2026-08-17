@@ -1,5 +1,6 @@
 import { ArrowLeft, CheckCircle2, AlertCircle, Scale } from 'lucide-react'
 import Link from 'next/link'
+import { GuideQASection } from '@/components/guide-qa-section'
 
 export const metadata = {
   title: 'Your Rights After Exoneration | The Ide Project',
@@ -147,6 +148,8 @@ export default function RightsAfterExonerationPage() {
             Back to All Guides
           </Link>
         </div>
+
+        <GuideQASection guideTitle="Your Rights After Exoneration" guideId="rights-after-exoneration" />
       </div>
     </div>
   )

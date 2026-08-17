@@ -1,5 +1,6 @@
 import { ArrowLeft, AlertCircle, CheckCircle2, HelpCircle } from 'lucide-react'
 import Link from 'next/link'
+import { GuideQASection } from '@/components/guide-qa-section'
 
 export const metadata = {
   title: 'When and How to Disclose Your Background | The Ide Project',
@@ -184,6 +185,8 @@ export default function DisclosureInterviewPage() {
             Back to All Guides
           </Link>
         </div>
+
+        <GuideQASection guideTitle="Disclosure During Job Interviews" guideId="disclosure-interview" />
       </div>
     </div>
   )

@@ -1,5 +1,6 @@
 import { ArrowLeft, AlertCircle, CheckCircle2, Shield } from 'lucide-react'
 import Link from 'next/link'
+import { GuideQASection } from '@/components/guide-qa-section'
 
 export const metadata = {
   title: 'Know Your Tenant Rights | The Ide Project',
@@ -185,6 +186,8 @@ export default function TenantRightsPage() {
             Back to All Guides
           </Link>
         </div>
+
+        <GuideQASection guideTitle="Know Your Tenant Rights" guideId="tenant-rights" />
       </div>
     </div>
   )

@@ -1,5 +1,6 @@
 import { ArrowLeft, CheckCircle2, AlertCircle, FileText } from 'lucide-react'
 import Link from 'next/link'
+import { GuideQASection } from '@/components/guide-qa-section'
 
 export const metadata = {
   title: 'Essential Legal Documents | The Ide Project',
@@ -175,6 +176,8 @@ export default function LegalDocumentsPage() {
             Back to All Guides
           </Link>
         </div>
+
+        <GuideQASection guideTitle="Essential Legal Documents" guideId="legal-documents" />
       </div>
     </div>
   )

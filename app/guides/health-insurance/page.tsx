@@ -1,5 +1,6 @@
 import { ArrowLeft, CheckCircle2, AlertCircle } from 'lucide-react'
 import Link from 'next/link'
+import { GuideQASection } from '@/components/guide-qa-section'
 
 export const metadata = {
   title: 'Health Insurance Options | The Ide Project',
@@ -141,6 +142,8 @@ export default function HealthInsurancePage() {
             Back to All Guides
           </Link>
         </div>
+
+        <GuideQASection guideTitle="Health Insurance Options" guideId="health-insurance" />
       </div>
     </div>
   )

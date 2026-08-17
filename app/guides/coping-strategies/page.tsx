@@ -1,5 +1,6 @@
 import { ArrowLeft, CheckCircle2, Zap } from 'lucide-react'
 import Link from 'next/link'
+import { GuideQASection } from '@/components/guide-qa-section'
 
 export const metadata = {
   title: 'Healthy Coping Strategies | The Ide Project',
@@ -161,6 +162,8 @@ export default function CopingStrategiesPage() {
             Back to All Guides
           </Link>
         </div>
+
+        <GuideQASection guideTitle="Healthy Coping Strategies" guideId="coping-strategies" />
       </div>
     </div>
   )

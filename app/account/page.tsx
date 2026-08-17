@@ -5,12 +5,14 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, Mail, User as UserIcon, Save, Loader2, Settings, ShieldCheck, HeartHandshake, LifeBuoy } from 'lucide-react'
 import { getUserProfile } from '@/app/actions/user'
+import { UserAvatar } from '@/components/user-avatar'
 import type { AccountType } from '@/lib/account-types'
 
 interface User {
   id: string
   email: string
   name?: string | null
+  image?: string | null
 }
 
 interface ProfileFormData {
@@ -142,20 +144,28 @@ export default function AccountPage() {
           </Link>
 
           <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
-            <div>
-              <div className="flex items-center gap-3 mb-2">
-                <h1 className="text-3xl font-bold text-foreground">Welcome back, {user.name || user.email.split('@')[0]}!</h1>
-                {accountType && (
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-accent/15 text-accent text-sm font-semibold rounded-full">
-                    {(() => {
-                      const Icon = ACCOUNT_TYPE_LABELS[accountType].icon
-                      return <Icon className="size-3.5" />
-                    })()}
-                    {ACCOUNT_TYPE_LABELS[accountType].label}
-                  </span>
-                )}
+            <div className="flex items-start gap-4">
+              <UserAvatar
+                image={user.image}
+                name={user.name || user.email}
+                className="size-16"
+                iconClassName="size-7"
+              />
+              <div>
+                <div className="flex items-center gap-3 mb-2">
+                  <h1 className="text-3xl font-bold text-foreground">Welcome back, {user.name || user.email.split('@')[0]}!</h1>
+                  {accountType && (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-accent/15 text-accent text-sm font-semibold rounded-full">
+                      {(() => {
+                        const Icon = ACCOUNT_TYPE_LABELS[accountType].icon
+                        return <Icon className="size-3.5" />
+                      })()}
+                      {ACCOUNT_TYPE_LABELS[accountType].label}
+                    </span>
+                  )}
+                </div>
+                <p className="text-foreground/60">Manage your profile and account settings</p>
               </div>
-              <p className="text-foreground/60">Manage your profile and account settings</p>
             </div>
             <Link
               href="/account/settings"
