@@ -1,20 +1,17 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border/60 bg-background">
-      <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-16">
+    <footer className="border-t border-border bg-background">
+      <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8 lg:py-12">
         <div className="grid gap-8 md:grid-cols-3 lg:gap-12">
           <div>
-            <div className="mb-4">
-              <div>
-                <span className="text-base font-semibold text-foreground lg:text-lg">
-                  The Ide Project
-                </span>
-                <p className="text-xs font-medium text-foreground/70 lg:text-sm">
-                  Youth Led Initiative
-                </p>
-              </div>
+            <div className="mb-4 flex items-center gap-2.5">
+              <Image src="/logo-mark.png" alt="" width={24} height={24} className="size-6" />
+              <span className="text-base font-semibold text-foreground lg:text-lg">
+                The Ide Project
+              </span>
             </div>
             <p className="max-w-xs text-sm leading-relaxed text-foreground/60 lg:text-base">
               The Ide Project is a youth-led initiative connecting exonerees nationwide with verified reentry support organizations, housing assistance, employment programs, legal resources, and community advocacy. We provide comprehensive reentry support and exoneree resources to help rebuild lives after wrongful conviction.

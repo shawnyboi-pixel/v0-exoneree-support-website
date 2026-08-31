@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X, ArrowLeft } from 'lucide-react'
 import { UserMenu } from './user-menu'
@@ -68,15 +69,11 @@ export function SiteHeader({ user }: SiteHeaderProps) {
           </Link>
 
           {/* Logo/Title on the Right */}
-          <Link href="/" className="flex items-center gap-3">
-            <div className="text-right">
-              <span className="text-lg font-semibold tracking-tight text-slate-900 lg:text-xl">
-                The Ide Project
-              </span>
-              <p className="text-xs font-medium text-slate-600 lg:text-sm">
-                Youth Led Initiative
-              </p>
-            </div>
+          <Link href="/" className="flex items-center gap-2.5">
+            <Image src="/logo-mark.png" alt="" width={28} height={28} className="size-7" />
+            <span className="text-lg font-semibold tracking-tight text-slate-900 lg:text-xl">
+              The Ide Project
+            </span>
           </Link>
 
           <button
@@ -109,8 +106,8 @@ export function SiteHeader({ user }: SiteHeaderProps) {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8 gap-4">
+    <header className="sticky top-0 z-50 border-b border-border bg-background">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 lg:px-8 gap-4">
         {/* Navigation Dropdown Button */}
         <div className="relative" ref={navRef}>
           <button
@@ -152,15 +149,11 @@ export function SiteHeader({ user }: SiteHeaderProps) {
         </div>
 
         {/* Logo/Title - Centered */}
-        <Link href="/" className="flex items-center gap-3 flex-1">
-          <div>
-            <span className="text-lg font-semibold tracking-tight text-foreground lg:text-xl">
-              The Ide Project
-            </span>
-            <p className="text-xs font-medium text-accent lg:text-sm">
-              Youth Led Initiative
-            </p>
-          </div>
+        <Link href="/" className="flex items-center justify-center gap-2.5 flex-1">
+          <Image src="/logo-mark.png" alt="" width={28} height={28} className="size-7" />
+          <span className="text-lg font-semibold tracking-tight text-foreground lg:text-xl">
+            The Ide Project
+          </span>
         </Link>
 
         {/* User Menu / Auth Links */}
