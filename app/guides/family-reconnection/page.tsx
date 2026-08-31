@@ -24,11 +24,11 @@ export default function FamilyReconnectionPage() {
       <div className="mx-auto max-w-3xl px-6 py-12 lg:px-8 lg:py-16">
         <section className="mb-12">
           <h2 className="mb-4 text-2xl font-bold text-foreground">The Reality of Family Separation</h2>
-          <div className="rounded-lg bg-blue-50 border border-blue-200 p-6">
-            <p className="text-sm text-blue-900 mb-3">
+          <div className="rounded-lg bg-[#415959]/10 border border-[#415959]/25 p-6">
+            <p className="text-sm text-[#415959] mb-3">
               Years apart change relationships. Your family may have moved on. They may have complicated feelings about your imprisonment. Some may blame you. Others may struggle with how much you've changed.
             </p>
-            <p className="text-sm text-blue-900">
+            <p className="text-sm text-[#415959]">
               This doesn't mean reconnection is impossible. It means going in with realistic expectations and patience.
             </p>
           </div>
@@ -58,7 +58,7 @@ export default function FamilyReconnectionPage() {
             <div className="rounded-lg border border-border/60 p-4">
               <p className="font-semibold text-sm text-foreground mb-2">If You Have Contact Info</p>
               <p className="text-sm text-muted-foreground">Call or write a letter. A handwritten letter is often better than a call for first contact. It gives them time to process. Keep it short and sincere. Example:</p>
-              <div className="bg-slate-50 rounded p-3 mt-3 text-xs text-foreground font-mono">
+              <div className="bg-muted rounded p-3 mt-3 text-xs text-foreground font-mono">
                 <p>"Dear [name], I've been released and wanted to reach out. I know it's been [time] and there's a lot of hurt between us. I'm not asking for forgiveness, just to start rebuilding. If you're willing, I'd love to talk. Love, [your name]"</p>
               </div>
             </div>

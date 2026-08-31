@@ -24,8 +24,8 @@ export default function EmailSocialMediaPage() {
       <div className="mx-auto max-w-3xl px-6 py-12 lg:px-8 lg:py-16">
         <section className="mb-12">
           <h2 className="mb-4 text-2xl font-bold text-foreground">Why You Need Email</h2>
-          <div className="rounded-lg bg-blue-50 border border-blue-200 p-6">
-            <p className="text-sm text-blue-900">
+          <div className="rounded-lg bg-[#415959]/10 border border-[#415959]/25 p-6">
+            <p className="text-sm text-[#415959]">
               Email is essential for jobs, benefits, school, housing, and staying in touch with people. If you don't have an email, create one today.
             </p>
           </div>
@@ -45,7 +45,7 @@ export default function EmailSocialMediaPage() {
             <div className="rounded-lg border border-border/60 p-4">
               <p className="font-semibold text-sm text-foreground mb-2">Email Address Format</p>
               <p className="text-sm text-muted-foreground mb-2">Use your real name or something professional:</p>
-              <div className="bg-slate-50 rounded p-3 text-sm font-mono text-foreground mb-2">
+              <div className="bg-muted rounded p-3 text-sm font-mono text-foreground mb-2">
                 firstname.lastname@gmail.com
               </div>
               <p className="text-sm text-muted-foreground">

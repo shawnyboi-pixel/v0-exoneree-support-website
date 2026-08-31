@@ -54,8 +54,8 @@ export default function AffordableHousingPage() {
               </div>
             </div>
           </div>
-          <div className="rounded-lg bg-blue-50 border border-blue-200 p-4">
-            <p className="text-sm text-blue-900">
+          <div className="rounded-lg bg-[#415959]/10 border border-[#415959]/25 p-4">
+            <p className="text-sm text-[#415959]">
               <span className="font-semibold">Smart move:</span> Start in an affordable area near public transit. You can move to nicer neighborhoods as you save money.
             </p>
           </div>

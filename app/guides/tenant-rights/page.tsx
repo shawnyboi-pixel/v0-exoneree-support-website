@@ -130,8 +130,8 @@ export default function TenantRightsPage() {
         <section className="mb-12">
           <h2 className="mb-6 text-2xl font-bold text-foreground">If Your Landlord Violates Your Rights</h2>
           <div className="space-y-4">
-            <div className="rounded-lg bg-blue-50 border border-blue-200 p-4 mb-4">
-              <p className="text-sm text-blue-900">
+            <div className="rounded-lg bg-[#415959]/10 border border-[#415959]/25 p-4 mb-4">
+              <p className="text-sm text-[#415959]">
                 You have rights even if you have a criminal record. A landlord cannot legally retaliate against you for knowing your rights or complaining about violations.
               </p>
             </div>

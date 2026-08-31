@@ -192,14 +192,14 @@ export default function HealthcarePage() {
             ))}
           </div>
 
-          <div className="rounded-lg border border-blue-200 bg-blue-50 p-6">
+          <div className="rounded-lg border border-[#415959]/25 bg-[#415959]/10 p-6">
             <div className="mb-2 flex items-start gap-3">
-              <AlertCircle className="mt-0.5 size-5 shrink-0 text-blue-600" />
-              <h3 className="font-semibold text-blue-900">
+              <AlertCircle className="mt-0.5 size-5 shrink-0 text-[#415959]" />
+              <h3 className="font-semibold text-[#415959]">
                 Texas Medicaid Eligibility Quick Facts
               </h3>
             </div>
-            <ul className="ml-8 space-y-1 text-sm text-blue-800">
+            <ul className="ml-8 space-y-1 text-sm text-[#415959]">
               <li>
                 • Income limit: Generally below ~$1,331/month for a single adult
               </li>

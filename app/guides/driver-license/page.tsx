@@ -33,8 +33,8 @@ export default function DriverLicensePage() {
               <p className="font-semibold text-sm text-foreground mb-2">State ID Card</p>
               <p className="text-sm text-muted-foreground">Photo ID for non-drivers. No tests required. Good for voting, banking, employment. Cost: $16-25.</p>
             </div>
-            <div className="rounded-lg bg-blue-50 border border-blue-200 p-4">
-              <p className="text-sm text-blue-900">
+            <div className="rounded-lg bg-[#415959]/10 border border-[#415959]/25 p-4">
+              <p className="text-sm text-[#415959]">
                 <span className="font-semibold">Recommendation:</span> Start with State ID if you're not driving yet. It's faster and cheaper. You can get a driver license later if needed.
               </p>
             </div>

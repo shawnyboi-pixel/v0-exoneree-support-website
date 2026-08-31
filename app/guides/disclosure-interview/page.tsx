@@ -24,8 +24,8 @@ export default function DisclosureInterviewPage() {
       <div className="mx-auto max-w-3xl px-6 py-12 lg:px-8 lg:py-16">
         <section className="mb-12">
           <h2 className="mb-4 text-2xl font-bold text-foreground">Do You Have to Disclose?</h2>
-          <div className="rounded-lg bg-blue-50 border border-blue-200 p-6 mb-4">
-            <p className="text-sm text-blue-900">
+          <div className="rounded-lg bg-[#415959]/10 border border-[#415959]/25 p-6 mb-4">
+            <p className="text-sm text-[#415959]">
               <span className="font-semibold">Short answer:</span> It's complicated. Most employers in Texas can only ask about felony convictions. Many cannot ask about misdemeanors or sealed records. However, you should still be prepared.
             </p>
           </div>

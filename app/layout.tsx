@@ -19,7 +19,7 @@ const libreBaskerville = Libre_Baskerville({
 })
 
 export const metadata: Metadata = {
-  title: 'Ide Project | Helping Exonerees Every Step of the Way Through',
+  title: 'The Ide Project',
   description:
     'The Ide Project is a platform dedicated to supporting post-release exonerees.',
   icons: {
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#9d7c5f',
+  themeColor: '#ffffff',
   width: 'device-width',
   initialScale: 1,
 }

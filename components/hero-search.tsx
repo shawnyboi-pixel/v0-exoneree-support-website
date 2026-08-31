@@ -185,13 +185,10 @@ export function HeroSearch() {
 
   return (
     <div ref={containerRef} className="relative w-full animate-fade-in-up">
-      {/* Search Bar Container with Shadow and Gradient */}
-      <div className="relative rounded-3xl shadow-2xl overflow-visible">
-        {/* Gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-accent to-accent/80 opacity-10 rounded-3xl" />
-        
+      {/* Search Bar Container */}
+      <div className="relative rounded-2xl shadow-md overflow-visible">
         {/* Input Container */}
-        <div className="relative bg-white/90 backdrop-blur-xl border-2 border-accent/50 rounded-2xl p-1 hover:border-accent/70 transition-colors">
+        <div className="relative bg-card border-2 border-accent/50 rounded-2xl p-1 hover:border-accent/70 transition-colors">
           <div className="flex items-center gap-2 md:gap-3 px-4 md:px-5 py-3 md:py-3 min-h-[48px] md:min-h-auto">
             {isLoading ? (
               <div className="size-6 md:size-5 flex-shrink-0 flex items-center justify-center">
@@ -222,7 +219,7 @@ export function HeroSearch() {
               }}
               onKeyDown={handleKeyDown}
               disabled={isLoading}
-              className="w-full text-lg md:text-lg font-medium text-slate-900 placeholder-slate-500 bg-transparent outline-none disabled:opacity-70 select-text focus:ring-2 focus:ring-accent/30 px-2 py-1"
+              className="w-full text-base md:text-base font-medium text-foreground placeholder-muted-foreground bg-transparent outline-none disabled:opacity-70 select-text focus:ring-2 focus:ring-accent/30 px-2 py-1"
             />
           </div>
         </div>
@@ -231,7 +228,7 @@ export function HeroSearch() {
       {/* Search Results Dropdown - Fixed Position */}
       {isOpen && !isLoading && (searchTerm.trim() || filteredGuides.length > 0) && (
         <div
-          className="fixed rounded-xl bg-white/95 backdrop-blur-md border-2 border-accent/20 shadow-2xl z-50 overflow-hidden"
+          className="fixed rounded-xl bg-card border-2 border-accent/20 shadow-lg z-50 overflow-hidden"
           style={{
             top: `${dropdownPos.top}px`,
             left: `${dropdownPos.left}px`,
@@ -248,9 +245,9 @@ export function HeroSearch() {
                     onClick={() => handleSearch(searchTerm)}
                     className={`w-full text-left px-4 md:px-6 py-4 md:py-4 hover:bg-accent/5 transition-colors active:bg-accent/10 min-h-[48px] flex flex-col justify-center ${idx !== filteredGuides.length - 1 ? 'border-b border-accent/10' : ''}`}
                   >
-                    <p className="font-semibold text-sm md:text-base text-slate-900">{guide.title}</p>
+                    <p className="font-semibold text-sm md:text-base text-foreground">{guide.title}</p>
                     <p className="text-xs md:text-sm text-accent font-medium mt-1">{guide.category}</p>
-                    <p className="text-xs md:text-sm text-slate-600 mt-2">{guide.description}</p>
+                    <p className="text-xs md:text-sm text-muted-foreground mt-2">{guide.description}</p>
                   </button>
                 ))}
               </div>
@@ -265,7 +262,7 @@ export function HeroSearch() {
             </>
           ) : searchTerm.trim() ? (
             <div className="px-4 md:px-6 py-6 md:py-8 text-center">
-              <p className="text-sm md:text-base text-slate-600 font-medium">No guides found for "{searchTerm}"</p>
+              <p className="text-sm md:text-base text-muted-foreground font-medium">No guides found for "{searchTerm}"</p>
               <button
                 onClick={() => handleSearch(searchTerm)}
                 className="text-xs md:text-sm font-semibold text-accent hover:text-accent/80 active:text-accent/70 transition-colors mt-3 inline-block"

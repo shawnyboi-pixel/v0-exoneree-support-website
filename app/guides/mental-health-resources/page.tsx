@@ -24,18 +24,18 @@ export default function MentalHealthResourcesPage() {
       <div className="mx-auto max-w-3xl px-6 py-12 lg:px-8 lg:py-16">
         <section className="mb-12">
           <h2 className="mb-4 text-2xl font-bold text-foreground">Why Mental Health Matters</h2>
-          <div className="rounded-lg bg-blue-50 border border-blue-200 p-6">
-            <p className="text-sm text-blue-900 mb-3">
+          <div className="rounded-lg bg-[#415959]/10 border border-[#415959]/25 p-6">
+            <p className="text-sm text-[#415959] mb-3">
               Incarceration and the reentry process can cause real trauma. You might experience:
             </p>
-            <ul className="text-sm text-blue-900 space-y-1">
+            <ul className="text-sm text-[#415959] space-y-1">
               <li>• Depression or anxiety</li>
               <li>• Sleep problems or nightmares</li>
               <li>• Difficulty trusting people</li>
               <li>• Anger or emotional numbness</li>
               <li>• Overwhelming feeling when making decisions</li>
             </ul>
-            <p className="text-sm text-blue-900 mt-3">
+            <p className="text-sm text-[#415959] mt-3">
               These are normal responses to abnormal situations. Professional help isn't weakness—it's strength.
             </p>
           </div>

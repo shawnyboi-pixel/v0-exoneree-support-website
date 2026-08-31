@@ -65,7 +65,7 @@ export default function ApartmentApplicationPage() {
               <h3 className="font-semibold text-foreground mb-3">Section: Criminal History</h3>
               <div className="rounded-lg border border-border/60 p-4">
                 <p className="text-sm text-muted-foreground mb-3">If asked "Have you been convicted of a felony?" :</p>
-                <div className="bg-slate-50 rounded p-3 mb-3">
+                <div className="bg-muted rounded p-3 mb-3">
                   <p className="text-sm font-mono text-foreground">"Yes, I was convicted of [specific charge] in [year]. I served my time and have focused on building a stable life since my release in [year]."</p>
                 </div>
                 <p className="text-sm text-muted-foreground">Then briefly explain what you've done to show you've changed (job, counseling, family support, etc.).</p>
