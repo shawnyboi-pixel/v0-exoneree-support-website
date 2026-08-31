@@ -77,12 +77,13 @@ export function SiteHeader({ user }: SiteHeaderProps) {
           </Link>
 
           <button
-            className="flex items-center justify-center rounded-md p-2 text-foreground/60 transition-colors hover:text-foreground"
+            className="flex items-center justify-center gap-2 rounded-md px-2 py-2 text-foreground/60 transition-colors hover:text-foreground"
             onClick={() => setNavOpen(!navOpen)}
             aria-expanded={navOpen}
             aria-label="Toggle navigation menu"
           >
             {navOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+            <span className="text-sm font-medium">Menu</span>
           </button>
         </div>
 
@@ -111,13 +112,16 @@ export function SiteHeader({ user }: SiteHeaderProps) {
         {/* Navigation Dropdown Button */}
         <div className="relative" ref={navRef}>
           <button
-            className="flex items-center justify-center rounded-lg p-2.5 text-muted-foreground transition-all duration-200 ease-out hover:text-foreground hover:bg-secondary/50 active:scale-95 active:duration-100 hover:-translate-y-0.5 hover:shadow-md active:shadow-sm"
+            className="flex items-center justify-center gap-2 rounded-lg px-2.5 py-2.5 text-muted-foreground transition-all duration-200 ease-out hover:text-foreground hover:bg-secondary/50 active:scale-95 active:duration-100 hover:-translate-y-0.5 hover:shadow-md active:shadow-sm"
             onClick={() => setNavOpen(!navOpen)}
             aria-expanded={navOpen}
             aria-label="Toggle navigation menu"
           >
-            <Menu className={`size-5 transition-all duration-300 ease-out ${navOpen ? 'opacity-0 -rotate-90 absolute' : 'opacity-100 rotate-0'}`} />
-            <X className={`size-5 transition-all duration-300 ease-out ${navOpen ? 'opacity-100 rotate-0' : 'opacity-0 rotate-90 absolute'}`} />
+            <span className="relative flex size-5 items-center justify-center">
+              <Menu className={`size-5 transition-all duration-300 ease-out ${navOpen ? 'opacity-0 -rotate-90 absolute' : 'opacity-100 rotate-0'}`} />
+              <X className={`size-5 transition-all duration-300 ease-out ${navOpen ? 'opacity-100 rotate-0' : 'opacity-0 rotate-90 absolute'}`} />
+            </span>
+            <span className="text-sm font-medium">Menu</span>
           </button>
 
           {navOpen && (
