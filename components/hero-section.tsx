@@ -30,7 +30,7 @@ export function HeroSection() {
 
   return (
     <section className="relative overflow-hidden bg-background">
-      <div className="relative mx-auto max-w-7xl px-6 py-14 md:py-16 lg:px-8 lg:py-20">
+      <div className="relative mx-auto max-w-7xl px-6 pt-6 pb-14 md:pt-8 md:pb-16 lg:px-8 lg:pt-10 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
           {/* Left Column - Content */}
           <div className="lg:col-span-1 animate-fade-in-up">
