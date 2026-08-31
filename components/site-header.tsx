@@ -70,7 +70,7 @@ export function SiteHeader({ user }: SiteHeaderProps) {
 
           {/* Logo/Title on the Right */}
           <Link href="/" className="flex items-center gap-2.5">
-            <Image src="/logo-mark.png" alt="" width={28} height={28} className="size-7" />
+            <Image src="/ide-project-logo.jpg" alt="" width={200} height={250} className="h-9 w-auto" />
             <span className="text-lg font-semibold tracking-tight text-slate-900 lg:text-xl">
               The Ide Project
             </span>
@@ -150,7 +150,7 @@ export function SiteHeader({ user }: SiteHeaderProps) {
 
         {/* Logo/Title - Centered */}
         <Link href="/" className="flex items-center justify-center gap-2.5 flex-1">
-          <Image src="/logo-mark.png" alt="" width={28} height={28} className="size-7" />
+          <Image src="/ide-project-logo.jpg" alt="" width={200} height={250} className="h-9 w-auto" />
           <span className="text-lg font-semibold tracking-tight text-foreground lg:text-xl">
             The Ide Project
           </span>

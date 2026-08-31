@@ -8,7 +8,7 @@ export function SiteFooter() {
         <div className="grid gap-8 md:grid-cols-3 lg:gap-12">
           <div>
             <div className="mb-4 flex items-center gap-2.5">
-              <Image src="/logo-mark.png" alt="" width={24} height={24} className="size-6" />
+              <Image src="/ide-project-logo.jpg" alt="" width={200} height={250} className="h-8 w-auto" />
               <span className="text-base font-semibold text-foreground lg:text-lg">
                 The Ide Project
               </span>
