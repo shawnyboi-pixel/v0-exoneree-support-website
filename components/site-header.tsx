@@ -60,10 +60,10 @@ export function SiteHeader({ user }: SiteHeaderProps) {
 
   if (isHelpOthersPage) {
     return (
-      <header className="sticky top-0 z-50 border-b border-slate-300 bg-slate-200">
+      <header className="sticky top-0 z-50 border-b border-border bg-secondary">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
           {/* Back Button */}
-          <Link href="/" className="flex items-center gap-2 text-slate-700 hover:text-slate-900 transition-colors">
+          <Link href="/" className="flex items-center gap-2 text-foreground/70 hover:text-foreground transition-colors">
             <ArrowLeft className="size-5" />
             <span className="text-sm font-medium">Go Back</span>
           </Link>
@@ -71,13 +71,13 @@ export function SiteHeader({ user }: SiteHeaderProps) {
           {/* Logo/Title on the Right */}
           <Link href="/" className="flex items-center gap-2.5">
             <Image src="/ide-project-logo.jpg" alt="" width={200} height={250} className="h-9 w-auto" />
-            <span className="text-lg font-semibold tracking-tight text-slate-900 lg:text-xl">
+            <span className="text-lg font-semibold tracking-tight text-foreground lg:text-xl">
               The Ide Project
             </span>
           </Link>
 
           <button
-            className="flex items-center justify-center rounded-md p-2 text-slate-600 transition-colors hover:text-slate-900"
+            className="flex items-center justify-center rounded-md p-2 text-foreground/60 transition-colors hover:text-foreground"
             onClick={() => setNavOpen(!navOpen)}
             aria-expanded={navOpen}
             aria-label="Toggle navigation menu"
@@ -88,12 +88,12 @@ export function SiteHeader({ user }: SiteHeaderProps) {
 
         {navOpen && (
           <nav
-            className="border-t border-slate-300 bg-slate-200 px-6 pb-6 pt-4"
+            className="border-t border-border bg-secondary px-6 pb-6 pt-4"
             aria-label="Mobile navigation"
           >
             <Link
               href="/"
-              className="flex items-center gap-2 text-slate-700 hover:text-slate-900 transition-colors mb-4"
+              className="flex items-center gap-2 text-foreground/70 hover:text-foreground transition-colors mb-4"
               onClick={() => setNavOpen(false)}
             >
               <ArrowLeft className="size-5" />

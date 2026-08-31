@@ -105,7 +105,7 @@ export default function CompensationGuidePage() {
           </p>
 
           <h3 className="text-2xl font-bold text-foreground mb-4">Texas Compensation (If You're In Texas)</h3>
-          <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-900 rounded-lg p-6 mb-6">
+          <div className="bg-[#415959]/10 dark:bg-[#415959]/20 border border-[#415959]/25 dark:border-[#415959]/40 rounded-lg p-6 mb-6">
             <p className="text-foreground/80 mb-4">
               <strong>Texas Article 64.03 Law:</strong> Provides compensation to the wrongfully convicted.
             </p>

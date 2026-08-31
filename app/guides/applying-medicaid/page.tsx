@@ -24,8 +24,8 @@ export default function ApplyingMedicaidPage() {
       <div className="mx-auto max-w-3xl px-6 py-12 lg:px-8 lg:py-16">
         <section className="mb-12">
           <h2 className="mb-4 text-2xl font-bold text-foreground">What Is Medicaid?</h2>
-          <div className="rounded-lg bg-blue-50 border border-blue-200 p-6">
-            <p className="text-sm text-blue-900">
+          <div className="rounded-lg bg-[#415959]/10 border border-[#415959]/25 p-6">
+            <p className="text-sm text-[#415959]">
               Medicaid is free or low-cost health insurance paid for by the state and federal government. If you have low income, you likely qualify. It covers doctors, hospitals, emergency care, and prescriptions.
             </p>
           </div>

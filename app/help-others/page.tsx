@@ -73,7 +73,7 @@ export default function HelpOthersPage() {
   }
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <section className="min-h-screen bg-background">
       {/* Sidebar + Content Layout */}
       <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-24">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
@@ -90,8 +90,8 @@ export default function HelpOthersPage() {
                     onClick={() => setSelectedId(category.id)}
                     className={`flex items-center gap-3 rounded-lg px-4 py-3 text-left transition-all duration-300 cursor-pointer relative ${
                       isSelected
-                        ? 'bg-slate-700 text-white shadow-md border-r-4 border-r-blue-500'
-                        : 'bg-white text-slate-900 border border-slate-200 hover:border-slate-300 hover:bg-slate-50'
+                        ? 'bg-primary text-primary-foreground shadow-md border-r-4 border-r-accent'
+                        : 'bg-card text-foreground border border-border hover:border-foreground/30 hover:bg-muted'
                     }`}
                   >
                     <CategoryIcon className="size-5 flex-shrink-0" />
@@ -105,37 +105,37 @@ export default function HelpOthersPage() {
           {/* Main Content */}
           <div className="lg:col-span-3">
             {selectedCategory && (
-              <div className="animate-fade-in rounded-lg bg-white border border-slate-200 shadow-sm p-8 md:p-10 relative border-l-4 border-l-blue-500">
+              <div className="animate-fade-in rounded-lg bg-card border border-border shadow-sm p-8 md:p-10 relative border-l-4 border-l-accent">
                 {/* Content Header */}
                 <div className="flex items-start gap-4 mb-8">
-                  <div className="flex size-14 items-center justify-center rounded-lg bg-slate-100 flex-shrink-0">
-                    <Icon className="size-7 text-slate-700" />
+                  <div className="flex size-14 items-center justify-center rounded-lg bg-muted flex-shrink-0">
+                    <Icon className="size-7 text-primary" />
                   </div>
                   <div>
-                    <h2 className="text-3xl font-bold text-slate-900">
+                    <h2 className="text-3xl font-bold text-foreground">
                       {selectedCategory.title}
                     </h2>
                   </div>
                 </div>
 
                 {/* Description */}
-                <p className="text-lg text-slate-700 mb-8 leading-relaxed">
+                <p className="text-lg text-foreground/80 mb-8 leading-relaxed">
                   {selectedCategory.description}
                 </p>
 
                 {/* Details Grid */}
                 <div className="mb-10">
-                  <h3 className="text-sm font-semibold text-slate-900 uppercase tracking-wide mb-4">
+                  <h3 className="text-sm font-semibold text-foreground uppercase tracking-wide mb-4">
                     What you can do:
                   </h3>
                   <div className="grid gap-3 sm:grid-cols-2">
                     {selectedCategory.details.map((detail, idx) => (
                       <div
                         key={idx}
-                        className="flex items-start gap-3 rounded-lg bg-slate-50 p-4 border border-slate-200"
+                        className="flex items-start gap-3 rounded-lg bg-muted/50 p-4 border border-border"
                       >
-                        <div className="mt-1.5 size-2 rounded-full bg-slate-400 flex-shrink-0" />
-                        <span className="text-slate-700">{detail}</span>
+                        <div className="mt-1.5 size-2 rounded-full bg-accent flex-shrink-0" />
+                        <span className="text-foreground/80">{detail}</span>
                       </div>
                     ))}
                   </div>
@@ -145,11 +145,11 @@ export default function HelpOthersPage() {
                 <button
                   onClick={handleGetStarted}
                   disabled={loading}
-                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-slate-700 px-8 py-3 font-medium text-white hover:bg-slate-800 transition-all duration-300 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-90"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-8 py-3 font-medium text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-90"
                 >
                   {loading ? (
                     <>
-                      <div className="size-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                      <div className="size-4 animate-spin rounded-full border-2 border-primary-foreground border-t-transparent" />
                       <span>Loading...</span>
                     </>
                   ) : (
@@ -163,21 +163,16 @@ export default function HelpOthersPage() {
       </div>
 
       {/* Cold-tone Footer for Help Others Page */}
-      <footer className="border-t border-slate-300 bg-slate-700">
+      <footer className="border-t border-[#3d5252] bg-[#415959]">
         <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-16">
           <div className="grid gap-8 md:grid-cols-3 lg:gap-12">
             <div>
               <div className="mb-4">
-                <div>
-                  <span className="text-base font-semibold text-white lg:text-lg">
-                    The Ide Project
-                  </span>
-                  <p className="text-xs font-medium text-slate-300 lg:text-sm">
-                    Youth Led Initiative
-                  </p>
-                </div>
+                <span className="text-base font-semibold text-white lg:text-lg">
+                  The Ide Project
+                </span>
               </div>
-              <p className="max-w-xs text-sm leading-relaxed text-slate-200 lg:text-base">
+              <p className="max-w-xs text-sm leading-relaxed text-white/70 lg:text-base">
                 The Ide Project is a youth-led initiative connecting exonerees nationwide with verified reentry support organizations and community advocacy.
               </p>
             </div>
@@ -192,19 +187,19 @@ export default function HelpOthersPage() {
               >
                 <Link
                   href="/"
-                  className="text-sm text-slate-300 transition-colors hover:text-white lg:text-base"
+                  className="text-sm text-white/70 transition-colors hover:text-accent lg:text-base"
                 >
                   Home
                 </Link>
                 <Link
                   href="/guides"
-                  className="text-sm text-slate-300 transition-colors hover:text-white lg:text-base"
+                  className="text-sm text-white/70 transition-colors hover:text-accent lg:text-base"
                 >
                   Resources
                 </Link>
                 <Link
                   href="/help-others"
-                  className="text-sm text-slate-300 transition-colors hover:text-white lg:text-base"
+                  className="text-sm text-white/70 transition-colors hover:text-accent lg:text-base"
                 >
                   Get Involved
                 </Link>
@@ -215,20 +210,20 @@ export default function HelpOthersPage() {
               <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
                 Support Our Mission
               </h3>
-              <p className="mb-3 text-sm leading-relaxed text-slate-200">
+              <p className="mb-3 text-sm leading-relaxed text-white/70">
                 Help us connect exonerees with the resources they need to rebuild their lives after wrongful conviction.
               </p>
-              <button className="text-sm font-medium text-slate-300 transition-colors hover:text-white">
+              <button className="text-sm font-medium text-white/70 transition-colors hover:text-accent">
                 Learn More &rarr;
               </button>
             </div>
           </div>
 
-          <div className="mt-10 border-t border-slate-600 pt-6">
-            <p className="mb-3 text-center text-xs font-semibold uppercase tracking-wide text-slate-300">
+          <div className="mt-10 border-t border-white/20 pt-6">
+            <p className="mb-3 text-center text-xs font-semibold uppercase tracking-wide text-white/70">
               Disclaimer
             </p>
-            <p className="text-center text-xs text-slate-300">
+            <p className="text-center text-xs text-white/70">
               This resource hub connects exonerees with support organizations. It does not provide and should not be understood as professional advice of any kind.
             </p>
           </div>

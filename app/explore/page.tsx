@@ -78,15 +78,15 @@ export default function ExplorePage() {
           </h2>
           <div className="grid gap-8 md:grid-cols-3">
             <div>
-              <div className="text-4xl font-bold text-orange-600">10K+</div>
+              <div className="text-4xl font-bold text-primary">10K+</div>
               <p className="text-amber-900 mt-2">People Supported</p>
             </div>
             <div>
-              <div className="text-4xl font-bold text-orange-600">200+</div>
+              <div className="text-4xl font-bold text-primary">200+</div>
               <p className="text-amber-900 mt-2">Resources Available</p>
             </div>
             <div>
-              <div className="text-4xl font-bold text-orange-600">50+</div>
+              <div className="text-4xl font-bold text-primary">50+</div>
               <p className="text-amber-900 mt-2">States Covered</p>
             </div>
           </div>

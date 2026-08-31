@@ -151,12 +151,12 @@ export default function FirstWeekPage() {
           </div>
         </section>
 
-        <section className="rounded-lg bg-blue-50 border border-blue-200 p-8">
+        <section className="rounded-lg bg-[#415959]/10 border border-[#415959]/25 p-8">
           <h2 className="mb-4 text-2xl font-bold text-foreground">Remember</h2>
-          <p className="text-sm text-blue-900 mb-4">
+          <p className="text-sm text-[#415959] mb-4">
             You will feel overwhelmed. The world has changed. Technology is different. People may judge you. All of this is normal.
           </p>
-          <p className="text-sm text-blue-900">
+          <p className="text-sm text-[#415959]">
             But you're building a new life now. One day at a time. One task at a time. You've already overcome the hardest part.
           </p>
         </section>

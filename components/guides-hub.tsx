@@ -656,7 +656,7 @@ export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
                         ))}
                       </div>
                       {guide.hasQA && (
-                        <div className="flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-700 lg:text-sm">
+                        <div className="flex items-center gap-1 rounded-full bg-[#415959]/10 px-2 py-1 text-xs font-semibold text-[#415959] lg:text-sm">
                           <MessageCircle className="size-3 lg:size-4" />
                           <span>QA</span>
                         </div>
@@ -719,7 +719,7 @@ export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
                         ))}
                       </div>
                       {guide.hasQA && (
-                        <div className="flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-700 lg:text-sm">
+                        <div className="flex items-center gap-1 rounded-full bg-[#415959]/10 px-2 py-1 text-xs font-semibold text-[#415959] lg:text-sm">
                           <MessageCircle className="size-3 lg:size-4" />
                           <span>QA</span>
                         </div>

@@ -24,8 +24,8 @@ export default function UnderstandingTaxesPage() {
       <div className="mx-auto max-w-3xl px-6 py-12 lg:px-8 lg:py-16">
         <section className="mb-12">
           <h2 className="mb-4 text-2xl font-bold text-foreground">Why Taxes Matter</h2>
-          <div className="rounded-lg bg-blue-50 border border-blue-200 p-6">
-            <p className="text-sm text-blue-900">
+          <div className="rounded-lg bg-[#415959]/10 border border-[#415959]/25 p-6">
+            <p className="text-sm text-[#415959]">
               Filing taxes shows you're building a stable, legitimate life. It's important for employment records, benefits, housing applications, and your parole/reentry file. Not filing can cause legal problems.
             </p>
           </div>

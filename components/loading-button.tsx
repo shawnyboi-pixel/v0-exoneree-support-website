@@ -24,7 +24,7 @@ export function LoadingButton({
 
   const variantClasses = {
     primary: 'bg-accent px-6 py-3.5 text-accent-foreground hover:bg-accent/85 hover:shadow-md hover:-translate-y-1 active:shadow-sm lg:px-8 lg:py-4',
-    secondary: 'bg-slate-700 px-8 py-3 text-white hover:bg-slate-800 hover:-translate-y-1 hover:shadow-md active:shadow-sm transition-all duration-200 ease-out',
+    secondary: 'bg-primary px-8 py-3 text-primary-foreground hover:bg-primary/90 hover:-translate-y-1 hover:shadow-md active:shadow-sm transition-all duration-200 ease-out',
     outline: 'border-2 border-primary-foreground/40 px-6 py-3.5 text-primary-foreground hover:bg-primary-foreground/10 hover:border-primary-foreground/60 hover:-translate-y-1 hover:shadow-md active:shadow-sm lg:px-8 lg:py-4'
   }
 

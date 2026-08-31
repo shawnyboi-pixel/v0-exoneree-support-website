@@ -24,11 +24,11 @@ export default function ProcessingTraumaPage() {
       <div className="mx-auto max-w-3xl px-6 py-12 lg:px-8 lg:py-16">
         <section className="mb-12">
           <h2 className="mb-4 text-2xl font-bold text-foreground">What Is Trauma?</h2>
-          <div className="rounded-lg bg-blue-50 border border-blue-200 p-6">
-            <p className="text-sm text-blue-900 mb-3">
+          <div className="rounded-lg bg-[#415959]/10 border border-[#415959]/25 p-6">
+            <p className="text-sm text-[#415959] mb-3">
               Trauma is your mind and body's response to overwhelming experiences. Incarceration—especially wrongful imprisonment or violence—causes real trauma.
             </p>
-            <p className="text-sm text-blue-900">
+            <p className="text-sm text-[#415959]">
               This is not weakness. This is not something you should "just get over." It's a normal response to abnormal situations.
             </p>
           </div>

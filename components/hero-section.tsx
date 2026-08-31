@@ -34,12 +34,6 @@ export function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
           {/* Left Column - Content */}
           <div className="lg:col-span-1 animate-fade-in-up">
-            <p className="mb-3 text-xs font-medium uppercase tracking-widest text-foreground/70">
-              <span className="inline-block rounded-full bg-accent/10 px-3 py-1 text-xs border border-accent/30 text-accent">
-                Youth Led Initiative
-              </span>
-            </p>
-
             <h1 className="mb-4 font-serif text-2xl font-bold leading-tight tracking-tight text-foreground md:text-3xl lg:text-4xl animate-slide-in-right">
               <span className="text-balance">
                 Ide Project
