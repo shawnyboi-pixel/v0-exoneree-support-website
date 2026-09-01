@@ -40,11 +40,11 @@ export function HeroSection() {
               </span>
             </h1>
 
-            <span className="mb-4 inline-flex items-center rounded-full border border-primary/25 bg-primary/5 px-2.5 py-1 text-xs font-medium text-primary animate-fade-in-up">
+            <p className="mb-4 text-xs font-medium uppercase tracking-wide text-foreground/50 animate-fade-in-up">
               Nonprofit 501(c)(3) Organization
-            </span>
+            </p>
 
-            <p className="mb-6 mt-4 text-sm leading-relaxed text-foreground/80 md:text-base animate-slide-in-left">
+            <p className="mb-6 text-sm leading-relaxed text-foreground/80 md:text-base animate-slide-in-left">
               The Ide Project, led by youth changemakers, connects exonerees nationwide with verified reentry support organizations, housing resources, job training programs, and community advocacy. Get help after wrongful conviction.
             </p>
 
