@@ -183,7 +183,7 @@ export default function BudgetChecklistPage() {
                 </div>
                 {/* Quick tip */}
                 <p className="text-xs text-muted-foreground mt-4">
-                  💡 <strong>Tip:</strong> {`Your remaining amount should go toward savings and emergency fund. If it's negative, you need to reduce expenses.`}
+                  <strong>Tip:</strong> {`Your remaining amount should go toward savings and emergency fund. If it's negative, you need to reduce expenses.`}
                 </p>
               </CardContent>
             </Card>
@@ -394,7 +394,7 @@ export default function BudgetChecklistPage() {
           <div className="space-y-4">
             <Card className="border-border/60">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-foreground mb-3">✓ Best Practices</h4>
+                <h4 className="font-semibold text-foreground mb-3">Best Practices</h4>
                 <ul className="space-y-2 text-sm text-foreground/80">
                   <li>• Use the 50/30/20 rule: 50% needs, 30% wants, 20% savings/debt</li>
                   <li>• Keep receipts or track spending with an app (Mint, YNAB, EveryDollar)</li>
@@ -408,7 +408,7 @@ export default function BudgetChecklistPage() {
 
             <Card className="border-border/60">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-foreground mb-3">✗ Common Mistakes to Avoid</h4>
+                <h4 className="font-semibold text-foreground mb-3">Common Mistakes to Avoid</h4>
                 <ul className="space-y-2 text-sm text-foreground/80">
                   <li>• Making a budget and never looking at it again</li>
                   <li>• Forgetting to include irregular expenses (car registration, gifts)</li>

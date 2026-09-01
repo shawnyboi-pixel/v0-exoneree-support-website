@@ -227,19 +227,19 @@ export default function CompensationGuidePage() {
 
           <div className="bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900 rounded-lg p-6 space-y-4">
             <div>
-              <strong className="text-red-900 dark:text-red-200">❌ Waiting Too Long</strong>
+              <strong className="text-red-900 dark:text-red-200">Waiting Too Long</strong>
               <p className="text-sm text-foreground/80 mt-1">Most states have a deadline (1-2 years). File immediately after exoneration.</p>
             </div>
             <div>
-              <strong className="text-red-900 dark:text-red-200">❌ Not Asking for Help</strong>
+              <strong className="text-red-900 dark:text-red-200">Not Asking for Help</strong>
               <p className="text-sm text-foreground/80 mt-1">Exoneree organizations and lawyers will help FOR FREE. Don't try to navigate alone.</p>
             </div>
             <div>
-              <strong className="text-red-900 dark:text-red-200">❌ Missing Deadlines</strong>
+              <strong className="text-red-900 dark:text-red-200">Missing Deadlines</strong>
               <p className="text-sm text-foreground/80 mt-1">Read all deadlines carefully. One missed deadline can disqualify you.</p>
             </div>
             <div>
-              <strong className="text-red-900 dark:text-red-200">❌ Not Taking Mental Health Services</strong>
+              <strong className="text-red-900 dark:text-red-200">Not Taking Mental Health Services</strong>
               <p className="text-sm text-foreground/80 mt-1">Many people skip this. You've been through trauma—please use these free services.</p>
             </div>
           </div>

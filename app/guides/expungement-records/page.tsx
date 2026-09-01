@@ -38,7 +38,7 @@ export default function ExpungementRecordsPage() {
           <h2 className="mb-6 text-2xl font-bold text-foreground">What Can Be Expunged?</h2>
           <div className="space-y-4">
             <div className="rounded-lg border border-green-200 bg-green-50 p-4">
-              <p className="font-semibold text-sm text-green-900 mb-2">✓ Can Usually Be Expunged:</p>
+              <p className="font-semibold text-sm text-green-900 mb-2">Can Usually Be Expunged:</p>
               <ul className="text-sm text-green-900 space-y-1">
                 <li>• Arrests that didn't lead to charges</li>
                 <li>• Cases dismissed</li>
@@ -48,7 +48,7 @@ export default function ExpungementRecordsPage() {
               </ul>
             </div>
             <div className="rounded-lg border border-red-200 bg-red-50 p-4">
-              <p className="font-semibold text-sm text-red-900 mb-2">✗ Cannot Be Expunged:</p>
+              <p className="font-semibold text-sm text-red-900 mb-2">Cannot Be Expunged:</p>
               <ul className="text-sm text-red-900 space-y-1">
                 <li>• Most serious felonies (murder, rape, certain violent crimes)</li>
                 <li>• Some sex crimes</li>
@@ -124,11 +124,11 @@ export default function ExpungementRecordsPage() {
               Once your record is expunged:
             </p>
             <ul className="space-y-2 text-sm text-green-900">
-              <li>✓ You can legally say you were never arrested or convicted</li>
-              <li>✓ Employers won't see it on background checks</li>
-              <li>✓ You can rent apartments without that record coming up</li>
-              <li>✓ You can get professional licenses more easily</li>
-              <li>✓ Landlords and employers cannot legally discriminate based on expunged records</li>
+              <li>You can legally say you were never arrested or convicted</li>
+              <li>Employers won't see it on background checks</li>
+              <li>You can rent apartments without that record coming up</li>
+              <li>You can get professional licenses more easily</li>
+              <li>Landlords and employers cannot legally discriminate based on expunged records</li>
             </ul>
           </div>
         </section>
