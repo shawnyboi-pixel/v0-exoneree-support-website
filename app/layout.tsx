@@ -19,7 +19,7 @@ const libreBaskerville = Libre_Baskerville({
 })
 
 export const metadata: Metadata = {
-  title: 'The Ide Project',
+  title: 'The Ide Project | Supporting Post-Release Exonerees',
   description:
     'The Ide Project is a platform dedicated to supporting post-release exonerees.',
   icons: {
