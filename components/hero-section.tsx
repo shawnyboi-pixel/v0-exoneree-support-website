@@ -34,13 +34,17 @@ export function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
           {/* Left Column - Content */}
           <div className="lg:col-span-1 animate-fade-in-up">
-            <h1 className="mb-4 font-serif text-2xl font-bold leading-tight tracking-tight text-foreground md:text-3xl lg:text-4xl animate-slide-in-right">
+            <h1 className="mb-3 font-serif text-2xl font-bold leading-tight tracking-tight text-foreground md:text-3xl lg:text-4xl animate-slide-in-right">
               <span className="text-balance">
                 Ide Project
               </span>
             </h1>
 
-            <p className="mb-6 text-sm leading-relaxed text-foreground/80 md:text-base animate-slide-in-left">
+            <span className="mb-4 inline-flex items-center rounded-full border border-primary/25 bg-primary/5 px-2.5 py-1 text-xs font-medium text-primary animate-fade-in-up">
+              Nonprofit 501(c)(3) Organization
+            </span>
+
+            <p className="mb-6 mt-4 text-sm leading-relaxed text-foreground/80 md:text-base animate-slide-in-left">
               The Ide Project, led by youth changemakers, connects exonerees nationwide with verified reentry support organizations, housing resources, job training programs, and community advocacy. Get help after wrongful conviction.
             </p>
 

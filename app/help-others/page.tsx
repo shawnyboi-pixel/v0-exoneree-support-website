@@ -173,7 +173,7 @@ export default function HelpOthersPage() {
                 </span>
               </div>
               <p className="max-w-xs text-sm leading-relaxed text-white/70 lg:text-base">
-                The Ide Project is a youth-led initiative connecting exonerees nationwide with verified reentry support organizations and community advocacy.
+                The Ide Project is a nonprofit 501(c)(3) youth-led initiative connecting exonerees nationwide with verified reentry support organizations and community advocacy.
               </p>
             </div>
 
@@ -211,7 +211,7 @@ export default function HelpOthersPage() {
                 Support Our Mission
               </h3>
               <p className="mb-3 text-sm leading-relaxed text-white/70">
-                Help us connect exonerees with the resources they need to rebuild their lives after wrongful conviction.
+                Help us connect exonerees with the resources they need to rebuild their lives after wrongful conviction. The Ide Project is a registered nonprofit 501(c)(3), so your support goes directly toward our mission.
               </p>
               <button className="text-sm font-medium text-white/70 transition-colors hover:text-accent">
                 Learn More &rarr;

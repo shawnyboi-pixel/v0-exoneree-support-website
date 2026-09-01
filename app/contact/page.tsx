@@ -62,6 +62,7 @@ export default function ContactPage() {
                 <span className="text-balance">Get in Touch</span>
               </h1>
               <p className="text-base text-foreground/70 leading-relaxed">{`We'd love to hear from you. Reach out with questions, feedback, or collaboration opportunities.`}</p>
+              <p className="mt-3 text-sm text-foreground/50">The Ide Project is a registered nonprofit 501(c)(3) organization.</p>
             </div>
 
             {/* Email Contact Info */}
