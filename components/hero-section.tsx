@@ -40,7 +40,7 @@ export function HeroSection() {
               </span>
             </h1>
 
-            <p className="mb-4 text-xs font-medium uppercase tracking-wide text-foreground/50 animate-fade-in-up">
+            <p className="mb-4 text-xs font-medium tracking-wide text-black animate-fade-in-up">
               Nonprofit 501(c)(3) Organization
             </p>
 
