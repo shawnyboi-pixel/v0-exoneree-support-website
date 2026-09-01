@@ -128,10 +128,10 @@ export default function BankAccountGuidePage() {
               <CardContent className="pt-6">
                 <h4 className="font-semibold text-foreground mb-3">Local Credit Union (Recommended)</h4>
                 <ul className="space-y-2 text-sm text-foreground/80">
-                  <li>✓ Lower fees</li>
-                  <li>✓ More flexible with people rebuilding credit</li>
-                  <li>✓ Staff who know you personally</li>
-                  <li>✓ Ask about "second chance" checking accounts</li>
+                  <li>Lower fees</li>
+                  <li>More flexible with people rebuilding credit</li>
+                  <li>Staff who know you personally</li>
+                  <li>Ask about "second chance" checking accounts</li>
                 </ul>
               </CardContent>
             </Card>
@@ -140,9 +140,9 @@ export default function BankAccountGuidePage() {
               <CardContent className="pt-6">
                 <h4 className="font-semibold text-foreground mb-3">Large Bank</h4>
                 <ul className="space-y-2 text-sm text-foreground/80">
-                  <li>✓ More ATM locations</li>
-                  <li>✓ Better mobile apps</li>
-                  <li>✗ Higher fees, harder to work with</li>
+                  <li>More ATM locations</li>
+                  <li>Better mobile apps</li>
+                  <li>Higher fees, harder to work with</li>
                 </ul>
               </CardContent>
             </Card>

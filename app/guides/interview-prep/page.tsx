@@ -98,15 +98,15 @@ export default function InterviewPrepPage() {
           </div>
           <div className="space-y-4">
             <div>
-              <p className="font-semibold text-sm text-foreground mb-2">✓ Professional Retail/Office Jobs:</p>
+              <p className="font-semibold text-sm text-foreground mb-2">Professional Retail/Office Jobs:</p>
               <p className="text-sm text-muted-foreground">Dress pants or skirt, button-up shirt or blouse, closed-toe shoes, minimal jewelry</p>
             </div>
             <div>
-              <p className="font-semibold text-sm text-foreground mb-2">✓ Trade/Warehouse Jobs:</p>
+              <p className="font-semibold text-sm text-foreground mb-2">Trade/Warehouse Jobs:</p>
               <p className="text-sm text-muted-foreground">Clean jeans or work pants, plain t-shirt or polo, work-appropriate shoes</p>
             </div>
             <div>
-              <p className="font-semibold text-sm text-foreground mb-2">✓ General Rule:</p>
+              <p className="font-semibold text-sm text-foreground mb-2">General Rule:</p>
               <p className="text-sm text-muted-foreground">Be clean, neat, and well-groomed. No rips, stains, or strong smells.</p>
             </div>
             <div className="rounded-lg bg-red-50 border border-red-200 p-4">

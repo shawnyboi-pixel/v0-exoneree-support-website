@@ -206,35 +206,35 @@ export default function SupportiveEmployersGuidePage() {
           <div className="grid grid-cols-1 gap-4">
             <Card className="border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-green-900 dark:text-green-200 mb-2">✓ They don't immediately judge you</h4>
+                <h4 className="font-semibold text-green-900 dark:text-green-200 mb-2">They don't immediately judge you</h4>
                 <p className="text-sm text-foreground/80">They're open to hearing your story and understanding where you are now.</p>
               </CardContent>
             </Card>
 
             <Card className="border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-green-900 dark:text-green-200 mb-2">✓ They offer training and growth</h4>
+                <h4 className="font-semibold text-green-900 dark:text-green-200 mb-2">They offer training and growth</h4>
                 <p className="text-sm text-foreground/80">Formal training programs, mentorship, and advancement opportunities.</p>
               </CardContent>
             </Card>
 
             <Card className="border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-green-900 dark:text-green-200 mb-2">✓ They have good benefits</h4>
+                <h4 className="font-semibold text-green-900 dark:text-green-200 mb-2">They have good benefits</h4>
                 <p className="text-sm text-foreground/80">Health insurance, retirement plans, paid time off matter for your wellbeing.</p>
               </CardContent>
             </Card>
 
             <Card className="border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-green-900 dark:text-green-200 mb-2">✓ They have other people like you</h4>
+                <h4 className="font-semibold text-green-900 dark:text-green-200 mb-2">They have other people like you</h4>
                 <p className="text-sm text-foreground/80">If there are other formerly incarcerated workers, you'll have support and understanding.</p>
               </CardContent>
             </Card>
 
             <Card className="border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-green-900 dark:text-green-200 mb-2">✓ Respectful management</h4>
+                <h4 className="font-semibold text-green-900 dark:text-green-200 mb-2">Respectful management</h4>
                 <p className="text-sm text-foreground/80">Managers who treat you with dignity and don't bring up your past unnecessarily.</p>
               </CardContent>
             </Card>
@@ -247,23 +247,23 @@ export default function SupportiveEmployersGuidePage() {
 
           <div className="bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900 rounded-lg p-6 space-y-4">
             <div>
-              <strong className="text-red-900 dark:text-red-200">❌ They constantly bring up your past</strong>
+              <strong className="text-red-900 dark:text-red-200">They constantly bring up your past</strong>
               <p className="text-sm text-foreground/80 mt-1">If managers use it as a threat ("Remember where you came from"), it's a toxic environment.</p>
             </div>
             <div>
-              <strong className="text-red-900 dark:text-red-200">❌ Very low pay for dangerous work</strong>
+              <strong className="text-red-900 dark:text-red-200">Very low pay for dangerous work</strong>
               <p className="text-sm text-foreground/80 mt-1">Be cautious of exploitative situations targeting vulnerable workers. You deserve fair wages.</p>
             </div>
             <div>
-              <strong className="text-red-900 dark:text-red-200">❌ No benefits or training</strong>
+              <strong className="text-red-900 dark:text-red-200">No benefits or training</strong>
               <p className="text-sm text-foreground/80 mt-1">You need healthcare and growth opportunities. Avoid places that treat you as disposable.</p>
             </div>
             <div>
-              <strong className="text-red-900 dark:text-red-200">❌ Pressure to not disclose</strong>
+              <strong className="text-red-900 dark:text-red-200">Pressure to not disclose</strong>
               <p className="text-sm text-foreground/80 mt-1">An employer telling you to lie is setting you up to fail. Walk away.</p>
             </div>
             <div>
-              <strong className="text-red-900 dark:text-red-200">❌ They only hire people with records</strong>
+              <strong className="text-red-900 dark:text-red-200">They only hire people with records</strong>
               <p className="text-sm text-foreground/80 mt-1">Some predatory companies target formerly incarcerated workers for exploitation. Diverse workplaces are healthier.</p>
             </div>
           </div>

@@ -59,7 +59,7 @@ export default function StaySafeOnlineGuidePage() {
           <div className="space-y-4">
             <Card className="border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-3">❌ Your Full Legal Name</h4>
+                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-3">Your Full Legal Name</h4>
                 <p className="text-sm text-foreground/80 mb-3">
                   Use a nickname or first name only on social media. Your full legal name can be connected to your criminal record through searches.
                 </p>
@@ -69,7 +69,7 @@ export default function StaySafeOnlineGuidePage() {
 
             <Card className="border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-3">❌ Your Address or Neighborhood</h4>
+                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-3">Your Address or Neighborhood</h4>
                 <p className="text-sm text-foreground/80 mb-3">
                   Never post your home address, not even just the city. Bad actors can find you, harass you, or harm your family.
                 </p>
@@ -79,7 +79,7 @@ export default function StaySafeOnlineGuidePage() {
 
             <Card className="border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-3">❌ Your Phone Number or Email</h4>
+                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-3">Your Phone Number or Email</h4>
                 <p className="text-sm text-foreground/80 mb-3">
                   Predators use this to contact you, hack you, or sell your info to marketers and scammers.
                 </p>
@@ -89,7 +89,7 @@ export default function StaySafeOnlineGuidePage() {
 
             <Card className="border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-3">❌ Your Social Security Number, Passwords, or Financial Info</h4>
+                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-3">Your Social Security Number, Passwords, or Financial Info</h4>
                 <p className="text-sm text-foreground/80 mb-3">
                   NEVER. This is identity theft waiting to happen. No legitimate person will ask for this online.
                 </p>
@@ -99,7 +99,7 @@ export default function StaySafeOnlineGuidePage() {
 
             <Card className="border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-3">❌ Your Criminal History or Mugshot</h4>
+                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-3">Your Criminal History or Mugshot</h4>
                 <p className="text-sm text-foreground/80 mb-3">
                   Employers, landlords, and dates will see this. Even joking about your past can harm your opportunities.
                 </p>
@@ -109,7 +109,7 @@ export default function StaySafeOnlineGuidePage() {
 
             <Card className="border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-3">❌ Your Location (Live Updates)</h4>
+                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-3">Your Location (Live Updates)</h4>
                 <p className="text-sm text-foreground/80 mb-3">
                   Never post "just got to work" with a check-in, or stream yourself at your job. Predators can find and follow you.
                 </p>
@@ -119,7 +119,7 @@ export default function StaySafeOnlineGuidePage() {
 
             <Card className="border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-3">❌ Photos of Your Identification</h4>
+                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-3">Photos of Your Identification</h4>
                 <p className="text-sm text-foreground/80 mb-3">
                   Never post photos of your passport, driver's license, SSN card, etc. People use these to commit identity theft.
                 </p>
@@ -128,7 +128,7 @@ export default function StaySafeOnlineGuidePage() {
 
             <Card className="border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-3">❌ Details About Your Kids or Family</h4>
+                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-3">Details About Your Kids or Family</h4>
                 <p className="text-sm text-foreground/80 mb-3">
                   Their real names, schools, schedules, or photos. Predators use this information to harm families.
                 </p>
@@ -202,20 +202,20 @@ export default function StaySafeOnlineGuidePage() {
           <div className="bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-900 rounded-lg p-6 mb-6">
             <div className="space-y-4">
               <div>
-                <strong className="text-green-900 dark:text-green-200">✓ At least 12 characters long</strong>
+                <strong className="text-green-900 dark:text-green-200">At least 12 characters long</strong>
                 <p className="text-sm text-foreground/80 mt-1">The longer, the better. 16+ is ideal.</p>
               </div>
               <div>
-                <strong className="text-green-900 dark:text-green-200">✓ Mix of UPPERCASE and lowercase</strong>
+                <strong className="text-green-900 dark:text-green-200">Mix of UPPERCASE and lowercase</strong>
               </div>
               <div>
-                <strong className="text-green-900 dark:text-green-200">✓ Numbers and symbols (!@#$%)</strong>
+                <strong className="text-green-900 dark:text-green-200">Numbers and symbols (!@#$%)</strong>
               </div>
               <div>
-                <strong className="text-green-900 dark:text-green-200">✓ Nothing personal (not your name, birthday, address)</strong>
+                <strong className="text-green-900 dark:text-green-200">Nothing personal (not your name, birthday, address)</strong>
               </div>
               <div>
-                <strong className="text-green-900 dark:text-green-200">✓ Unique—don't reuse passwords</strong>
+                <strong className="text-green-900 dark:text-green-200">Unique—don't reuse passwords</strong>
                 <p className="text-sm text-foreground/80 mt-1">If one account gets hacked, the others are safe.</p>
               </div>
             </div>
@@ -225,7 +225,7 @@ export default function StaySafeOnlineGuidePage() {
           <div className="space-y-3 mb-6">
             <div className="flex gap-4">
               <div className="flex-1 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900 rounded-lg p-4">
-                <p className="text-sm text-red-900 dark:text-red-200 font-semibold mb-2">❌ WEAK</p>
+                <p className="text-sm text-red-900 dark:text-red-200 font-semibold mb-2">WEAK</p>
                 <ul className="text-xs text-foreground/80 space-y-1">
                   <li>• password123</li>
                   <li>• iloveyou</li>
@@ -234,7 +234,7 @@ export default function StaySafeOnlineGuidePage() {
                 </ul>
               </div>
               <div className="flex-1 bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-900 rounded-lg p-4">
-                <p className="text-sm text-green-900 dark:text-green-200 font-semibold mb-2">✓ STRONG</p>
+                <p className="text-sm text-green-900 dark:text-green-200 font-semibold mb-2">STRONG</p>
                 <ul className="text-xs text-foreground/80 space-y-1">
                   <li>• TrG#9mL$2xK@wQp!</li>
                   <li>• Blue$Sun42!Lamp%9</li>
@@ -271,35 +271,35 @@ export default function StaySafeOnlineGuidePage() {
           <div className="space-y-3">
             <Card className="border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-2">🚩 "Click here to verify your account"</h4>
+                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-2">"Click here to verify your account"</h4>
                 <p className="text-sm text-foreground/80">Real companies don't ask you to verify via email links. Go directly to the website by typing the address yourself.</p>
               </CardContent>
             </Card>
 
             <Card className="border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-2">🚩 "Your account will be closed unless you update payment"</h4>
+                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-2">"Your account will be closed unless you update payment"</h4>
                 <p className="text-sm text-foreground/80">Urgency is a red flag. Hackers use fear to make you act without thinking.</p>
               </CardContent>
             </Card>
 
             <Card className="border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-2">🚩 Links that don't match the website</h4>
+                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-2">Links that don't match the website</h4>
                 <p className="text-sm text-foreground/80">Email says "facebook.com" but the link goes to "faeebook.com" or "facebook-verify.net". Hover over the link to see the real URL.</p>
               </CardContent>
             </Card>
 
             <Card className="border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-2">🚩 Poor grammar or spelling errors</h4>
+                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-2">Poor grammar or spelling errors</h4>
                 <p className="text-sm text-foreground/80">Real companies use professional language. Scammers often have typos ("clck here", "conifrm").</p>
               </CardContent>
             </Card>
 
             <Card className="border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-2">🚩 "You won a prize!" (that you didn't enter)</h4>
+                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-2">"You won a prize!" (that you didn't enter)</h4>
                 <p className="text-sm text-foreground/80">If you didn't enter a contest, you can't win. Period.</p>
               </CardContent>
             </Card>
@@ -319,12 +319,12 @@ export default function StaySafeOnlineGuidePage() {
         <section className="mb-12">
           <h2 className="text-3xl font-bold text-foreground mb-6">Who to Trust Online (And Who NOT To)</h2>
 
-          <h3 className="text-2xl font-bold text-foreground mb-4">✓ SAFE: People and accounts you actually know</h3>
+          <h3 className="text-2xl font-bold text-foreground mb-4">SAFE: People and accounts you actually know</h3>
           <div className="bg-secondary/50 rounded-lg p-4 border border-border mb-6">
             <p className="text-foreground/80">Friends, family, official company accounts (with verified badges), organizations you've worked with.</p>
           </div>
 
-          <h3 className="text-2xl font-bold text-foreground mb-4">❌ DANGER: People trying to get you to do these things</h3>
+          <h3 className="text-2xl font-bold text-foreground mb-4">DANGER: People trying to get you to do these things</h3>
           <div className="space-y-3">
             <div className="bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900 rounded-lg p-4">
               <strong className="text-red-900 dark:text-red-200">Asking for passwords or personal info</strong>

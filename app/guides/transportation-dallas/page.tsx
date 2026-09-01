@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, Bike, Footprints, Car, Zap, CarTaxiFront } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { GuideQASection } from '@/components/guide-qa-section'
 
@@ -272,7 +272,7 @@ export default function TransportationGuidePage() {
           <div className="space-y-4">
             <Card className="border-border/60">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-foreground mb-3">🚴 Bike Share (TEXAS Bikeshare)</h4>
+                <h4 className="flex items-center gap-2 font-semibold text-foreground mb-3"><Bike className="size-5 text-primary" /> Bike Share (TEXAS Bikeshare)</h4>
                 <p className="text-sm text-foreground/80 mb-3">
                   Rent bikes from stations around Dallas. Pick up at one station, drop off at another. Great for short trips.
                 </p>
@@ -287,7 +287,7 @@ export default function TransportationGuidePage() {
 
             <Card className="border-border/60">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-foreground mb-3">🚶 Walking</h4>
+                <h4 className="flex items-center gap-2 font-semibold text-foreground mb-3"><Footprints className="size-5 text-primary" /> Walking</h4>
                 <p className="text-sm text-foreground/80 mb-3">
                   Free and good exercise. Some areas are more walkable than others.
                 </p>
@@ -302,7 +302,7 @@ export default function TransportationGuidePage() {
 
             <Card className="border-border/60">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-foreground mb-3">🚗 Carpool with Coworkers</h4>
+                <h4 className="flex items-center gap-2 font-semibold text-foreground mb-3"><Car className="size-5 text-primary" /> Carpool with Coworkers</h4>
                 <p className="text-sm text-foreground/80 mb-3">
                   Ask coworkers if they're willing to share rides. Split gas costs.
                 </p>
@@ -317,7 +317,7 @@ export default function TransportationGuidePage() {
 
             <Card className="border-border/60">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-foreground mb-3">🛴 Scooters</h4>
+                <h4 className="flex items-center gap-2 font-semibold text-foreground mb-3"><Zap className="size-5 text-primary" /> Scooters</h4>
                 <p className="text-sm text-foreground/80 mb-3">
                   Electric scooters scattered around the city. Fun and quick for short trips.
                 </p>
@@ -332,7 +332,7 @@ export default function TransportationGuidePage() {
 
             <Card className="border-border/60">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-foreground mb-3">🚕 Taxi Cabs</h4>
+                <h4 className="flex items-center gap-2 font-semibold text-foreground mb-3"><CarTaxiFront className="size-5 text-primary" /> Taxi Cabs</h4>
                 <p className="text-sm text-foreground/80 mb-3">
                   Traditional taxis. Call dispatch or hail on the street. Similar cost to rideshare.
                 </p>

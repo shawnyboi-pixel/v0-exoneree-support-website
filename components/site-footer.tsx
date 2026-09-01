@@ -14,7 +14,7 @@ export function SiteFooter() {
               </span>
             </div>
             <p className="max-w-xs text-sm leading-relaxed text-foreground/60 lg:text-base">
-              The Ide Project is a youth-led initiative connecting exonerees nationwide with verified reentry support organizations, housing assistance, employment programs, legal resources, and community advocacy. We provide comprehensive reentry support and exoneree resources to help rebuild lives after wrongful conviction.
+              The Ide Project is a nonprofit 501(c)(3) youth-led initiative connecting exonerees nationwide with verified reentry support organizations, housing assistance, employment programs, legal resources, and community advocacy. We provide comprehensive reentry support and exoneree resources to help rebuild lives after wrongful conviction.
             </p>
           </div>
 
@@ -72,7 +72,7 @@ export function SiteFooter() {
 
         <div className="mt-10 border-t border-border/50 pt-6">
           <p className="text-center text-sm text-foreground/60">
-            &copy; 2026 The Ide Project. All rights reserved.
+            &copy; 2026 The Ide Project. All rights reserved. The Ide Project is a registered 501(c)(3) nonprofit organization.
           </p>
         </div>
       </div>

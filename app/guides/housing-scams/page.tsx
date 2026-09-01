@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, AlertTriangle } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { GuideQASection } from '@/components/guide-qa-section'
 
@@ -125,7 +125,7 @@ export default function HousingScamsGuidePage() {
 
           <div className="space-y-3 mb-6">
             <div className="flex items-start gap-3 bg-secondary/50 rounded-lg p-4 border border-border">
-              <div className="text-red-600 font-bold text-lg">🚩</div>
+              <AlertTriangle className="size-5 text-red-600 flex-shrink-0 mt-0.5" />
               <div>
                 <strong className="text-foreground">They ask for payment before showing the apartment</strong>
                 <p className="text-sm text-foreground/80">Legitimate landlords always show first, collect money after.</p>
@@ -133,7 +133,7 @@ export default function HousingScamsGuidePage() {
             </div>
 
             <div className="flex items-start gap-3 bg-secondary/50 rounded-lg p-4 border border-border">
-              <div className="text-red-600 font-bold text-lg">🚩</div>
+              <AlertTriangle className="size-5 text-red-600 flex-shrink-0 mt-0.5" />
               <div>
                 <strong className="text-foreground">They only communicate by text or email</strong>
                 <p className="text-sm text-foreground/80">Real landlords have phone numbers, offices, and meet you in person.</p>
@@ -141,7 +141,7 @@ export default function HousingScamsGuidePage() {
             </div>
 
             <div className="flex items-start gap-3 bg-secondary/50 rounded-lg p-4 border border-border">
-              <div className="text-red-600 font-bold text-lg">🚩</div>
+              <AlertTriangle className="size-5 text-red-600 flex-shrink-0 mt-0.5" />
               <div>
                 <strong className="text-foreground">The price is way below market rate</strong>
                 <p className="text-sm text-foreground/80">If an apartment is $300/month cheaper than comparable units, something's wrong.</p>
@@ -149,7 +149,7 @@ export default function HousingScamsGuidePage() {
             </div>
 
             <div className="flex items-start gap-3 bg-secondary/50 rounded-lg p-4 border border-border">
-              <div className="text-red-600 font-bold text-lg">🚩</div>
+              <AlertTriangle className="size-5 text-red-600 flex-shrink-0 mt-0.5" />
               <div>
                 <strong className="text-foreground">They request wire transfer, gift cards, or Western Union</strong>
                 <p className="text-sm text-foreground/80">These can't be reversed. Real landlords take checks, bank transfers, or cash in-person.</p>
@@ -157,7 +157,7 @@ export default function HousingScamsGuidePage() {
             </div>
 
             <div className="flex items-start gap-3 bg-secondary/50 rounded-lg p-4 border border-border">
-              <div className="text-red-600 font-bold text-lg">🚩</div>
+              <AlertTriangle className="size-5 text-red-600 flex-shrink-0 mt-0.5" />
               <div>
                 <strong className="text-foreground">They say "no background check" or "no credit check"</strong>
                 <p className="text-sm text-foreground/80">Many scams target people who can't pass checks. Real landlords DO screen tenants.</p>
@@ -165,7 +165,7 @@ export default function HousingScamsGuidePage() {
             </div>
 
             <div className="flex items-start gap-3 bg-secondary/50 rounded-lg p-4 border border-border">
-              <div className="text-red-600 font-bold text-lg">🚩</div>
+              <AlertTriangle className="size-5 text-red-600 flex-shrink-0 mt-0.5" />
               <div>
                 <strong className="text-foreground">They're "out of the country" and can't meet you</strong>
                 <p className="text-sm text-foreground/80">Legitimate landlords can always arrange a video tour, Facetime, or send a property manager.</p>
@@ -173,7 +173,7 @@ export default function HousingScamsGuidePage() {
             </div>
 
             <div className="flex items-start gap-3 bg-secondary/50 rounded-lg p-4 border border-border">
-              <div className="text-red-600 font-bold text-lg">🚩</div>
+              <AlertTriangle className="size-5 text-red-600 flex-shrink-0 mt-0.5" />
               <div>
                 <strong className="text-foreground">They're pushy or pressure you to decide quickly</strong>
                 <p className="text-sm text-foreground/80">"Only 2 other people interested—decide today or lose it!" is a classic scam tactic.</p>
@@ -181,7 +181,7 @@ export default function HousingScamsGuidePage() {
             </div>
 
             <div className="flex items-start gap-3 bg-secondary/50 rounded-lg p-4 border border-border">
-              <div className="text-red-600 font-bold text-lg">🚩</div>
+              <AlertTriangle className="size-5 text-red-600 flex-shrink-0 mt-0.5" />
               <div>
                 <strong className="text-foreground">They have poor grammar or unprofessional communication</strong>
                 <p className="text-sm text-foreground/80">Many scammers operate internationally. Bad English and typos are warning signs.</p>
@@ -189,7 +189,7 @@ export default function HousingScamsGuidePage() {
             </div>
 
             <div className="flex items-start gap-3 bg-secondary/50 rounded-lg p-4 border border-border">
-              <div className="text-red-600 font-bold text-lg">🚩</div>
+              <AlertTriangle className="size-5 text-red-600 flex-shrink-0 mt-0.5" />
               <div>
                 <strong className="text-foreground">Photos look like they're from a magazine or real estate website</strong>
                 <p className="text-sm text-foreground/80">Scammers steal photos. Use Google Image Search to check if the photo appears elsewhere.</p>
@@ -246,42 +246,42 @@ export default function HousingScamsGuidePage() {
           <div className="grid grid-cols-1 gap-4 mb-6">
             <Card className="border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-green-900 dark:text-green-200 mb-2">✓ SAFE: Cash in person</h4>
+                <h4 className="font-semibold text-green-900 dark:text-green-200 mb-2">SAFE: Cash in person</h4>
                 <p className="text-sm text-foreground/80">Meet at the landlord's office or a neutral location. Get a receipt with the landlord's signature.</p>
               </CardContent>
             </Card>
 
             <Card className="border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-green-900 dark:text-green-200 mb-2">✓ SAFE: Check or money order</h4>
+                <h4 className="font-semibold text-green-900 dark:text-green-200 mb-2">SAFE: Check or money order</h4>
                 <p className="text-sm text-foreground/80">Make it out to the landlord or property management company. Keep the cancelled check as proof.</p>
               </CardContent>
             </Card>
 
             <Card className="border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-green-900 dark:text-green-200 mb-2">✓ SAFE: Bank transfer (ACH)</h4>
+                <h4 className="font-semibold text-green-900 dark:text-green-200 mb-2">SAFE: Bank transfer (ACH)</h4>
                 <p className="text-sm text-foreground/80">Only if you have the landlord's official bank account info and they're a verified company. Still risky.</p>
               </CardContent>
             </Card>
 
             <Card className="border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-2">❌ NEVER: Wire transfer (Western Union, MoneyGram)</h4>
+                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-2">NEVER: Wire transfer (Western Union, MoneyGram)</h4>
                 <p className="text-sm text-foreground/80">Once sent, it's gone. You can't get it back. Scammers use this.</p>
               </CardContent>
             </Card>
 
             <Card className="border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-2">❌ NEVER: Gift cards (Google Play, Apple, Amazon)</h4>
+                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-2">NEVER: Gift cards (Google Play, Apple, Amazon)</h4>
                 <p className="text-sm text-foreground/80">Never. This is always a scam. Landlords don't accept gift cards.</p>
               </CardContent>
             </Card>
 
             <Card className="border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-2">❌ NEVER: Cryptocurrency or Bitcoin</h4>
+                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-2">NEVER: Cryptocurrency or Bitcoin</h4>
                 <p className="text-sm text-foreground/80">Untraceable and irreversible. Only scammers ask for this.</p>
               </CardContent>
             </Card>

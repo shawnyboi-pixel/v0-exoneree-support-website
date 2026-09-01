@@ -67,22 +67,22 @@ export default function WritingResumePage() {
             <div className="space-y-3">
               <div className="rounded-lg bg-green-50 border border-green-200 p-4">
                 <p className="text-sm font-mono text-green-900">
-                  ✓ Managed inventory of 1000+ items with 98% accuracy
+                  Managed inventory of 1000+ items with 98% accuracy
                 </p>
               </div>
               <div className="rounded-lg bg-green-50 border border-green-200 p-4">
                 <p className="text-sm font-mono text-green-900">
-                  ✓ Trained 5 new employees on company procedures
+                  Trained 5 new employees on company procedures
                 </p>
               </div>
               <div className="rounded-lg bg-green-50 border border-green-200 p-4">
                 <p className="text-sm font-mono text-green-900">
-                  ✓ Completed all shifts with zero tardiness over 6 months
+                  Completed all shifts with zero tardiness over 6 months
                 </p>
               </div>
               <div className="rounded-lg bg-green-50 border border-green-200 p-4">
                 <p className="text-sm font-mono text-green-900">
-                  ✓ Resolved customer complaints maintaining 95% satisfaction rating
+                  Resolved customer complaints maintaining 95% satisfaction rating
                 </p>
               </div>
             </div>

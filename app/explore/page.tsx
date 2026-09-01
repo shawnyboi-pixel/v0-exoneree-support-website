@@ -1,3 +1,5 @@
+import { BookOpen, Building2, MessageCircle } from 'lucide-react'
+
 export default function ExplorePage() {
   return (
     <section className="min-h-screen bg-background">
@@ -44,7 +46,7 @@ export default function ExplorePage() {
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {/* Resource 1 */}
             <div className="rounded-lg bg-card border border-border p-6 hover:shadow-md transition-shadow">
-              <div className="text-2xl mb-3">📚</div>
+              <BookOpen className="size-7 text-primary mb-3" />
               <h3 className="font-semibold text-foreground mb-2">Guides</h3>
               <p className="text-foreground/70 text-sm">
                 Step-by-step guides covering financial planning, job search, housing, legal rights, and daily life skills.
@@ -53,7 +55,7 @@ export default function ExplorePage() {
 
             {/* Resource 2 */}
             <div className="rounded-lg bg-card border border-border p-6 hover:shadow-md transition-shadow">
-              <div className="text-2xl mb-3">🏢</div>
+              <Building2 className="size-7 text-primary mb-3" />
               <h3 className="font-semibold text-foreground mb-2">Organization Directory</h3>
               <p className="text-foreground/70 text-sm">
                 Access to verified organizations providing housing, employment, legal aid, mental health support, and more.
@@ -62,7 +64,7 @@ export default function ExplorePage() {
 
             {/* Resource 3 */}
             <div className="rounded-lg bg-card border border-border p-6 hover:shadow-md transition-shadow">
-              <div className="text-2xl mb-3">💬</div>
+              <MessageCircle className="size-7 text-primary mb-3" />
               <h3 className="font-semibold text-foreground mb-2">Q&A Community</h3>
               <p className="text-foreground/70 text-sm">
                 Ask questions and learn from others' experiences. Get real answers from real people who understand the journey.

@@ -61,12 +61,12 @@ export default function NetworkingGuidePage() {
               <CardContent className="pt-6">
                 <h4 className="font-semibold text-foreground mb-3">What Networking IS</h4>
                 <ul className="space-y-2 text-sm text-foreground/80">
-                  <li>✓ Having genuine conversations with people</li>
-                  <li>✓ Showing interest in what they do</li>
-                  <li>✓ Finding common ground</li>
-                  <li>✓ Staying in touch</li>
-                  <li>✓ Helping others when you can</li>
-                  <li>✓ Being authentic and real</li>
+                  <li>Having genuine conversations with people</li>
+                  <li>Showing interest in what they do</li>
+                  <li>Finding common ground</li>
+                  <li>Staying in touch</li>
+                  <li>Helping others when you can</li>
+                  <li>Being authentic and real</li>
                 </ul>
               </CardContent>
             </Card>
@@ -75,12 +75,12 @@ export default function NetworkingGuidePage() {
               <CardContent className="pt-6">
                 <h4 className="font-semibold text-foreground mb-3">What Networking IS NOT</h4>
                 <ul className="space-y-2 text-sm text-foreground/80">
-                  <li>✗ Lying about who you are</li>
-                  <li>✗ Using people for job connections</li>
-                  <li>✗ Being fake or phony</li>
-                  <li>✗ Immediately asking for a job</li>
-                  <li>✗ Collecting business cards and never following up</li>
-                  <li>✗ Sharing your trauma or criminal history right away</li>
+                  <li>Lying about who you are</li>
+                  <li>Using people for job connections</li>
+                  <li>Being fake or phony</li>
+                  <li>Immediately asking for a job</li>
+                  <li>Collecting business cards and never following up</li>
+                  <li>Sharing your trauma or criminal history right away</li>
                 </ul>
               </CardContent>
             </Card>
@@ -288,7 +288,7 @@ export default function NetworkingGuidePage() {
           <div className="grid grid-cols-1 gap-4">
             <Card className="border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-green-900 dark:text-green-200 mb-3">✓ DO</h4>
+                <h4 className="font-semibold text-green-900 dark:text-green-200 mb-3">DO</h4>
                 <ul className="space-y-2 text-sm text-foreground/80">
                   <li>• Connect with people in your field</li>
                   <li>• Join industry groups and participate</li>
@@ -301,7 +301,7 @@ export default function NetworkingGuidePage() {
 
             <Card className="border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/20">
               <CardContent className="pt-6">
-                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-3">✗ DON'T</h4>
+                <h4 className="font-semibold text-red-900 dark:text-red-200 mb-3">DON'T</h4>
                 <ul className="space-y-2 text-sm text-foreground/80">
                   <li>• Post personal drama or negativity</li>
                   <li>• Share political rants or controversial topics</li>
