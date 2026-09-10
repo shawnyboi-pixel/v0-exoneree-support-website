@@ -67,7 +67,7 @@ export function HeroSection() {
               </button>
               <button
                 onClick={handleClick('/help-others')}
-                className="group inline-flex items-center justify-center rounded-lg border border-foreground/30 px-4 py-2.5 text-sm font-medium text-foreground transition-all duration-300 hover:bg-foreground/5 hover:border-foreground/50 hover:scale-105 hover:cursor-pointer active:scale-95 disabled:cursor-not-allowed disabled:opacity-90 min-h-[44px]"
+                className="group inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-md hover:scale-105 hover:cursor-pointer active:scale-95 disabled:cursor-not-allowed disabled:opacity-90 min-h-[44px]"
                 disabled={loading === '/help-others'}
               >
                 {loading === '/help-others' ? (
