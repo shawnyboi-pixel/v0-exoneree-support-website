@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import { HeroSearch } from './hero-search'
 import { LoadingButton } from './loading-button'
 
 export function HeroSection() {
@@ -31,9 +30,9 @@ export function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-background">
       <div className="relative mx-auto max-w-7xl px-6 pt-6 pb-14 md:pt-8 md:pb-16 lg:px-8 lg:pt-10 lg:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
-          {/* Left Column - Content */}
-          <div className="lg:col-span-1 animate-fade-in-up">
+        <div className="max-w-2xl animate-fade-in-up">
+          {/* Content */}
+          <div>
             <h1 className="mb-3 font-serif text-2xl font-bold leading-tight tracking-tight text-foreground md:text-3xl lg:text-4xl animate-slide-in-right">
               <span className="text-balance">
                 Ide Project
@@ -83,10 +82,6 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column - Search Bar */}
-          <div className="lg:col-span-2 animate-fade-in-up">
-            <HeroSearch />
-          </div>
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 h-px bg-border/50" />
