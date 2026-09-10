@@ -41,11 +41,11 @@ export function HeroSection() {
             </h1>
 
             <p className="mb-4 text-xs font-medium tracking-wide text-black animate-fade-in-up">
-              The Ide Project is a youth-led organization that supports post-release exonerees with rehabilitation in innovative ways.
+              Nonprofit 501(c)(3) Organization
             </p>
 
             <p className="mb-6 text-sm leading-relaxed text-foreground/80 md:text-base animate-slide-in-left">
-              The Ide Project, led by youth changemakers, connects exonerees nationwide with verified reentry support organizations, housing resources, job training programs, and community advocacy. Get help after wrongful conviction.
+              The Ide Project is a youth-led organization that supports post-release exonerees with rehabilitation in innovative ways.
             </p>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center animate-scale-up">
