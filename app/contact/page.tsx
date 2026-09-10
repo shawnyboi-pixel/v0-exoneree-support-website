@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Linkedin, Instagram, MessageCircle } from 'lucide-react'
+import { Linkedin, Instagram } from 'lucide-react'
 import Image from 'next/image'
 
 export default function ContactPage() {
@@ -82,15 +82,24 @@ export default function ContactPage() {
             <div>
               <h2 className="text-sm font-semibold uppercase tracking-wider text-foreground/60 mb-6">Connect</h2>
               <div className="flex gap-4">
-                <button className="flex size-12 md:size-14 items-center justify-center rounded-full border-2 border-accent/40 text-accent hover:border-accent hover:bg-accent/5 transition-all duration-300 hover:scale-110 active:scale-95">
+                <a
+                  href="https://www.linkedin.com/in/shawn-chen-8a3752350/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B3VjxOwruRxC0XOsy8M8oVA%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="flex size-12 md:size-14 items-center justify-center rounded-full border-2 border-accent/40 text-accent hover:border-accent hover:bg-accent/5 transition-all duration-300 hover:scale-110 active:scale-95"
+                >
                   <Linkedin className="size-6 md:size-7" />
-                </button>
-                <button className="flex size-12 md:size-14 items-center justify-center rounded-full border-2 border-accent/40 text-accent hover:border-accent hover:bg-accent/5 transition-all duration-300 hover:scale-110 active:scale-95">
+                </a>
+                <a
+                  href="https://www.instagram.com/shawnyboi11"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="flex size-12 md:size-14 items-center justify-center rounded-full border-2 border-accent/40 text-accent hover:border-accent hover:bg-accent/5 transition-all duration-300 hover:scale-110 active:scale-95"
+                >
                   <Instagram className="size-6 md:size-7" />
-                </button>
-                <button className="flex size-12 md:size-14 items-center justify-center rounded-full border-2 border-accent/40 text-accent hover:border-accent hover:bg-accent/5 transition-all duration-300 hover:scale-110 active:scale-95">
-                  <MessageCircle className="size-6 md:size-7" />
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -284,7 +293,7 @@ export default function ContactPage() {
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {/* Board member placeholder */}
+            {/* Bijan Taheri */}
             <div className="group rounded-lg border border-border/40 bg-background p-6 transition-all duration-300 hover:border-accent/50 hover:shadow-lg">
               <div className="mb-6 aspect-square w-full overflow-hidden rounded-lg bg-muted flex items-center justify-center">
                 <div className="text-center">
@@ -296,12 +305,58 @@ export default function ContactPage() {
 
               <div className="space-y-3">
                 <div>
-                  <h3 className="text-lg font-bold text-foreground">Board Member Name</h3>
-                  <p className="text-sm font-semibold text-accent">Board Position</p>
+                  <h3 className="text-lg font-bold text-foreground">Bijan Taheri</h3>
+                  <p className="text-sm font-semibold text-accent">Board Member</p>
                 </div>
 
                 <p className="text-sm leading-relaxed text-foreground/80">
-                  Coming soon. Board member information and bio will be added here.
+                  Description coming soon.
+                </p>
+              </div>
+            </div>
+
+            {/* Shawn Chen */}
+            <div className="group rounded-lg border border-border/40 bg-background p-6 transition-all duration-300 hover:border-accent/50 hover:shadow-lg">
+              <div className="mb-6 aspect-square w-full overflow-hidden rounded-lg bg-muted">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/4DEBE52B-B88F-4E52-AF59-C0E66F43DA52_1_201_a-Cpmtg1MXY9l3Qoi7lWmGFIa4MiPqeg.jpeg"
+                  alt="Shawn Chen"
+                  width={400}
+                  height={400}
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+
+              <div className="space-y-3">
+                <div>
+                  <h3 className="text-lg font-bold text-foreground">Shawn Chen</h3>
+                  <p className="text-sm font-semibold text-accent">Board Member</p>
+                </div>
+
+                <p className="text-sm leading-relaxed text-foreground/80">
+                  Based in Dallas, Texas. A passionate advocate for wrongful conviction justice with 2 years of direct volunteer experience. Shawn founded The Ide Project to provide exonerees with the resources and support they need to rebuild their lives successfully.
+                </p>
+              </div>
+            </div>
+
+            {/* Yi Heng Li */}
+            <div className="group rounded-lg border border-border/40 bg-background p-6 transition-all duration-300 hover:border-accent/50 hover:shadow-lg">
+              <div className="mb-6 aspect-square w-full overflow-hidden rounded-lg bg-muted flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-muted-foreground text-sm font-medium">
+                    Image placeholder
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <div>
+                  <h3 className="text-lg font-bold text-foreground">Yi Heng Li</h3>
+                  <p className="text-sm font-semibold text-accent">Board Member</p>
+                </div>
+
+                <p className="text-sm leading-relaxed text-foreground/80">
+                  Description coming soon.
                 </p>
               </div>
             </div>
