@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import { HeroSearch } from './hero-search'
 import { LoadingButton } from './loading-button'
 
 export function HeroSection() {
@@ -31,9 +30,9 @@ export function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-background">
       <div className="relative mx-auto max-w-7xl px-6 pt-6 pb-14 md:pt-8 md:pb-16 lg:px-8 lg:pt-10 lg:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
-          {/* Left Column - Content */}
-          <div className="lg:col-span-1 animate-fade-in-up">
+        <div className="max-w-2xl animate-fade-in-up">
+          {/* Content */}
+          <div>
             <h1 className="mb-3 font-serif text-2xl font-bold leading-tight tracking-tight text-foreground md:text-3xl lg:text-4xl animate-slide-in-right">
               <span className="text-balance">
                 Ide Project
@@ -45,7 +44,7 @@ export function HeroSection() {
             </p>
 
             <p className="mb-6 text-sm leading-relaxed text-foreground/80 md:text-base animate-slide-in-left">
-              The Ide Project, led by youth changemakers, connects exonerees nationwide with verified reentry support organizations, housing resources, job training programs, and community advocacy. Get help after wrongful conviction.
+              The Ide Project is a youth-led organization that supports post-release exonerees with rehabilitation in innovative ways.
             </p>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center animate-scale-up">
@@ -68,7 +67,7 @@ export function HeroSection() {
               </button>
               <button
                 onClick={handleClick('/help-others')}
-                className="group inline-flex items-center justify-center rounded-lg border border-foreground/30 px-4 py-2.5 text-sm font-medium text-foreground transition-all duration-300 hover:bg-foreground/5 hover:border-foreground/50 hover:scale-105 hover:cursor-pointer active:scale-95 disabled:cursor-not-allowed disabled:opacity-90 min-h-[44px]"
+                className="group inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-md hover:scale-105 hover:cursor-pointer active:scale-95 disabled:cursor-not-allowed disabled:opacity-90 min-h-[44px]"
                 disabled={loading === '/help-others'}
               >
                 {loading === '/help-others' ? (
@@ -83,10 +82,6 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column - Search Bar */}
-          <div className="lg:col-span-2 animate-fade-in-up">
-            <HeroSearch />
-          </div>
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 h-px bg-border/50" />
