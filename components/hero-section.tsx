@@ -41,7 +41,7 @@ export function HeroSection() {
             </h1>
 
             <p className="mb-4 text-xs font-medium tracking-wide text-black animate-fade-in-up">
-              Nonprofit 501(c)(3) Organization
+              The Ide Project is a youth-led organization that supports post-release exonerees with rehabilitation in innovative ways.
             </p>
 
             <p className="mb-6 text-sm leading-relaxed text-foreground/80 md:text-base animate-slide-in-left">
