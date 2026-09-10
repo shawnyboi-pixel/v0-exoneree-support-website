@@ -14,7 +14,7 @@ export function SiteFooter() {
               </span>
             </div>
             <p className="max-w-xs text-sm leading-relaxed text-foreground/60 lg:text-base">
-              The Ide Project is a nonprofit 501(c)(3) youth-led initiative connecting exonerees nationwide with verified reentry support organizations, housing assistance, employment programs, legal resources, and community advocacy. We provide comprehensive reentry support and exoneree resources to help rebuild lives after wrongful conviction.
+              The Ide Project is a youth-led organization that supports post-release exonerees with rehabilitation in innovative ways.
             </p>
           </div>
 
@@ -39,12 +39,6 @@ export function SiteFooter() {
                 Financial Literacy
               </Link>
               <Link
-                href="/general-resources"
-                className="text-sm text-foreground/60 transition-colors hover:text-foreground lg:text-base"
-              >
-                Get Help Now
-              </Link>
-              <Link
                 href="/organizations"
                 className="text-sm text-foreground/60 transition-colors hover:text-foreground lg:text-base"
               >
@@ -58,8 +52,7 @@ export function SiteFooter() {
               Get Involved
             </h3>
             <p className="mb-3 text-sm leading-relaxed text-foreground/60">
-              Whether you are an exoneree, a family member, or someone who
-              wants to help, there are ways to make a difference.
+              Exonerees, families, and supporters can all find ways to help.
             </p>
             <Link
               href="/general-resources"

@@ -173,7 +173,7 @@ export default function HelpOthersPage() {
                 </span>
               </div>
               <p className="max-w-xs text-sm leading-relaxed text-white/70 lg:text-base">
-                The Ide Project is a nonprofit 501(c)(3) youth-led initiative connecting exonerees nationwide with verified reentry support organizations and community advocacy.
+                The Ide Project is a youth-led organization that supports post-release exonerees with rehabilitation in innovative ways.
               </p>
             </div>
 
