@@ -33,7 +33,7 @@ export function HeroSection() {
         <div className="flex flex-col items-center animate-fade-in-up">
           <h1 className="mb-4 font-serif text-3xl font-bold leading-tight tracking-tight text-foreground md:text-4xl lg:text-5xl animate-slide-in-right">
             <span className="text-balance">
-              Ide Project
+              The Ide Project
             </span>
           </h1>
 
