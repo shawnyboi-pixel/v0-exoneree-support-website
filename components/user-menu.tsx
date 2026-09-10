@@ -59,12 +59,8 @@ export function UserMenu({ user }: UserMenuProps) {
             <div className="flex items-center gap-3">
               <UserAvatar image={user.image} name={displayName} className="size-10" iconClassName="size-5" />
               <div className="min-w-0">
-                <div className="flex items-center gap-2 mb-1">
+                <div className="mb-1">
                   <p className="text-sm font-bold text-foreground truncate">{displayName}</p>
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-accent/20 text-accent text-xs font-semibold rounded-full shrink-0">
-                    <CheckCircle className="size-3" />
-                    Signed In
-                  </span>
                 </div>
                 <p className="text-xs text-foreground/60 break-all">{user.email}</p>
               </div>

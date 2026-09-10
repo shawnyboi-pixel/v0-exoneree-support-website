@@ -64,6 +64,7 @@ export default function AccountSettingsPage() {
   const [bio, setBio] = useState('')
   const [location, setLocation] = useState('')
   const [phone, setPhone] = useState('')
+  const [showProfile, setShowProfile] = useState(true)
 
   useEffect(() => {
     async function load() {
@@ -86,6 +87,7 @@ export default function AccountSettingsPage() {
           setBio(profile.bio ?? '')
           setLocation(profile.location ?? '')
           setPhone(profile.phone ?? '')
+          setShowProfile(profile.showProfile ?? true)
           if (profile.accountType) {
             setAccountType(profile.accountType as AccountType)
           }
@@ -106,7 +108,7 @@ export default function AccountSettingsPage() {
     setSuccessMessage(null)
 
     try {
-      await updateUserProfile(bio, location, phone, accountType)
+      await updateUserProfile(bio, location, phone, accountType, showProfile)
       setSuccessMessage('Settings updated successfully!')
       setTimeout(() => setSuccessMessage(null), 3000)
     } catch (err) {
