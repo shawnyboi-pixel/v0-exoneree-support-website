@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-background">
+    <footer className="bg-background">
       <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8 lg:py-12">
         <div className="grid gap-8 md:grid-cols-3 lg:gap-12">
           <div>
