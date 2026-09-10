@@ -3,9 +3,13 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, Mail, User as UserIcon, Save, Loader2, Settings, ShieldCheck, HeartHandshake, LifeBuoy } from 'lucide-react'
-import { getUserProfile } from '@/app/actions/user'
+import { ArrowLeft, Mail, User as UserIcon, Save, Loader2, Settings, ShieldCheck, HeartHandshake, LifeBuoy, Eye, EyeOff } from 'lucide-react'
+import { getUserProfile, updateUserProfile } from '@/app/actions/user'
 import { UserAvatar } from '@/components/user-avatar'
+import { AvatarUploader } from '@/components/avatar-uploader'
+import { Label } from '@/components/ui/label'
+import { Textarea } from '@/components/ui/textarea'
+import { Input } from '@/components/ui/input'
 import type { AccountType } from '@/lib/account-types'
 
 interface User {
@@ -35,6 +39,10 @@ export default function AccountPage() {
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
   const [formData, setFormData] = useState<ProfileFormData>({ name: '', email: '' })
   const [accountType, setAccountType] = useState<AccountType | null>(null)
+  const [bio, setBio] = useState('')
+  const [location, setLocation] = useState('')
+  const [phone, setPhone] = useState('')
+  const [showProfile, setShowProfile] = useState(true)
 
   useEffect(() => {
     async function fetchSession() {
@@ -58,8 +66,12 @@ export default function AccountPage() {
         })
 
         const rows = await getUserProfile()
-        if (rows[0]?.accountType) {
-          setAccountType(rows[0].accountType as AccountType)
+        if (rows[0]) {
+          setBio(rows[0].bio ?? '')
+          setLocation(rows[0].location ?? '')
+          setPhone(rows[0].phone ?? '')
+          setShowProfile(rows[0].showProfile ?? true)
+          if (rows[0].accountType) setAccountType(rows[0].accountType as AccountType)
         }
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load profile')
@@ -95,6 +107,7 @@ export default function AccountPage() {
       }
 
       const updatedUser = await response.json()
+      await updateUserProfile(bio, location, phone, accountType ?? undefined, showProfile)
       setUser(updatedUser.user)
       setSuccessMessage('Profile updated successfully!')
       setTimeout(() => setSuccessMessage(null), 3000)
@@ -196,6 +209,28 @@ export default function AccountPage() {
           </div>
         </div>
 
+        {/* Public Profile Controls */}
+        <div className="space-y-6 mb-8">
+          <div className="bg-secondary/20 border border-border/60 rounded-lg p-6">
+            <h2 className="text-xl font-bold text-foreground mb-1">Profile Photo</h2>
+            <p className="text-sm text-foreground/60 mb-6">Choose the photo others see when your profile is visible.</p>
+            <AvatarUploader image={user.image} name={user.name || user.email} onChange={(image) => setUser((current) => current ? { ...current, image } : current)} />
+          </div>
+
+          <div className="bg-secondary/20 border border-border/60 rounded-lg p-6">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <h2 className="text-xl font-bold text-foreground">Show my profile to others</h2>
+                <p className="mt-1 text-sm text-foreground/60">Allow other people on the platform to see your photo, description, location, phone number, and identity.</p>
+              </div>
+              <button type="button" onClick={() => setShowProfile((value) => !value)} aria-pressed={showProfile} className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${showProfile ? 'bg-primary text-primary-foreground' : 'bg-secondary text-foreground/70'}`}>
+                {showProfile ? <Eye className="size-4" /> : <EyeOff className="size-4" />}
+                {showProfile ? 'Shown' : 'Hidden'}
+              </button>
+            </div>
+          </div>
+        </div>
+
         {/* Edit Profile Form */}
         <div className="bg-secondary/20 border border-border/60 rounded-lg p-6">
           <h2 className="text-xl font-bold text-foreground mb-6">Edit Profile</h2>
@@ -241,6 +276,30 @@ export default function AccountPage() {
                 className="w-full px-4 py-2.5 bg-secondary/30 border border-border/60 rounded-lg text-foreground/60 placeholder-foreground/40 cursor-not-allowed"
               />
               <p className="text-xs text-foreground/40 mt-2">Email cannot be changed</p>
+            </div>
+
+            <div>
+              <Label htmlFor="bio" className="mb-2">Description</Label>
+              <Textarea id="bio" value={bio} onChange={(event) => setBio(event.target.value)} placeholder="Tell others a bit about yourself" className="min-h-24" />
+            </div>
+
+            <div>
+              <Label htmlFor="location" className="mb-2">Location</Label>
+              <Input id="location" value={location} onChange={(event) => setLocation(event.target.value)} placeholder="City, State" />
+            </div>
+
+            <div>
+              <Label htmlFor="phone" className="mb-2">Phone number</Label>
+              <Input id="phone" type="tel" value={phone} onChange={(event) => setPhone(event.target.value)} placeholder="(555) 555-5555" />
+            </div>
+
+            <div>
+              <Label htmlFor="accountType" className="mb-2">Identity on the platform</Label>
+              <select id="accountType" value={accountType ?? 'volunteer'} onChange={(event) => setAccountType(event.target.value as AccountType)} className="w-full rounded-lg border border-border/60 bg-background px-4 py-2.5 text-foreground">
+                <option value="exoneree">Exoneree</option>
+                <option value="volunteer">Volunteer</option>
+                <option value="support_advisor">Support Advisor</option>
+              </select>
             </div>
 
             <div className="flex gap-3 pt-4">

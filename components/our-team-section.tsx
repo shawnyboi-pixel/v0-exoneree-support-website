@@ -92,7 +92,7 @@ export function OurTeamSection() {
 
           {/* Board Members Grid */}
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {/* Placeholder board member card */}
+            {/* Bijan Taheri */}
             <div className="animate-fade-in-up rounded-lg border border-border/40 bg-secondary p-6 transition-all duration-300 hover:border-accent/50 hover:shadow-lg">
               <div className="mb-6 aspect-square w-full overflow-hidden rounded-lg bg-muted flex items-center justify-center">
                 <div className="text-center">
@@ -104,14 +104,64 @@ export function OurTeamSection() {
               <div className="space-y-3">
                 <div>
                   <h3 className="text-lg font-bold text-foreground">
-                    Board Member Name
+                    Bijan Taheri
                   </h3>
                   <p className="text-sm font-semibold text-accent">
-                    Position / Title
+                    Board Member
                   </p>
                 </div>
                 <p className="text-sm leading-relaxed text-foreground/80">
-                  Board member biography coming soon.
+                  Description coming soon.
+                </p>
+              </div>
+            </div>
+
+            {/* Shawn Chen */}
+            <div className="animate-fade-in-up rounded-lg border border-border/40 bg-secondary p-6 transition-all duration-300 hover:border-accent/50 hover:shadow-lg">
+              <div className="mb-6 aspect-square w-full overflow-hidden rounded-lg bg-muted">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/4DEBE52B-B88F-4E52-AF59-C0E66F43DA52_1_201_a-Cpmtg1MXY9l3Qoi7lWmGFIa4MiPqeg.jpeg"
+                  alt="Shawn Chen"
+                  width={400}
+                  height={400}
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+              <div className="space-y-3">
+                <div>
+                  <h3 className="text-lg font-bold text-foreground">
+                    Shawn Chen
+                  </h3>
+                  <p className="text-sm font-semibold text-accent">
+                    Board Member
+                  </p>
+                </div>
+                <p className="text-sm leading-relaxed text-foreground/80">
+                  Based in Dallas, Texas. A passionate advocate for wrongful conviction justice with 2 years of direct volunteer experience. Shawn founded The Ide Project to provide exonerees with the resources and support they need to rebuild their lives successfully.
+                </p>
+              </div>
+            </div>
+
+            {/* Yi Heng Li */}
+            <div className="animate-fade-in-up rounded-lg border border-border/40 bg-secondary p-6 transition-all duration-300 hover:border-accent/50 hover:shadow-lg">
+              <div className="mb-6 aspect-square w-full overflow-hidden rounded-lg bg-muted flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-muted-foreground text-sm font-medium">
+                    Image placeholder
+                  </div>
+                </div>
+              </div>
+              <div className="space-y-3">
+                <div>
+                  <h3 className="text-lg font-bold text-foreground">
+                    Yi Heng Li
+                  </h3>
+                  <p className="text-sm font-semibold text-accent">
+                    Board Member
+                  </p>
+                </div>
+                <p className="text-sm leading-relaxed text-foreground/80">
+                  Description coming soon.
                 </p>
               </div>
             </div>

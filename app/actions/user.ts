@@ -34,7 +34,8 @@ export async function updateUserProfile(
   bio?: string,
   location?: string,
   phone?: string,
-  accountType?: AccountType
+  accountType?: AccountType,
+  showProfile = true
 ) {
   const userId = await getUserId()
 
@@ -56,6 +57,7 @@ export async function updateUserProfile(
       location,
       phone,
       accountType: accountType ?? 'volunteer',
+      showProfile,
     })
   } else {
     await db
@@ -65,6 +67,7 @@ export async function updateUserProfile(
         location,
         phone,
         ...(accountType ? { accountType } : {}),
+        showProfile,
         updatedAt: new Date(),
       })
       .where(eq(userProfile.userId, userId))
