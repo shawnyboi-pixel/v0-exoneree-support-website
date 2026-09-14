@@ -61,35 +61,35 @@ export function SiteHeader({ user }: SiteHeaderProps) {
   if (isHelpOthersPage) {
     return (
       <header className="sticky top-0 z-50 border-b border-border bg-secondary">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-2.5 sm:gap-4 sm:px-6 sm:py-4 lg:px-8">
           {/* Back Button */}
-          <Link href="/" className="flex items-center gap-2 text-foreground/70 hover:text-foreground transition-colors">
-            <ArrowLeft className="size-5" />
-            <span className="text-sm font-medium">Go Back</span>
+          <Link href="/" className="flex items-center gap-1 text-foreground/70 hover:text-foreground transition-colors sm:gap-2">
+            <ArrowLeft className="size-4 sm:size-5" />
+            <span className="text-xs font-medium sm:text-sm">Go Back</span>
           </Link>
 
           {/* Logo/Title on the Right */}
-          <Link href="/" className="flex items-center gap-2.5">
-            <Image src="/ide-project-logo.jpg" alt="" width={200} height={250} className="h-9 w-auto" />
-            <span className="text-lg font-semibold tracking-tight text-foreground lg:text-xl">
+          <Link href="/" className="flex items-center gap-1.5 sm:gap-2.5">
+            <Image src="/ide-project-logo.jpg" alt="" width={200} height={250} className="h-6 w-auto sm:h-9" />
+            <span className="text-sm font-semibold tracking-tight text-foreground sm:text-lg lg:text-xl">
               The Ide Project
             </span>
           </Link>
 
           <button
-            className="flex items-center justify-center gap-2 rounded-md px-2 py-2 text-foreground/60 transition-colors hover:text-foreground"
+            className="flex items-center justify-center gap-1 rounded-md px-1.5 py-1.5 text-foreground/60 transition-colors hover:text-foreground sm:gap-2 sm:px-2 sm:py-2"
             onClick={() => setNavOpen(!navOpen)}
             aria-expanded={navOpen}
             aria-label="Toggle navigation menu"
           >
-            {navOpen ? <X className="size-5" /> : <Menu className="size-5" />}
-            <span className="text-sm font-medium">Menu</span>
+            {navOpen ? <X className="size-4 sm:size-5" /> : <Menu className="size-4 sm:size-5" />}
+            <span className="text-xs font-medium sm:text-sm">Menu</span>
           </button>
         </div>
 
         {navOpen && (
           <nav
-            className="border-t border-border bg-secondary px-6 pb-6 pt-4"
+            className="border-t border-border bg-secondary px-3 pb-4 pt-3 sm:px-6 sm:pb-6 sm:pt-4"
             aria-label="Mobile navigation"
           >
             <Link
@@ -108,20 +108,20 @@ export function SiteHeader({ user }: SiteHeaderProps) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 lg:px-8 gap-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-2.5 sm:px-6 sm:py-3 lg:px-8 gap-2 sm:gap-4">
         {/* Navigation Dropdown Button */}
         <div className="relative" ref={navRef}>
           <button
-            className="flex items-center justify-center gap-2 rounded-lg px-2.5 py-2.5 text-muted-foreground transition-all duration-200 ease-out hover:text-foreground hover:bg-secondary/50 active:scale-95 active:duration-100 hover:-translate-y-0.5 hover:shadow-md active:shadow-sm"
+            className="flex items-center justify-center gap-1 rounded-lg px-1.5 py-1.5 text-muted-foreground transition-all duration-200 ease-out hover:text-foreground hover:bg-secondary/50 active:scale-95 active:duration-100 hover:-translate-y-0.5 hover:shadow-md active:shadow-sm sm:gap-2 sm:px-2.5 sm:py-2.5"
             onClick={() => setNavOpen(!navOpen)}
             aria-expanded={navOpen}
             aria-label="Toggle navigation menu"
           >
-            <span className="relative flex size-5 items-center justify-center">
-              <Menu className={`size-5 transition-all duration-300 ease-out ${navOpen ? 'opacity-0 -rotate-90 absolute' : 'opacity-100 rotate-0'}`} />
-              <X className={`size-5 transition-all duration-300 ease-out ${navOpen ? 'opacity-100 rotate-0' : 'opacity-0 rotate-90 absolute'}`} />
+            <span className="relative flex size-4 items-center justify-center sm:size-5">
+              <Menu className={`size-4 sm:size-5 transition-all duration-300 ease-out ${navOpen ? 'opacity-0 -rotate-90 absolute' : 'opacity-100 rotate-0'}`} />
+              <X className={`size-4 sm:size-5 transition-all duration-300 ease-out ${navOpen ? 'opacity-100 rotate-0' : 'opacity-0 rotate-90 absolute'}`} />
             </span>
-            <span className="text-sm font-medium">Menu</span>
+            <span className="hidden text-sm font-medium sm:inline">Menu</span>
           </button>
 
           {navOpen && (
@@ -153,28 +153,28 @@ export function SiteHeader({ user }: SiteHeaderProps) {
         </div>
 
         {/* Logo/Title - Centered */}
-        <Link href="/" className="flex items-center justify-center gap-2.5 flex-1">
-          <Image src="/ide-project-logo.jpg" alt="" width={200} height={250} className="h-9 w-auto" />
-          <span className="text-lg font-semibold tracking-tight text-foreground lg:text-xl">
+        <Link href="/" className="flex min-w-0 flex-1 items-center justify-center gap-1.5 sm:gap-2.5">
+          <Image src="/ide-project-logo.jpg" alt="" width={200} height={250} className="h-6 w-auto shrink-0 sm:h-9" />
+          <span className="truncate text-sm font-semibold tracking-tight text-foreground sm:text-lg lg:text-xl">
             The Ide Project
           </span>
         </Link>
 
         {/* User Menu / Auth Links */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
           {user ? (
             <UserMenu user={user} />
           ) : (
             <>
               <Link
                 href="/sign-in"
-                className="px-4 py-2.5 rounded-lg text-sm font-medium text-foreground/75 hover:text-foreground hover:bg-secondary/50 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-sm active:scale-95 active:duration-100 active:shadow-none"
+                className="px-2.5 py-2 rounded-lg text-xs font-medium text-foreground/75 hover:text-foreground hover:bg-secondary/50 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-sm active:scale-95 active:duration-100 active:shadow-none sm:px-4 sm:py-2.5 sm:text-sm"
               >
                 Sign In
               </Link>
               <Link
                 href="/sign-up"
-                className="px-4 py-2.5 rounded-lg text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/85 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:duration-100 active:shadow-sm"
+                className="px-2.5 py-2 rounded-lg text-xs font-medium bg-accent text-accent-foreground hover:bg-accent/85 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:duration-100 active:shadow-sm sm:px-4 sm:py-2.5 sm:text-sm"
               >
                 Sign Up
               </Link>

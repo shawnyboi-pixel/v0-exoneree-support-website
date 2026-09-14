@@ -40,10 +40,10 @@ export function UserMenu({ user }: UserMenuProps) {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ease-out hover:bg-secondary/50 text-foreground/75 hover:text-foreground hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:duration-100 active:shadow-sm"
+        className="flex items-center gap-1 px-1.5 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 ease-out hover:bg-secondary/50 text-foreground/75 hover:text-foreground hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:duration-100 active:shadow-sm sm:gap-2 sm:px-3 sm:py-2.5"
       >
         <div className="relative">
-          <UserAvatar image={user.image} name={displayName} className="size-8" iconClassName="size-4" />
+          <UserAvatar image={user.image} name={displayName} className="size-6 sm:size-8" iconClassName="size-3 sm:size-4" />
           <div className="absolute -bottom-0.5 -right-0.5 size-3 bg-green-500 rounded-full border-2 border-background flex items-center justify-center">
             <CheckCircle className="size-1.5 text-white" />
           </div>
