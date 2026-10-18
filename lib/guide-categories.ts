@@ -1,10 +1,10 @@
 export const GUIDE_CATEGORIES = [
-  'Financial Planning',
-  'Job Search',
-  'Housing',
-  'Legal Rights',
-  'Healthcare',
-  'Daily Life',
-  'Technology',
-  'Mental Health',
+  'Everyday Skills',
+  'Food & Cooking',
+  'Tech & Gadgets',
+  'Hobbies & Crafts',
+  'Music & Movies',
+  'Games & Fun',
+  'Outdoors & Travel',
+  'Books & Learning',
 ] as const

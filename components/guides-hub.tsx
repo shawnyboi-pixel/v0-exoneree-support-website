@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { AddGuideDialog } from '@/components/add-guide-dialog'
 import { RemoveGuideButton } from '@/components/remove-guide-button'
 import { RestoreGuidesButton } from '@/components/restore-guides-button'
+import { GUIDE_CATEGORIES } from '@/lib/guide-categories'
 
 interface Guide {
   id: string
@@ -32,16 +33,7 @@ export interface CustomGuideSummary {
   wordCount: number
 }
 
-const categories = [
-  'Financial Planning',
-  'Job Search',
-  'Housing',
-  'Legal Rights',
-  'Healthcare',
-  'Daily Life',
-  'Technology',
-  'Mental Health',
-]
+const categories: string[] = [...GUIDE_CATEGORIES]
 
 const resourceTypes = [
   { id: 'video', label: 'Videos', icon: Video },
@@ -51,240 +43,11 @@ const resourceTypes = [
 ]
 
 const builtInGuides: Guide[] = [
-  // Financial Planning (4)
-  {
-    id: '1',
-    title: 'Opening Your First Bank Account',
-    description: 'Step-by-step guide to opening a bank account with no credit history.',
-    category: 'Financial Planning',
-    types: ['video', 'pdf'],
-    duration: '8 min video / 6 page guide',
-    slug: 'opening-bank-account',
-    hasQA: true,
-    question: 'Do banks reject applications because of my criminal history?',
-  },
-  {
-    id: '2',
-    title: 'Building Credit from Zero',
-    description: 'Learn how to start building credit after reentry.',
-    category: 'Financial Planning',
-    types: ['video', 'pdf'],
-    duration: '10 min video / 8 page guide',
-    slug: 'building-credit',
-    hasQA: true,
-    question: 'How long does it take to build a decent credit score?',
-  },
-  {
-    id: '3',
-    title: 'Budget Checklist for New Exonerees',
-    description: 'Create your first monthly budget with this interactive checklist.',
-    category: 'Financial Planning',
-    types: ['video', 'pdf'],
-    duration: '12 min video / 5 page guide',
-    slug: 'budget-checklist',
-    question: 'What percentage of my income should I save each month?',
-  },
-  {
-    id: '4',
-    title: 'Understanding Your Compensation Options',
-    description: 'Navigate state and federal compensation programs.',
-    category: 'Financial Planning',
-    types: ['article'],
-    duration: '10 min read',
-    slug: 'compensation-options',
-    question: 'Am I eligible for state compensation if I was wrongfully convicted?',
-  },
-
-  // Job Search (4)
-  {
-    id: '5',
-    title: 'Writing Your First Resume',
-    description: 'Resume tips specifically for job seekers with conviction history.',
-    category: 'Job Search',
-    types: ['video'],
-    duration: '12 min',
-    slug: 'writing-resume',
-    hasQA: true,
-    question: 'Should I mention my exoneration on my resume?',
-  },
-  {
-    id: '6',
-    title: 'Disclosure and Interview Guide',
-    description: 'How to disclose your history in interviews.',
-    category: 'Job Search',
-    types: ['pdf'],
-    duration: '8 pages',
-    slug: 'disclosure-interview',
-    question: 'What do I say when asked about my background in an interview?',
-  },
-  {
-    id: '7',
-    title: 'Job Interview Prep Checklist',
-    description: 'Complete checklist for interview day readiness.',
-    category: 'Job Search',
-    types: ['checklist'],
-    duration: '20 min',
-    slug: 'interview-prep',
-    question: 'How do I build confidence before my first interview?',
-  },
-  {
-    id: '8',
-    title: 'Finding Supportive Employers',
-    description: 'Directory and guide to second chance employers.',
-    category: 'Job Search',
-    types: ['article'],
-    duration: '15 min read',
-    slug: 'supportive-employers',
-    question: 'Which companies are known for hiring people with conviction histories?',
-  },
-
-  // Housing (4)
-  {
-    id: '9',
-    title: 'Finding Affordable Housing in Dallas',
-    description: 'Navigate the Dallas housing market on a budget.',
-    category: 'Housing',
-    types: ['video'],
-    duration: '10 min',
-    slug: 'affordable-housing-dallas',
-    question: 'Can a landlord refuse to rent to me because of my conviction?',
-  },
-  {
-    id: '10',
-    title: 'Landlord and Tenant Rights',
-    description: 'Know your rights as a tenant in Texas.',
-    category: 'Housing',
-    types: ['pdf'],
-    duration: '14 pages',
-    slug: 'tenant-rights',
-    hasQA: true,
-    question: 'What are my legal protections as a tenant in Texas?',
-  },
-  {
-    id: '11',
-    title: 'Apartment Application Checklist',
-    description: 'Prepare all documents needed for housing applications.',
-    category: 'Housing',
-    types: ['checklist'],
-    duration: '25 min',
-    slug: 'apartment-application',
-    question: 'What documents do I need to apply for an apartment?',
-  },
-  {
-    id: '12',
-    title: 'Avoiding Housing Scams',
-    description: 'Red flags and how to protect yourself.',
-    category: 'Housing',
-    types: ['article'],
-    duration: '8 min read',
-    slug: 'housing-scams',
-    question: 'How do I know if a housing listing is a scam?',
-  },
-
-  // Legal Rights (3)
-  {
-    id: '13',
-    title: 'Your Rights After Exoneration',
-    description: 'Legal rights and what you are entitled to.',
-    category: 'Legal Rights',
-    types: ['video'],
-    duration: '15 min',
-    slug: 'rights-after-exoneration',
-    hasQA: true,
-    question: 'What government benefits am I eligible for as an exoneree?',
-  },
-  {
-    id: '14',
-    title: 'Expungement and Record Sealing',
-    description: 'Getting your record cleared in Texas.',
-    category: 'Legal Rights',
-    types: ['pdf'],
-    duration: '11 pages',
-    slug: 'expungement-records',
-    question: 'Can I get my record expunged after exoneration?',
-  },
-  {
-    id: '15',
-    title: 'Legal Documents Checklist',
-    description: 'Important documents to gather and organize.',
-    category: 'Legal Rights',
-    types: ['checklist'],
-    duration: '20 min',
-    slug: 'legal-documents',
-    question: 'Which legal documents should I keep safe after exoneration?',
-  },
-
-  // Healthcare (3)
-  {
-    id: '16',
-    title: 'Applying for Medicaid',
-    description: 'Step-by-step Medicaid application guide.',
-    category: 'Healthcare',
-    types: ['video'],
-    duration: '9 min',
-    slug: 'applying-medicaid',
-    hasQA: true,
-    question: 'What documents do I need to apply for Medicaid in Texas?',
-  },
-  {
-    id: '17',
-    title: 'Mental Health Resources',
-    description: 'Finding therapy and counseling services.',
-    category: 'Healthcare',
-    types: ['pdf'],
-    duration: '10 pages',
-    slug: 'mental-health-resources',
-    question: 'Are mental health services free for exonerees?',
-  },
-  {
-    id: '18',
-    title: 'Health Insurance Checklist',
-    description: 'Compare and choose health insurance plans.',
-    category: 'Healthcare',
-    types: ['checklist'],
-    duration: '30 min',
-    slug: 'health-insurance',
-    question: 'What type of health insurance is best for someone starting out?',
-  },
-
-  // Daily Life (3)
-  {
-    id: '19',
-    title: 'Getting Your Driver License',
-    description: 'Texas DL renewal and how to get started.',
-    category: 'Daily Life',
-    types: ['video'],
-    duration: '7 min',
-    slug: 'driver-license',
-    question: 'Do I need to disclose my conviction history to get a driver license?',
-  },
-  {
-    id: '20',
-    title: 'Opening Utility Accounts',
-    description: 'Getting electricity, water, and internet set up.',
-    category: 'Daily Life',
-    types: ['pdf'],
-    duration: '6 pages',
-    slug: 'utility-accounts',
-    question: 'Can utility companies deny service based on my record?',
-  },
-  {
-    id: '21',
-    title: 'First Week Essentials Checklist',
-    description: 'Everything you need to do in your first week.',
-    category: 'Daily Life',
-    types: ['checklist'],
-    duration: '45 min',
-    slug: 'first-week-essentials',
-    question: 'What are the most important things to do in the first week back?',
-  },
-
-  // Technology (2)
   {
     id: '22',
     title: 'Setting Up Email and Social Media',
     description: 'Creating accounts safely and securely.',
-    category: 'Technology',
+    category: 'Tech & Gadgets',
     types: ['video'],
     duration: '6 min',
     slug: 'email-social-media',
@@ -294,81 +57,27 @@ const builtInGuides: Guide[] = [
     id: '23',
     title: 'Staying Safe Online',
     description: 'Privacy and security best practices.',
-    category: 'Technology',
+    category: 'Tech & Gadgets',
     types: ['article'],
     duration: '12 min read',
     slug: 'stay-safe-online',
     question: 'What should I avoid sharing on the internet?',
   },
-
-  // Mental Health (2)
-  {
-    id: '24',
-    title: 'Processing Trauma and Reentry',
-    description: 'Guided resources for emotional wellness.',
-    category: 'Mental Health',
-    types: ['video'],
-    duration: '20 min',
-    slug: 'processing-trauma',
-    question: 'How do I cope with the emotional challenges of reentry?',
-  },
-  {
-    id: '25',
-    title: 'Coping Strategies for Reentry',
-    description: 'Practical tools for managing stress and anxiety.',
-    category: 'Mental Health',
-    types: ['pdf'],
-    duration: '9 pages',
-    slug: 'coping-strategies',
-    question: 'What are effective coping strategies for anxiety?',
-  },
-
-  // Additional guides to reach 30
-  {
-    id: '26',
-    title: 'Understanding Tax Returns',
-    description: 'Filing taxes for the first time.',
-    category: 'Financial Planning',
-    types: ['video'],
-    duration: '11 min',
-    slug: 'understanding-taxes',
-    question: 'Do I have to file taxes if I just started working?',
-  },
-  {
-    id: '27',
-    title: 'Networking for Job Success',
-    description: 'Build professional relationships.',
-    category: 'Job Search',
-    types: ['article'],
-    duration: '9 min read',
-    slug: 'networking-job-success',
-    question: 'How do I network professionally without disclosing my background?',
-  },
   {
     id: '28',
     title: 'Roommate Agreement Template',
     description: 'Written agreement for living with roommates.',
-    category: 'Housing',
+    category: 'Everyday Skills',
     types: ['pdf'],
     duration: '4 pages',
     slug: 'roommate-agreement',
     question: 'How do I set boundaries with a new roommate?',
   },
   {
-    id: '29',
-    title: 'Family Reconnection Guide',
-    description: 'Rebuilding relationships after reentry.',
-    category: 'Mental Health',
-    types: ['video'],
-    duration: '18 min',
-    slug: 'family-reconnection',
-    question: 'How do I reconnect with family after being away?',
-  },
-  {
     id: '30',
     title: 'Transportation Options in Dallas',
     description: 'DART, rideshare, and other options.',
-    category: 'Daily Life',
+    category: 'Outdoors & Travel',
     types: ['article'],
     duration: '7 min read',
     slug: 'transportation-dallas',
@@ -564,7 +273,7 @@ export function GuidesHub({
             <span className="text-balance">Guides</span>
           </h1>
           <p className="text-lg leading-relaxed text-muted-foreground lg:text-xl">
-            The Ide Project provides comprehensive reentry guides, tutorial videos, and checklists to help exonerees navigate reentry successfully. Learn at your own pace with resources covering financial literacy, employment support, housing assistance, legal rights, and more. Get expert guidance on exoneree reentry support from our curated collection of guides.
+            Easygoing how-tos and curiosity-driven reads on the things you actually enjoy: cooking, gadgets, games, music, hobbies, travel, and more. Pick up something new at your own pace, and share what you know by writing an article of your own.
           </p>
           {isAdmin && (
             <div className="mt-6 flex flex-wrap items-center gap-3">
