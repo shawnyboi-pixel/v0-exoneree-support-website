@@ -9,6 +9,7 @@ export const user = pgTable('user', {
   email: text('email').notNull().unique(),
   emailVerified: boolean('emailVerified').notNull().default(false),
   image: text('image'),
+  role: text('role').notNull().default('user'),
   createdAt: timestamp('createdAt').notNull().defaultNow(),
   updatedAt: timestamp('updatedAt').notNull().defaultNow(),
 })
@@ -134,6 +135,27 @@ export const guideAnswer = pgTable('guide_answer', {
   questionId: text('questionId').notNull(),
   userId: text('userId').notNull(),
   answer: text('answer').notNull(),
+  createdAt: timestamp('createdAt').notNull().defaultNow(),
+})
+
+// --- Admin-managed guide articles ------------------------------------------
+
+export const guideArticle = pgTable('guide_article', {
+  id: text('id').primaryKey(),
+  slug: text('slug').notNull().unique(),
+  title: text('title').notNull(),
+  description: text('description').notNull(),
+  category: text('category').notNull(),
+  types: text('types').notNull().default('article'),
+  duration: text('duration').notNull().default('5 min read'),
+  content: text('content').notNull(),
+  createdBy: text('createdBy').notNull(),
+  createdAt: timestamp('createdAt').notNull().defaultNow(),
+  })
+  
+export const hiddenGuide = pgTable('hidden_guide', {
+  guideId: text('guideId').primaryKey(),
+  hiddenBy: text('hiddenBy').notNull(),
   createdAt: timestamp('createdAt').notNull().defaultNow(),
 })
 
