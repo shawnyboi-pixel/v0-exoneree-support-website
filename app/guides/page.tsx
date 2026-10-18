@@ -7,9 +7,9 @@ import {
 } from '@/app/actions/guides-admin'
 
 export const metadata: Metadata = {
-  title: 'Reentry Guides | The Ide Project - Exoneree Resources',
+  title: 'Guides | The Ide Project',
   description:
-    'The Ide Project offers comprehensive reentry guides, video tutorials, checklists, and resources for exonerees. Learn about exoneree reentry support, financial literacy, housing assistance, employment programs, legal rights, and healthcare access. Free guides for building your life after wrongful conviction.',
+    'Easygoing guides and student-written articles from The Ide Project on cooking, gadgets, games, music, hobbies, travel, and other things worth learning for fun.',
 }
 
 export default async function GuidesPage({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
