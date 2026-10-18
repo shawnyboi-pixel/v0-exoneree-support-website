@@ -4,6 +4,9 @@ import { useState, useMemo, useEffect } from 'react'
 import Link from 'next/link'
 import { Search, FileText, Video, CheckCircle, X, MessageCircle } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
+import { AddGuideDialog } from '@/components/add-guide-dialog'
+import { RemoveGuideButton } from '@/components/remove-guide-button'
+import { RestoreGuidesButton } from '@/components/restore-guides-button'
 
 interface Guide {
   id: string
@@ -16,6 +19,17 @@ interface Guide {
   slug?: string
   hasQA?: boolean
   question?: string
+  href?: string
+  custom?: boolean
+}
+
+export interface CustomGuideSummary {
+  id: string
+  slug: string
+  title: string
+  description: string
+  category: string
+  wordCount: number
 }
 
 const categories = [
@@ -36,7 +50,7 @@ const resourceTypes = [
   { id: 'article', label: 'Articles', icon: FileText },
 ]
 
-const guides: Guide[] = [
+const builtInGuides: Guide[] = [
   // Financial Planning (4)
   {
     id: '1',
@@ -446,7 +460,33 @@ function getTypeLabel(type: string) {
   return type.charAt(0).toUpperCase() + type.slice(1)
 }
 
-export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
+export function GuidesHub({
+  initialSearch = '',
+  isAdmin = false,
+  hiddenIds = [],
+  customGuides = [],
+}: {
+  initialSearch?: string
+  isAdmin?: boolean
+  hiddenIds?: string[]
+  customGuides?: CustomGuideSummary[]
+}) {
+  const guides = useMemo<Guide[]>(() => {
+    const hidden = new Set(hiddenIds)
+    const custom: Guide[] = customGuides.map((g) => ({
+      id: g.id,
+      title: g.title,
+      description: g.description,
+      category: g.category,
+      types: ['article'],
+      duration: `${Math.max(1, Math.ceil(g.wordCount / 200))} min read`,
+      slug: g.slug,
+      href: `/guides/a/${g.slug}`,
+      custom: true,
+    }))
+    return [...custom, ...builtInGuides.filter((g) => !hidden.has(g.id))]
+  }, [hiddenIds, customGuides])
+
   const [searchTerm, setSearchTerm] = useState(initialSearch)
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [selectedTypes, setSelectedTypes] = useState<string[]>([])
@@ -479,7 +519,7 @@ export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
       })
       .sort((a, b) => b.score - a.score)
       .map(item => item.guide)
-  }, [searchTerm, selectedCategories, selectedTypes])
+  }, [guides, searchTerm, selectedCategories, selectedTypes])
 
   const toggleCategory = (category: string) => {
     setSelectedCategories((prev) =>
@@ -526,6 +566,12 @@ export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
           <p className="text-lg leading-relaxed text-muted-foreground lg:text-xl">
             The Ide Project provides comprehensive reentry guides, tutorial videos, and checklists to help exonerees navigate reentry successfully. Learn at your own pace with resources covering financial literacy, employment support, housing assistance, legal rights, and more. Get expert guidance on exoneree reentry support from our curated collection of guides.
           </p>
+          {isAdmin && (
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <AddGuideDialog categories={categories} />
+              {hiddenIds.length > 0 && <RestoreGuidesButton count={hiddenIds.length} />}
+            </div>
+          )}
         </div>
 
         {/* Search Bar */}
@@ -620,13 +666,16 @@ export function GuidesHub({ initialSearch = '' }: { initialSearch?: string }) {
             {filteredGuides.map((guide, idx) => (
               <div
                 key={guide.id}
-                className="animate-fade-in-up"
+                className="animate-fade-in-up relative"
                 style={{ animationDelay: `${idx * 30}ms` }}
               >
+                {isAdmin && (
+                  <RemoveGuideButton id={guide.id} title={guide.title} custom={!!guide.custom} />
+                )}
                 {guide.slug ? (
                   <a 
-                    href={`/guides/${guide.slug}`} 
-                    onClick={handleGuideClick(guide.id, `/guides/${guide.slug}`)}
+                    href={guide.href ?? `/guides/${guide.slug}`} 
+                    onClick={handleGuideClick(guide.id, guide.href ?? `/guides/${guide.slug}`)}
                     className="block h-full"
                   >
                     <Card className={`group h-full border-border/60 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer relative ${loadingGuideId === guide.id ? 'opacity-80' : ''}`}>
