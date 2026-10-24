@@ -66,11 +66,11 @@ export function HeroSection() {
               )}
             </button>
             <button
-              onClick={handleClick('/help-others')}
+              onClick={handleClick('/about')}
               className="group inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-md hover:scale-105 hover:cursor-pointer active:scale-95 disabled:cursor-not-allowed disabled:opacity-90 min-h-[44px]"
-              disabled={loading === '/help-others'}
+              disabled={loading === '/about'}
             >
-              {loading === '/help-others' ? (
+              {loading === '/about' ? (
                 <>
                   <div className="size-4 animate-spin rounded-full border-2 border-foreground border-t-transparent mr-2" />
                   <span>Loading...</span>
