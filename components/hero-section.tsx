@@ -42,9 +42,9 @@ export function HeroSection() {
           </p>
 
           <p className="mb-10 max-w-2xl text-xl leading-relaxed text-foreground/80 md:text-2xl lg:text-3xl text-balance animate-slide-in-left">
-            The Ide Project is a <span className="font-bold text-foreground">youth-led</span> organization that supports{' '}
-            <span className="font-bold text-foreground">post-release exonerees</span> with rehabilitation in{' '}
-            <span className="font-bold text-foreground">innovative</span> ways.
+            The Ide Project is a <span className="font-bold text-foreground">youth-led</span> organization that uses{' '}
+            <span className="font-bold text-foreground">innovation</span> to rehabilitate{' '}
+            <span className="font-bold text-foreground">post-release exonerees</span>.
           </p>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center animate-scale-up">
@@ -66,11 +66,11 @@ export function HeroSection() {
               )}
             </button>
             <button
-              onClick={handleClick('/help-others')}
+              onClick={handleClick('/about')}
               className="group inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-md hover:scale-105 hover:cursor-pointer active:scale-95 disabled:cursor-not-allowed disabled:opacity-90 min-h-[44px]"
-              disabled={loading === '/help-others'}
+              disabled={loading === '/about'}
             >
-              {loading === '/help-others' ? (
+              {loading === '/about' ? (
                 <>
                   <div className="size-4 animate-spin rounded-full border-2 border-foreground border-t-transparent mr-2" />
                   <span>Loading...</span>
