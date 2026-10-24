@@ -310,7 +310,7 @@ export default function ContactPage() {
                 </div>
 
                 <p className="text-sm leading-relaxed text-foreground/80">
-                  Description coming soon.
+                  Founder and Executive Director of Youth for Innocence, a youth-led 501(c)(3) nonprofit that empowers students and volunteers around the world to help overturn wrongful convictions through non-lawyer advocacy. Bijan oversees the organization&apos;s online casework, training programs, and volunteer network, turning complex innocence cases into clear, winnable paths for attorneys.
                 </p>
               </div>
             </div>
@@ -356,7 +356,7 @@ export default function ContactPage() {
                 </div>
 
                 <p className="text-sm leading-relaxed text-foreground/80">
-                  Description coming soon.
+                  Based in Dallas, Texas. Loves the entrepreneurial mindset and is a passionate board member for The Ide Project.
                 </p>
               </div>
             </div>

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { MailingAddress } from './mailing-address'
 
 export function SiteFooter() {
   return (
@@ -60,6 +61,7 @@ export function SiteFooter() {
             >
               View Helpful Resources &rarr;
             </Link>
+            <MailingAddress className="mt-6" />
           </div>
         </div>
 
