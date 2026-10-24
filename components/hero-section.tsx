@@ -42,9 +42,9 @@ export function HeroSection() {
           </p>
 
           <p className="mb-10 max-w-2xl text-xl leading-relaxed text-foreground/80 md:text-2xl lg:text-3xl text-balance animate-slide-in-left">
-            The Ide Project is a <span className="font-bold text-foreground">youth-led</span> organization that supports{' '}
-            <span className="font-bold text-foreground">post-release exonerees</span> with rehabilitation in{' '}
-            <span className="font-bold text-foreground">innovative</span> ways.
+            The Ide Project is a <span className="font-bold text-foreground">youth-led</span> organization that uses{' '}
+            <span className="font-bold text-foreground">innovation</span> to rehabilitate{' '}
+            <span className="font-bold text-foreground">post-release exonerees</span>.
           </p>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center animate-scale-up">

@@ -173,7 +173,7 @@ export default function HelpOthersPage() {
                 </span>
               </div>
               <p className="max-w-xs text-sm leading-relaxed text-white/70 lg:text-base">
-                The Ide Project is a youth-led organization that supports post-release exonerees with rehabilitation in innovative ways.
+                The Ide Project is a youth-led organization that uses innovation to rehabilitate post-release exonerees.
               </p>
             </div>
 
