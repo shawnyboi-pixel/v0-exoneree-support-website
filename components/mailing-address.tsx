@@ -6,6 +6,7 @@ export function MailingAddress({ className = '' }: { className?: string }) {
       </span>
       <span className="block">The Ide Project</span>
       <span className="block">6600 Trail Bluff Dr.</span>
+      <span className="block">EIN: 42-3444456</span>
     </address>
   )
 }
